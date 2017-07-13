@@ -1,15 +1,12 @@
-from .base_scheduled_visit_model import BaseScheduledVisitModel
-from .base_subject_consent import BaseSubjectConsent
-
 from .subject_consent import SubjectConsent
 from .enrollment_site import EnrollmentSite
 from .subject_death import SubjectDeath
 from .subject_off_study import SubjectOffStudy
-from cancer_subject.models.old_subject_visit import SubjectVisit
+from .subject_visit import SubjectVisit
 from .enrollment_checklist import EnrollmentChecklist
-#from .ae010 import *
-#from .af004 import *
-#from .af005 import *
+# from .ae010 import *
+# from .af004 import *
+# from .af005 import *
 
 from .base_risk_assessment import BaseRiskAssessment
 from .base_risk_assessment_smoking import BaseRiskAssessmentSmoking
@@ -57,3 +54,4 @@ from .radiation_treatment import RadiationTreatment, RadiationTreatmentRecord
 from .signals import *
 from .oncology_treatment_completed import OncologyTreatmentCompleted
 from .current_symptoms import CurrentSymptoms
+from .subject_requisition import SubjectRequisition

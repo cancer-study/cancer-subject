@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .registered_subject_model_admin import RegisteredSubjectModelAdmin
+from cancer_subject.admin.old.registered_subject_model_admin import RegisteredSubjectModelAdmin
 from ..forms import EnrollmentChecklistForm
 from ..models import EnrollmentChecklist
 

@@ -3,10 +3,11 @@ from django.contrib import admin
 from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
 from ..models import BaselineHIVHistory, BHHHivTest, BHHWhoIllness, BHHCd4
 from ..forms import BaselineHIVHistoryForm, BHHHivTestForm, BHHWhoIllnessForm, BHHCd4Form
+from cancer_subject.admin_site import cancer_subject_admin
 
 
-# BaselineHIVHistory
-class BaselineHIVHistoryAdmin(SubjectVisitModelAdmin):
+@admin.register(BaselineHIVHistory, site=cancer_subject_admin)
+class BaselineHIVHistoryAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaselineHIVHistoryForm
     fields = (
@@ -29,10 +30,9 @@ class BaselineHIVHistoryAdmin(SubjectVisitModelAdmin):
         "has_cd4": admin.VERTICAL,
         "has_prior_cd4": admin.VERTICAL,
         "has_vl": admin.VERTICAL}
-admin.site.register(BaselineHIVHistory, BaselineHIVHistoryAdmin)
 
 
-#BHHHivTest
+@admin.register(BHHHivTest, site=cancer_subject_admin)
 class BHHHivTestAdmin(SubjectVisitModelAdmin):
 
     form = BHHHivTestForm
@@ -44,10 +44,9 @@ class BHHHivTestAdmin(SubjectVisitModelAdmin):
     radio_fields = {
         "hiv_testdate_est": admin.VERTICAL,
         "hiv_result": admin.VERTICAL}
-admin.site.register(BHHHivTest, BHHHivTestAdmin)
 
 
-#BHHWhoIllness
+@admin.register(BHHWhoIllness, site=cancer_subject_admin)
 class BHHWhoIllnessAdmin(SubjectVisitModelAdmin):
 
     form = BHHWhoIllnessForm
@@ -58,10 +57,9 @@ class BHHWhoIllnessAdmin(SubjectVisitModelAdmin):
         "who_illness_other",)
     filter_horizontal = (
         "who_illness",)
-admin.site.register(BHHWhoIllness, BHHWhoIllnessAdmin)
 
 
-#BHHCd4
+# BHHCd4
 class BHHCd4Admin(SubjectVisitModelAdmin):
 
     form = BHHCd4Form

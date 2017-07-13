@@ -1,129 +1,28 @@
 from django.contrib import admin
-from edc.subject.registration.models import RegisteredSubject
-from edc.base.modeladmin.admin import BaseTabularInline, BaseModelAdmin
-from .subject_off_study_model_admin import SubjectOffStudyModelAdmin
-from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
-from .registered_subject_model_admin import RegisteredSubjectModelAdmin
-from ..models import (HaartMedRecord, ChemoMedPlan, Locator, SubjectDeath, SubjectVisit,
-                     SubjectOffStudy, ActivityAndFunctioning, CancerDiagnosis, HaartRecord,
-                     OncologyTreatmentPlan, TreatmentResponse, SymptomsAndTesting, EnrollmentSite,
-                     OncologyTreatmentCompleted, CurrentSymptoms)
-from ..forms import (LocatorForm, SubjectDeathForm, SubjectOffStudyForm,
-                     ActivityAndFunctioningForm, CancerDiagnosisForm, HaartRecordForm,
-                     OncologyTreatmentPlanForm, TreatmentResponseForm, SymptomsAndTestingForm,
-                     OncologyTreatmentCompletedForm, CurrentSymptomsForm)
+
+from cancer_subject.admin_site import cancer_subject_admin
+from cancer_subject.admin.modeladmin_mixins import CrfModelAdminMixin
+
+from ..models import (
+    ActivityAndFunctioning, SymptomsAndTesting, CurrentSymptoms)
+
+from ..forms import (
+    ActivityAndFunctioningForm, CancerDiagnosisForm, HaartRecordForm,
+    OncologyTreatmentPlanForm, TreatmentResponseForm, SymptomsAndTestingForm,
+    OncologyTreatmentCompletedForm, CurrentSymptomsForm)
 
 
-class LocatorAdmin(SubjectVisitModelAdmin):
-
-    form = LocatorForm
-    fields = (
-        'subject_visit',
-        'date_signed',
-        'mail_address',
-        'home_visit_permission',
-        'physical_address',
-        'may_follow_up',
-        'subject_cell',
-        'subject_cell_alt',
-        'subject_phone',
-        'subject_phone_alt',
-        'may_contact_someone',
-        'contact_name',
-        'contact_rel',
-        'contact_cell',
-        'alt_contact_cell_number',
-        'contact_phone',
-        'has_alt_contact',
-        'alt_contact_name',
-        'alt_contact_rel',
-        'alt_contact_cell',
-        'other_alt_contact_cell',
-        'alt_contact_tel',
-        'may_call_work',
-        'subject_work_place',
-        'subject_work_phone',
-        'home_village',
-        'local_clinic',)
-    radio_fields = {
-        "home_visit_permission": admin.VERTICAL,
-        "may_follow_up": admin.VERTICAL,
-        "has_alt_contact": admin.VERTICAL,
-        "may_call_work": admin.VERTICAL,
-        "may_contact_someone": admin.VERTICAL, }
-admin.site.register(Locator, LocatorAdmin)
+# class HaartMedRecordInlineAdmin(BaseTabularInline):
+#     model = HaartMedRecord
+# 
+# 
+# class ChemoMedPlanInlineAdmin(BaseTabularInline):
+#     exclude = ('dose_category',)
+#     model = ChemoMedPlan
 
 
-class HaartMedRecordInlineAdmin(BaseTabularInline):
-    model = HaartMedRecord
-
-
-class ChemoMedPlanInlineAdmin(BaseTabularInline):
-    exclude = ('dose_category',)
-    model = ChemoMedPlan
-
-
-# SubjectDeath
-class SubjectDeathAdmin(RegisteredSubjectModelAdmin):
-
-    form = SubjectDeathForm
-    fields = (
-        "registered_subject",
-        "subject_visit",
-        "death_date",
-        "is_death_date_estimated",
-        "death_cause_info",
-        "death_cause_info_other",
-        "death_cause",
-        "death_cause_category",
-        "death_cause_other",
-        "comment")
-    list_filter = [
-            'created',
-            'user_created',
-            'hostname_created',
-            'modified',
-            'user_modified',
-            'hostname_modified',
-            'registered_subject__gender',
-            'registered_subject__study_site',
-            'registered_subject__registration_datetime',
-            ]
-#     list_display = ('registered_subject', 'subject_visit', 'death_date', 'created', 'user_created',)
-
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "subject_visit":
-            #subject_visit = SubjectVisit.objects.filter(id=request.GET.get(db_field.name))
-            kwargs["queryset"] = SubjectVisit.objects.filter(id=request.GET.get(db_field.name, None))
-        return super(SubjectDeathAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
-
-admin.site.register(SubjectDeath, SubjectDeathAdmin)
-
-
-# SubjectOffStudy
-class SubjectOffStudyAdmin(SubjectOffStudyModelAdmin):
-    form = SubjectOffStudyForm
-    fields = (
-        "registered_subject",
-        "subject_visit",
-        "offstudy_date",
-        "reason",
-        "reason_other",
-        "has_scheduled_data",
-        "comment")
-    radio_fields = {
-        "has_scheduled_data": admin.VERTICAL}
-
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "subject_visit":
-            kwargs["queryset"] = SubjectVisit.objects.filter(id__exact=request.GET.get('subject_visit', 0))
-        return super(SubjectOffStudyAdmin, self).formfield_for_foreignkey(db_field, request, **kwargs)
-
-admin.site.register(SubjectOffStudy, SubjectOffStudyAdmin)
-
-
-# ActivityAndFunctioning
-class ActivityAndFunctioningAdmin(SubjectVisitModelAdmin):
+@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+class ActivityAndFunctioningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = ActivityAndFunctioningForm
     fields = (
@@ -148,11 +47,10 @@ class ActivityAndFunctioningAdmin(SubjectVisitModelAdmin):
         "emotional_probs": admin.VERTICAL,
         "probs_from_work": admin.VERTICAL,
         "perform_status": admin.VERTICAL}
-admin.site.register(ActivityAndFunctioning, ActivityAndFunctioningAdmin)
 
 
-# CancerDiagnosis
-class CancerDiagnosisAdmin(SubjectVisitModelAdmin):
+@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+class CancerDiagnosisAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = CancerDiagnosisForm
     fields = (
@@ -201,28 +99,26 @@ class CancerDiagnosisAdmin(SubjectVisitModelAdmin):
         "cancer_stage_modifier": admin.VERTICAL,
         "any_other_results": admin.VERTICAL}
     filter_horizontal = ('results_to_record',)
-admin.site.register(CancerDiagnosis, CancerDiagnosisAdmin)
 
 
-# HaartRecord
-class HaartRecordAdmin(SubjectVisitModelAdmin):
+@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+class HaartRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = HaartRecordForm
-    inlines = [HaartMedRecordInlineAdmin, ]
+#     inlines = [HaartMedRecordInlineAdmin, ]
     fields = (
         "subject_visit",
         "haart_status",
         "comments")
     radio_fields = {
         "haart_status": admin.VERTICAL}
-admin.site.register(HaartRecord, HaartRecordAdmin)
 
 
-# OncologyTreatmentPlan
-class OncologyTreatmentPlanAdmin(SubjectVisitModelAdmin):
+@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+class OncologyTreatmentPlanAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentPlanForm
-    inlines = [ChemoMedPlanInlineAdmin, ]
+#     inlines = [ChemoMedPlanInlineAdmin, ]
     fields = (
         "subject_visit",
         "treatment_goal",
@@ -241,11 +137,10 @@ class OncologyTreatmentPlanAdmin(SubjectVisitModelAdmin):
         "chemo_intent": admin.VERTICAL,
         "radiation_plan": admin.VERTICAL,
         "surgical_plan": admin.VERTICAL}
-admin.site.register(OncologyTreatmentPlan, OncologyTreatmentPlanAdmin)
 
 
-# TreatmentResponse
-class TreatmentResponseAdmin(SubjectVisitModelAdmin):
+@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+class TreatmentResponseAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = TreatmentResponseForm
     fields = (
@@ -258,11 +153,10 @@ class TreatmentResponseAdmin(SubjectVisitModelAdmin):
         "tx_response_class": admin.VERTICAL}
     filter_horizontal = (
         "tx_info_determinant",)
-admin.site.register(TreatmentResponse, TreatmentResponseAdmin)
 
 
-# SymptomsAndTesting
-class SymptomsAndTestingAdmin(SubjectVisitModelAdmin):
+@admin.register(SymptomsAndTesting, site=cancer_subject_admin)
+class SymptomsAndTestingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = SymptomsAndTestingForm
     fields = (
@@ -289,16 +183,10 @@ class SymptomsAndTestingAdmin(SubjectVisitModelAdmin):
         "hiv_result": admin.VERTICAL,
         "arv_art_therapy": admin.VERTICAL,
         "arv_art_now": admin.VERTICAL}
-admin.site.register(SymptomsAndTesting, SymptomsAndTestingAdmin)
 
 
-class EnrollmentSiteAdmin(BaseModelAdmin):
-    list_display = ("site_name",)
-admin.site.register(EnrollmentSite, EnrollmentSiteAdmin)
-
-
-# OncologyTreatmentCompleted
-class OncologyTreatmentCompletedAdmin(SubjectVisitModelAdmin):
+@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+class OncologyTreatmentCompletedAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentCompletedForm
     fields = (
@@ -314,11 +202,10 @@ class OncologyTreatmentCompletedAdmin(SubjectVisitModelAdmin):
         "patient_had_radiation": admin.VERTICAL,
         "patient_had_surgery": admin.VERTICAL,
         "patient_follow_up": admin.VERTICAL}
-admin.site.register(OncologyTreatmentCompleted, OncologyTreatmentCompletedAdmin)
 
 
-# CurrentSymptoms
-class CurrentSymptomsAdmin(SubjectVisitModelAdmin):
+@admin.register(CurrentSymptoms, site=cancer_subject_admin)
+class CurrentSymptomsAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = CurrentSymptomsForm
     fields = (
@@ -327,11 +214,8 @@ class CurrentSymptomsAdmin(SubjectVisitModelAdmin):
         "symptom_desc",
         "patient_own_remedy",
         "severity",
-#         "pain",
         "ra_advice",
-        "outcome_update",
-        )
+        "outcome_update",)
     radio_fields = {
         "any_worry": admin.VERTICAL,
-        }
-admin.site.register(CurrentSymptoms, CurrentSymptomsAdmin)
+    }

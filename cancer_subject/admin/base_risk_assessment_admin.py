@@ -1,9 +1,8 @@
 from django.contrib import admin
-from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
 from ..models import (
     BaseRiskAssessment, BaseRiskAssessmentAlcohol, BaseRiskAssessmentCancer,
     BaseRiskAssessmentChemical, BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
-    BaseRiskAssessmentFemale, BaseRiskAssessmentFuel, BaseRiskAssessmentMining,
+    BaseRiskAssessmentFemale, BaseRiskAssessmentMining,
     BaseRiskAssessmentSmoking, BaseRiskAssessmentSun)
 from ..forms import (
     BaseRiskAssessmentForm, BaseRiskAssessmentAlcoholForm, BaseRiskAssessmentCancerForm,
@@ -210,8 +209,8 @@ class BaseRiskAssessmentMiningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "mine_underground_time": admin.VERTICAL}
 
 
-# BaseRiskAssessmentSmo
-class BaseRiskAssessmentSmokingAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentSmoking, site=cancer_subject_admin)
+class BaseRiskAssessmentSmokingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentSmokingForm
     fields = (
@@ -227,11 +226,10 @@ class BaseRiskAssessmentSmokingAdmin(SubjectVisitModelAdmin):
         "cigarette_smoking": admin.VERTICAL,
         "cigarette_smoked": admin.VERTICAL,
         "when_quit": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentSmoking, BaseRiskAssessmentSmokingAdmin)
 
 
-# BaseRiskAssessmentSun
-class BaseRiskAssessmentSunAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentSun, site=cancer_subject_admin)
+class BaseRiskAssessmentSunAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentSunForm
     fields = (
@@ -247,4 +245,3 @@ class BaseRiskAssessmentSunAdmin(SubjectVisitModelAdmin):
         "hat": admin.VERTICAL,
         "shade_umbrella": admin.VERTICAL,
         "sunglasses": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentSun, BaseRiskAssessmentSunAdmin)

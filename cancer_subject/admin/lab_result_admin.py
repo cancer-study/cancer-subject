@@ -1,12 +1,17 @@
 from django.contrib import admin
 from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
-from ..models import (LabResult, LabResultHeightWeight, LabResultHiv, LabResultCd4, LabResultViralload,
-                                   LabResultHaematology, LabResultChemistry, LabResultTb)
-from ..forms import (LabResultForm, LabResultHeightWeightForm, LabResultHivForm, LabResultCd4Form,
-                                  LabResultViralloadForm, LabResultHaematologyForm, LabResultChemistryForm, LabResultTbForm)
+from ..models import (
+    LabResult, LabResultHiv, LabResultCd4, LabResultViralload,
+    LabResultHaematology, LabResultChemistry, LabResultTb)
+
+from ..forms import (
+    LabResultForm, LabResultHeightWeightForm, LabResultHivForm, LabResultCd4Form,
+    LabResultChemistryForm, LabResultTbForm, LabResultHaematologyForm,
+    LabResultViralloadForm)
+from ..admin_site import cancer_subject_admin
 
 
-# LabResult
+@admin.register(LabResult, site=cancer_subject_admin)
 class LabResultAdmin(SubjectVisitModelAdmin):
 
     form = LabResultForm
@@ -30,10 +35,9 @@ class LabResultAdmin(SubjectVisitModelAdmin):
         "has_other_abnormal": admin.VERTICAL,
         "tb_tests": admin.VERTICAL}
     filter_horizontal = ()
-admin.site.register(LabResult, LabResultAdmin)
 
 
-# LabResultHeightWeight
+@admin.register(LabResult, site=cancer_subject_admin)
 class LabResultHeightWeightAdmin(SubjectVisitModelAdmin):
 
     form = LabResultHeightWeightForm
@@ -45,10 +49,9 @@ class LabResultHeightWeightAdmin(SubjectVisitModelAdmin):
     radio_fields = {
         "cough2weeks": admin.VERTICAL}
     filter_horizontal = ()
-admin.site.register(LabResultHeightWeight, LabResultHeightWeightAdmin)
 
 
-# LabResultHiv
+@admin.register(LabResultHiv, site=cancer_subject_admin)
 class LabResultHivAdmin(SubjectVisitModelAdmin):
 
     form = LabResultHivForm
@@ -58,10 +61,9 @@ class LabResultHivAdmin(SubjectVisitModelAdmin):
         "test_result")
     radio_fields = {
         "test_result": admin.VERTICAL}
-admin.site.register(LabResultHiv, LabResultHivAdmin)
 
 
-# LabResultCd4
+@admin.register(LabResultCd4, site=cancer_subject_admin)
 class LabResultCd4Admin(SubjectVisitModelAdmin):
 
     form = LabResultCd4Form
@@ -70,10 +72,9 @@ class LabResultCd4Admin(SubjectVisitModelAdmin):
         "cd4_drawn_date",
         "cd4_result")
     radio_fields = {}
-admin.site.register(LabResultCd4, LabResultCd4Admin)
 
 
-# LabResultViralload
+@admin.register(LabResultViralload, site=cancer_subject_admin)
 class LabResultViralloadAdmin(SubjectVisitModelAdmin):
 
     form = LabResultViralloadForm
@@ -83,10 +84,9 @@ class LabResultViralloadAdmin(SubjectVisitModelAdmin):
         "vl_drawn_date",
         "vl_result")
     radio_fields = {}
-admin.site.register(LabResultViralload, LabResultViralloadAdmin)
 
 
-# LabResultHaematology
+@admin.register(LabResultHaematology, site=cancer_subject_admin)
 class LabResultHaematologyAdmin(SubjectVisitModelAdmin):
 
     form = LabResultHaematologyForm
@@ -100,10 +100,9 @@ class LabResultHaematologyAdmin(SubjectVisitModelAdmin):
         "platelet",
         "comments")
     radio_fields = {}
-admin.site.register(LabResultHaematology, LabResultHaematologyAdmin)
 
 
-# LabResultChemistry
+@admin.register(LabResultChemistry, site=cancer_subject_admin)
 class LabResultChemistryAdmin(SubjectVisitModelAdmin):
 
     form = LabResultChemistryForm
@@ -117,10 +116,9 @@ class LabResultChemistryAdmin(SubjectVisitModelAdmin):
         "lactate",
         "comments")
     radio_fields = {}
-admin.site.register(LabResultChemistry, LabResultChemistryAdmin)
 
 
-# LabResultTb
+@admin.register(LabResultTb, site=cancer_subject_admin)
 class LabResultTbAdmin(SubjectVisitModelAdmin):
 
     form = LabResultTbForm
@@ -131,4 +129,3 @@ class LabResultTbAdmin(SubjectVisitModelAdmin):
         "tb_treatment_start")
     radio_fields = {
         "tb_treatment": admin.VERTICAL}
-admin.site.register(LabResultTb, LabResultTbAdmin)
