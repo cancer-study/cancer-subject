@@ -7,13 +7,13 @@ from edc_visit_schedule.admin import (
     visit_schedule_fieldset_tuple, visit_schedule_fields)
 from edc_visit_tracking.modeladmin_mixins import VisitModelAdminMixin
 
-from ..admin_site import ambition_subject_admin
 from ..forms import SubjectVisitForm
 from ..models import SubjectVisit, SubjectRequisition
 from .modeladmin_mixins import ModelAdminMixin
+from ..admin_site import cancer_subject_admin
 
 
-@admin.register(SubjectVisit, site=ambition_subject_admin)
+@admin.register(SubjectVisit, site=cancer_subject_admin)
 class SubjectVisitAdmin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
 
     form = SubjectVisitForm
@@ -59,7 +59,7 @@ class SubjectVisitAdmin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin)
     def view_on_site(self, obj):
         try:
             return reverse(
-                'ambition_subject:dashboard_url', kwargs=dict(
+                'cancer_subject:dashboard_url', kwargs=dict(
                     subject_identifier=obj.subject_identifier,
                     appointment=str(obj.appointment.id)))
         except NoReverseMatch as e:

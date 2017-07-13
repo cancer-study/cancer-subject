@@ -1,9 +1,13 @@
 from django.contrib import admin
 
-from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
+from edc_visit_tracking.modeladmin_mixins import VisitModelAdminMixin
+
+from ..admin.modeladmin_mixins import CrfModelAdminMixin
+from ..admin_site import cancer_subject_admin
+from ..forms import (
+    BaselineHIVHistoryForm, BHHHivTestForm, BHHWhoIllnessForm, BHHCd4Form)
 from ..models import BaselineHIVHistory, BHHHivTest, BHHWhoIllness, BHHCd4
-from ..forms import BaselineHIVHistoryForm, BHHHivTestForm, BHHWhoIllnessForm, BHHCd4Form
-from cancer_subject.admin_site import cancer_subject_admin
+from .modeladmin_mixins import ModelAdminMixin
 
 
 @admin.register(BaselineHIVHistory, site=cancer_subject_admin)
@@ -22,8 +26,7 @@ class BaselineHIVHistoryAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "nadir_cd4_drawn_date",
         "has_vl",
         "vl_result",
-        "vl_drawn_date",
-        )
+        "vl_drawn_date",)
     radio_fields = {
         "has_hiv_result": admin.VERTICAL,
         "had_who_illnesses": admin.VERTICAL,
@@ -33,7 +36,7 @@ class BaselineHIVHistoryAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
 
 @admin.register(BHHHivTest, site=cancer_subject_admin)
-class BHHHivTestAdmin(SubjectVisitModelAdmin):
+class BHHHivTestAdmin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
 
     form = BHHHivTestForm
     fields = (
@@ -47,7 +50,7 @@ class BHHHivTestAdmin(SubjectVisitModelAdmin):
 
 
 @admin.register(BHHWhoIllness, site=cancer_subject_admin)
-class BHHWhoIllnessAdmin(SubjectVisitModelAdmin):
+class BHHWhoIllnessAdmin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
 
     form = BHHWhoIllnessForm
     fields = (
@@ -59,12 +62,11 @@ class BHHWhoIllnessAdmin(SubjectVisitModelAdmin):
         "who_illness",)
 
 
-# BHHCd4
-class BHHCd4Admin(SubjectVisitModelAdmin):
+@admin.register(BHHCd4, site=cancer_subject_admin)
+class BHHCd4Admin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
 
     form = BHHCd4Form
     fields = (
         "subject_visit",
         "nadir_cd4",
         "nadir_cd4_drawn_date")
-admin.site.register(BHHCd4, BHHCd4Admin)

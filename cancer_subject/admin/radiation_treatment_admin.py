@@ -1,34 +1,12 @@
 from django.contrib import admin
 
-from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
-from ..models import RadiationTreatment, RadiationTreatmentRecord
+from ..models import RadiationTreatment
 from ..forms import RadiationTreatmentForm
-from cancer_subject.admin_site import cancer_subject_admin
-
-
-# class RadiationTreatmentRecordInlineAdmin(BaseTabularInline):
-#     model = RadiationTreatmentRecord
-
-
-from django.contrib import admin
-
-from edc_base.fieldsets.fieldset import Fieldset
-from edc_base.modeladmin_mixins import audit_fieldset_tuple
-
+from ..admin_site import cancer_subject_admin
 from .modeladmin_mixins import CrfModelAdminMixin
 
-blood_count = Fieldset(
-    'wbc',
-    'platelets',
-    'haemoglobin',
-    'absolute_neutrophil',
-    'proteinuria',
-    'abs_cd4',
-    'alt',
-    section='Complete Blood Count (CBC)')
 
-
-@admin.register(BloodResult, site=cancer_subject_admin)
+@admin.register(RadiationTreatment, site=cancer_subject_admin)
 class RadiationTreatmentAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = RadiationTreatmentForm
