@@ -4,7 +4,7 @@ from .modelform_mixin import SubjectModelFormMixin
 from ..models import (
     ActivityAndFunctioning, CancerDiagnosis, ChemoMedPlan, ChemoMedRecord,
     EnrollmentChecklist, HaartRecord, HaartMedRecord, OncologyTreatmentPlan,
-    Referral, SubjectDeath, TreatmentResponse, Locator, SymptomsAndTesting,
+    Referral, SubjectDeath, TreatmentResponse, SymptomsAndTesting,
     OncologyTreatmentCompleted, CurrentSymptoms)
 
 from edc_constants.constants import YES, NO
@@ -14,13 +14,6 @@ class EnrollmentChecklistForm (SubjectModelFormMixin):
 
     class Meta:
         model = EnrollmentChecklist
-
-
-# Locator
-class LocatorForm (SubjectModelFormMixin):
-
-    class Meta:
-        model = Locator
 
 
 # ActivityAndFunctioning
