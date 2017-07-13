@@ -3,20 +3,17 @@
 from django.db import models
 from django.core.validators import RegexValidator
 
-from edc.audit.audit_trail import AuditTrail
-from edc.choices.common import YES_NO
-from edc.base.model.fields.custom.custom_fields import OtherCharField
+from edc_constants.choices import YES_NO
 
-from apps.cancer_list.models import ResultsToRecord
-
-from .base_scheduled_visit_model import BaseScheduledVisitModel
-from ..choices.cancer_diagnosis import (CANCER_CATEGORY_CHOICE, SYMPTOM_PROMPT_CHOICE,
-                                        DIAGNOSIS_BASIS_CHOICE, TUMOUR_BASIS_CHOICE,
-                                        LYMPH_BASIS_CHOICE, METASTASIS_BASIS_CHOICE,
-                                        TUMOUR_POSSIBLE_GRADES, LYMPH_POSSIBLE_GRADES,
-                                        METASTASIS_POSSIBLE_GRADES, POSSIBLE_OVERALL_STAGES,
-                                        POSSIBLE_OVERALL_STAGE_MODIFIER)
-from cancer_subject.models.model_mixins.crf_model_mixin import CrfModelMixin
+from .model_mixins import CrfModelMixin
+from ..choices.cancer_diagnosis import (
+    CANCER_CATEGORY_CHOICE, SYMPTOM_PROMPT_CHOICE,
+    DIAGNOSIS_BASIS_CHOICE, TUMOUR_BASIS_CHOICE,
+    LYMPH_BASIS_CHOICE, METASTASIS_BASIS_CHOICE,
+    TUMOUR_POSSIBLE_GRADES, LYMPH_POSSIBLE_GRADES,
+    METASTASIS_POSSIBLE_GRADES, POSSIBLE_OVERALL_STAGES,
+    POSSIBLE_OVERALL_STAGE_MODIFIER)
+from edc_base.model_fields.custom_fields import OtherCharField
 
 
 class CancerDiagnosis (CrfModelMixin):
@@ -28,28 +25,25 @@ class CancerDiagnosis (CrfModelMixin):
         verbose_name="GPH ONCO number",
         max_length=10,
         null=True,
-        blank=True,
-        )
+        blank=True,)
 
     pathology_number = models.CharField(
         verbose_name="Pathology number(s)",
         max_length=50,
         null=True,
-        blank=True,
-        )
+        blank=True,)
+
     pm_number = models.CharField(
         verbose_name="PM number",
         max_length=10,
         null=True,
-        blank=True,
-        )
+        blank=True,)
 
     diagnosis = models.CharField(
         verbose_name="Has a cancer diagnosis been made?",
         max_length=3,
         choices=YES_NO,
-        help_text="",
-        )
+        help_text="",)
 
     cancer_category = models.CharField(
         verbose_name="Category of cancer case:",
@@ -59,8 +53,7 @@ class CancerDiagnosis (CrfModelMixin):
         choices=CANCER_CATEGORY_CHOICE,
         help_text=("If patient develops a new cancer type (for example, "
                     "breast cancer after or during treatment for lymphoma) "
-                    "this should be considered a new cancer case."),
-        )
+                    "this should be considered a new cancer case."),)
 
     symptom_prompt = models.CharField(
         verbose_name=("What symptom was most important in prompting "
@@ -70,8 +63,8 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         choices=SYMPTOM_PROMPT_CHOICE,
-        help_text="",
-        )
+        help_text="",)
+
     symptom_prompt_other = OtherCharField()
 
     symptom_first_noticed = models.DateField(
@@ -81,8 +74,7 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         max_length=25,
-        help_text="",
-        )
+        help_text="",)
 
     first_evaluation = models.DateField(
         verbose_name=("When did the patient first receive an evaluation "
@@ -91,8 +83,7 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         max_length=25,
-        help_text="",
-        )
+        help_text="",)
 
     trad_evaluation = models.DateField(
         verbose_name=("When did the patient first receive an evaluation "
@@ -101,16 +92,14 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=25,
         null=True,
         blank=True,
-        help_text="",
-        )
+        help_text="",)
 
     date_diagnosed = models.DateField(
         verbose_name="Date of cancer diagnosis",
         null=True,
         blank=True,
         max_length=25,
-        help_text="",
-        )
+        help_text="",)
 
     diagnosis_basis = models.CharField(
         verbose_name="Basis of diagnosis",
@@ -118,8 +107,8 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         choices=DIAGNOSIS_BASIS_CHOICE,
-        help_text="",
-        )
+        help_text="",)
+
     diagnosis_basis_other = OtherCharField()
 
     diagnosis_word = models.CharField(
@@ -127,8 +116,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=100,
         null=True,
         blank=True,
-        help_text="In words, metatstatic breast cancer, kaposis of right leg",
-        )
+        help_text="In words, metatstatic breast cancer, kaposis of right leg",)
 
     cancer_site = models.CharField(
         verbose_name=("Cancer Site (record ICD topography code)"),
@@ -138,8 +126,7 @@ class CancerDiagnosis (CrfModelMixin):
         validators=[RegexValidator(
             regex=r'^([C](\d{2})|[C](\d{2}\.\d{1}))$',
             message='A site code always starts with a C, followed by numbers: integer or decimal.FORMAT is CXX or CXX.X'), ],
-        help_text="",
-        )
+        help_text="",)
 
     clinical_diagnosis = models.CharField(
         verbose_name=("Clinical and/or Pathologic Diagnosis (record "
@@ -150,8 +137,7 @@ class CancerDiagnosis (CrfModelMixin):
         validators=[RegexValidator(
             regex=r'^[M]{1}[0-9]{4}[/][3]{1}$',
             message='Please enter the correct morphology code. its M, followed by 4 numbers, a slash, and one more number, a 3.'), ],
-        help_text="",
-        )
+        help_text="",)
 
     tumour = models.CharField(
         verbose_name="TNM system- Tumour (T)",
@@ -159,8 +145,7 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         choices=TUMOUR_POSSIBLE_GRADES,
-        help_text="For Kaposi's record T here, 0 or 1",
-        )
+        help_text="For Kaposi's record T here, 0 or 1",)
 
     tumour_basis = models.CharField(
         verbose_name="Basis of Tumour (T) assessment",
@@ -168,8 +153,7 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         choices=TUMOUR_BASIS_CHOICE,
-        help_text="",
-        )
+        help_text="",)
 
     lymph_nodes = models.CharField(
         verbose_name="TNM system- Lymph Nodes (N)",
@@ -177,8 +161,7 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         choices=LYMPH_POSSIBLE_GRADES,
-        help_text="For Kaposi's record I here, 0 or 1",
-        )
+        help_text="For Kaposi's record I here, 0 or 1",)
 
     lymph_basis = models.CharField(
         verbose_name="Basis of Lymph Node (N) assessment",
@@ -186,8 +169,7 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         choices=LYMPH_BASIS_CHOICE,
-        help_text="",
-        )
+        help_text="",)
 
     metastasis = models.CharField(
         verbose_name="TNM system- Metastasis (M)",
@@ -251,19 +233,11 @@ class CancerDiagnosis (CrfModelMixin):
                       "results be recorded (refer to SOP)?"),
         null=True,
         blank=True,
-        help_text="(tick all that apply - REMEMBER to highlight your chosen options before save)",
-        )
+        help_text="(tick all that apply - REMEMBER to highlight your chosen options before save)",)
+
     results_to_record_other = OtherCharField()
 
-    history = AuditTrail()
-
-    def get_visit(self):
-        return self.subject_visit
-
-    def __unicode__(self):
-        return unicode(self.subject_visit)
-
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "Cancer Diagnosis"
         verbose_name_plural = "Cancer Diagnosis"

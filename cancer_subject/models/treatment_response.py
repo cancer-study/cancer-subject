@@ -29,6 +29,6 @@ class TreatmentResponse (CrfModelMixin):
         max_length=350,
         help_text="",)
 
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "Treatment Response"

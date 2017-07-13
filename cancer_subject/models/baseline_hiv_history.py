@@ -1,11 +1,11 @@
 from django.db import models
-from django.core.urlresolvers import reverse
-from django.core.validators import MaxValueValidator, MinValueValidator, RegexValidator
 
-from edc.audit.audit_trail import AuditTrail
+from django.core.validators import (
+    MaxValueValidator, MinValueValidator, RegexValidator)
 
-from edc.choices.common import YES_NO, YES_NO_DONT_KNOW
-from .base_scheduled_visit_model import BaseScheduledVisitModel
+from edc_constants.choices import YES_NO, YES_NO_DONT_KNOW
+
+from .model_mixins import CrfModelMixin
 
 
 class BaselineHIVHistory (CrfModelMixin):
@@ -16,23 +16,20 @@ class BaselineHIVHistory (CrfModelMixin):
         verbose_name=("Has the participant been previously tested for HIV?"),
         max_length=25,
         choices=YES_NO_DONT_KNOW,
-        help_text="",
-        )
+        help_text="",)
 
     had_who_illnesses = models.CharField(
         verbose_name=("Has patient ever had any WHO stage 3 or 4 illnesses?"),
         max_length=3,
         choices=YES_NO,
         help_text=("Refer to WHO classification document. DO NOT include "
-                     "the current cancer diagnosis."),
-        )
+                     "the current cancer diagnosis."),)
 
     has_cd4 = models.CharField(
         verbose_name="Are 'CD4' results available? ",
         max_length=3,
         choices=YES_NO,
-        help_text="",
-        )
+        help_text="",)
 
     # The following are added on this form from other forms on upgrade
     # LabResultCd4
@@ -44,8 +41,8 @@ class BaselineHIVHistory (CrfModelMixin):
         blank=True,
         decimal_places=2,
         validators=[MinValueValidator(0), MaxValueValidator(3000)],
-        help_text="4-digit number field",
-        )
+        help_text="4-digit number field",)
+
     cd4_drawn_date = models.DateField(
         verbose_name="Date of recent CD4?",
         max_length=25,
@@ -68,22 +65,22 @@ class BaselineHIVHistory (CrfModelMixin):
         validators=[MinValueValidator(0), MaxValueValidator(3000)],
         null=True,
         blank=True,
-        help_text=("4-digit number field"),
-        )
+        help_text=("4-digit number field"),)
+
     nadir_cd4_drawn_date = models.DateField(
         verbose_name="Date of lowest CD4",
         max_length=25,
         null=True,
         blank=True,
-        help_text="",
-        )
+        help_text="",)
+
     # LabResultViralLoad
     has_vl = models.CharField(
         verbose_name="Are 'VIRAL LOAD' results available? ",
         max_length=3,
         choices=YES_NO,
-        help_text="",
-        )
+        help_text="",)
+
     vl_result = models.CharField(
         verbose_name="HIV viral load result",
         max_length=25,
@@ -92,28 +89,16 @@ class BaselineHIVHistory (CrfModelMixin):
         validators=[RegexValidator(r'^[<>=]{1}\d+$', 'Result must include \
                                    the quantifier (<, > or =) followed by \
                                    the numeric value',), ],
-        help_text="",
-        )
+        help_text="")
+
     vl_drawn_date = models.DateField(
         verbose_name="Date of HIV viral load",
         max_length=25,
         null=True,
         blank=True,
-        help_text="",
-        )
+        help_text="",)
 
-    history = AuditTrail()
-
-    def get_visit(self):
-        return self.subject_visit
-
-    def __unicode__(self):
-        return unicode(self.subject_visit)
-
-    def get_absolute_url(self):
-        return reverse('admin:cancer_subject_baselinehivhistory_change', args=(self.id,))
-
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = 'Baseline HIV History'
         verbose_name_plural = 'Baseline HIV History'

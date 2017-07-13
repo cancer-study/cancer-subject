@@ -13,13 +13,11 @@ class BaseRiskAssessmentFemale (CrfModelMixin):
 
     age_period = models.IntegerField(
         verbose_name=("At what age did you start having your menstrual period?"),
-        help_text="",
-        )
+        help_text="",)
 
     children = models.IntegerField(
         verbose_name="How many children have you given birth to?",
-        help_text="",
-        )
+        help_text="")
 
     years_breastfed = models.CharField(
         verbose_name=("Have you breastfed for a total of at least 1 "
@@ -27,19 +25,7 @@ class BaseRiskAssessmentFemale (CrfModelMixin):
                         "time spent breast feeding all your children."),
         max_length=3,
         choices=YES_NO,
-        help_text="",
-        )
-
-    history = AuditTrail()
-
-    def get_visit(self):
-        return self.subject_visit
-
-    def __unicode__(self):
-        return unicode(self.subject_visit)
-
-    def get_absolute_url(self):
-        return reverse('admin:cancer_subject_baseriskassessmentfemale_change', args=(self.id,))
+        help_text="",)
 
     class Meta:
         app_label = "cancer_subject"

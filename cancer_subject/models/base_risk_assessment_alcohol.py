@@ -20,7 +20,7 @@ class BaseRiskAssessmentAlcohol (CrfModelMixin):
         # blank = True,
         help_text="",)
 
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "Base Risk Assessment: Alcohol"
         verbose_name_plural = "Base Risk Assessment: Alcohol"

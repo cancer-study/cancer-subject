@@ -14,26 +14,13 @@ class BHHCd4 (BaseScheduledVisitModel):
         decimal_places=2,
         validators=[MinValueValidator(0), MaxValueValidator(3000)],
         null=True,
-        help_text=("If current (most recent) CD4 is lowest recorded, record again here."),
-        )
+        help_text=("If current (most recent) CD4 is lowest recorded, record again here."),)
 
     nadir_cd4_drawn_date = models.DateField(
         verbose_name="9. Date 'CD4' test was run:",
         max_length=25,
         null=True,
-        help_text="",
-        )
-
-    history = AuditTrail()
-
-    def get_visit(self):
-        return self.subject_visit
-
-    def __unicode__(self):
-        return unicode(self.subject_visit)
-
-    def get_absolute_url(self):
-        return reverse('admin:cancer_subject_bhhcd4_change', args=(self.id,))
+        help_text="",)
 
     class Meta:
         app_label = "cancer_subject"

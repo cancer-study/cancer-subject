@@ -1,4 +1,3 @@
-import sys
 from django.conf.urls import url
 
 from .admin_site import cancer_subject_admin
