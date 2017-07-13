@@ -1,7 +1,5 @@
 from django.db import models
-from django.core.urlresolvers import reverse
 
-from edc.audit.audit_trail import AuditTrail
 from edc.subject.visit_tracking.models.base_visit_tracking import BaseVisitTracking
 from edc.subject.visit_tracking.settings import VISIT_REASON_NO_FOLLOW_UP_CHOICES
 from edc.subject.entry.models import Entry
@@ -19,9 +17,7 @@ class SubjectVisit(SubjectOffStudyMixin, BaseVisitTracking):
         blank=True,
         null=True,
         choices=VISIT_UNSCHEDULED_REASON,
-        )
-
-    history = AuditTrail()
+    )
 
     @property
     def registered_subject(self):
@@ -38,9 +34,9 @@ class SubjectVisit(SubjectOffStudyMixin, BaseVisitTracking):
 
     def get_visit_reason_no_follow_up_choices(self):
         dct = {'Missed quarterly visit': 'Missed quarterly visit',
-                'lost': 'Lost to follow-up',
-                'death': 'Death',
-                'deferred': 'Deferred'}
+               'lost': 'Lost to follow-up',
+               'death': 'Death',
+               'deferred': 'Deferred'}
         for item in VISIT_REASON_NO_FOLLOW_UP_CHOICES:
             dct.update({item: item})
         del dct['death']
@@ -54,7 +50,7 @@ class SubjectVisit(SubjectOffStudyMixin, BaseVisitTracking):
     def save(self, *args, **kwargs):
         if self.appointment.visit_definition.code != '1000':
             self.appointment.appt_type = 'telephone'
-        #setting default for last visit to be an off study
+        # setting default for last visit to be an off study
         if self.appointment.visit_definition.code == '7000':
             self.reason = 'off study'
         self.create_meta_data_when_visit_reason_is_death()
@@ -65,13 +61,15 @@ class SubjectVisit(SubjectOffStudyMixin, BaseVisitTracking):
     def remove_other_meta_data_on_post_save(self):
         if self.reason == 'Death':
             required_forms = ['subjectdeath', 'subjectoffstudy']
-            scheduled_meta_data = ScheduledEntryMetaData.objects.filter(appointment=self.appointment, registered_subject=self.registered_subject)
+            scheduled_meta_data = ScheduledEntryMetaData.objects.filter(
+                appointment=self.appointment, registered_subject=self.registered_subject)
             for meta_data in scheduled_meta_data:
                 if meta_data.entry.model_name not in required_forms:
                     meta_data.delete()
         elif self.reason == 'off study':
             required_forms = ['subjectoffstudy']
-            scheduled_meta_data = ScheduledEntryMetaData.objects.filter(appointment=self.appointment, registered_subject=self.registered_subject)
+            scheduled_meta_data = ScheduledEntryMetaData.objects.filter(
+                appointment=self.appointment, registered_subject=self.registered_subject)
             for meta_data in scheduled_meta_data:
                 if meta_data.entry.model_name not in required_forms:
                     meta_data.delete()
@@ -80,11 +78,14 @@ class SubjectVisit(SubjectOffStudyMixin, BaseVisitTracking):
         if self.reason == 'Death':
             forms = ['subjectdeath', 'subjectoffstudy']
             for form in forms:
-                entry = Entry.objects.filter(model_name=form, visit_definition_id=self.appointment.visit_definition_id)
+                entry = Entry.objects.filter(
+                    model_name=form, visit_definition_id=self.appointment.visit_definition_id)
                 if entry:
-                    scheduled_meta_data = ScheduledEntryMetaData.objects.filter(appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
+                    scheduled_meta_data = ScheduledEntryMetaData.objects.filter(
+                        appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
                     if not scheduled_meta_data:
-                        scheduled_meta_data = ScheduledEntryMetaData.objects.create(appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
+                        scheduled_meta_data = ScheduledEntryMetaData.objects.create(
+                            appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
                     else:
                         scheduled_meta_data = scheduled_meta_data[0]
                     scheduled_meta_data.entry_status = 'NEW'
@@ -92,11 +93,14 @@ class SubjectVisit(SubjectOffStudyMixin, BaseVisitTracking):
 
     def create_meta_data_when_visit_reason_is_off_study(self):
         if self.reason == 'off study' or self.reason == 'Lost to follow-up':
-            entry = Entry.objects.filter(model_name='subjectoffstudy', visit_definition_id=self.appointment.visit_definition_id)
+            entry = Entry.objects.filter(
+                model_name='subjectoffstudy', visit_definition_id=self.appointment.visit_definition_id)
             if entry:
-                scheduled_meta_data = ScheduledEntryMetaData.objects.filter(appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
+                scheduled_meta_data = ScheduledEntryMetaData.objects.filter(
+                    appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
                 if not scheduled_meta_data:
-                    scheduled_meta_data = ScheduledEntryMetaData.objects.create(appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
+                    scheduled_meta_data = ScheduledEntryMetaData.objects.create(
+                        appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
                 else:
                     scheduled_meta_data = scheduled_meta_data[0]
                 scheduled_meta_data.entry_status = 'NEW'
@@ -107,11 +111,14 @@ class SubjectVisit(SubjectOffStudyMixin, BaseVisitTracking):
             if self.reason == 'off study':
                 forms = ['activityandfunctioning', 'currentsymptoms']
                 for form in forms:
-                    entry = Entry.objects.filter(model_name=form, visit_definition_id=self.appointment.visit_definition_id)
+                    entry = Entry.objects.filter(
+                        model_name=form, visit_definition_id=self.appointment.visit_definition_id)
                     if entry:
-                        scheduled_meta_data = ScheduledEntryMetaData.objects.filter(appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
+                        scheduled_meta_data = ScheduledEntryMetaData.objects.filter(
+                            appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
                         if not scheduled_meta_data:
-                            scheduled_meta_data = ScheduledEntryMetaData.objects.create(appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
+                            scheduled_meta_data = ScheduledEntryMetaData.objects.create(
+                                appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
                         else:
                             scheduled_meta_data = scheduled_meta_data[0]
                         scheduled_meta_data.entry_status = 'NEW'
@@ -122,11 +129,14 @@ class SubjectVisit(SubjectOffStudyMixin, BaseVisitTracking):
             from edc.subject.registration.models import RegisteredSubject
             rs = RegisteredSubject.objects.filter(gender='F')
             if rs:
-                entry = Entry.objects.filter(model_name='baseriskassessmentfemale', visit_definition_id=self.appointment.visit_definition_id)
+                entry = Entry.objects.filter(
+                    model_name='baseriskassessmentfemale', visit_definition_id=self.appointment.visit_definition_id)
                 if entry:
-                    scheduled_meta_data = ScheduledEntryMetaData.objects.filter(appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
+                    scheduled_meta_data = ScheduledEntryMetaData.objects.filter(
+                        appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
                     if not scheduled_meta_data:
-                        scheduled_meta_data = ScheduledEntryMetaData.objects.create(appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
+                        scheduled_meta_data = ScheduledEntryMetaData.objects.create(
+                            appointment=self.appointment, entry=entry[0], registered_subject=self.registered_subject)
                     else:
                         scheduled_meta_data = scheduled_meta_data[0]
                     scheduled_meta_data.entry_status = 'NEW'

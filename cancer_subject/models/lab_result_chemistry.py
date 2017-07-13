@@ -66,7 +66,7 @@ class LabResultChemistry(CrfModelMixin):
         blank=True,
         help_text="if other data not recorded, explain why",)
 
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "Lab Result: Chemistry"
         verbose_name_plural = "Lab Result: Chemistry"

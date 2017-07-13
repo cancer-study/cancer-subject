@@ -11,7 +11,8 @@ from .subject_off_study_mixin import SubjectOffStudyMixin
 
 class BaseSubjectConsent(SubjectOffStudyMixin, BaseConsent):
 
-    registered_subject = models.OneToOneField(RegisteredSubject, editable=False, null=True)
+    registered_subject = models.OneToOneField(
+        RegisteredSubject, editable=False, null=True)
 
     def get_subject_type(self):
         return 'subject'
@@ -21,6 +22,7 @@ class BaseSubjectConsent(SubjectOffStudyMixin, BaseConsent):
 
     class Meta:
         abstract = True
+
 
 # add Mixin fields to abstract class
 for field in IdentityFieldsMixin._meta.fields:

@@ -1,12 +1,9 @@
 # coding: utf-8
 from django.db import models
-from django.core.urlresolvers import reverse
 
-from edc.audit.audit_trail import AuditTrail
+from .model_mixins import CrfModelMixin
 
 from ..choices.lab_result import TEST_RESULT_CHOICE
-from .base_scheduled_visit_model import BaseScheduledVisitModel
-from cancer_subject.models.model_mixins.crf_model_mixin import CrfModelMixin
 
 
 class LabResultHiv(CrfModelMixin):
@@ -17,26 +14,14 @@ class LabResultHiv(CrfModelMixin):
         null=True,
         blank=True,
         help_text=""
-        )
+    )
 
     test_result = models.CharField(
         verbose_name="3. HIV test result",
         max_length=15,
         choices=TEST_RESULT_CHOICE,
         help_text="",
-        )
-
-    history = AuditTrail()
-
-    def __unicode__(self):
-        return unicode(self.subject_visit)
-
-    def get_visit(self):
-        return self.subject_visit
-
-    def get_result_datetime(self):
-        return self.test_date
-
+    )
 #     def get_test_code(self):
 #         return 'HIV'
 
@@ -54,10 +39,7 @@ class LabResultHiv(CrfModelMixin):
 #                 retval = 'UNK'
 #         return retval
 
-    def get_absolute_url(self):
-        return reverse('admin:cancer_subject_labresulthiv_change', args=(self.id,))
-
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "Lab Result: HIV"
         verbose_name_plural = "Lab Result: HIV"

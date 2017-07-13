@@ -11,7 +11,7 @@ class EnrollmentSite(BaseModel):
         verbose_name="Enrollment Site Name",
         max_length=50,
         help_text="",
-        )
+    )
 
     objects = EnrollmentSiteManager()
 

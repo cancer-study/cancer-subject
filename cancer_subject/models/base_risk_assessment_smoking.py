@@ -2,11 +2,13 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-from ..choices.base_risk_assessment import (
-    SMOKE_NOW_CHOICE, CIGARETTE_SMOKING_CHOICE, CIGARETTE_SMOKED_CHOICE,
-    WHEN_QUIT_CHOICE)
-
 from .model_mixins.crf_model_mixin import CrfModelMixin
+
+from ..choices.base_risk_assessment import (
+    SMOKE_NOW_CHOICE,
+    CIGARETTE_SMOKING_CHOICE,
+    CIGARETTE_SMOKED_CHOICE,
+    WHEN_QUIT_CHOICE)
 
 
 class BaseRiskAssessmentSmoking (CrfModelMixin):
@@ -49,12 +51,13 @@ class BaseRiskAssessmentSmoking (CrfModelMixin):
         help_text="",)
 
     years_smoked_before = models.IntegerField(
-        verbose_name="For how many years did you smoke before quitting?",
+        verbose_name="For how many years did you smoke before "
+        "quitting?",
         null=True,
         blank=True,
         help_text="",)
 
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "Base Risk Assessment: Smoking"
         verbose_name_plural = "Base Risk Assessment: Smoking"

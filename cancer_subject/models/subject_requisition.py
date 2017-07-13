@@ -23,7 +23,8 @@ class Manager(VisitTrackingCrfModelManager, SearchSlugManager):
 
 
 class SubjectRequisition(
-        RequisitionModelMixin, RequisitionStatusMixin, RequisitionIdentifierMixin,
+        RequisitionModelMixin, RequisitionStatusMixin,
+        RequisitionIdentifierMixin,
         VisitTrackingCrfModelMixin, OffstudyMixin,
         RequiresConsentMixin, PreviousVisitModelMixin,
         UpdatesRequisitionMetadataModelMixin, SearchSlugModelMixin,
@@ -51,6 +52,7 @@ class SubjectRequisition(
             'human_readable_identifier', 'identifier_prefix'])
         return fields
 
-    class Meta(VisitTrackingCrfModelMixin.Meta, RequiresConsentMixin.Meta):
+    class Meta(VisitTrackingCrfModelMixin.Meta,
+               RequiresConsentMixin.Meta):
         consent_model = 'ambition_subject.subjectconsent'
         app_label = 'ambition_subject'

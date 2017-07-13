@@ -1,22 +1,23 @@
 from django.db import models
-from django.core.urlresolvers import reverse
 
-from edc.audit.audit_trail import AuditTrail
-from edc.base.model.fields.custom.custom_fields import OtherCharField
+from edc_base.model_fields import OtherCharField
 
-from .base_scheduled_visit_model import BaseScheduledVisitModel
-from ...cancer_list.models import WhoIllness
-from cancer_subject.models.model_mixins.crf_model_mixin import CrfModelMixin
+from .model_mixins import CrfModelMixin
+
+from ..cancer_list.models import WhoIllness
 
 
 class BHHWhoIllness (CrfModelMixin):
 
-    who_illness = models.ManyToManyField(WhoIllness,
-        verbose_name="What WHO stage 3 or 4 illnesses the patient had:",
+    who_illness = models.ManyToManyField(
+        WhoIllness,
+        verbose_name="What WHO stage 3 or 4 illnesses the patient "
+        "had:",
         max_length=35,
         null=True,
-        help_text=("Tick all that apply.  DO NOT include current cancer diagnosis"),
-        )
+        help_text=(
+            "Tick all that apply.  DO NOT include current cancer "
+            "diagnosis"),)
 
     who_illness_other = OtherCharField()
 
@@ -26,20 +27,9 @@ class BHHWhoIllness (CrfModelMixin):
         null=True,
         blank=True,
         help_text="DO NOT include the current cancer diagnosis.",
-        )
+    )
 
-    history = AuditTrail()
-
-    def get_visit(self):
-        return self.subject_visit
-
-    def __unicode__(self):
-        return unicode(self.subject_visit)
-
-    def get_absolute_url(self):
-        return reverse('admin:cancer_subject_bhhwhoillness_change', args=(self.id,))
-
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "BHH: WHO illness"
         verbose_name_plural = "BHH: WHO illness"

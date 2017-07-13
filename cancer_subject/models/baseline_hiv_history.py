@@ -13,17 +13,19 @@ class BaselineHIVHistory (CrfModelMixin):
     """CA006"""
 
     has_hiv_result = models.CharField(
-        verbose_name=("Has the participant been previously tested for HIV?"),
+        verbose_name=("Has the participant been previously "
+                      "tested for HIV?"),
         max_length=25,
         choices=YES_NO_DONT_KNOW,
         help_text="",)
 
     had_who_illnesses = models.CharField(
-        verbose_name=("Has patient ever had any WHO stage 3 or 4 illnesses?"),
+        verbose_name=("Has patient ever had any WHO stage 3 "
+                      "or 4 illnesses?"),
         max_length=3,
         choices=YES_NO,
-        help_text=("Refer to WHO classification document. DO NOT include "
-                     "the current cancer diagnosis."),)
+        help_text=("Refer to WHO classification document. DO NOT "
+                   "include the current cancer diagnosis."),)
 
     has_cd4 = models.CharField(
         verbose_name="Are 'CD4' results available? ",
@@ -49,17 +51,19 @@ class BaselineHIVHistory (CrfModelMixin):
         null=True,
         blank=True,
         help_text="",
-        )
+    )
     # completely new field
     has_prior_cd4 = models.CharField(
-        verbose_name="Is a CD4 result lower than the most recent CD4 result available?",
+        verbose_name="Is a CD4 result lower than the most recent "
+        "CD4 result available?",
         max_length=3,
         choices=YES_NO,
         help_text="",
-        )
+    )
     # BHHCd4
     nadir_cd4 = models.DecimalField(
-        verbose_name=("What is the value of the lowest CD4 result recorded"),
+        verbose_name=("What is the value of the lowest CD4 "
+                      "result recorded"),
         max_digits=6,
         decimal_places=2,
         validators=[MinValueValidator(0), MaxValueValidator(3000)],
@@ -86,9 +90,10 @@ class BaselineHIVHistory (CrfModelMixin):
         max_length=25,
         null=True,
         blank=True,
-        validators=[RegexValidator(r'^[<>=]{1}\d+$', 'Result must include \
-                                   the quantifier (<, > or =) followed by \
-                                   the numeric value',), ],
+        validators=[RegexValidator(
+            r'^[<>=]{1}\d+$', 'Result must include \
+            the quantifier (<, > or =) followed by \
+            the numeric value',), ],
         help_text="")
 
     vl_drawn_date = models.DateField(

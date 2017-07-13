@@ -1,33 +1,34 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
+from edc_constants.choices import YES_NO_DONT_KNOW, YES_NO
+
+from .model_mixins.crf_model_mixin import CrfModelMixin
+
 from ..choices.base_risk_assessment import (
     HEPATITIS_BEFORE_CHOICE, AGE_FIRSTSEX_CHOICE,
     TRADMEDICINE_CHOICE, YES_NO_DECLINED)
-
-from .model_mixins.crf_model_mixin import CrfModelMixin
-from edc_constants.choices import YES_NO_DONT_KNOW, YES_NO
 
 
 class BaseRiskAssessment (CrfModelMixin):
 
     hepatitis = models.CharField(
         verbose_name=("Have you been told you have hepatitis B or C "
-                        "before?"),
+                      "before?"),
         max_length=15,
         choices=HEPATITIS_BEFORE_CHOICE,
         help_text="",)
 
     tuberculosis = models.CharField(
         verbose_name=("Do you have now or have you ever had "
-                        "tuberculosis?"),
+                      "tuberculosis?"),
         max_length=25,
         choices=YES_NO_DONT_KNOW,
         help_text="",)
 
     year_tb = models.IntegerField(
         verbose_name=("In what year did you last have tuberculosis "
-                        "(year of diagnosis)?"),
+                      "(year of diagnosis)?"),
         validators=[MinValueValidator(1900), MaxValueValidator(2020)],
         null=True,
         blank=True,
@@ -77,6 +78,6 @@ class BaseRiskAssessment (CrfModelMixin):
         choices=YES_NO,
         help_text="",)
 
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "Base Risk Assessment"

@@ -1,13 +1,11 @@
 # coding: utf-8
 from django.db import models
-from django.core.urlresolvers import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-from cancer_subject.models.model_mixins.crf_model_mixin import CrfModelMixin, \
-    CrfModelMixinNonUniqueVisit
+from .model_mixins import CrfModelMixin
 
 
-class LabResultHaematology(CrfModelMixinNonUniqueVisitg):
+class LabResultHaematology(CrfModelMixin):
 
     haem_drawn_date = models.DateField(
         verbose_name="Date of haematology specimen draw",
@@ -68,7 +66,7 @@ class LabResultHaematology(CrfModelMixinNonUniqueVisitg):
         blank=True,
         help_text="if other data not recorded, explain why")
 
-    class Meta:
+    class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
         verbose_name = "Lab Result: Haematology"
         verbose_name_plural = "Lab Result: Haematology"
