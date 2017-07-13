@@ -1,13 +1,11 @@
 # coding: utf-8
 from django.db import models
-from django.core.urlresolvers import reverse
 
-from edc.audit.audit_trail import AuditTrail
-from edc.choices.common import YES_NO_DONT_KNOW
-from edc.base.model.fields.custom.custom_fields import OtherCharField
-
-from ..choices import FUEL_HOUSEHOLD20_CHOICE, FUEL_MONTH_CHOICE
 from cancer_subject.models.model_mixins.crf_model_mixin import CrfModelMixin
+from edc_base.model_fields.custom_fields import OtherCharField
+from edc_constants.choices import YES_NO_DONT_KNOW
+from cancer_subject.choices.base_risk_assessment import FUEL_HOUSEHOLD20_CHOICE, \
+    FUEL_MONTH_CHOICE
 
 
 class BaseRiskAssessmentFuel (CrfModelMixin):

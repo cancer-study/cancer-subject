@@ -1,12 +1,7 @@
-# coding: utf-8
 from django.db import models
-from django.core.urlresolvers import reverse
 
-from edc.audit.audit_trail import AuditTrail
-from edc.choices.common import YES_NO
-
-from .base_scheduled_visit_model import BaseScheduledVisitModel
-from cancer_subject.models.model_mixins.crf_model_mixin import CrfModelMixin
+from .model_mixins.crf_model_mixin import CrfModelMixin
+from edc_constants.choices import YES_NO
 
 
 class BaseRiskAssessmentFemale (CrfModelMixin):
