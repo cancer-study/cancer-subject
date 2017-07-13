@@ -3,19 +3,25 @@ from django.contrib import admin
 from cancer_subject.admin_site import cancer_subject_admin
 from cancer_subject.admin.modeladmin_mixins import CrfModelAdminMixin
 
-from ..models import (
-    ActivityAndFunctioning, SymptomsAndTesting, CurrentSymptoms)
-
 from ..forms import (
     ActivityAndFunctioningForm, CancerDiagnosisForm, HaartRecordForm,
     OncologyTreatmentPlanForm, TreatmentResponseForm, SymptomsAndTestingForm,
     OncologyTreatmentCompletedForm, CurrentSymptomsForm)
 
+from ..models import (
+    HaartRecord, OncologyTreatmentPlan, TreatmentResponse,
+    OncologyTreatmentCompleted, ActivityAndFunctioning,
+    SymptomsAndTesting, CurrentSymptoms, CancerDiagnosis)
+
+# from cancer_subject.models.oncology_treatment_plan import OncologyTreatmentPlan
+# from cancer_subject.models.treatment_response import TreatmentResponse
+# from cancer_subject.models.oncology_treatment_completed import OncologyTreatmentCompleted
+
 
 # class HaartMedRecordInlineAdmin(BaseTabularInline):
 #     model = HaartMedRecord
 # 
-# 
+# EnrollmentChecklist
 # class ChemoMedPlanInlineAdmin(BaseTabularInline):
 #     exclude = ('dose_category',)
 #     model = ChemoMedPlan
@@ -49,7 +55,7 @@ class ActivityAndFunctioningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "perform_status": admin.VERTICAL}
 
 
-@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+@admin.register(CancerDiagnosis, site=cancer_subject_admin)
 class CancerDiagnosisAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = CancerDiagnosisForm
@@ -100,7 +106,7 @@ class CancerDiagnosisAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     filter_horizontal = ('results_to_record',)
 
 
-@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+@admin.register(HaartRecord, site=cancer_subject_admin)
 class HaartRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = HaartRecordForm
@@ -113,7 +119,7 @@ class HaartRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "haart_status": admin.VERTICAL}
 
 
-@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+@admin.register(OncologyTreatmentPlan, site=cancer_subject_admin)
 class OncologyTreatmentPlanAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentPlanForm
@@ -137,7 +143,7 @@ class OncologyTreatmentPlanAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "surgical_plan": admin.VERTICAL}
 
 
-@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+@admin.register(TreatmentResponse, site=cancer_subject_admin)
 class TreatmentResponseAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = TreatmentResponseForm
@@ -183,7 +189,7 @@ class SymptomsAndTestingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "arv_art_now": admin.VERTICAL}
 
 
-@admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
+@admin.register(OncologyTreatmentCompleted, site=cancer_subject_admin)
 class OncologyTreatmentCompletedAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentCompletedForm

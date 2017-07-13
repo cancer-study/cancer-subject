@@ -10,6 +10,7 @@ from ..forms import (
     LabResultViralloadForm)
 from ..admin_site import cancer_subject_admin
 from .modeladmin_mixins import ModelAdminMixin
+from ..models import LabResultHeightWeight
 
 
 @admin.register(LabResult, site=cancer_subject_admin)
@@ -38,7 +39,7 @@ class LabResultAdmin(ModelAdminMixin):
     filter_horizontal = ()
 
 
-@admin.register(LabResult, site=cancer_subject_admin)
+@admin.register(LabResultHeightWeight, site=cancer_subject_admin)
 class LabResultHeightWeightAdmin(ModelAdminMixin):
 
     form = LabResultHeightWeightForm

@@ -16,7 +16,7 @@ from edc_visit_tracking.modeladmin_mixins import (
 class ModelAdminMixin(ModelAdminNextUrlRedirectMixin, ModelAdminFormInstructionsMixin,
                       ModelAdminFormAutoNumberMixin, ModelAdminRevisionMixin,
                       ModelAdminAuditFieldsMixin, ModelAdminReadOnlyMixin,
-                      ModelAdminInstitutionMixin):
+                      ModelAdminInstitutionMixin, admin.ModelAdmin):
 
     list_per_page = 10
     date_hierarchy = 'modified'

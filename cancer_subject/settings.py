@@ -41,16 +41,15 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'edc_sync.apps.AppConfig',
     'edc_sync_files.apps.AppConfig',
-    'cancer_subject.apps.AppConfig',
     'django_crypto_fields.apps.AppConfig',
     'django_revision.apps.AppConfig',
     'edc_registration.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
     'edc_protocol.apps.AppConfig',
-    'edc_visit_tracking.apps.AppConfig',
     'edc_offstudy.apps.AppConfig',
     'edc_locator.apps.AppConfig',
     'edc_lab.apps.AppConfig',
+    'edc_visit_schedule.apps.AppConfig',
 #     'cancer_subject.apps.EdcMetadataAppConfig',
 #     'cancer_subject.apps.EdcIdentifierAppConfig',
 #     'cancer_subject.apps.EdcProtocolAppConfig',
@@ -58,8 +57,8 @@ INSTALLED_APPS = [
 #     'cancer_subject.apps.EdcDeviceAppConfig',
 #     'cancer_subject.apps.EdcTimepointAppConfig',
 #     'cancer_subject.apps.EdcAppointmentAppConfig',
-#     'cancer_subject.apps.EdcVisitTrackingAppConfig',
-#     'cancer_subject.apps.AppConfig',
+    'cancer_subject.apps.EdcVisitTrackingAppConfig',
+    'cancer_subject.apps.AppConfig',
 ]
 
 

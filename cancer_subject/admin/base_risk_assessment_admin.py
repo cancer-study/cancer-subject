@@ -2,13 +2,11 @@ from django.contrib import admin
 from ..models import (
     BaseRiskAssessment, BaseRiskAssessmentAlcohol, BaseRiskAssessmentCancer,
     BaseRiskAssessmentChemical, BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
-    BaseRiskAssessmentFemale, BaseRiskAssessmentMining,
-    BaseRiskAssessmentSmoking, BaseRiskAssessmentSun)
+    BaseRiskAssessmentMining, BaseRiskAssessmentSmoking, BaseRiskAssessmentSun)
 from ..forms import (
     BaseRiskAssessmentForm, BaseRiskAssessmentAlcoholForm, BaseRiskAssessmentCancerForm,
     BaseRiskAssessmentChemicalForm, BaseRiskAssessmentDemoForm, BaseRiskAssessmentEatingForm,
-    BaseRiskAssessmentFemaleForm, BaseRiskAssessmentFuelForm, BaseRiskAssessmentMiningForm,
-    BaseRiskAssessmentSmokingForm, BaseRiskAssessmentSunForm)
+    BaseRiskAssessmentMiningForm, BaseRiskAssessmentSmokingForm, BaseRiskAssessmentSunForm)
 
 from ..admin_site import cancer_subject_admin
 from .modeladmin_mixins import CrfModelAdminMixin
@@ -157,37 +155,37 @@ class BaseRiskAssessmentEatingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "five_fruit": admin.VERTICAL}
 
 
-@admin.register(BaseRiskAssessmentFemale, site=cancer_subject_admin)
-class BaseRiskAssessmentFemaleAdmin(CrfModelAdminMixin, admin.ModelAdmin):
+# @admin.register(BaseRiskAssessmentFemale, site=cancer_subject_admin)
+# class BaseRiskAssessmentFemaleAdmin(CrfModelAdminMixin, admin.ModelAdmin):
+#
+#     form = BaseRiskAssessmentFemaleForm
+#     fields = (
+#         "subject_visit",
+#         "age_period",
+#         "children",
+#         "years_breastfed")
+#     radio_fields = {
+#         "years_breastfed": admin.VERTICAL}
 
-    form = BaseRiskAssessmentFemaleForm
-    fields = (
-        "subject_visit",
-        "age_period",
-        "children",
-        "years_breastfed")
-    radio_fields = {
-        "years_breastfed": admin.VERTICAL}
 
-
-@admin.register(BaseRiskAssessmentFemale, site=cancer_subject_admin)
-class BaseRiskAssessmentFuelAdmin(CrfModelAdminMixin, admin.ModelAdmin):
-
-    form = BaseRiskAssessmentFuelForm
-    fields = (
-        "subject_visit",
-        "fuel_20y",
-        "fuel_20y_other",
-        "cooking",
-        "fuel_mm",
-        "fuel_mm_other",
-        "cooking_mm")
-
-    radio_fields = {
-        "fuel_20y": admin.VERTICAL,
-        "cooking": admin.VERTICAL,
-        "fuel_mm": admin.VERTICAL,
-        "cooking_mm": admin.VERTICAL}
+# @admin.register(BaseRiskAssessmentFemale, site=cancer_subject_admin)
+# class BaseRiskAssessmentFuelAdmin(CrfModelAdminMixin, admin.ModelAdmin):
+#
+#     form = BaseRiskAssessmentFuelForm
+#     fields = (
+#         "subject_visit",
+#         "fuel_20y",
+#         "fuel_20y_other",
+#         "cooking",
+#         "fuel_mm",
+#         "fuel_mm_other",
+#         "cooking_mm")
+# 
+#     radio_fields = {
+#         "fuel_20y": admin.VERTICAL,
+#         "cooking": admin.VERTICAL,
+#         "fuel_mm": admin.VERTICAL,
+#         "cooking_mm": admin.VERTICAL}
 
 
 @admin.register(BaseRiskAssessmentMining, site=cancer_subject_admin)
