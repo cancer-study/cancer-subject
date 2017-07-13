@@ -1,22 +1,27 @@
 from django.contrib import admin
-from .subject_visit_model_admin import SubjectVisitModelAdmin
-from ..models import (BaseRiskAssessment, BaseRiskAssessmentAlcohol, BaseRiskAssessmentCancer,
-                                   BaseRiskAssessmentChemical, BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
-                                   BaseRiskAssessmentFemale, BaseRiskAssessmentFuel, BaseRiskAssessmentMining,
-                                   BaseRiskAssessmentSmoking, BaseRiskAssessmentSun)
-from ..forms import (BaseRiskAssessmentForm, BaseRiskAssessmentAlcoholForm, BaseRiskAssessmentCancerForm,
-                                  BaseRiskAssessmentChemicalForm, BaseRiskAssessmentDemoForm, BaseRiskAssessmentEatingForm,
-                                  BaseRiskAssessmentFemaleForm, BaseRiskAssessmentFuelForm, BaseRiskAssessmentMiningForm,
-                                  BaseRiskAssessmentSmokingForm, BaseRiskAssessmentSunForm)
+from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
+from ..models import (
+    BaseRiskAssessment, BaseRiskAssessmentAlcohol, BaseRiskAssessmentCancer,
+    BaseRiskAssessmentChemical, BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
+    BaseRiskAssessmentFemale, BaseRiskAssessmentFuel, BaseRiskAssessmentMining,
+    BaseRiskAssessmentSmoking, BaseRiskAssessmentSun)
+from ..forms import (
+    BaseRiskAssessmentForm, BaseRiskAssessmentAlcoholForm, BaseRiskAssessmentCancerForm,
+    BaseRiskAssessmentChemicalForm, BaseRiskAssessmentDemoForm, BaseRiskAssessmentEatingForm,
+    BaseRiskAssessmentFemaleForm, BaseRiskAssessmentFuelForm, BaseRiskAssessmentMiningForm,
+    BaseRiskAssessmentSmokingForm, BaseRiskAssessmentSunForm)
+
+from ..admin_site import cancer_subject_admin
+from .modeladmin_mixins import CrfModelAdminMixin
 
 
-# BaseRiskAssessment
-class BaseRiskAssessmentAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessment, site=cancer_subject_admin)
+class BaseRiskAssessmentAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentForm
     fields = (
         "subject_visit",
-        #"participant_interviewed",
+        # "participant_interviewed",
         "hepatitis",
         "tuberculosis",
         "year_tb",
@@ -27,7 +32,7 @@ class BaseRiskAssessmentAdmin(SubjectVisitModelAdmin):
         "tradmedicine",
         "is_albino")
     radio_fields = {
-        #"participant_interviewed": admin.VERTICAL,
+        # "participant_interviewed": admin.VERTICAL,
         "hepatitis": admin.VERTICAL,
         "tuberculosis": admin.VERTICAL,
         "has_worked_mine": admin.VERTICAL,
@@ -36,11 +41,11 @@ class BaseRiskAssessmentAdmin(SubjectVisitModelAdmin):
         "has_alcohol": admin.VERTICAL,
         "tradmedicine": admin.VERTICAL,
         "is_albino": admin.VERTICAL}
-admin.site.register(BaseRiskAssessment, BaseRiskAssessmentAdmin)
 
 
 # BaseRiskAssessmentAlcohol
-class BaseRiskAssessmentAlcoholAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentAlcohol, site=cancer_subject_admin)
+class BaseRiskAssessmentAlcoholAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentAlcoholForm
     fields = (
@@ -48,11 +53,10 @@ class BaseRiskAssessmentAlcoholAdmin(SubjectVisitModelAdmin):
         "alcohol_weekly",
         "amount_drinking")
     radio_fields = {}
-admin.site.register(BaseRiskAssessmentAlcohol, BaseRiskAssessmentAlcoholAdmin)
 
 
-# BaseRiskAssessmentCancer
-class BaseRiskAssessmentCancerAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentCancer, site=cancer_subject_admin)
+class BaseRiskAssessmentCancerAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentCancerForm
     fields = (
@@ -68,11 +72,10 @@ class BaseRiskAssessmentCancerAdmin(SubjectVisitModelAdmin):
         "family_cancer_type": admin.VERTICAL,
         "had_previous_cancer": admin.VERTICAL,
         "previous_cancer": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentCancer, BaseRiskAssessmentCancerAdmin)
 
 
-# BaseRiskAssessmentChemical
-class BaseRiskAssessmentChemicalAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentChemical, site=cancer_subject_admin)
+class BaseRiskAssessmentChemicalAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentChemicalForm
     fields = (
@@ -90,11 +93,10 @@ class BaseRiskAssessmentChemicalAdmin(SubjectVisitModelAdmin):
         "chemicals_time": admin.VERTICAL,
         "arsenic_smelting": admin.VERTICAL,
         "total_time_no_protection": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentChemical, BaseRiskAssessmentChemicalAdmin)
 
 
-# BaseRiskAssessmentDemo
-class BaseRiskAssessmentDemoAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentDemo, site=cancer_subject_admin)
+class BaseRiskAssessmentDemoAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentDemoForm
 
@@ -138,11 +140,10 @@ class BaseRiskAssessmentDemoAdmin(SubjectVisitModelAdmin):
         "electricity": admin.VERTICAL,
         "toilet": admin.VERTICAL,
         "food_security": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentDemo, BaseRiskAssessmentDemoAdmin)
 
 
-# BaseRiskAssessmentEating
-class BaseRiskAssessmentEatingAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentEating, site=cancer_subject_admin)
+class BaseRiskAssessmentEatingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentEatingForm
     fields = (
@@ -155,11 +156,10 @@ class BaseRiskAssessmentEatingAdmin(SubjectVisitModelAdmin):
         "meal_peanuts")
     radio_fields = {
         "five_fruit": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentEating, BaseRiskAssessmentEatingAdmin)
 
 
-# BaseRiskAssessmentFemale
-class BaseRiskAssessmentFemaleAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentFemale, site=cancer_subject_admin)
+class BaseRiskAssessmentFemaleAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentFemaleForm
     fields = (
@@ -169,11 +169,10 @@ class BaseRiskAssessmentFemaleAdmin(SubjectVisitModelAdmin):
         "years_breastfed")
     radio_fields = {
         "years_breastfed": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentFemale, BaseRiskAssessmentFemaleAdmin)
 
 
-# BaseRiskAssessmentFuel
-class BaseRiskAssessmentFuelAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentFemale, site=cancer_subject_admin)
+class BaseRiskAssessmentFuelAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentFuelForm
     fields = (
@@ -190,11 +189,10 @@ class BaseRiskAssessmentFuelAdmin(SubjectVisitModelAdmin):
         "cooking": admin.VERTICAL,
         "fuel_mm": admin.VERTICAL,
         "cooking_mm": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentFuel, BaseRiskAssessmentFuelAdmin)
 
 
-# BaseRiskAssessmentMining
-class BaseRiskAssessmentMiningAdmin(SubjectVisitModelAdmin):
+@admin.register(BaseRiskAssessmentMining, site=cancer_subject_admin)
+class BaseRiskAssessmentMiningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentMiningForm
     fields = (
@@ -210,10 +208,9 @@ class BaseRiskAssessmentMiningAdmin(SubjectVisitModelAdmin):
         "mine_type": admin.VERTICAL,
         "mine_underground": admin.VERTICAL,
         "mine_underground_time": admin.VERTICAL}
-admin.site.register(BaseRiskAssessmentMining, BaseRiskAssessmentMiningAdmin)
 
 
-# BaseRiskAssessmentSmoking
+# BaseRiskAssessmentSmo
 class BaseRiskAssessmentSmokingAdmin(SubjectVisitModelAdmin):
 
     form = BaseRiskAssessmentSmokingForm

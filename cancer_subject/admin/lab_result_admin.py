@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .subject_visit_model_admin import SubjectVisitModelAdmin
+from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
 from ..models import (LabResult, LabResultHeightWeight, LabResultHiv, LabResultCd4, LabResultViralload,
                                    LabResultHaematology, LabResultChemistry, LabResultTb)
 from ..forms import (LabResultForm, LabResultHeightWeightForm, LabResultHivForm, LabResultCd4Form,

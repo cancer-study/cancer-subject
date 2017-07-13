@@ -1,20 +1,38 @@
 from django.contrib import admin
 
-from edc.base.modeladmin.admin import BaseTabularInline
-
-from .subject_visit_model_admin import SubjectVisitModelAdmin
+from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
 from ..models import RadiationTreatment, RadiationTreatmentRecord
 from ..forms import RadiationTreatmentForm
+from cancer_subject.admin_site import cancer_subject_admin
 
 
-class RadiationTreatmentRecordInlineAdmin(BaseTabularInline):
-    model = RadiationTreatmentRecord
+# class RadiationTreatmentRecordInlineAdmin(BaseTabularInline):
+#     model = RadiationTreatmentRecord
 
 
-class RadiationTreatmentAdmin(SubjectVisitModelAdmin):
+from django.contrib import admin
+
+from edc_base.fieldsets.fieldset import Fieldset
+from edc_base.modeladmin_mixins import audit_fieldset_tuple
+
+from .modeladmin_mixins import CrfModelAdminMixin
+
+blood_count = Fieldset(
+    'wbc',
+    'platelets',
+    'haemoglobin',
+    'absolute_neutrophil',
+    'proteinuria',
+    'abs_cd4',
+    'alt',
+    section='Complete Blood Count (CBC)')
+
+
+@admin.register(BloodResult, site=cancer_subject_admin)
+class RadiationTreatmentAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = RadiationTreatmentForm
-    inlines = [RadiationTreatmentRecordInlineAdmin, ]
+#     inlines = [RadiationTreatmentRecordInlineAdmin, ]
     fields = (
         "subject_visit",
         "treatment_start_date",
@@ -37,8 +55,7 @@ class RadiationTreatmentAdmin(SubjectVisitModelAdmin):
         "if_doses_delayed",
         "if_doses_delayed_other",
         "first_course_radiation",
-        "comments",
-)
+        "comments",)
     radio_fields = {
         "tumour_stages": admin.VERTICAL,
         "lymph_stages": admin.VERTICAL,
@@ -47,13 +64,11 @@ class RadiationTreatmentAdmin(SubjectVisitModelAdmin):
         "stage_modifier": admin.VERTICAL,
         "treatment_itent": admin.VERTICAL,
         "treatment_relationship": admin.VERTICAL,
-        #"side_effects": admin.VERTICAL,
+        # "side_effects": admin.VERTICAL,
         "response": admin.VERTICAL,
         "any_missed_doses": admin.VERTICAL,
         "if_doses_missed": admin.VERTICAL,
         "any_doses_delayed": admin.VERTICAL,
         "if_doses_delayed": admin.VERTICAL,
-        "first_course_radiation": admin.VERTICAL,
-        }
+        "first_course_radiation": admin.VERTICAL, }
     filter_horizontal = ('side_effects',)
-admin.site.register(RadiationTreatment, RadiationTreatmentAdmin)

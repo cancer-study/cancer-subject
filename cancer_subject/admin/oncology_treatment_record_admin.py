@@ -1,43 +1,39 @@
 from django.contrib import admin
 
-from edc.base.modeladmin.admin import BaseTabularInline
-
-from .subject_visit_model_admin import SubjectVisitModelAdmin
-from ..models import ChemoMedRecord, OncologyTreatmentRecord, OTRChemo, OTRRadiation, OTRSurgical
+from ..models import OncologyTreatmentRecord, OTRChemo, OTRRadiation, OTRSurgical
 from ..forms import OncologyTreatmentRecordForm, OTRChemoForm, OTRRadiationForm, OTRSurgicalForm
+from cancer_subject.admin_site import cancer_subject_admin
+from .modeladmin_mixins import CrfModelAdminMixin
 
 
-# OncologyTreatmentRecord
-class OncologyTreatmentRecordAdmin(SubjectVisitModelAdmin):
+@admin.register(OncologyTreatmentRecord, site=cancer_subject_admin)
+class OncologyTreatmentRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentRecordForm
     fields = (
         "subject_visit",
-#        "treatment_received",
         "chemo_received",
         "radiation_received",
         "surgical_therapy",
         "comments")
     radio_fields = {
-#        "treatment_received": admin.VERTICAL,
         "chemo_received": admin.VERTICAL,
         "radiation_received": admin.VERTICAL,
         "surgical_therapy": admin.VERTICAL}
     instructions = [("Note to Interviewer: If any of the answers below"
                      " are yes, make arrangements to obtain records or"
                      " review records over the phone")]
-admin.site.register(OncologyTreatmentRecord, OncologyTreatmentRecordAdmin)
 
 
-class ChemoMedRecordInlineAdmin(BaseTabularInline):
-    model = ChemoMedRecord
+# class ChemoMedRecordInlineAdmin(BaseTabularInline):
+#     model = ChemoMedRecord
 
 
-# OTRChemo
-class OTRChemoAdmin(SubjectVisitModelAdmin):
+@admin.register(OTRChemo, site=cancer_subject_admin)
+class OTRChemoAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OTRChemoForm
-    inlines = [ChemoMedRecordInlineAdmin, ]
+#     inlines = [ChemoMedRecordInlineAdmin, ]
     fields = (
         "subject_visit",
         "chemo_intent",
@@ -53,34 +49,28 @@ class OTRChemoAdmin(SubjectVisitModelAdmin):
         "why_delayed": admin.VERTICAL,
         "chemo_reduced": admin.VERTICAL,
         "why_reduced": admin.VERTICAL}
-admin.site.register(OTRChemo, OTRChemoAdmin)
 
 
-# OTRRadiation
-class OTRRadiationAdmin(SubjectVisitModelAdmin):
+@admin.register(OTRRadiation, site=cancer_subject_admin)
+class OTRRadiationAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OTRRadiationForm
     fields = (
         "subject_visit",
         "radiation_details",
-#         "concomitant",
-#         "amount_radiation"
     )
     radio_fields = {
         "radiation_details": admin.VERTICAL,
-#         "concomitant": admin.VERTICAL
     }
     instructions = [("Review the recorded cancer type and stage information recorded and"
                       " consider updating 'Cancer Diagnosis' form accordingly.")]
-admin.site.register(OTRRadiation, OTRRadiationAdmin)
 
 
-#OTRSurgical
-class OTRSurgicalAdmin(SubjectVisitModelAdmin):
+@admin.register(OTRSurgical, site=cancer_subject_admin)
+class OTRSurgicalAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OTRSurgicalForm
     fields = (
         "subject_visit",
         "operation_performed",
         "date_operation")
-admin.site.register(OTRSurgical, OTRSurgicalAdmin)

@@ -2,7 +2,7 @@ from django.contrib import admin
 from edc.subject.registration.models import RegisteredSubject
 from edc.base.modeladmin.admin import BaseTabularInline, BaseModelAdmin
 from .subject_off_study_model_admin import SubjectOffStudyModelAdmin
-from .subject_visit_model_admin import SubjectVisitModelAdmin
+from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
 from .registered_subject_model_admin import RegisteredSubjectModelAdmin
 from ..models import (HaartMedRecord, ChemoMedPlan, Locator, SubjectDeath, SubjectVisit,
                      SubjectOffStudy, ActivityAndFunctioning, CancerDiagnosis, HaartRecord,

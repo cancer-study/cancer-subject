@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .subject_visit_model_admin import SubjectVisitModelAdmin
+from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
 from ..models import BaselineHIVHistory, BHHHivTest, BHHWhoIllness, BHHCd4
 from ..forms import BaselineHIVHistoryForm, BHHHivTestForm, BHHWhoIllnessForm, BHHCd4Form
 
