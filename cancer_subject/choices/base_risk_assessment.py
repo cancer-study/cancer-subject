@@ -1,4 +1,4 @@
-from edc.constants import NO, YES
+from edc_constants.constants import YES, NO
 
 MARITAL_STATUS_CHOICE = (
     ('Single', 'Single'),
