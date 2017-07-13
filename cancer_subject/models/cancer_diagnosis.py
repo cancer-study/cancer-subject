@@ -52,8 +52,8 @@ class CancerDiagnosis (CrfModelMixin):
         blank=True,
         choices=CANCER_CATEGORY_CHOICE,
         help_text=("If patient develops a new cancer type (for example, "
-                    "breast cancer after or during treatment for lymphoma) "
-                    "this should be considered a new cancer case."),)
+                   "breast cancer after or during treatment for lymphoma) "
+                   "this should be considered a new cancer case."),)
 
     symptom_prompt = models.CharField(
         verbose_name=("What symptom was most important in prompting "
@@ -87,8 +87,8 @@ class CancerDiagnosis (CrfModelMixin):
 
     trad_evaluation = models.DateField(
         verbose_name=("When did the patient first receive an evaluation "
-                        "by a 'Traditional Doctor or Sangoma' for the "
-                        "symptom that led to diagnosis of cancer?"),
+                      "by a 'Traditional Doctor or Sangoma' for the "
+                      "symptom that led to diagnosis of cancer?"),
         max_length=25,
         null=True,
         blank=True,
@@ -130,7 +130,7 @@ class CancerDiagnosis (CrfModelMixin):
 
     clinical_diagnosis = models.CharField(
         verbose_name=("Clinical and/or Pathologic Diagnosis (record "
-                        "ICD morphology code, M9140/3)"),
+                      "ICD morphology code, M9140/3)"),
         null=True,
         blank=True,
         max_length=25,
@@ -178,7 +178,7 @@ class CancerDiagnosis (CrfModelMixin):
         blank=True,
         choices=METASTASIS_POSSIBLE_GRADES,
         help_text="For Kaposi's record S here, 0 or 1",
-        )
+    )
 
     metastasis_basis = models.CharField(
         verbose_name="Basis of Metastasis (M) assessment",
@@ -187,7 +187,7 @@ class CancerDiagnosis (CrfModelMixin):
         blank=True,
         choices=METASTASIS_BASIS_CHOICE,
         help_text="",
-        )
+    )
 
     cancer_stage = models.CharField(
         verbose_name="Overall cancer stage",
@@ -197,7 +197,7 @@ class CancerDiagnosis (CrfModelMixin):
         choices=POSSIBLE_OVERALL_STAGES,
         help_text=("For lymphomas, report Ann Arbor Stage here. For Kaposi's, report "
                    "ACTG Stage here."),
-        )
+    )
 
     cancer_stage_modifier = models.CharField(
         verbose_name="Overall cancer stage modifier",
@@ -205,8 +205,9 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         choices=POSSIBLE_OVERALL_STAGE_MODIFIER,
-        help_text=("For lymphomas, report Ann Arbor Stage here.For Kaposi's, report 'None'."),
-        )
+        help_text=(
+            "For lymphomas, report Ann Arbor Stage here.For Kaposi's, report 'None'."),
+    )
 
     any_other_results = models.CharField(
         verbose_name=('Are there other results of specialized testing (receptor, cell'
@@ -214,13 +215,13 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=3,
         choices=YES_NO,
         help_text='If answered YES, make sure to answer the Specialized Diagnostics form',
-        )
+    )
     # new fields
     paper_documents = models.CharField(
         verbose_name="Folder number of stored paper documents",
         max_length=7,
         help_text=""
-        )
+    )
     # not required anymore
 #     electronic_documents = models.CharField(
 #         verbose_name=('Folder number of stored electronic documents'),
@@ -229,11 +230,11 @@ class CancerDiagnosis (CrfModelMixin):
 #         )
     # added on upgrade
     results_to_record = models.ManyToManyField(ResultsToRecord,
-        verbose_name=("Based the cancer diagnosis or other factors which of the following "
-                      "results be recorded (refer to SOP)?"),
-        null=True,
-        blank=True,
-        help_text="(tick all that apply - REMEMBER to highlight your chosen options before save)",)
+                                               verbose_name=("Based the cancer diagnosis or other factors which of the following "
+                                                             "results be recorded (refer to SOP)?"),
+                                               null=True,
+                                               blank=True,
+                                               help_text="(tick all that apply - REMEMBER to highlight your chosen options before save)",)
 
     results_to_record_other = OtherCharField()
 

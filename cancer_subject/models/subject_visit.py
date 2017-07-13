@@ -35,5 +35,5 @@ class SubjectVisit(VisitModelMixin, CreatesMetadataModelMixin,
         return super().common_clean_exceptions + [PreviousVisitError]
 
     class Meta(VisitModelMixin.Meta, RequiresConsentMixin.Meta):
-        app_label = "ambition_subject"
-        consent_model = 'ambition_subject.subjectconsent'
+        app_label = "cancer_subject"
+        consent_model = 'cancer_subject.subjectconsent'
