@@ -81,7 +81,6 @@ class CancerDiagnosisAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "cancer_stage_modifier",
         "any_other_results",
         "paper_documents",
-#         "electronic_documents",
         "results_to_record",
         "results_to_record_other",)
     radio_fields = {
@@ -126,7 +125,6 @@ class OncologyTreatmentPlanAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "chemotherapy",
         "chemo_intent",
         "radiation_plan",
-#         "radiation_treatments",
         "surgical_plan",
         "planned_operation",
         "comments")

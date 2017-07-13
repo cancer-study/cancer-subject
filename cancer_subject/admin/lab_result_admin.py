@@ -1,5 +1,5 @@
 from django.contrib import admin
-from cancer_subject.admin.old.subject_visit_model_admin import SubjectVisitModelAdmin
+
 from ..models import (
     LabResult, LabResultHiv, LabResultCd4, LabResultViralload,
     LabResultHaematology, LabResultChemistry, LabResultTb)
@@ -9,10 +9,11 @@ from ..forms import (
     LabResultChemistryForm, LabResultTbForm, LabResultHaematologyForm,
     LabResultViralloadForm)
 from ..admin_site import cancer_subject_admin
+from .modeladmin_mixins import ModelAdminMixin
 
 
 @admin.register(LabResult, site=cancer_subject_admin)
-class LabResultAdmin(SubjectVisitModelAdmin):
+class LabResultAdmin(ModelAdminMixin):
 
     form = LabResultForm
     fields = (
@@ -38,7 +39,7 @@ class LabResultAdmin(SubjectVisitModelAdmin):
 
 
 @admin.register(LabResult, site=cancer_subject_admin)
-class LabResultHeightWeightAdmin(SubjectVisitModelAdmin):
+class LabResultHeightWeightAdmin(ModelAdminMixin):
 
     form = LabResultHeightWeightForm
     fields = (
@@ -52,7 +53,7 @@ class LabResultHeightWeightAdmin(SubjectVisitModelAdmin):
 
 
 @admin.register(LabResultHiv, site=cancer_subject_admin)
-class LabResultHivAdmin(SubjectVisitModelAdmin):
+class LabResultHivAdmin(ModelAdminMixin):
 
     form = LabResultHivForm
     fields = (
@@ -64,7 +65,7 @@ class LabResultHivAdmin(SubjectVisitModelAdmin):
 
 
 @admin.register(LabResultCd4, site=cancer_subject_admin)
-class LabResultCd4Admin(SubjectVisitModelAdmin):
+class LabResultCd4Admin(ModelAdminMixin):
 
     form = LabResultCd4Form
     fields = (
@@ -75,7 +76,7 @@ class LabResultCd4Admin(SubjectVisitModelAdmin):
 
 
 @admin.register(LabResultViralload, site=cancer_subject_admin)
-class LabResultViralloadAdmin(SubjectVisitModelAdmin):
+class LabResultViralloadAdmin(ModelAdminMixin):
 
     form = LabResultViralloadForm
     fields = (
@@ -87,7 +88,7 @@ class LabResultViralloadAdmin(SubjectVisitModelAdmin):
 
 
 @admin.register(LabResultHaematology, site=cancer_subject_admin)
-class LabResultHaematologyAdmin(SubjectVisitModelAdmin):
+class LabResultHaematologyAdmin(ModelAdminMixin):
 
     form = LabResultHaematologyForm
     fields = (
@@ -103,7 +104,7 @@ class LabResultHaematologyAdmin(SubjectVisitModelAdmin):
 
 
 @admin.register(LabResultChemistry, site=cancer_subject_admin)
-class LabResultChemistryAdmin(SubjectVisitModelAdmin):
+class LabResultChemistryAdmin(ModelAdminMixin):
 
     form = LabResultChemistryForm
     fields = (
@@ -119,7 +120,7 @@ class LabResultChemistryAdmin(SubjectVisitModelAdmin):
 
 
 @admin.register(LabResultTb, site=cancer_subject_admin)
-class LabResultTbAdmin(SubjectVisitModelAdmin):
+class LabResultTbAdmin(ModelAdminMixin):
 
     form = LabResultTbForm
     fields = (

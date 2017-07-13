@@ -5,6 +5,7 @@ from edc_base.modelform_mixins import JSONModelFormMixin, CommonCleanModelFormMi
 from ..models import SubjectVisit
 
 
-class SubjectModelFormMixin(CommonCleanModelFormMixin, JSONModelFormMixin, forms.ModelForm):
+class SubjectModelFormMixin(
+        CommonCleanModelFormMixin, JSONModelFormMixin, forms.ModelForm):
 
     visit_model = SubjectVisit
