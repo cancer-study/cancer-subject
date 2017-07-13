@@ -5,14 +5,17 @@ from django.db.models.deletion import PROTECT
 from edc_base.model_mixins import BaseUuidModel
 from edc_consent.model_mixins import RequiresConsentMixin
 from edc_lab.model_mixins.requisition import (
-    RequisitionModelMixin, RequisitionStatusMixin, RequisitionIdentifierMixin)
-from edc_metadata.model_mixins.updates import UpdatesRequisitionMetadataModelMixin
+    RequisitionModelMixin, RequisitionStatusMixin,
+    RequisitionIdentifierMixin)
+from edc_metadata.model_mixins.updates import (
+    UpdatesRequisitionMetadataModelMixin)
 from edc_offstudy.model_mixins import OffstudyMixin
 from edc_search.model_mixins import SearchSlugManager
 from edc_visit_tracking.managers import (
     CrfModelManager as VisitTrackingCrfModelManager)
 from edc_visit_tracking.model_mixins import (
-    CrfModelMixin as VisitTrackingCrfModelMixin, PreviousVisitModelMixin)
+    CrfModelMixin as VisitTrackingCrfModelMixin,
+    PreviousVisitModelMixin)
 
 from .model_mixins import SearchSlugModelMixin
 from .subject_visit import SubjectVisit
