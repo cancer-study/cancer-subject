@@ -6,7 +6,8 @@ from edc_consent.model_mixins import RequiresConsentMixin
 from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
 from edc_visit_tracking.constants import SCHEDULED
 from edc_visit_tracking.managers import VisitModelManager
-from edc_visit_tracking.model_mixins import VisitModelMixin, PreviousVisitError
+from edc_visit_tracking.model_mixins import (VisitModelMixin,
+                                             PreviousVisitError)
 
 from .appointment import Appointment
 
