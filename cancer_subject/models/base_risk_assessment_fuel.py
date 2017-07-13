@@ -6,7 +6,6 @@ from edc.audit.audit_trail import AuditTrail
 from edc.choices.common import YES_NO_DONT_KNOW
 from edc.base.model.fields.custom.custom_fields import OtherCharField
 
-from .base_scheduled_visit_model import BaseScheduledVisitModel
 from ..choices import FUEL_HOUSEHOLD20_CHOICE, FUEL_MONTH_CHOICE
 from cancer_subject.models.model_mixins.crf_model_mixin import CrfModelMixin
 
