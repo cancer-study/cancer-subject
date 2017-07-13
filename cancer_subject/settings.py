@@ -49,6 +49,8 @@ INSTALLED_APPS = [
     'edc_protocol.apps.AppConfig',
     'edc_visit_tracking.apps.AppConfig',
     'edc_offstudy.apps.AppConfig',
+    'edc_locator.apps.AppConfig',
+    'edc_lab.apps.AppConfig',
 #     'cancer_subject.apps.EdcMetadataAppConfig',
 #     'cancer_subject.apps.EdcIdentifierAppConfig',
 #     'cancer_subject.apps.EdcProtocolAppConfig',

@@ -1,6 +1,5 @@
 from django import forms
 
-from ambition_subject_validations.form_validators import SubjectConsentFormValidator
 from edc_constants.choices import YES_NO
 
 from ..models import SubjectConsent
@@ -25,8 +24,8 @@ class SubjectConsentForm(forms.ModelForm):
 
     def clean(self):
         cleaned_data = super().clean()
-        cleaned_data = SubjectConsentFormValidator(
-            cleaned_data=cleaned_data).clean()
+#         cleaned_data = SubjectConsentFormValidator(
+#             cleaned_data=cleaned_data).clean()
         return cleaned_data
 
     class Meta:

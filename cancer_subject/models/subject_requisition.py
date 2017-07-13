@@ -17,8 +17,8 @@ from edc_visit_tracking.model_mixins import (
     CrfModelMixin as VisitTrackingCrfModelMixin,
     PreviousVisitModelMixin)
 
-from .model_mixins import SearchSlugModelMixin
 from .subject_visit import SubjectVisit
+from .model_mixins.search_slug_model_mixin import SearchSlugModelMixin
 
 
 class Manager(VisitTrackingCrfModelManager, SearchSlugManager):

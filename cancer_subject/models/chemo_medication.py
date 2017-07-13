@@ -1,17 +1,17 @@
 from django.db import models
+# from ..managers import ChemoMedPlanManager, ChemoMedRecordManager
 
-from ..managers import ChemoMedPlanManager, ChemoMedRecordManager
+from edc_base.model_mixins import BaseUuidModel
 
 from ..choices.oncology_treatment import (DRUG_CODE,
                                           DOSE_CATEGORY,
                                           NUMBER_OF_CHEMO_CYLCES,
                                           NUMBER_OF_CHEMO_INTERVALS)
-from .subject_base_uuid_model import SubjectBaseUuidModel
 from .oncology_treatment_plan import OncologyTreatmentPlan
 from .otr_chemo import OTRChemo
 
 
-class BaseChemoMedication(SubjectBaseUuidModel):
+class BaseChemoMedication(BaseUuidModel):
 
     drug_code = models.CharField(
         verbose_name="Drug",
@@ -72,7 +72,7 @@ class ChemoMedPlan(BaseChemoMedication):
 
     oncology_treatment_plan = models.ForeignKey(OncologyTreatmentPlan)
 
-    objects = ChemoMedPlanManager()
+#     objects = ChemoMedPlanManager()
 
     class Meta:
         app_label = "cancer_subject"
@@ -83,7 +83,7 @@ class ChemoMedRecord(BaseChemoMedication):
 
     otr_chemo = models.ForeignKey(OTRChemo)
 
-    objects = ChemoMedRecordManager()
+#     objects = ChemoMedRecordManager()
 
     class Meta:
         app_label = "cancer_subject"

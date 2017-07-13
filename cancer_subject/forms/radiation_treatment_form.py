@@ -6,3 +6,4 @@ class RadiationTreatmentForm (SubjectModelFormMixin):
 
     class Meta:
         model = RadiationTreatment
+        fields = '__all__'

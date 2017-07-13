@@ -5,7 +5,7 @@ from ..models import (
     BaseRiskAssessment, BaseRiskAssessmentAlcohol,
     BaseRiskAssessmentCancer, BaseRiskAssessmentChemical,
     BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
-    BaseRiskAssessmentFemale, BaseRiskAssessmentFuel,
+#     BaseRiskAssessmentFemale, BaseRiskAssessmentFuel,
     BaseRiskAssessmentMining, BaseRiskAssessmentSmoking,
     BaseRiskAssessmentSun)
 from edc_constants.constants import YES
@@ -23,6 +23,7 @@ class BaseRiskAssessmentForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessment
+        fields = '__all__'
 
 
 # BaseRiskAssessmentAlcohol
@@ -30,6 +31,7 @@ class BaseRiskAssessmentAlcoholForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentAlcohol
+        fields = '__all__'
 
 
 # BaseRiskAssessmentCancer
@@ -45,6 +47,7 @@ class BaseRiskAssessmentCancerForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentCancer
+        fields = '__all__'
 
 
 # BaseRiskAssessmentChemical
@@ -62,6 +65,7 @@ class BaseRiskAssessmentChemicalForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentChemical
+        fields = '__all__'
 
 
 # BaseRiskAssessmentDemo
@@ -69,6 +73,7 @@ class BaseRiskAssessmentDemoForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentDemo
+        fields = '__all__'
 
 
 # BaseRiskAssessmentEating
@@ -76,20 +81,23 @@ class BaseRiskAssessmentEatingForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentEating
+        fields = '__all__'
 
 
-# BaseRiskAssessmentFemale
-class BaseRiskAssessmentFemaleForm (SubjectModelFormMixin):
-
-    class Meta:
-        model = BaseRiskAssessmentFemale
-
-
-# BaseRiskAssessmentFuel
-class BaseRiskAssessmentFuelForm (SubjectModelFormMixin):
-
-    class Meta:
-        model = BaseRiskAssessmentFuel
+# # BaseRiskAssessmentFemale
+# class BaseRiskAssessmentFemaleForm (SubjectModelFormMixin):
+# 
+#     class Meta:
+#         model = BaseRiskAssessmentFemale
+#         fields = '__all__'
+# 
+# 
+# # BaseRiskAssessmentFuel
+# class BaseRiskAssessmentFuelForm (SubjectModelFormMixin):
+# 
+#     class Meta:
+#         model = BaseRiskAssessmentFuel
+#         fields = '__all__'
 
 
 # BaseRiskAssessmentMining
@@ -97,6 +105,7 @@ class BaseRiskAssessmentMiningForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentMining
+        fields = '__all__'
 
 
 # BaseRiskAssessmentSmoking
@@ -132,6 +141,7 @@ class BaseRiskAssessmentSmokingForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentSmoking
+        fields = '__all__'
 
 
 # BaseRiskAssessmentSun
@@ -139,3 +149,4 @@ class BaseRiskAssessmentSunForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentSun
+        fields = '__all__'

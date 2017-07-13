@@ -1,7 +1,7 @@
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 
-from cancer_subject.models.old_subject_visit import SubjectVisit
+from .subject_visit import SubjectVisit
 
 
 @receiver(post_save, weak=False,

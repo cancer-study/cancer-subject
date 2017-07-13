@@ -3,7 +3,6 @@ from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
 
-from ambition_screening.models import SubjectScreening
 from edc_base.modeladmin_mixins import (
     ModelAdminInstitutionMixin, audit_fieldset_tuple, audit_fields,
     ModelAdminNextUrlRedirectMixin)

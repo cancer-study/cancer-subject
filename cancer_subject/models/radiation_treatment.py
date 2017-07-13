@@ -3,17 +3,15 @@ from django.db import models
 from edc_constants.choices import YES_NO_UNKNOWN
 from edc_base.model_fields import OtherCharField
 
-from ..managers import RadiationTreatmentRecordManager
-from apps.cancer_list.models import RadiationSideEffects
-
 from .model_mixins import CrfModelMixin
-from .subject_base_uuid_model import SubjectBaseUuidModel
 
+from .list_models import RadiationSideEffects
 from ..choices.radiation_treatment import (
     STAGES, MODIFIER, TREATMENT_INTENT,
     TREATMENT_RELATIONSHIP, RESPONSE,
     REASONS_MISSED_OR_DELAYED, RADIATION_TECHNIQUE,
     MODALITY, BRACHY_LENGTH, BRACHY_TYPE)
+from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 
 
 class RadiationTreatment (CrfModelMixin):
@@ -178,7 +176,7 @@ class RadiationTreatment (CrfModelMixin):
 
 
 # The radiation table
-class BaseRadiationTreatment(SubjectBaseUuidModel):
+class BaseRadiationTreatment(BaseUuidModel):
 
     treatment_name = models.CharField(
         verbose_name="Treatment (eg. Pelvis, Tans, Scar Boost)",
@@ -256,7 +254,7 @@ class RadiationTreatmentRecord(BaseRadiationTreatment):
 
     radiation_treatment = models.ForeignKey(RadiationTreatment)
 
-    objects = RadiationTreatmentRecordManager()
+#     objects = RadiationTreatmentRecordManager()
 
     class Meta:
         app_label = "cancer_subject"

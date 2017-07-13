@@ -47,21 +47,25 @@ class BaselineHIVHistoryForm (SubjectModelFormMixin):
 
     class Meta:
         model = BaselineHIVHistory
+        fields = '__all__'
 
 
 class BHHHivTestForm (SubjectModelFormMixin):
 
     class Meta:
         model = BHHHivTest
+        fields = '__all__'
 
 
 class BHHWhoIllnessForm (SubjectModelFormMixin):
 
     class Meta:
         model = BHHWhoIllness
+        fields = '__all__'
 
 
 class BHHCd4Form (SubjectModelFormMixin):
 
     class Meta:
         model = BHHCd4
+        fields = '__all__'

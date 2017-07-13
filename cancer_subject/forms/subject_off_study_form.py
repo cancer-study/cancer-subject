@@ -16,3 +16,4 @@ class SubjectOffStudyForm (SubjectModelFormMixin):
 
     class Meta:
         model = SubjectOffStudy
+        fields = '__all__'

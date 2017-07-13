@@ -9,6 +9,7 @@ class OncologyTreatmentRecordForm (SubjectModelFormMixin):
 
     class Meta:
         model = OncologyTreatmentRecord
+        fields = '__all__'
 
 
 class OTRChemoForm (SubjectModelFormMixin):
@@ -28,6 +29,7 @@ class OTRChemoForm (SubjectModelFormMixin):
 
     class Meta:
         model = OTRChemo
+        fields = '__all__'
 
 
 class OTRRadiationForm (SubjectModelFormMixin):
@@ -42,9 +44,11 @@ class OTRRadiationForm (SubjectModelFormMixin):
 
     class Meta:
         model = OTRRadiation
+        fields = '__all__'
 
 
 class OTRSurgicalForm (SubjectModelFormMixin):
 
     class Meta:
         model = OTRSurgical
+        fields = '__all__'

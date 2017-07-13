@@ -13,6 +13,7 @@ class LabResultForm (SubjectModelFormMixin):
 
     class Meta:
         model = LabResult
+        fields = '__all__'
 
 
 # LabResultHeightWeight
@@ -20,6 +21,7 @@ class LabResultHeightWeightForm (SubjectModelFormMixin):
 
     class Meta:
         model = LabResultHeightWeight
+        fields = '__all__'
 
 
 # LabResultHiv
@@ -27,6 +29,7 @@ class LabResultHivForm (SubjectModelFormMixin):
 
     class Meta:
         model = LabResultHiv
+        fields = '__all__'
 
 
 # LabResultCd4
@@ -34,6 +37,7 @@ class LabResultCd4Form (SubjectModelFormMixin):
 
     class Meta:
         model = LabResultCd4
+        fields = '__all__'
 
 
 # LabResultViralload
@@ -41,6 +45,7 @@ class LabResultViralloadForm (SubjectModelFormMixin):
 
     class Meta:
         model = LabResultViralload
+        fields = '__all__'
 
 
 # LabResultHaematology
@@ -48,6 +53,7 @@ class LabResultHaematologyForm (SubjectModelFormMixin):
 
     class Meta:
         model = LabResultHaematology
+        fields = '__all__'
 
 
 # LabResultChemistry
@@ -55,6 +61,7 @@ class LabResultChemistryForm (SubjectModelFormMixin):
 
     class Meta:
         model = LabResultChemistry
+        fields = '__all__'
 
 
 # LabResultTb
@@ -71,3 +78,4 @@ class LabResultTbForm (SubjectModelFormMixin):
 
     class Meta:
         model = LabResultTb
+        fields = '__all__'

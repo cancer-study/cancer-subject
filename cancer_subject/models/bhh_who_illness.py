@@ -3,8 +3,7 @@ from django.db import models
 from edc_base.model_fields import OtherCharField
 
 from .model_mixins import CrfModelMixin
-
-from ..cancer_list.models import WhoIllness
+from .list_models import WhoIllness
 
 
 class BHHWhoIllness (CrfModelMixin):

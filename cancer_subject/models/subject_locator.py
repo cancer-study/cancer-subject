@@ -1,17 +1,19 @@
 from django.db import models
 from django.core.validators import RegexValidator
+from django_crypto_fields.fields.encrypted_char_field import EncryptedCharField
 
-from edc.subject.locator.models import BaseLocator
+from .subject_visit import SubjectVisit
+
+from edc_base.model_mixins.base_uuid_model import BaseUuidModel
+from edc_base.model_validators.bw.validators import (
+    BWCellNumber, BWTelephoneNumber)
+from edc_consent.model_mixins import RequiresConsentMixin
+from edc_locator.model_mixins import LocatorModelMixin
+
 from edc_constants.choices import YES_NO
-from edc.base.model.validators import BWCellNumber, BWTelephoneNumber
-from edc.core.crypto_fields.fields import EncryptedCharField
-from edc.entry_meta_data.managers import EntryMetaDataManager
-
-from ..models import SubjectVisit
-from .subject_off_study_mixin import SubjectOffStudyMixin
 
 
-class Locator(SubjectOffStudyMixin, BaseLocator):
+class SubjectLocator(LocatorModelMixin, RequiresConsentMixin, BaseUuidModel):
 
     subject_visit = models.OneToOneField(SubjectVisit)
     # v2 added more fields to key additional contact info for
@@ -88,30 +90,7 @@ class Locator(SubjectOffStudyMixin, BaseLocator):
     home_village = models.CharField(
         verbose_name=("Where is your home village?"),
         max_length=75,
-        help_text="",
-    )
-
-    entry_meta_data_manager = EntryMetaDataManager(SubjectVisit)
-
-    def save(self, *args, **kwargs):
-        # as long as locator is on a visit schedule, need to update
-        # self.registered_subject manually
-        if self.subject_visit:
-            if not self.registered_subject:
-                self.registered_subject = self.registered_subject = self.subject_visit.appointment.registered_subject
-        super(Locator, self).save(*args, **kwargs)
-
-    def get_visit(self):
-        return self.subject_visit
-
-    def get_subject_identifier(self):
-        return self.get_visit().get_subject_identifier()
-
-    def get_report_datetime(self):
-        return self.created
-
-    def __unicode__(self):
-        return unicode(self.subject_visit)
+        help_text="",)
 
     class Meta:
         verbose_name = 'Locator'

@@ -6,9 +6,7 @@ from .base_risk_assessment_smoking import BaseRiskAssessmentSmoking
 from .base_risk_assessment_sun import BaseRiskAssessmentSun
 from .base_risk_assessment_mining import BaseRiskAssessmentMining
 from .base_risk_assessment_alcohol import BaseRiskAssessmentAlcohol
-from .base_risk_assessment_female import BaseRiskAssessmentFemale
 from .base_risk_assessment_chemical import BaseRiskAssessmentChemical
-from .base_risk_assessment_fuel import BaseRiskAssessmentFuel
 from .base_risk_assessment_cancer import BaseRiskAssessmentCancer
 from .base_risk_assessment_demo import BaseRiskAssessmentDemo
 from .base_risk_assessment_eating import BaseRiskAssessmentEating
@@ -21,7 +19,6 @@ from .treatment_response import TreatmentResponse
 from .referral import Referral
 from .haart_record import HaartRecord
 from .haart_medication import HaartMedRecord
-from .locator import Locator
 
 from .lab_result import LabResult
 from .lab_result_hiv import LabResultHiv

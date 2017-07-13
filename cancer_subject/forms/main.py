@@ -3,17 +3,11 @@ from django import forms
 from .modelform_mixin import SubjectModelFormMixin
 from ..models import (
     ActivityAndFunctioning, CancerDiagnosis, ChemoMedPlan, ChemoMedRecord,
-    EnrollmentChecklist, HaartRecord, HaartMedRecord, OncologyTreatmentPlan,
-    Referral, SubjectDeath, TreatmentResponse, SymptomsAndTesting,
+    HaartRecord, HaartMedRecord, OncologyTreatmentPlan,
+    Referral, TreatmentResponse, SymptomsAndTesting,
     OncologyTreatmentCompleted, CurrentSymptoms)
 
 from edc_constants.constants import YES, NO
-
-
-class EnrollmentChecklistForm (SubjectModelFormMixin):
-
-    class Meta:
-        model = EnrollmentChecklist
 
 
 # ActivityAndFunctioning
@@ -21,6 +15,7 @@ class ActivityAndFunctioningForm (SubjectModelFormMixin):
 
     class Meta:
         model = ActivityAndFunctioning
+        fields = '__all__'
 
 
 # CancerDiagnosis
@@ -58,6 +53,7 @@ class CancerDiagnosisForm (SubjectModelFormMixin):
 
     class Meta:
         model = CancerDiagnosis
+        fields = '__all__'
 
 
 # ChemoMedPlan
@@ -65,6 +61,7 @@ class ChemoMedPlanForm (SubjectModelFormMixin):
 
     class Meta:
         model = ChemoMedPlan
+        fields = '__all__'
 
 
 # ChemoMedRecord
@@ -72,6 +69,7 @@ class ChemoMedRecordForm (SubjectModelFormMixin):
 
     class Meta:
         model = ChemoMedRecord
+        fields = '__all__'
 
 
 # HaartRecord
@@ -79,6 +77,7 @@ class HaartRecordForm (SubjectModelFormMixin):
 
     class Meta:
         model = HaartRecord
+        fields = '__all__'
 
 
 # HaartMedRecord
@@ -86,6 +85,7 @@ class HaartMedRecordForm (SubjectModelFormMixin):
 
     class Meta:
         model = HaartMedRecord
+        fields = '__all__'
 
 
 # OncologyTreatmentPlan
@@ -109,20 +109,14 @@ class OncologyTreatmentPlanForm (SubjectModelFormMixin):
 
     class Meta:
         model = OncologyTreatmentPlan
+        fields = '__all__'
 
 
-# Referral
 class ReferralForm (SubjectModelFormMixin):
 
     class Meta:
         model = Referral
-
-
-# SubjectDeath
-class SubjectDeathForm (SubjectModelFormMixin):
-
-    class Meta:
-        model = SubjectDeath
+        fields = '__all__'
 
 
 # TreatmentResponse
@@ -130,6 +124,7 @@ class TreatmentResponseForm (SubjectModelFormMixin):
 
     class Meta:
         model = TreatmentResponse
+        fields = '__all__'
 
 
 class SymptomsAndTestingForm (SubjectModelFormMixin):
@@ -186,6 +181,7 @@ class SymptomsAndTestingForm (SubjectModelFormMixin):
 
     class Meta:
         model = SymptomsAndTesting
+        fields = '__all__'
 
 
 class OncologyTreatmentCompletedForm (SubjectModelFormMixin):
@@ -206,6 +202,7 @@ class OncologyTreatmentCompletedForm (SubjectModelFormMixin):
 
     class Meta:
         model = OncologyTreatmentCompleted
+        fields = '__all__'
 
 
 class CurrentSymptomsForm (SubjectModelFormMixin):
@@ -228,3 +225,4 @@ class CurrentSymptomsForm (SubjectModelFormMixin):
 
     class Meta:
         model = CurrentSymptoms
+        fields = '__all__'

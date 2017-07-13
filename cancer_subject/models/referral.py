@@ -1,14 +1,12 @@
 from django.db import models
 
+from edc_base.model_mixins import BaseUuidModel
 from edc_constants.choices import YES_NO
-
-from ..models.base_subject_registered_subject_model import (
-    BaseSubjectRegisteredSubjectModel)
 
 from ..choices.referral import WHY_REFERRED
 
 
-class Referral (BaseSubjectRegisteredSubjectModel):
+class Referral (BaseUuidModel):
 
     """ CA011 """
 
