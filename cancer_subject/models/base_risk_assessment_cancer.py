@@ -29,8 +29,8 @@ class BaseRiskAssessmentCancer (CrfModelMixin):
     family_cancer_other = OtherCharField()
 
     had_previous_cancer = models.CharField(
-        verbose_name=("Have you had PREVIOUS cancer, before the current "
-                      "cancer?"),
+        verbose_name=("Have you had PREVIOUS cancer, before the "
+                      "current cancer?"),
         max_length=25,
         choices=YES_NO_DONT_KNOW,
         help_text="")
