@@ -14,8 +14,10 @@ class BaseRiskAssessmentAlcohol (CrfModelMixin):
         help_text="",)
 
     amount_drinking = models.IntegerField(
-        verbose_name=("On days you drink, how many drinks do you have (one drink is 300ml of "
-                      "beer/chibuku, 150ml of wine,or 50ml of whiskey/vodka/gin)?"),
+        verbose_name=("On days you drink, how many drinks do you "
+                      "have (one drink is 300ml of "
+                      "beer/chibuku, 150ml of wine,or 50ml of "
+                      "whiskey/vodka/gin)?"),
         validators=[MinValueValidator(1), MaxValueValidator(100)],
         # blank = True,
         help_text="",)
