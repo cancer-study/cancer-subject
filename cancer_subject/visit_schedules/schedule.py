@@ -2,6 +2,7 @@ from dateutil.relativedelta import relativedelta
 from edc_visit_schedule import Schedule, Visit
 
 from .crfs import crf
+from .requisitions import requisitions
 
 # schedule for new participants
 schedule1 = Schedule(
@@ -18,7 +19,7 @@ visit0 = Visit(
     rbase=relativedelta(days=0),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=45),
-#     requisitions=requisitions_d1,
+    requisitions=requisitions,
     crfs=crf.get(1000))
 
 visit1 = Visit(
@@ -28,7 +29,7 @@ visit1 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(1300))
 
 visit2 = Visit(
@@ -38,7 +39,7 @@ visit2 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(1600))
 
 visit3 = Visit(
@@ -48,7 +49,7 @@ visit3 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(1900))
 
 visit4 = Visit(
@@ -58,7 +59,7 @@ visit4 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(2200))
 
 visit5 = Visit(
@@ -68,7 +69,7 @@ visit5 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(2500))
 
 visit6 = Visit(
@@ -78,7 +79,7 @@ visit6 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(2800))
 
 visit7 = Visit(
@@ -88,7 +89,7 @@ visit7 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(3100))
 
 visit8 = Visit(
@@ -98,7 +99,7 @@ visit8 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(3400))
 
 visit9 = Visit(
@@ -108,7 +109,7 @@ visit9 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(3700))
 
 visit10 = Visit(
@@ -118,7 +119,7 @@ visit10 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(4000))
 
 visit11 = Visit(
@@ -128,7 +129,7 @@ visit11 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(4300))
 
 visit12 = Visit(
@@ -138,7 +139,7 @@ visit12 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(4600))
 
 visit13 = Visit(
@@ -148,7 +149,7 @@ visit13 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(4900))
 
 visit14 = Visit(
@@ -158,7 +159,7 @@ visit14 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(5200))
 
 visit15 = Visit(
@@ -168,7 +169,7 @@ visit15 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(5500))
 
 visit16 = Visit(
@@ -178,7 +179,7 @@ visit16 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(5800))
 
 visit17 = Visit(
@@ -188,7 +189,7 @@ visit17 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(6100))
 
 visit18 = Visit(
@@ -198,7 +199,7 @@ visit18 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(6400))
 
 visit19 = Visit(
@@ -208,7 +209,7 @@ visit19 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(6700))
 
 visit20 = Visit(
@@ -218,7 +219,7 @@ visit20 = Visit(
     rbase=relativedelta(days=3),
     rlower=relativedelta(days=0),
     rupper=relativedelta(days=6),
-#     requisitions=requisitions_d3,
+    requisitions=requisitions,
     crfs=crf.get(7000))
 
 schedule1.add_visit(visit=visit0)
