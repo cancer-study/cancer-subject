@@ -104,7 +104,6 @@ class RadiationTreatment (CrfModelMixin):
         RadiationSideEffects,
         verbose_name="Side Effects",
         max_length=55,
-        null=True,
         blank=True,
         # choices=SIDE_EFFECTS,
         help_text="(tick all that apply)")
@@ -200,8 +199,7 @@ class BaseRadiationTreatment(BaseUuidModel):
     dose_delivered = models.IntegerField(
         verbose_name="Total Dose Delivered (cGy)",
         blank=True,
-        null=True,
-        max_length=4)
+        null=True,)
     dose_described = models.IntegerField(
         verbose_name="Total Dose Prescribed (cGy)",
         blank=True,
