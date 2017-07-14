@@ -104,9 +104,7 @@ class RadiationTreatment (CrfModelMixin):
         RadiationSideEffects,
         verbose_name="Side Effects",
         max_length=55,
-        null=True,
         blank=True,
-        # choices=SIDE_EFFECTS,
         help_text="(tick all that apply)")
 
     side_effects_other = OtherCharField()
@@ -200,23 +198,19 @@ class BaseRadiationTreatment(BaseUuidModel):
     dose_delivered = models.IntegerField(
         verbose_name="Total Dose Delivered (cGy)",
         blank=True,
-        null=True,
-        max_length=4)
+        null=True,)
     dose_described = models.IntegerField(
         verbose_name="Total Dose Prescribed (cGy)",
         blank=True,
-        null=True,
-        max_length=4)
+        null=True,)
     fractions = models.IntegerField(
         verbose_name="Total Number of Fractions",
         blank=True,
-        null=True,
-        max_length=3)
+        null=True,)
     dose_per_fraction = models.IntegerField(
         verbose_name="Dose per Fraction (cGy)",
         blank=True,
-        null=True,
-        max_length=3)
+        null=True,)
     radiation_technique = models.CharField(
         verbose_name="Radiation Technique",
         blank=True,

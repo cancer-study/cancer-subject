@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from edc_base.modeladmin_mixins import audit_fieldset_tuple
+
 from ..models import (
     LabResult, LabResultHiv, LabResultCd4, LabResultViralload,
     LabResultHaematology, LabResultChemistry, LabResultTb)
@@ -28,6 +30,7 @@ class LabResultAdmin(ModelAdminMixin):
         "other_abnormal",
         "tb_tests",
         "tb_prompt_other")
+
     radio_fields = {
         "has_hiv_result": admin.VERTICAL,
         "has_cd4": admin.VERTICAL,

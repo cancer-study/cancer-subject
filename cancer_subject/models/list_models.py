@@ -17,3 +17,9 @@ class RadiationSideEffects(ListModelMixin, BaseUuidModel):
 
     class Meta(ListModelMixin.Meta):
         app_label = 'cancer_subject'
+
+
+class ResultsToRecord(ListModelMixin, BaseUuidModel):
+
+    class Meta(ListModelMixin.Meta):
+        app_label = 'cancer_subject'

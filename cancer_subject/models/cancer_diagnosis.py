@@ -14,6 +14,7 @@ from ..choices.cancer_diagnosis import (
     METASTASIS_POSSIBLE_GRADES, POSSIBLE_OVERALL_STAGES,
     POSSIBLE_OVERALL_STAGE_MODIFIER)
 from edc_base.model_fields.custom_fields import OtherCharField
+from .list_models import ResultsToRecord
 
 
 class CancerDiagnosis (CrfModelMixin):
@@ -230,12 +231,13 @@ class CancerDiagnosis (CrfModelMixin):
 #         )
     # added on upgrade
     # TODO: ResultsToRecord???
-#     results_to_record = models.ManyToManyField(ResultsToRecord,
-#                                                verbose_name=("Based the cancer diagnosis or other factors which of the following "
-#                                                              "results be recorded (refer to SOP)?"),
-#                                                null=True,
-#                                                blank=True,
-#                                                help_text="(tick all that apply - REMEMBER to highlight your chosen options before save)",)
+    results_to_record = models.ManyToManyField(
+        ResultsToRecord,
+        verbose_name=(
+            "Based the cancer diagnosis or other factors which of the following "
+            "results be recorded (refer to SOP)?"),
+        blank=True,
+        help_text="(tick all that apply - REMEMBER to highlight your chosen options before save)",)
 
     results_to_record_other = OtherCharField()
 

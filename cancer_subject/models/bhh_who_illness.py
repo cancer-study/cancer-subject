@@ -13,7 +13,6 @@ class BHHWhoIllness (CrfModelMixin):
         verbose_name="What WHO stage 3 or 4 illnesses the patient "
         "had:",
         max_length=35,
-        null=True,
         help_text=(
             "Tick all that apply.  DO NOT include current cancer "
             "diagnosis"),)

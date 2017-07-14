@@ -1,5 +1,7 @@
 from django.contrib import admin
 
+from edc_base.modeladmin_mixins import audit_fieldset_tuple
+
 from cancer_subject.admin_site import cancer_subject_admin
 from cancer_subject.admin.modeladmin_mixins import CrfModelAdminMixin
 
@@ -20,7 +22,7 @@ from ..models import (
 
 # class HaartMedRecordInlineAdmin(BaseTabularInline):
 #     model = HaartMedRecord
-# 
+#
 # EnrollmentChecklist
 # class ChemoMedPlanInlineAdmin(BaseTabularInline):
 #     exclude = ('dose_category',)
@@ -31,18 +33,23 @@ from ..models import (
 class ActivityAndFunctioningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = ActivityAndFunctioningForm
-    fields = (
-        "report_datetime",
-        "subject_visit",
-        "health_rate",
-        "health_problems",
-        "difficulty_work",
-        "bodily_pain",
-        "energy",
-        "health_probs_limit",
-        "emotional_probs",
-        "probs_from_work",
-        "perform_status")
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'report_datetime',
+                'subject_visit',
+                "health_rate",
+                "health_problems",
+                "difficulty_work",
+                "bodily_pain",
+                "energy",
+                "health_probs_limit",
+                "emotional_probs",
+                "probs_from_work",
+                "perform_status")}),
+        audit_fieldset_tuple
+    )
     radio_fields = {
         "health_rate": admin.VERTICAL,
         "health_problems": admin.VERTICAL,
@@ -59,36 +66,42 @@ class ActivityAndFunctioningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 class CancerDiagnosisAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = CancerDiagnosisForm
-    fields = (
-        "subject_visit",
-        "onco_number",
-        "pathology_number",
-        "pm_number",
-        "diagnosis",
-        "cancer_category",
-        "symptom_prompt",
-        "symptom_prompt_other",
-        "symptom_first_noticed",
-        "first_evaluation",
-        "trad_evaluation",
-        "date_diagnosed",
-        "diagnosis_basis",
-        "diagnosis_basis_other",
-        "diagnosis_word",
-        "cancer_site",
-        "clinical_diagnosis",
-        "tumour",
-        "tumour_basis",
-        "lymph_nodes",
-        "lymph_basis",
-        "metastasis",
-        "metastasis_basis",
-        "cancer_stage",
-        "cancer_stage_modifier",
-        "any_other_results",
-        "paper_documents",
-        "results_to_record",
-        "results_to_record_other",)
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                'report_datetime',
+                'subject_visit',
+                "onco_number",
+                "pathology_number",
+                "pm_number",
+                "diagnosis",
+                "cancer_category",
+                "symptom_prompt",
+                "symptom_prompt_other",
+                "symptom_first_noticed",
+                "first_evaluation",
+                "trad_evaluation",
+                "date_diagnosed",
+                "diagnosis_basis",
+                "diagnosis_basis_other",
+                "diagnosis_word",
+                "cancer_site",
+                "clinical_diagnosis",
+                "tumour",
+                "tumour_basis",
+                "lymph_nodes",
+                "lymph_basis",
+                "metastasis",
+                "metastasis_basis",
+                "cancer_stage",
+                "cancer_stage_modifier",
+                "any_other_results",
+                "paper_documents",
+                "results_to_record",
+                "results_to_record_other",)}),
+        audit_fieldset_tuple
+    )
     radio_fields = {
         "diagnosis": admin.VERTICAL,
         "cancer_category": admin.VERTICAL,
@@ -111,10 +124,15 @@ class HaartRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = HaartRecordForm
 #     inlines = [HaartMedRecordInlineAdmin, ]
-    fields = (
-        "subject_visit",
-        "haart_status",
-        "comments")
+    fieldsets = (
+        (None, {
+            'fields': (
+                'report_datetime',
+                "subject_visit",
+                "haart_status",
+                "comments")}),
+        audit_fieldset_tuple)
+
     radio_fields = {
         "haart_status": admin.VERTICAL}
 
@@ -124,16 +142,20 @@ class OncologyTreatmentPlanAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentPlanForm
 #     inlines = [ChemoMedPlanInlineAdmin, ]
-    fields = (
-        "subject_visit",
-        "treatment_goal",
-        "treatment_plan",
-        "chemotherapy",
-        "chemo_intent",
-        "radiation_plan",
-        "surgical_plan",
-        "planned_operation",
-        "comments")
+    fieldsets = (
+        (None, {
+            'fields': (
+                "subject_visit",
+                "treatment_goal",
+                "treatment_plan",
+                "chemotherapy",
+                "chemo_intent",
+                "radiation_plan",
+                "surgical_plan",
+                "planned_operation",
+                "comments")}),
+        audit_fieldset_tuple)
+
     radio_fields = {
         "treatment_goal": admin.VERTICAL,
         "treatment_plan": admin.VERTICAL,
@@ -147,12 +169,15 @@ class OncologyTreatmentPlanAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 class TreatmentResponseAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = TreatmentResponseForm
-    fields = (
-        "subject_visit",
-        "tx_response_class",
-        "tx_info_determinant",
-        "tx_response_date",
-        "tx_response")
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                "subject_visit",
+                "tx_response_class",
+                "tx_info_determinant",
+                "tx_response_date",
+                "tx_response")}),)
     radio_fields = {
         "tx_response_class": admin.VERTICAL}
     filter_horizontal = (
@@ -163,24 +188,27 @@ class TreatmentResponseAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 class SymptomsAndTestingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = SymptomsAndTestingForm
-    fields = (
-        "report_datetime",
-        "subject_visit",
-        "symptom_prompt",
-        "symptom_date",
-        "medical_doctor_date",
-        "trad_doctor_date",
-        "facility_first_seen",
-        "facility_first_seen_other",
-        "hiv_tested",
-        "hiv_test_result",
-        "pos_date",
-        "neg_date",
-        "hiv_result",
-        "arv_art_therapy",
-        "arv_art_start_date",
-        "arv_art_now",
-        "art_art_stop_date",)
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                "report_datetime",
+                "subject_visit",
+                "symptom_prompt",
+                "symptom_date",
+                "medical_doctor_date",
+                "trad_doctor_date",
+                "facility_first_seen",
+                "facility_first_seen_other",
+                "hiv_tested",
+                "hiv_test_result",
+                "pos_date",
+                "neg_date",
+                "hiv_result",
+                "arv_art_therapy",
+                "arv_art_start_date",
+                "arv_art_now",
+                "art_art_stop_date",)}),)
     radio_fields = {
         "hiv_tested": admin.VERTICAL,
         "hiv_test_result": admin.VERTICAL,
@@ -193,14 +221,18 @@ class SymptomsAndTestingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 class OncologyTreatmentCompletedAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentCompletedForm
-    fields = (
-        "subject_visit",
-        "patient_had_chemo",
-        "patient_had_radiation",
-        "patient_had_surgery",
-        "treatment_detail",
-        "patient_follow_up",
-        "patient_follow_up_other",)
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                "subject_visit",
+                "patient_had_chemo",
+                "patient_had_radiation",
+                "patient_had_surgery",
+                "treatment_detail",
+                "patient_follow_up",
+                "patient_follow_up_other",)}),)
+
     radio_fields = {
         "patient_had_chemo": admin.VERTICAL,
         "patient_had_radiation": admin.VERTICAL,
@@ -212,14 +244,18 @@ class OncologyTreatmentCompletedAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 class CurrentSymptomsAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = CurrentSymptomsForm
-    fields = (
-        "subject_visit",
-        "any_worry",
-        "symptom_desc",
-        "patient_own_remedy",
-        "severity",
-        "ra_advice",
-        "outcome_update",)
+
+    fieldsets = (
+        (None, {
+            'fields': (
+                "subject_visit",
+                "any_worry",
+                "symptom_desc",
+                "patient_own_remedy",
+                "severity",
+                "ra_advice",
+                "outcome_update",)}),)
+
     radio_fields = {
         "any_worry": admin.VERTICAL,
     }
