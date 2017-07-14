@@ -116,7 +116,8 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=100,
         null=True,
         blank=True,
-        help_text="In words, metatstatic breast cancer, kaposis of right leg",)
+        help_text="In words, metatstatic breast cancer, kaposis of "
+        "right leg",)
 
     cancer_site = models.CharField(
         verbose_name=("Cancer Site (record ICD topography code)"),
@@ -125,7 +126,8 @@ class CancerDiagnosis (CrfModelMixin):
         blank=True,
         validators=[RegexValidator(
             regex=r'^([C](\d{2})|[C](\d{2}\.\d{1}))$',
-            message='A site code always starts with a C, followed by numbers: integer or decimal.FORMAT is CXX or CXX.X'), ],
+            message='A site code always starts with a C, followed by '
+            'numbers: integer or decimal.FORMAT is CXX or CXX.X'), ],
         help_text="",)
 
     clinical_diagnosis = models.CharField(
@@ -136,7 +138,9 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=25,
         validators=[RegexValidator(
             regex=r'^[M]{1}[0-9]{4}[/][3]{1}$',
-            message='Please enter the correct morphology code. its M, followed by 4 numbers, a slash, and one more number, a 3.'), ],
+            message='Please enter the correct morphology code. its M, '
+            'followed by 4 numbers, a slash, and one more number, a '
+            '3.'), ],
         help_text="",)
 
     tumour = models.CharField(
@@ -195,7 +199,8 @@ class CancerDiagnosis (CrfModelMixin):
         null=True,
         blank=True,
         choices=POSSIBLE_OVERALL_STAGES,
-        help_text=("For lymphomas, report Ann Arbor Stage here. For Kaposi's, report "
+        help_text=("For lymphomas, report Ann Arbor Stage here. For "
+                   "Kaposi's, report "
                    "ACTG Stage here."),
     )
 
@@ -206,15 +211,18 @@ class CancerDiagnosis (CrfModelMixin):
         blank=True,
         choices=POSSIBLE_OVERALL_STAGE_MODIFIER,
         help_text=(
-            "For lymphomas, report Ann Arbor Stage here.For Kaposi's, report 'None'."),
+            "For lymphomas, report Ann Arbor Stage here.For Kaposi's, "
+            "report 'None'."),
     )
 
     any_other_results = models.CharField(
-        verbose_name=('Are there other results of specialized testing (receptor, cell'
-                      'surface markers) that should be reported?'),
+        verbose_name=('Are there other results of specialized testing '
+                      '(receptor, cell surface markers) that should '
+                      'be reported?'),
         max_length=3,
         choices=YES_NO,
-        help_text='If answered YES, make sure to answer the Specialized Diagnostics form',
+        help_text='If answered YES, make sure to answer the '
+        'Specialized Diagnostics form',
     )
     # new fields
     paper_documents = models.CharField(
@@ -235,7 +243,8 @@ class CancerDiagnosis (CrfModelMixin):
 #                                                              "results be recorded (refer to SOP)?"),
 #                                                null=True,
 #                                                blank=True,
-#                                                help_text="(tick all that apply - REMEMBER to highlight your chosen options before save)",)
+# help_text="(tick all that apply - REMEMBER to highlight your chosen
+# options before save)",)
 
     results_to_record_other = OtherCharField()
 
