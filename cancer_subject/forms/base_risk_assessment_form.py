@@ -5,7 +5,7 @@ from ..models import (
     BaseRiskAssessment, BaseRiskAssessmentAlcohol,
     BaseRiskAssessmentCancer, BaseRiskAssessmentChemical,
     BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
-#     BaseRiskAssessmentFemale, BaseRiskAssessmentFuel,
+    BaseRiskAssessmentFuel, BaseRiskAssessmentFemale,
     BaseRiskAssessmentMining, BaseRiskAssessmentSmoking,
     BaseRiskAssessmentSun)
 from edc_constants.constants import YES
@@ -26,7 +26,6 @@ class BaseRiskAssessmentForm (SubjectModelFormMixin):
         fields = '__all__'
 
 
-# BaseRiskAssessmentAlcohol
 class BaseRiskAssessmentAlcoholForm (SubjectModelFormMixin):
 
     class Meta:
@@ -50,7 +49,6 @@ class BaseRiskAssessmentCancerForm (SubjectModelFormMixin):
         fields = '__all__'
 
 
-# BaseRiskAssessmentChemical
 class BaseRiskAssessmentChemicalForm (SubjectModelFormMixin):
     def clean(self):
         cleaned_data = self.cleaned_data
@@ -68,7 +66,6 @@ class BaseRiskAssessmentChemicalForm (SubjectModelFormMixin):
         fields = '__all__'
 
 
-# BaseRiskAssessmentDemo
 class BaseRiskAssessmentDemoForm (SubjectModelFormMixin):
 
     class Meta:
@@ -76,7 +73,6 @@ class BaseRiskAssessmentDemoForm (SubjectModelFormMixin):
         fields = '__all__'
 
 
-# BaseRiskAssessmentEating
 class BaseRiskAssessmentEatingForm (SubjectModelFormMixin):
 
     class Meta:
@@ -84,23 +80,21 @@ class BaseRiskAssessmentEatingForm (SubjectModelFormMixin):
         fields = '__all__'
 
 
-# # BaseRiskAssessmentFemale
-# class BaseRiskAssessmentFemaleForm (SubjectModelFormMixin):
-# 
-#     class Meta:
-#         model = BaseRiskAssessmentFemale
-#         fields = '__all__'
-# 
-# 
-# # BaseRiskAssessmentFuel
-# class BaseRiskAssessmentFuelForm (SubjectModelFormMixin):
-# 
-#     class Meta:
-#         model = BaseRiskAssessmentFuel
-#         fields = '__all__'
+class BaseRiskAssessmentFemaleForm (SubjectModelFormMixin):
+ 
+    class Meta:
+        model = BaseRiskAssessmentFemale
+        fields = '__all__'
+ 
 
 
-# BaseRiskAssessmentMining
+class BaseRiskAssessmentFuelForm (SubjectModelFormMixin):
+
+    class Meta:
+        model = BaseRiskAssessmentFuel
+        fields = '__all__'
+
+
 class BaseRiskAssessmentMiningForm (SubjectModelFormMixin):
 
     class Meta:

@@ -248,8 +248,6 @@ class RadiationTreatmentRecord(BaseRadiationTreatment):
 
     radiation_treatment = models.ForeignKey(RadiationTreatment)
 
-#     objects = RadiationTreatmentRecordManager()
-
     class Meta:
         app_label = "cancer_subject"
         verbose_name = "Radiation Treatment Record"

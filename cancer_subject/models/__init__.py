@@ -10,6 +10,8 @@ from .base_risk_assessment_chemical import BaseRiskAssessmentChemical
 from .base_risk_assessment_cancer import BaseRiskAssessmentCancer
 from .base_risk_assessment_demo import BaseRiskAssessmentDemo
 from .base_risk_assessment_eating import BaseRiskAssessmentEating
+from .base_risk_assessment_fuel import BaseRiskAssessmentFuel
+from .base_risk_assessment_female import BaseRiskAssessmentFemale
 
 from .cancer_diagnosis import CancerDiagnosis
 from .activity_and_functioning import ActivityAndFunctioning

@@ -1,5 +1,6 @@
 from django.contrib import admin
 
+from edc_base.modeladmin_mixins.inlines import TabularInlineMixin
 from edc_base.modeladmin_mixins import audit_fieldset_tuple
 
 from cancer_subject.admin_site import cancer_subject_admin
@@ -14,19 +15,22 @@ from ..models import (
     HaartRecord, OncologyTreatmentPlan, TreatmentResponse,
     OncologyTreatmentCompleted, ActivityAndFunctioning,
     SymptomsAndTesting, CurrentSymptoms, CancerDiagnosis)
+from cancer_subject.models.haart_medication import HaartMedRecord
+from cancer_subject.forms.main import HaartMedRecordForm, ChemoMedPlanForm
+from cancer_subject.models.chemo_medication import ChemoMedPlan
 
-# from cancer_subject.models.oncology_treatment_plan import OncologyTreatmentPlan
-# from cancer_subject.models.treatment_response import TreatmentResponse
-# from cancer_subject.models.oncology_treatment_completed import OncologyTreatmentCompleted
+
+class HaartMedRecordInlineAdmin(TabularInlineMixin, admin.TabularInline):
+
+    model = HaartMedRecord
+    form = HaartMedRecordForm
+    extra = 1
 
 
-# class HaartMedRecordInlineAdmin(BaseTabularInline):
-#     model = HaartMedRecord
-#
-# EnrollmentChecklist
-# class ChemoMedPlanInlineAdmin(BaseTabularInline):
-#     exclude = ('dose_category',)
-#     model = ChemoMedPlan
+class ChemoMedPlanInlineAdmin(TabularInlineMixin, admin.TabularInline):
+    model = ChemoMedPlan
+    form = ChemoMedPlanForm
+    extra = 1
 
 
 @admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
@@ -123,7 +127,7 @@ class CancerDiagnosisAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 class HaartRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = HaartRecordForm
-#     inlines = [HaartMedRecordInlineAdmin, ]
+    inlines = [HaartMedRecordInlineAdmin, ]
     fieldsets = (
         (None, {
             'fields': (
@@ -141,7 +145,7 @@ class HaartRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 class OncologyTreatmentPlanAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentPlanForm
-#     inlines = [ChemoMedPlanInlineAdmin, ]
+    inlines = [ChemoMedPlanInlineAdmin, ]
     fieldsets = (
         (None, {
             'fields': (

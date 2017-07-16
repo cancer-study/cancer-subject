@@ -1,8 +1,12 @@
 from django.contrib import admin
 
-from ..models import OncologyTreatmentRecord, OTRChemo, OTRRadiation, OTRSurgical
+from edc_base.modeladmin_mixins.inlines import TabularInlineMixin
+
+from ..admin_site import cancer_subject_admin
 from ..forms import OncologyTreatmentRecordForm, OTRChemoForm, OTRRadiationForm, OTRSurgicalForm
-from cancer_subject.admin_site import cancer_subject_admin
+from ..forms.main import ChemoMedRecordForm
+from ..models import ChemoMedRecord
+from ..models import OncologyTreatmentRecord, OTRChemo, OTRRadiation, OTRSurgical
 from .modeladmin_mixins import CrfModelAdminMixin
 
 
@@ -25,15 +29,17 @@ class OncologyTreatmentRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
                      " review records over the phone")]
 
 
-# class ChemoMedRecordInlineAdmin(BaseTabularInline):
-#     model = ChemoMedRecord
+class ChemoMedRecordInlineAdmin(TabularInlineMixin, admin.TabularInline):
+    model = ChemoMedRecord
+    form = ChemoMedRecordForm
+    extra = 1
 
 
 @admin.register(OTRChemo, site=cancer_subject_admin)
 class OTRChemoAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OTRChemoForm
-#     inlines = [ChemoMedRecordInlineAdmin, ]
+    inlines = [ChemoMedRecordInlineAdmin, ]
     fields = (
         "subject_visit",
         "chemo_intent",
@@ -62,8 +68,9 @@ class OTRRadiationAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     radio_fields = {
         "radiation_details": admin.VERTICAL,
     }
-    instructions = [("Review the recorded cancer type and stage information recorded and"
-                      " consider updating 'Cancer Diagnosis' form accordingly.")]
+    instructions = [(
+        "Review the recorded cancer type and stage information recorded and"
+        " consider updating 'Cancer Diagnosis' form accordingly.")]
 
 
 @admin.register(OTRSurgical, site=cancer_subject_admin)

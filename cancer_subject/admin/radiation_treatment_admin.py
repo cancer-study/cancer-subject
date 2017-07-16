@@ -1,16 +1,24 @@
 from django.contrib import admin
 
+from edc_base.modeladmin_mixins.inlines import TabularInlineMixin
+
 from ..models import RadiationTreatment
 from ..forms import RadiationTreatmentForm
 from ..admin_site import cancer_subject_admin
 from .modeladmin_mixins import CrfModelAdminMixin
 
 
+class RadiationTreatmentRecordInlineAdmin(TabularInlineMixin, admin.TabularInline):
+    model = RadiationTreatmentForm
+    form = RadiationTreatmentForm
+    extra = 1
+
+
 @admin.register(RadiationTreatment, site=cancer_subject_admin)
 class RadiationTreatmentAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = RadiationTreatmentForm
-#     inlines = [RadiationTreatmentRecordInlineAdmin, ]
+    inlines = [RadiationTreatmentRecordInlineAdmin, ]
     fields = (
         "subject_visit",
         "treatment_start_date",
