@@ -8,11 +8,10 @@ from ..forms import (
     BaseRiskAssessmentForm, BaseRiskAssessmentAlcoholForm, BaseRiskAssessmentCancerForm,
     BaseRiskAssessmentChemicalForm, BaseRiskAssessmentDemoForm, BaseRiskAssessmentEatingForm,
     BaseRiskAssessmentMiningForm, BaseRiskAssessmentSmokingForm, BaseRiskAssessmentSunForm,
-    BaseRiskAssessmentFuelForm)
+    BaseRiskAssessmentFuelForm, BaseRiskAssessmentFemaleForm)
 
 from ..admin_site import cancer_subject_admin
 from .modeladmin_mixins import CrfModelAdminMixin
-from cancer_subject.models.base_risk_assessment_female import 
 
 
 @admin.register(BaseRiskAssessment, site=cancer_subject_admin)
