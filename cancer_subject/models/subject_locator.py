@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.validators import RegexValidator
-from django_crypto_fields.fields.encrypted_char_field import EncryptedCharField
+from django_crypto_fields.fields.encrypted_char_field import (
+    EncryptedCharField)
 
 from .subject_visit import SubjectVisit
 
@@ -13,7 +14,8 @@ from edc_locator.model_mixins import LocatorModelMixin
 from edc_constants.choices import YES_NO
 
 
-class SubjectLocator(LocatorModelMixin, RequiresConsentMixin, BaseUuidModel):
+class SubjectLocator(LocatorModelMixin, RequiresConsentMixin,
+                     BaseUuidModel):
 
     subject_visit = models.OneToOneField(SubjectVisit)
     # v2 added more fields to key additional contact info for
@@ -29,9 +31,10 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentMixin, BaseUuidModel):
     has_alt_contact = models.CharField(
         max_length=25,
         choices=YES_NO,
-        verbose_name=("If we are unable to contact the person indicated above, is there another"
-                      " individual (including next of kin) with whom the study team can get"
-                      " in contact with?"),
+        verbose_name=("If we are unable to contact the person "
+                      "indicated above, is there another individual "
+                      "(including next of kin) with whom the study "
+                      "team can get in contact with?"),
         help_text="",
     )
 
@@ -80,7 +83,8 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentMixin, BaseUuidModel):
     # new fields on upgrade
     local_clinic = models.CharField(
         verbose_name=(
-            "When you stay in the village, what clinic/health post do you normally go to?"),
+            "When you stay in the village, what clinic/health "
+            "post do you normally go to?"),
         max_length=75,
         validators=[RegexValidator(
             regex=r'^[0-9]{2}[-][0-9]{1}[-][0-9]{2}$',
