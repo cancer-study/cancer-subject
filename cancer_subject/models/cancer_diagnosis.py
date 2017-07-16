@@ -238,8 +238,6 @@ class CancerDiagnosis (CrfModelMixin):
 #         help_text=""
 #         )
     # added on upgrade
-    # TODO: ResultsToRecord???
-<<<<<<< HEAD
     results_to_record = models.ManyToManyField(
         ResultsToRecord,
         verbose_name=(
@@ -247,15 +245,6 @@ class CancerDiagnosis (CrfModelMixin):
             "results be recorded (refer to SOP)?"),
         blank=True,
         help_text="(tick all that apply - REMEMBER to highlight your chosen options before save)",)
-=======
-#     results_to_record = models.ManyToManyField(ResultsToRecord,
-#                                                verbose_name=("Based the cancer diagnosis or other factors which of the following "
-#                                                              "results be recorded (refer to SOP)?"),
-#                                                null=True,
-#                                                blank=True,
-# help_text="(tick all that apply - REMEMBER to highlight your chosen
-# options before save)",)
->>>>>>> 37cfbcae3eb8e0bd182b029f095539b312ca5e59
 
     results_to_record_other = OtherCharField()
 

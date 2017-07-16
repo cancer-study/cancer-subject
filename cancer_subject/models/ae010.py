@@ -37,5 +37,5 @@ class Ae010 (CrfModelMixin):
     )
 
     class Meta(CrfModelMixin.Meta):
-        app_label = "cancer"
+        app_label = "cancer_subject"
         verbose_name = "AE010 Adverse Event Report"
