@@ -4,11 +4,12 @@ from django.core.validators import (
     MaxValueValidator, MinValueValidator, RegexValidator)
 
 from edc_constants.choices import YES_NO, YES_NO_DONT_KNOW
+from edc_reference.model_mixins import ReferenceModelMixin
 
 from .model_mixins import CrfModelMixin
 
 
-class BaselineHIVHistory (CrfModelMixin):
+class BaselineHIVHistory (CrfModelMixin, ReferenceModelMixin):
 
     """CA006"""
 

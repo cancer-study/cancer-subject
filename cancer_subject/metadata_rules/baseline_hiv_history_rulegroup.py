@@ -13,14 +13,14 @@ class BaselineHIVHistoryRuleGroup(CrfRuleGroup):
             func=lambda has_smoked: True if has_smoked in [NO, DWTA] else False),
         consequence=NOT_REQUIRED,
         alternative=REQUIRED,
-        target_models=['bhhhivtest'])
+        target_models=[f'{app_label}.bhhhivtest'])
 
     had_who_illnesses = CrfRule(
         predicate=P('had_who_illnesses', 'eq', NO),
         consequence=NOT_REQUIRED,
         alternative=REQUIRED,
-        target_models=['bhhwhoillness'])
+        target_models=[f'{app_label}.bhhwhoillness'])
 
     class Meta:
         app_label = 'cancer_subject'
-        source_model = 'cancer_subject.baselinehivhistory'
+        source_model = f'{app_label}.baselinehivhistory'

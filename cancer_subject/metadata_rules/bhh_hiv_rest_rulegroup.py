@@ -11,7 +11,7 @@ class BHHHivTestRuleGroup(CrfRuleGroup):
         predicate=P('hiv_result', 'eq', POS),
         consequence=NOT_REQUIRED,
         alternative=REQUIRED,
-        target_models=['haartrecord'])
+        target_models=[f'{app_label}.haartrecord'])
 
     also_hiv_result = CrfRule(
         predicate=PF(
@@ -19,8 +19,8 @@ class BHHHivTestRuleGroup(CrfRuleGroup):
             func=lambda hiv_result: True if hiv_result in [NEG, UNK] else False),
         consequence=NOT_REQUIRED,
         alternative=REQUIRED,
-        target_models=['haartrecord'])
+        target_models=[f'{app_label}.haartrecord'])
 
     class Meta:
         app_label = 'cancer_subject'
-        source_model = 'cancer_subject.bhhivtest'
+        source_model = f'{app_label}.bhhhivtest'

@@ -2,6 +2,7 @@ from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 from edc_constants.choices import YES_NO_DONT_KNOW, YES_NO
+from edc_reference.model_mixins import ReferenceModelMixin
 
 from .model_mixins.crf_model_mixin import CrfModelMixin
 
@@ -10,7 +11,7 @@ from ..choices.base_risk_assessment import (
     TRADMEDICINE_CHOICE, YES_NO_DECLINED)
 
 
-class BaseRiskAssessment (CrfModelMixin):
+class BaseRiskAssessment (CrfModelMixin, ReferenceModelMixin):
 
     hepatitis = models.CharField(
         verbose_name=("Have you been told you have hepatitis B or C "
