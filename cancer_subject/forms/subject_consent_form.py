@@ -2,10 +2,19 @@ from django import forms
 
 from edc_constants.choices import YES_NO
 
+from cancer_subject_validations.form_validators import (
+    SubjectConsentFormValidation)
+
 from ..models import SubjectConsent
 
 
 class SubjectConsentForm(forms.ModelForm):
+
+    def clean(self):
+        cleaned_data = super().clean()
+        cleaned_data = SubjectConsentFormValidation(
+            cleaned_data=cleaned_data).clean()
+        return cleaned_data
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -21,12 +30,6 @@ class SubjectConsentForm(forms.ModelForm):
                'that is taken be stored for genetic analysis?'),
         choices=YES_NO,
         widget=forms.RadioSelect)
-
-    def clean(self):
-        cleaned_data = super().clean()
-#         cleaned_data = SubjectConsentFormValidator(
-#             cleaned_data=cleaned_data).clean()
-        return cleaned_data
 
     class Meta:
         model = SubjectConsent
