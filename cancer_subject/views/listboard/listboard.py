@@ -11,7 +11,7 @@ from .base_listboard import BaseListboardView
 
 class ListboardView(BaseListboardView):
 
-    model = SubjectConsent
+    model = 'cancer_subject.subjectconsent'
     model_wrapper_class = SubjectConsentModelWrapper
 
     @method_decorator(login_required)

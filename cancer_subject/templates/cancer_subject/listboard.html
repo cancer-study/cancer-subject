@@ -1,0 +1,50 @@
+{% extends base_template_name %}
+
+{% load tz %}
+{% load staticfiles %}
+{% load crispy_forms_tags %}
+{% load edc_base_extras %}
+
+{% block main %}
+<div class="container">
+    <div class="col-md-12">
+        <div class="panel-group">
+            <div class="panel panel-info">
+                <div class="panel-heading">
+
+                    <i class="fa fa-user-circle-o fa-2x"></i></i>
+                        <span class="pull-right">{% include 'edc_dashboard/search_form.html' %}</span>
+
+                </div>
+                <div class="table table-responsive">
+                    <table class="table table-condensed table-hover small">
+                    <thead>
+
+                    {% include 'cancer_subject/listboard/results_header.html' %}
+
+			         </thead>
+			         <tbody>
+
+                    {% include 'cancer_subject/listboard/results_body.html' %}
+
+			         </tbody>
+			         </table>
+                    <!-- begin spacer rows -->
+
+                    <table>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    <tr><td>&nbsp;</td></tr>
+                    </table>
+                    <!-- end spacer rows -->
+                </div>
+                {% include 'edc_dashboard/paginator.html' %}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock main %}
