@@ -1,7 +1,6 @@
 from django.apps import apps as django_apps
 from django.db import models
 from django.db.models.deletion import PROTECT
-
 from edc_base.model_mixins import BaseUuidModel
 from edc_consent.model_mixins import RequiresConsentMixin
 from edc_lab.model_mixins.requisition import (
@@ -17,8 +16,8 @@ from edc_visit_tracking.model_mixins import (
     CrfModelMixin as VisitTrackingCrfModelMixin,
     PreviousVisitModelMixin)
 
-from .subject_visit import SubjectVisit
 from .model_mixins.search_slug_model_mixin import SearchSlugModelMixin
+from .subject_visit import SubjectVisit
 
 
 class Manager(VisitTrackingCrfModelManager, SearchSlugManager):

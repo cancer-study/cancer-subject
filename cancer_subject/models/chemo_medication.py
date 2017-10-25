@@ -70,7 +70,9 @@ class BaseChemoMedication(BaseUuidModel):
 
 class ChemoMedPlan(BaseChemoMedication):
 
-    oncology_treatment_plan = models.ForeignKey(OncologyTreatmentPlan)
+    oncology_treatment_plan = models.ForeignKey(
+        OncologyTreatmentPlan,
+        on_delete=models.PROTECT)
 
 #     objects = ChemoMedPlanManager()
 
@@ -81,7 +83,9 @@ class ChemoMedPlan(BaseChemoMedication):
 
 class ChemoMedRecord(BaseChemoMedication):
 
-    otr_chemo = models.ForeignKey(OTRChemo)
+    otr_chemo = models.ForeignKey(
+        OTRChemo,
+        on_delete=models.PROTECT)
 
 #     objects = ChemoMedRecordManager()
 

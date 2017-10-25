@@ -1,10 +1,9 @@
 from django.db import models
-
 from edc_base.model_mixins import BaseUuidModel
 
-from .haart_record import HaartRecord
 from ..choices.haart_record import (
     MOD_REASON_CHOICE, ARV_REASON_CHOICE, HAART_MEDS_DRUG_NAMES)
+from .haart_record import HaartRecord
 
 
 class BaseHaartMedication(BaseUuidModel):
@@ -45,7 +44,9 @@ class BaseHaartMedication(BaseUuidModel):
 
 class HaartMedRecord(BaseHaartMedication):
 
-    haart_record = models.ForeignKey(HaartRecord)
+    haart_record = models.ForeignKey(
+        HaartRecord,
+        on_delete=models.PROTECT)
 
     class Meta:
         app_label = "cancer_subject"
