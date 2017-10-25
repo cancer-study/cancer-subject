@@ -1,6 +1,7 @@
-from edc_dashboard.view_mixins import (
-    ShowHideViewMixin, SubjectIdentifierViewMixin, ConsentViewMixin)
 from edc_metadata.view_mixins import MetaDataViewMixin
+
+from edc_subject_dashboard.view_mixins import (
+    ConsentViewMixin, ShowHideViewMixin, SubjectIdentifierViewMixin)
 
 
 from ..appointment_view_mixin import AppointmentViewMixin
