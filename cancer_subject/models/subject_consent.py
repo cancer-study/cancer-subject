@@ -1,13 +1,12 @@
-from django.core.exceptions import ImproperlyConfigured
 from django.apps import apps as django_apps
+from django.core.exceptions import ImproperlyConfigured
 from django.db import models
-
+from edc_base.constants import DEFAULT_BASE_FIELDS
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
-from edc_base.model_mixins.constants import DEFAULT_BASE_FIELDS
 from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
-from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.field_mixins import SampleCollectionFieldsMixin, CitizenFieldsMixin
+from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.field_mixins.bw import IdentityFieldsMixin
 from edc_consent.managers import ConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
@@ -29,7 +28,7 @@ class UpdatesOrCreatesRegistrationModelMixin(BaseUpdatesOrCreatesRegistrationMod
         """
         registration_options = {}
         for field in self.registration_model._meta.get_fields():
-            if (field.name not in DEFAULT_BASE_FIELDS + ['_state'] + 
+            if (field.name not in DEFAULT_BASE_FIELDS + ['_state'] +
                     [self.registration_unique_field]):
                 try:
                     registration_options.update({field.name: getattr(
