@@ -1,9 +1,9 @@
 from django.db import models
-from django.core.urlresolvers import reverse
+from django.urls import reverse
 
-from edc.subject.consent.models import BaseConsent
 from edc.subject.consent.mixins import ReviewAndUnderstandingFieldsMixin
 from edc.subject.consent.mixins.bw import IdentityFieldsMixin
+from edc.subject.consent.models import BaseConsent
 from edc.subject.registration.models import RegisteredSubject
 
 from .subject_off_study_mixin import SubjectOffStudyMixin
