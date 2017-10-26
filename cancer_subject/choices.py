@@ -1,6 +1,10 @@
-from django.utils.translation import ugettext as _
-from edc_constants.constants import NEG, IND, UNK, DONT_KNOW, NONE, NOT_SURE, DECLINED
-from edc_constants.constants import OTHER, YES, NO, DWTA, NOT_APPLICABLE, POS
+from django.utils.translation import ugettext_lazy as _
+from edc_constants.constants import DONT_KNOW, NONE, NOT_SURE, DECLINED
+from edc_constants.constants import NEG, IND, UNK, OTHER
+from edc_constants.constants import YES, NO, DWTA, NOT_APPLICABLE, POS
+
+from cancer_subject.constants import ABLE_TO_PARTICIPATE, MENTAL_INCAPACITY,\
+    REFUSED, ALONE, NOT_PERFORMED, DAYS, MONTHS, YEARS, MARRIED, ZERO
 
 
 VISIT_UNSCHEDULED_REASON = (
@@ -49,12 +53,11 @@ APPT_GRADING = (
     ('guess', 'Estimated by RA'),
 )
 
-BLOOD_DRAW_TYPES = (
-    (CAPILLARY, 'Capillary'),
-    (VENOUS, 'Venous'),
-    (NOT_APPLICABLE, 'Not applicable'),
-)
-
+# BLOOD_DRAW_TYPES = (
+#     (CAPILLARY, 'Capillary'),
+#     (VENOUS, 'Venous'),
+#     (NOT_APPLICABLE, 'Not applicable'),
+# )
 
 CHRONIC_DISEASES = (
     ('diabetes', 'Diabetes'),
@@ -1439,4 +1442,31 @@ PIMA = (
     ('Multiple PIMA malfunction', 'Multiple PIMA malfunction'),
     ('Failed Blood Collection', 'Failed Blood Collection'),
     (OTHER, _('Other, specify:')),
+)
+
+
+ENROLLMENT_SITES = (
+    ('gaborone_private_hospital', ' Gaborone Private Hospital (GPH)'),
+    ('nyangabgwe_referral_Hospital', 'Nyangabgwe Referral Hospital (NRH)'),
+    ('princess_marina_hospital', 'Princess Marina Hospital (PMH)'),
+    ('bokamoso_private_hospital', 'Bokamoso Private Hospital (BPH)'),
+)
+
+
+VERBALHIVRESULT_CHOICE = (
+    (POS, _('HIV Positive')),
+    (NEG, _('HIV Negative')),
+    (IND, _('Indeterminate')),
+    (UNK, _('I am not sure')),
+    ('not_answering', _('Don\'t want to answer')),
+)
+
+INABILITY_TO_PARTICIPATE_REASON = (
+    (ABLE_TO_PARTICIPATE, ('ABLE to participate')),
+    (MENTAL_INCAPACITY, ('Mental Incapacity')),
+    ('Deaf/Mute', ('Deaf/Mute')),
+    ('Too sick', ('Too sick')),
+    ('Incarcerated', ('Incarcerated')),
+    (OTHER, ('Other, specify.')),
+    (NOT_APPLICABLE, ('Not applicable')),
 )

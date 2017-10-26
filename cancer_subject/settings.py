@@ -43,7 +43,6 @@ INSTALLED_APPS = [
     'edc_sync_files.apps.AppConfig',
     'django_crypto_fields.apps.AppConfig',
     'django_revision.apps.AppConfig',
-    'edc_appointment.apps.EdcAppointmentAppConfig',
     'edc_registration.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
     'edc_protocol.apps.AppConfig',

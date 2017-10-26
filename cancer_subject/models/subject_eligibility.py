@@ -1,25 +1,20 @@
 import re
 from uuid import uuid4
 
-from django.core.validators import RegexValidator, MinLengthValidator,\
-    MaxLengthValidator
+from django.core.validators import (RegexValidator, MinLengthValidator,
+                                    MaxLengthValidator)
 from django.db import models
 from django_crypto_fields.fields.firstname_field import FirstnameField
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
 from edc_base.model_validators.date import datetime_not_future
 from edc_base.utils import get_utcnow
-from edc_constants.choices import YES_NO, YES_NO_NA, NO, YES,\
-    GENDER_UNDETERMINED, YES_NO_UNKNOWN
+from edc_constants.choices import (YES_NO, YES_NO_NA, NO, YES,
+                                   GENDER_UNDETERMINED, YES_NO_UNKNOWN)
 from edc_constants.constants import UUID_PATTERN, NOT_APPLICABLE
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
-
-from cancer_screening.choices import INABILITY_TO_PARTICIPATE_REASON,\
-    ENROLLMENT_SITES
-from cancer_screening.managers import EligibilityManager
-
-from ..eligibility import Eligibility
-from ..eligibility_identifier import EligibilityIdentifier
+from cancer_subject.choices import (
+    ENROLLMENT_SITES, INABILITY_TO_PARTICIPATE_REASON)
 
 
 class EligibilityIdentifierModelMixin(NonUniqueSubjectIdentifierModelMixin, models.Model):
@@ -158,7 +153,7 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         null=True,
         editable=False)
 
-    objects = EligibilityManager()
+#     objects = EligibilityManager()
 
     history = HistoricalRecords()
 
@@ -171,16 +166,16 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
     def save(self, *args, **kwargs):
         self.verify_eligibility()
         if not self.id:
-            self.screening_identifier = EligibilityIdentifier().identifier
+            #             self.screening_identifier = EligibilityIdentifier().identifier
             self.update_subject_identifier_on_save()
-        eligibility = Eligibility(
-            age=self.age_in_years, literate=self.literacy,
-            guardian=self.guardian, legal_marriage=self.legal_marriage,
-            marriage_certificate=self.marriage_certificate,
-            citizen=self.citizen, cancer_status=self.cancer_status,
-            participation=self.inability_to_participate)
-        self.is_eligible = eligibility.eligible
-        self.loss_reason = eligibility.reasons
+#         eligibility = Eligibility(
+#             age=self.age_in_years, literate=self.literacy,
+#             guardian=self.guardian, legal_marriage=self.legal_marriage,
+#             marriage_certificate=self.marriage_certificate,
+#             citizen=self.citizen, cancer_status=self.cancer_status,
+#             participation=self.inability_to_participate)
+#         self.is_eligible = eligibility.eligible
+#         self.loss_reason = eligibility.reasons
         self.registration_identifier = self.screening_identifier
         self.update_mapper_fields
         super().save(*args, **kwargs)
@@ -203,12 +198,12 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         def if_no(value):
             return True if value == NO else False
 
-        eligibility = Eligibility(
-            age=self.age_in_years,
-            guardian=if_yes(self.guardian),
-            cancer_status=if_yes(self.cancer_status))
-        self.reasons_ineligible = ','.join(eligibility.reasons)
-        self.eligible = eligibility.eligible
+#         eligibility = Eligibility(
+#             age=self.age_in_years,
+#             guardian=if_yes(self.guardian),
+#             cancer_status=if_yes(self.cancer_status))
+#         self.reasons_ineligible = ','.join(eligibility.reasons)
+        self.eligible = True  # eligibility.eligible
 
     class Meta:
         verbose_name = 'Subject Eligibility'
