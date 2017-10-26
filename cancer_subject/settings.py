@@ -44,19 +44,13 @@ INSTALLED_APPS = [
     'django_crypto_fields.apps.AppConfig',
     'django_revision.apps.AppConfig',
     'edc_registration.apps.AppConfig',
+    'edc_metadata.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
     'edc_protocol.apps.AppConfig',
     'edc_offstudy.apps.AppConfig',
     'edc_locator.apps.AppConfig',
     'edc_lab.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
-    #     'cancer_subject.apps.EdcMetadataAppConfig',
-    #     'cancer_subject.apps.EdcIdentifierAppConfig',
-    #     'cancer_subject.apps.EdcProtocolAppConfig',
-    #     'cancer_subject.apps.EdcConsentAppConfig',
-    #     'cancer_subject.apps.EdcDeviceAppConfig',
-    #     'cancer_subject.apps.EdcTimepointAppConfig',
-    #     'cancer_subject.apps.EdcAppointmentAppConfig',
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
     'cancer_subject.apps.AppConfig',
 ]
@@ -143,7 +137,7 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'cancer_subject', 'static')
 STATIC_URL = '/static/'
 DEVICE_ID = '99'
 EDC_LAB_REQUISITION_MODEL = 'cancer_subject.subjectrequisition'
-# DEVICE_ROLE = 'CentralServer'
+DEVICE_ROLE = 'CentralServer'
 KEY_PATH = os.path.join(BASE_DIR, 'crypto_fields')
 GIT_DIR = BASE_DIR
 

@@ -13,8 +13,9 @@ from edc_constants.choices import (YES_NO, YES_NO_NA, NO, YES,
                                    GENDER_UNDETERMINED, YES_NO_UNKNOWN)
 from edc_constants.constants import UUID_PATTERN, NOT_APPLICABLE
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
-from cancer_subject.choices import (
-    ENROLLMENT_SITES, INABILITY_TO_PARTICIPATE_REASON)
+# from cancer_subject.choices import INABILITY_TO_PARTICIPATE_REASON
+# from ..choices import (
+#     ENROLLMENT_SITES, INABILITY_TO_PARTICIPATE_REASON)
 
 
 class EligibilityIdentifierModelMixin(NonUniqueSubjectIdentifierModelMixin, models.Model):
@@ -121,14 +122,14 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         help_text="If participate is illiterate, confirm there is a literate"
                   "witness available otherwise participant is not eligible.")
 
-    inability_to_participate = models.CharField(
-        verbose_name="Do any of the following reasons apply to the participant?",
-        max_length=17,
-        choices=INABILITY_TO_PARTICIPATE_REASON,
-        help_text=("Participant can only participate if NONE is selected. "
-                   "(Any of these reasons make the participant unable to take "
-                   "part in the informed consent process)"),
-    )
+#     inability_to_participate = models.CharField(
+#         verbose_name="Do any of the following reasons apply to the participant?",
+#         max_length=17,
+#         choices=INABILITY_TO_PARTICIPATE_REASON,
+#         help_text=("Participant can only participate if NONE is selected. "
+#                    "(Any of these reasons make the participant unable to take "
+#                    "part in the informed consent process)"),
+#     )
 
     cancer_status = models.CharField(
         verbose_name="Has a cancer diagnosis been documented?",
@@ -136,12 +137,12 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         choices=YES_NO,
         help_text='If NO, participant is not eligible.'
     )
-
-    enrollment_site = models.CharField(
-        max_length=100,
-        null=True,
-        choices=ENROLLMENT_SITES,
-        help_text="Hospital where subject is recruited")
+#
+#     enrollment_site = models.CharField(
+#         max_length=100,
+#         null=True,
+#         choices=ENROLLMENT_SITES,
+#         help_text="Hospital where subject is recruited")
 
     eligible = models.BooleanField(
         default=False,

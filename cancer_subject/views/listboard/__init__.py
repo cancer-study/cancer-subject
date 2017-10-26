@@ -1,1 +1,0 @@
-from .listboard import ListboardView

@@ -1,9 +1,8 @@
 from django import forms
 
-from cancer_screening.models.subject_eligibility import SubjectEligibility
 from cancer_subject.choices import COMMUNITY
-from cancer_subject_validations.form_validators import (
-    SubjectConsentFormValidation)
+from cancer_subject.models.subject_eligibility import SubjectEligibility
+from cancer_subject_validations.form_validators import SubjectConsentFormValidation
 
 from ..models import SubjectConsent
 
