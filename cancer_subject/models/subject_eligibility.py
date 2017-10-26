@@ -13,9 +13,18 @@ from edc_constants.choices import (YES_NO, YES_NO_NA, NO, YES,
                                    GENDER_UNDETERMINED, YES_NO_UNKNOWN)
 from edc_constants.constants import UUID_PATTERN, NOT_APPLICABLE
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
+from cancer_subject.screening_identifier import ScreeningIdentifier
 # from cancer_subject.choices import INABILITY_TO_PARTICIPATE_REASON
 # from ..choices import (
 #     ENROLLMENT_SITES, INABILITY_TO_PARTICIPATE_REASON)
+
+
+ENROLLMENT_SITES = (
+    ('gaborone_private_hospital', ' Gaborone Private Hospital (GPH)'),
+    ('nyangabgwe_referral_Hospital', 'Nyangabgwe Referral Hospital (NRH)'),
+    ('princess_marina_hospital', 'Princess Marina Hospital (PMH)'),
+    ('bokamoso_private_hospital', 'Bokamoso Private Hospital (BPH)'),
+)
 
 
 class EligibilityIdentifierModelMixin(NonUniqueSubjectIdentifierModelMixin, models.Model):
@@ -137,12 +146,12 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         choices=YES_NO,
         help_text='If NO, participant is not eligible.'
     )
-#
-#     enrollment_site = models.CharField(
-#         max_length=100,
-#         null=True,
-#         choices=ENROLLMENT_SITES,
-#         help_text="Hospital where subject is recruited")
+
+    enrollment_site = models.CharField(
+        max_length=100,
+        null=True,
+        choices=ENROLLMENT_SITES,
+        help_text="Hospital where subject is recruited")
 
     eligible = models.BooleanField(
         default=False,
@@ -154,57 +163,22 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         null=True,
         editable=False)
 
-#     objects = EligibilityManager()
-
     history = HistoricalRecords()
-
-#     def save(self, *args, **kwargs):
-#         self.verify_eligibility()
-#         if not self.id:
-#             self.screening_identifier = EligibilityIdentifier().identifier
-#         super().save(*args, **kwargs)
 
     def save(self, *args, **kwargs):
         self.verify_eligibility()
         if not self.id:
-            #             self.screening_identifier = EligibilityIdentifier().identifier
+            self.screening_identifier = ScreeningIdentifier().identifier
             self.update_subject_identifier_on_save()
-#         eligibility = Eligibility(
-#             age=self.age_in_years, literate=self.literacy,
-#             guardian=self.guardian, legal_marriage=self.legal_marriage,
-#             marriage_certificate=self.marriage_certificate,
-#             citizen=self.citizen, cancer_status=self.cancer_status,
-#             participation=self.inability_to_participate)
-#         self.is_eligible = eligibility.eligible
-#         self.loss_reason = eligibility.reasons
         self.registration_identifier = self.screening_identifier
         self.update_mapper_fields
         super().save(*args, **kwargs)
-
-#     def __str__(self):
-# return f'{self.screening_identifier} {self.gender} {self.age_in_years}'
 
     def __str__(self):
         return f'{self.screening_identifier} {self.first_name} ({self.initials}) {self.gender}/{self.age_in_years}'
 
     def natural_key(self):
         return (self.screening_identifier,)
-
-    def verify_eligibility(self):
-        """Verifies eligibility criteria and sets model attrs.
-        """
-        def if_yes(value):
-            return True if value == YES else False
-
-        def if_no(value):
-            return True if value == NO else False
-
-#         eligibility = Eligibility(
-#             age=self.age_in_years,
-#             guardian=if_yes(self.guardian),
-#             cancer_status=if_yes(self.cancer_status))
-#         self.reasons_ineligible = ','.join(eligibility.reasons)
-        self.eligible = True  # eligibility.eligible
 
     class Meta:
         verbose_name = 'Subject Eligibility'
