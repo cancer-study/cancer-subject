@@ -179,12 +179,10 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
     history = HistoricalRecords()
 
     def save(self, *args, **kwargs):
-        self.verify_eligibility()
         if not self.id:
             self.screening_identifier = ScreeningIdentifier().identifier
             self.update_subject_identifier_on_save()
         self.registration_identifier = self.screening_identifier
-        self.update_mapper_fields
         super().save(*args, **kwargs)
 
     def __str__(self):
