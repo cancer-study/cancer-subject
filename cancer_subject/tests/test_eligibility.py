@@ -1,15 +1,21 @@
-from django.apps import apps as django_apps
-from django.test import TestCase, tag
-from edc_constants.constants import FEMALE, YES, MALE, ABNORMAL, NORMAL, NO
-from model_mommy import mommy
-from cancer_subject.eligibility import AgeEvaluator
+from django.test import TestCase
+from edc_constants.constants import YES, NO
+
+from ..eligibility import CancerStatusEvaluator
 
 
-@tag('screening')
 class TestSubjectScreening(TestCase):
 
-    def setUp(self):
-        django_apps.app_configs[
-            'cancer_subject'].screening_age_adult_upper = 99
-        django_apps.app_configs[
-            'cancer_subject'].screening_age_adult_lower = 18
+    def test_eligibility_valid_cancer_status(self):
+        status_evaluator = CancerStatusEvaluator(cancer_status=YES)
+        self.assertTrue(status_evaluator.eligible)
+
+    def test_eligibility_invalid_cancer_status(self):
+        status_evaluator = CancerStatusEvaluator(cancer_status=NO)
+        self.assertFalse(status_evaluator.eligible)
+
+#     @tag('123')
+#     def test_eligibility(self):
+#         obj = Eligibility(
+#             cancer_status=True)
+#         self.assertTrue(obj.eligible)
