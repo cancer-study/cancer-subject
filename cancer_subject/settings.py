@@ -140,6 +140,8 @@ EDC_LAB_REQUISITION_MODEL = 'cancer_subject.subjectrequisition'
 DEVICE_ROLE = 'CentralServer'
 KEY_PATH = os.path.join(BASE_DIR, 'crypto_fields')
 GIT_DIR = BASE_DIR
+COUNTRY = 'Botswana'
+HOLIDAY_FILE = ''
 
 if 'test' in sys.argv and 'mysql' not in DATABASES.get('default').get('ENGINE'):
     MIGRATION_MODULES = {
