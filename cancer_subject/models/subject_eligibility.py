@@ -13,10 +13,17 @@ from edc_constants.choices import (YES_NO, YES_NO_NA, NO, YES,
                                    GENDER_UNDETERMINED, YES_NO_UNKNOWN)
 from edc_constants.constants import UUID_PATTERN, NOT_APPLICABLE, OTHER
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
+from edc_search.model_mixins import SearchSlugManager
 
 from cancer_subject.constants import ABLE_TO_PARTICIPATE, MENTAL_INCAPACITY
 
 from ..screening_identifier import ScreeningIdentifier
+
+
+class SubjectScreeningManager(SearchSlugManager, models.Manager):
+
+    def get_by_natural_key(self, screening_identifier):
+        return self.get(screening_identifier=screening_identifier)
 
 
 # from cancer_subject.choices import INABILITY_TO_PARTICIPATE_REASON
@@ -186,6 +193,8 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         max_length=150,
         null=True,
         editable=False)
+
+    objects = SubjectScreeningManager()
 
     history = HistoricalRecords()
 

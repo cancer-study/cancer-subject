@@ -19,6 +19,7 @@ from .chemo_medication import ChemoMedRecord, ChemoMedPlan
 from .current_symptoms import CurrentSymptoms
 from .haart_medication import HaartMedRecord
 from .haart_record import HaartRecord
+from .identifier_history import IdentifierHistory
 from .lab_result import LabResult
 from .lab_result_cd4 import LabResultCd4
 from .lab_result_chemistry import LabResultChemistry
