@@ -82,6 +82,7 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         verbose_name='First name',
         validators=[RegexValidator("^[A-Z]{1,250}$", "Ensure first name is in CAPS and "
                                    "does not contain any spaces or numbers")],
+        null=True,
         help_text="")
 
     initials = models.CharField(
@@ -91,27 +92,32 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
             MinLengthValidator(2),
             MaxLengthValidator(3),
             RegexValidator("^[A-Z]{1,3}$", "Must be Only CAPS and 2 or 3 letters. No spaces or numbers allowed.")],
+        null=True,
         help_text="")
 
     age_in_years = models.IntegerField(
-        verbose_name='Age in years as reported by patient')
+        verbose_name='Age in years as reported by patient',
+        null=True,)
 
     guardian = models.CharField(
         verbose_name="If minor, is there a guardian available? ",
         max_length=10,
         choices=YES_NO_NA,
+        null=True,
         help_text="If a minor age 16 and 17, ensure a guardian is available otherwise"
                   " participant will not be enrolled.")
 
     gender = models.CharField(
         verbose_name='Gender',
         max_length=1,
+        null=True,
         choices=GENDER_UNDETERMINED)
 
     has_identity = models.CharField(
         verbose_name="[Interviewer] Has the subject presented a valid OMANG or other identity document?",
         max_length=10,
         choices=YES_NO,
+        null=True,
         help_text='Allow Omang, Passport number, driver\'s license number or Omang receipt number. '
                   'If \'NO\' participant will not be enrolled.')
 
@@ -119,6 +125,7 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         verbose_name="Are you a Botswana citizen? ",
         max_length=7,
         choices=YES_NO_UNKNOWN,
+        null=True,
         help_text="")
 
     legal_marriage = models.CharField(
@@ -126,6 +133,7 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         max_length=3,
         choices=YES_NO_NA,
         default=NOT_APPLICABLE,
+        null=True,
         help_text="If 'NO' participant is not eligible.")
 
     marriage_certificate = models.CharField(
@@ -134,6 +142,7 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         max_length=3,
         choices=YES_NO_NA,
         default=NOT_APPLICABLE,
+        null=True,
         help_text="If 'NO' participant is not eligible.")
 
     literacy = models.CharField(
@@ -141,6 +150,7 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
                      "  LITERATE witness available ",
         max_length=7,
         choices=YES_NO_UNKNOWN,
+        null=True,
         help_text="If participate is illiterate, confirm there is a literate"
                   "witness available otherwise participant is not eligible.")
 
@@ -148,6 +158,7 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         verbose_name="Do any of the following reasons apply to the participant?",
         max_length=17,
         choices=INABILITY_TO_PARTICIPATE_REASON,
+        null=True,
         help_text=("Participant can only participate if NONE is selected. "
                    "(Any of these reasons make the participant unable to take "
                    "part in the informed consent process)"),
