@@ -203,6 +203,8 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
             self.screening_identifier = ScreeningIdentifier().identifier
             self.update_subject_identifier_on_save()
         self.registration_identifier = self.screening_identifier
+        if self.cancer_status:
+            self.eligible = True
         super().save(*args, **kwargs)
 
     def __str__(self):

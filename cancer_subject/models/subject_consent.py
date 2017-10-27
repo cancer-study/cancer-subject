@@ -64,8 +64,9 @@ class SubjectConsent(
     """ A model completed by the user that captures the ICF.
     """
 
-#     subject_screening = models.ForeignKey(
-#         SubjectScreening, on_delete=models.PROTECT)
+    screening_identifier = models.CharField(
+        verbose_name='Screening Identifier',
+        max_length=50)
 
     is_signed = models.BooleanField(default=False, editable=False)
 
