@@ -2,16 +2,15 @@ from django.contrib import admin
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
-
 from edc_base.modeladmin_mixins import (
     ModelAdminInstitutionMixin, audit_fieldset_tuple, audit_fields,
     ModelAdminNextUrlRedirectMixin)
+
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 
-
+from ..admin_site import cancer_subject_admin
 from ..forms import SubjectConsentForm
 from ..models import SubjectConsent
-from ..admin_site import cancer_subject_admin
 
 
 @admin.register(SubjectConsent, site=cancer_subject_admin)
@@ -24,7 +23,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
     fieldsets = (
         (None, {
             'fields': (
-                'subject_screening',
+                #                 'subject_screening',
                 'subject_identifier',
                 'first_name',
                 'last_name',
@@ -37,11 +36,11 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
                 'guardian_name',
                 'is_dob_estimated',
                 'identity',
-                'id_type',
+                #                 'id_type',
                 'confirm_identity',
                 'is_incarcerated',
-                'may_store_samples',
-                'store_genetic_samples',
+                #                 'may_store_samples',
+                #                 'store_genetic_samples',
                 'comment',
                 'consent_reviewed',
                 'study_questions',
