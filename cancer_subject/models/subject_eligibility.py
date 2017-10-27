@@ -11,19 +11,32 @@ from edc_base.model_validators.date import datetime_not_future
 from edc_base.utils import get_utcnow
 from edc_constants.choices import (YES_NO, YES_NO_NA, NO, YES,
                                    GENDER_UNDETERMINED, YES_NO_UNKNOWN)
-from edc_constants.constants import UUID_PATTERN, NOT_APPLICABLE
+from edc_constants.constants import UUID_PATTERN, NOT_APPLICABLE, OTHER
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
-from cancer_subject.screening_identifier import ScreeningIdentifier
+
+from cancer_subject.constants import ABLE_TO_PARTICIPATE, MENTAL_INCAPACITY
+
+from ..screening_identifier import ScreeningIdentifier
+
+
 # from cancer_subject.choices import INABILITY_TO_PARTICIPATE_REASON
 # from ..choices import (
 #     ENROLLMENT_SITES, INABILITY_TO_PARTICIPATE_REASON)
-
-
 ENROLLMENT_SITES = (
     ('gaborone_private_hospital', ' Gaborone Private Hospital (GPH)'),
     ('nyangabgwe_referral_Hospital', 'Nyangabgwe Referral Hospital (NRH)'),
     ('princess_marina_hospital', 'Princess Marina Hospital (PMH)'),
     ('bokamoso_private_hospital', 'Bokamoso Private Hospital (BPH)'),
+)
+
+INABILITY_TO_PARTICIPATE_REASON = (
+    (ABLE_TO_PARTICIPATE, ('ABLE to participate')),
+    (MENTAL_INCAPACITY, ('Mental Incapacity')),
+    ('Deaf/Mute', ('Deaf/Mute')),
+    ('Too sick', ('Too sick')),
+    ('Incarcerated', ('Incarcerated')),
+    (OTHER, ('Other, specify.')),
+    (NOT_APPLICABLE, ('Not applicable')),
 )
 
 
@@ -131,14 +144,14 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         help_text="If participate is illiterate, confirm there is a literate"
                   "witness available otherwise participant is not eligible.")
 
-#     inability_to_participate = models.CharField(
-#         verbose_name="Do any of the following reasons apply to the participant?",
-#         max_length=17,
-#         choices=INABILITY_TO_PARTICIPATE_REASON,
-#         help_text=("Participant can only participate if NONE is selected. "
-#                    "(Any of these reasons make the participant unable to take "
-#                    "part in the informed consent process)"),
-#     )
+    inability_to_participate = models.CharField(
+        verbose_name="Do any of the following reasons apply to the participant?",
+        max_length=17,
+        choices=INABILITY_TO_PARTICIPATE_REASON,
+        help_text=("Participant can only participate if NONE is selected. "
+                   "(Any of these reasons make the participant unable to take "
+                   "part in the informed consent process)"),
+    )
 
     cancer_status = models.CharField(
         verbose_name="Has a cancer diagnosis been documented?",

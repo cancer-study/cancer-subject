@@ -7,6 +7,11 @@ from edc_base.modeladmin_mixins import (
     ModelAdminReadOnlyMixin, ModelAdminInstitutionMixin)
 from edc_base.modeladmin_mixins import audit_fieldset_tuple
 
+from ..admin_site import cancer_subject_admin
+from ..forms.subject_eligibility_form import SubjectEligibilityForm
+
+from ..models import SubjectEligibility
+
 
 class ModelAdminMixin(ModelAdminNextUrlRedirectMixin, ModelAdminFormInstructionsMixin,
                       ModelAdminFormAutoNumberMixin, ModelAdminRevisionMixin,
@@ -18,7 +23,7 @@ class ModelAdminMixin(ModelAdminNextUrlRedirectMixin, ModelAdminFormInstructions
     empty_value_display = '-'
 
 
-@admin.register(SubjectEligibility, site=cancer_screening_admin)
+@admin.register(SubjectEligibility, site=cancer_subject_admin)
 class SubjectEligibilityAdmin(ModelAdminMixin, FieldsetsModelAdminMixin, admin.ModelAdmin):
 
     form = SubjectEligibilityForm
@@ -29,20 +34,21 @@ class SubjectEligibilityAdmin(ModelAdminMixin, FieldsetsModelAdminMixin, admin.M
     fieldsets = (
         (None, {
             'fields': (
-                'report_datetime',
-                'first_name',
-                'initials',
-                'gender',
+                #                 'report_datetime',
+                #                 'first_name',
+                #                 'initials',
+                #                 'gender',
                 "cancer_status",
                 'enrollment_site',
-                'age_in_years',
-                'has_identity',
-                "guardian",
-                "citizen",
-                "legal_marriage",
-                "marriage_certificate",
-                "literacy",
-                'inability_to_participate')}),
+                #                 'age_in_years',
+                #                 'has_identity',
+                #                 "guardian",
+                #                 "citizen",
+                #                 "legal_marriage",
+                #                 "marriage_certificate",
+                #                 "literacy",
+                #                 'inability_to_participate'
+            )}),
         audit_fieldset_tuple)
 
     list_display = (
