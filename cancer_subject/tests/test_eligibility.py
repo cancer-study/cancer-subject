@@ -1,7 +1,7 @@
 from django.test import TestCase
 from edc_constants.constants import YES, NO
 
-from ..eligibility import CancerStatusEvaluator
+from ..eligibility import CancerStatusEvaluator, Eligibility
 
 
 class TestSubjectScreening(TestCase):
@@ -14,8 +14,7 @@ class TestSubjectScreening(TestCase):
         status_evaluator = CancerStatusEvaluator(cancer_status=NO)
         self.assertFalse(status_evaluator.eligible)
 
-#     @tag('123')
-#     def test_eligibility(self):
-#         obj = Eligibility(
-#             cancer_status=True)
-#         self.assertTrue(obj.eligible)
+    def test_eligibility(self):
+        obj = Eligibility(
+            cancer_status=YES)
+        self.assertTrue(obj.eligible)
