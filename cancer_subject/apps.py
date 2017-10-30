@@ -19,6 +19,7 @@ from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import MISSED_VISIT
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
 
+from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
 from edc_base_test.apps import AppConfig as BaseEdcBaseTestAppConfig
 from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
@@ -110,6 +111,11 @@ if settings.APP_NAME == 'cancer_subject':
     class EdcAppointmentAppConfig(BaseEdcAppointmentAppConfig):
         app_label = 'cancer_subject'
         default_appt_type = 'clinic'
+        configurations = [
+            AppointmentConfig(
+                model='cancer_subject.appointment',
+                related_visit_model='cancer_subject.subjectvisit')
+        ]
         facilities = {
             'clinic': Facility(
                 name='clinic', days=[MO, TU, WE, TH, FR, SA, SU],

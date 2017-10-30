@@ -83,4 +83,4 @@ class TestEnrollment(TestCase):
             enrollment_site='gaborone_private_hospital',
             subject_identifier=consent.subject_identifier
         )
-        self.assertEqual(Appointment.objects.all().count(), 1)
+        self.assertEqual(Appointment.objects.all().count(), 21)
