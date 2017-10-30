@@ -10,6 +10,7 @@ from edc_base.utils import get_utcnow
 from edc_constants.constants import FAILED_ELIGIBILITY
 from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_device.constants import CENTRAL_SERVER
+from edc_facility.facility import Facility
 from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
 from edc_lab.apps import AppConfig as BaseEdcLabAppConfig
 from edc_label.apps import AppConfig as BaseEdcLabelAppConfig
@@ -22,7 +23,6 @@ from edc_visit_tracking.constants import MISSED_VISIT
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
 
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
-from edc_appointment.facility import Facility
 from edc_base_test.apps import AppConfig as BaseEdcBaseTestAppConfig
 from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
 from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
