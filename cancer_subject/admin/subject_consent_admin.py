@@ -23,7 +23,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
     fieldsets = (
         (None, {
             'fields': (
-                #                 'subject_screening',
+#                 'subject_screening',
                 'subject_identifier',
                 'first_name',
                 'last_name',
@@ -36,11 +36,11 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
                 'guardian_name',
                 'is_dob_estimated',
                 'identity',
-                #                 'id_type',
+#                 'id_type',
                 'confirm_identity',
                 'is_incarcerated',
                 'may_store_samples',
-                #                 'store_genetic_samples',
+#                 'store_genetic_samples',
                 'comment',
                 'consent_reviewed',
                 'study_questions',
@@ -62,18 +62,11 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
         "may_store_samples": admin.VERTICAL,
         "study_questions": admin.VERTICAL,
     }
-
-    def formfield_for_foreignkey(self, db_field, request, **kwargs):
-        if db_field.name == "subject_screening":
-            kwargs["queryset"] = SubjectScreening.objects.filter(
-                id__exact=request.GET.get('subject_screening'))
-        return super().formfield_for_foreignkey(
-            db_field, request, **kwargs)
-
+  
     def get_readonly_fields(self, request, obj=None):
         return (super().get_readonly_fields(request, obj=obj)
                 + audit_fields)
-
+  
     def view_on_site(self, obj):
         try:
             return reverse(

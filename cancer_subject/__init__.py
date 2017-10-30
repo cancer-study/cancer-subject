@@ -1,1 +1,1 @@
-from .eligibility import CancerStatusEvaluator
+from .eligibility import CancerStatusEvaluator, Eligibility
