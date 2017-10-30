@@ -53,6 +53,7 @@ INSTALLED_APPS = [
     'edc_visit_schedule.apps.AppConfig',
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
     'cancer_subject.apps.AppConfig',
+    'edc_base_test.apps.AppConfig',
 ]
 
 
