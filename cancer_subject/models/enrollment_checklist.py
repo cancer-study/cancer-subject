@@ -1,9 +1,12 @@
 from django.db import models
-
 from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_base.model_validators.eligibility import eligible_if_yes
 from edc_constants.choices import YES_NO
+from edc_visit_schedule.model_mixins import EnrollmentModelMixin
+
+from edc_appointment.model_mixins import CreateAppointmentsMixin
+
 
 ENROLLMENT_SITES = (
     ('gaborone_private_hospital', ' Gaborone Private Hospital (GPH)'),
@@ -21,35 +24,33 @@ class EnrollmentManager(models.Manager):
         )
 
 
-class EnrollmentModelMixin(models.Model):
+# class CancerEnrollmentModelMixin(models.Model):
+#
+#     is_eligible = models.BooleanField(default=False)
+#
+#     loss_reason = models.TextField(
+#         verbose_name='Reason not eligible',
+#         max_length=500,
+#         null=True,
+#         editable=False,
+#         help_text='(stored for the loss form)')
+#
+#     objects = EnrollmentManager()
+#
+#     def natural_key(self):
+#         return (self.subject_identifier,)
+#
+#     class Meta:
+#         abstract = True
 
-    is_eligible = models.BooleanField(default=False)
 
-    loss_reason = models.TextField(
-        verbose_name='Reason not eligible',
-        max_length=500,
-        null=True,
-        editable=False,
-        help_text='(stored for the loss form)')
+class EnrollmentChecklist (
+        EnrollmentModelMixin, CreateAppointmentsMixin, BaseUuidModel):
 
     objects = EnrollmentManager()
 
     def natural_key(self):
         return (self.subject_identifier,)
-
-    def common_clean(self):
-
-        super().common_clean()
-
-    def save(self, *args, **kwargs):
-        pass
-        super().save(*args, **kwargs)
-
-    class Meta:
-        abstract = True
-
-
-class EnrollmentChecklist (EnrollmentModelMixin, BaseUuidModel):
 
     subject_identifier = models.CharField(
         verbose_name='Subject Identifier',
@@ -72,6 +73,10 @@ class EnrollmentChecklist (EnrollmentModelMixin, BaseUuidModel):
 
     history = HistoricalRecords()
 
-    class Meta:
-        verbose_name = "Enrollment Checklist"
-        verbose_name_plural = "Enrollment Checklist"
+    def save(self, *args, **kwargs):
+        #self.facility_name = 'clinic'
+        super().save(*args, **kwargs)
+
+    class Meta(EnrollmentModelMixin.Meta):
+        consent_model = 'cancer_subject.subjectconsent'
+        visit_schedule_name = 'visit_schedule1.schedule1'

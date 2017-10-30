@@ -7,6 +7,7 @@ from edc_constants.constants import FEMALE, MALE, NO, YES
 from edc_registration.models import RegisteredSubject
 
 from cancer_subject.models import SubjectConsent, EnrollmentChecklist
+from cancer_subject.models.appointment import Appointment
 from edc_consent.consent import Consent
 from edc_consent.site_consents import site_consents
 
@@ -73,3 +74,13 @@ class TestEnrollment(TestCase):
         )
         self.assertEqual(EnrollmentChecklist.objects.filter(
             subject_identifier=consent.subject_identifier).count(), 1)
+
+    def test_subject_consent_3(self):
+        consent = SubjectConsent.objects.create(
+            **self.options)
+        EnrollmentChecklist.objects.create(
+            has_diagnosis=YES,
+            enrollment_site='gaborone_private_hospital',
+            subject_identifier=consent.subject_identifier
+        )
+        self.assertEqual(Appointment.objects.all().count(), 1)
