@@ -6,6 +6,7 @@ from edc_base.utils import get_utcnow
 from edc_constants.constants import FEMALE, MALE, NO, YES
 from edc_registration.models import RegisteredSubject
 
+from cancer_subject.forms.subject_consent_form import SubjectConsentForm
 from cancer_subject.models import SubjectConsent, EnrollmentChecklist
 from cancer_subject.models.appointment import Appointment
 from edc_consent.consent import Consent
@@ -74,6 +75,12 @@ class TestEnrollment(TestCase):
         )
         self.assertEqual(EnrollmentChecklist.objects.filter(
             subject_identifier=consent.subject_identifier).count(), 1)
+
+    def test_subject_consent_5(self):
+        consent = SubjectConsent(
+            **self.options)
+        consent_form = SubjectConsentForm(data=consent.__dict__)
+        print(consent_form.errors, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
 
     def test_subject_consent_3(self):
         consent = SubjectConsent.objects.create(
