@@ -73,13 +73,6 @@ class SubjectEligibility(EligibilityIdentifierModelMixin, BaseUuidModel):
         default=uuid4,
         editable=False)
 
-    screening_identifier = models.CharField(
-        verbose_name='Eligibility Id',
-        max_length=50,
-        blank=True,
-        unique=True,
-        editable=False)
-
     report_datetime = models.DateTimeField(
         verbose_name='Report date',
         default=get_utcnow,

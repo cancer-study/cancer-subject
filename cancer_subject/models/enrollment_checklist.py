@@ -1,48 +1,29 @@
-import re
 from django.db import models
 
 from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_base.model_validators.eligibility import eligible_if_yes
 from edc_constants.choices import YES_NO
-from edc_constants.constants import UUID_PATTERN
-from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
+
+ENROLLMENT_SITES = (
+    ('gaborone_private_hospital', ' Gaborone Private Hospital (GPH)'),
+    ('nyangabgwe_referral_Hospital', 'Nyangabgwe Referral Hospital (NRH)'),
+    ('princess_marina_hospital', 'Princess Marina Hospital (PMH)'),
+    ('bokamoso_private_hospital', 'Bokamoso Private Hospital (BPH)'),
+)
 
 
-class SubjectScreeningManager(models.Manager):
+class EnrollmentManager(models.Manager):
 
-    def get_by_natural_key(self, screening_identifier):
-        return self.get(screening_identifier=screening_identifier)
-
-
-class ScreeningIdentifierModelMixin(
-        NonUniqueSubjectIdentifierModelMixin, models.Model):
-
-    def update_subject_identifier_on_save(self):
-        """Overridden to not set the subject identifier on save.
-        """
-        if not self.subject_identifier:
-            self.subject_identifier = self.subject_identifier_as_pk.hex
-        elif re.match(UUID_PATTERN, self.subject_identifier):
-            pass
-        return self.subject_identifier
-
-    def make_new_identifier(self):
-        return self.subject_identifier_as_pk.hex
-
-    class Meta:
-        abstract = True
+    def get_by_natural_key(self, subject_identifier):
+        return self.get(
+            subject_identifier=subject_identifier
+        )
 
 
 class EnrollmentModelMixin(models.Model):
 
-    age_helper_cls = AgeHelper
-
     is_eligible = models.BooleanField(default=False)
-
-    age_in_years = models.IntegerField(
-        null=True,
-        editable=False)
 
     loss_reason = models.TextField(
         verbose_name='Reason not eligible',
@@ -51,9 +32,10 @@ class EnrollmentModelMixin(models.Model):
         editable=False,
         help_text='(stored for the loss form)')
 
-    non_citizen = models.BooleanField(
-        default=False,
-        help_text='')
+    objects = EnrollmentManager()
+
+    def natural_key(self):
+        return (self.subject_identifier,)
 
     def common_clean(self):
 
@@ -67,16 +49,20 @@ class EnrollmentModelMixin(models.Model):
         abstract = True
 
 
-class EnrollmentChecklist (
-        EnrollmentModelMixin, ScreeningIdentifierModelMixin, BaseUuidModel):
+class EnrollmentChecklist (EnrollmentModelMixin, BaseUuidModel):
+
+    subject_identifier = models.CharField(
+        verbose_name='Subject Identifier',
+        max_length=50,
+        blank=True,
+        unique=True)
 
     has_diagnosis = models.CharField(
         verbose_name="Has a cancer diagnosis been documented? ",
         max_length=3,
         choices=YES_NO,
         validators=[eligible_if_yes, ],
-        help_text="( if 'NO' STOP patient cannot be enrolled )",
-    )
+        help_text="( if 'NO' STOP patient cannot be enrolled )",)
 
     enrollment_site = models.CharField(
         max_length=100,

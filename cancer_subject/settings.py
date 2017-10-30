@@ -46,7 +46,6 @@ INSTALLED_APPS = [
     'edc_registration.apps.AppConfig',
     'edc_metadata.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
-    'edc_protocol.apps.AppConfig',
     'edc_offstudy.apps.AppConfig',
     'edc_locator.apps.AppConfig',
     'edc_lab.apps.AppConfig',
@@ -54,6 +53,8 @@ INSTALLED_APPS = [
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
     'cancer_subject.apps.AppConfig',
     'edc_base_test.apps.AppConfig',
+    'cancer_subject.apps.EdcDeviceAppConfig',
+    'cancer_subject.apps.EdcProtocolAppConfig',
 ]
 
 

@@ -20,7 +20,7 @@ class UpdatesOrCreatesRegistrationModelMixin(BaseUpdatesOrCreatesRegistrationMod
 
     @property
     def registration_unique_field(self):
-        return 'registration_identifier'
+        return 'subject_identifier'
 
     @property
     def registration_options(self):
@@ -65,10 +65,6 @@ class SubjectConsent(
     """ A model completed by the user that captures the ICF.
     """
 
-    screening_identifier = models.CharField(
-        verbose_name='Screening Identifier',
-        max_length=50)
-
     is_signed = models.BooleanField(default=False, editable=False)
 
     consent = ConsentManager()
@@ -77,14 +73,6 @@ class SubjectConsent(
 
     def __str__(self):
         return f'{self.subject_identifier} V{self.version}'
-
-    def save(self, *args, **kwargs):
-        if not self.id:
-            self.registration_identifier = self.subject_screening.screening_identifier
-            edc_protocol_app_config = django_apps.get_app_config(
-                'edc_protocol')
-            self.study_site = edc_protocol_app_config.site_code
-        super().save(*args, **kwargs)
 
     def natural_key(self):
         return (self.subject_identifier, self.version,)
