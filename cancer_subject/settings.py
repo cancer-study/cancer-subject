@@ -44,7 +44,6 @@ INSTALLED_APPS = [
     'django_crypto_fields.apps.AppConfig',
     'django_revision.apps.AppConfig',
     'edc_registration.apps.AppConfig',
-    'edc_metadata.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
     'edc_offstudy.apps.AppConfig',
     'edc_locator.apps.AppConfig',
@@ -55,6 +54,10 @@ INSTALLED_APPS = [
     'edc_base_test.apps.AppConfig',
     'cancer_subject.apps.EdcDeviceAppConfig',
     'cancer_subject.apps.EdcProtocolAppConfig',
+    'cancer_subject.apps.EdcAppointmentAppConfig',
+    'cancer_subject.apps.EdcTimepointAppConfig',
+    'cancer_subject.apps.EdcMetadataAppConfig',
+    'edc_facility.apps.AppConfig',
 ]
 
 
@@ -142,8 +145,8 @@ EDC_LAB_REQUISITION_MODEL = 'cancer_subject.subjectrequisition'
 DEVICE_ROLE = 'CentralServer'
 KEY_PATH = os.path.join(BASE_DIR, 'crypto_fields')
 GIT_DIR = BASE_DIR
-COUNTRY = 'Botswana'
-HOLIDAY_FILE = ''
+COUNTRY = 'botswana'
+HOLIDAY_FILE = os.path.join(BASE_DIR, APP_NAME, 'holidays.csv')
 
 if 'test' in sys.argv and 'mysql' not in DATABASES.get('default').get('ENGINE'):
     MIGRATION_MODULES = {
