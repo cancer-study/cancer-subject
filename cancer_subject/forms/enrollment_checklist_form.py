@@ -1,6 +1,7 @@
 from django import forms
 from edc_base.modelform_mixins import CommonCleanModelFormMixin
-from ..models.subject_eligibility import SubjectEligibility
+
+from ..models import EnrollmentChecklist
 
 
 class SubjectModelFormMixin(CommonCleanModelFormMixin, forms.ModelForm):
@@ -8,8 +9,8 @@ class SubjectModelFormMixin(CommonCleanModelFormMixin, forms.ModelForm):
     pass
 
 
-class SubjectEligibilityForm(SubjectModelFormMixin):
+class EnrollmentChecklistForm(SubjectModelFormMixin):
 
     class Meta:
-        model = SubjectEligibility
+        model = EnrollmentChecklist
         fields = '__all__'

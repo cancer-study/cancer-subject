@@ -70,7 +70,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
     def view_on_site(self, obj):
         try:
             return reverse(
-                'cancer_subject:dashboard_url', kwargs=dict(
+                'cancer_dashboard:consent_listboard_url', kwargs=dict(
                     subject_identifier=obj.subject_identifier))
         except NoReverseMatch:
             return super().view_on_site(obj)
