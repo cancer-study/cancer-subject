@@ -1,5 +1,7 @@
 from datetime import date
 
+from uuid import uuid4
+
 from django.apps import apps as django_apps
 from django.test import TestCase
 from edc_base.utils import get_utcnow
@@ -25,7 +27,7 @@ class TestEnrollment(TestCase):
             end=self.study_close_datetime,
             version='1.0')
         self.options = dict(
-            study_site='40',
+            study_site='040',
             consent_datetime=get_utcnow(),
             dob=date(1980, 10, 1),
             first_name='TEST',
@@ -77,10 +79,22 @@ class TestEnrollment(TestCase):
             subject_identifier=consent.subject_identifier).count(), 1)
 
     def test_subject_consent_5(self):
-        consent = SubjectConsent(
-            **self.options)
+        self.options.update({
+            'consent_signature': YES,
+            'citizen': YES,
+            'consent_copy': YES,
+            'may_store_samples': YES,
+            'language': 'en',
+            'is_literate': YES,
+            'subject_type': 'subject',
+            'assessment_score': YES,
+            'consent_reviewed': YES,
+            'study_site': '040',
+            'study_questions': YES,
+            'subject_identifier': uuid4()})
+        consent = SubjectConsent(**self.options)
         consent_form = SubjectConsentForm(data=consent.__dict__)
-        print(consent_form.errors, ">>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>")
+        self.assertTrue(consent_form.save())
 
     def test_subject_consent_3(self):
         consent = SubjectConsent.objects.create(

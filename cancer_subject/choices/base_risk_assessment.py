@@ -96,8 +96,10 @@ MONEY_EARNED_CHOICE = (
     ('P1001-2500/month (P230-580/week)', 'P1001-2500/month (P230-580/week)'),
     ('P2501-5000/month (P580-1160/week)', 'P2501-5000/month (P580-1160/week)'),
     ('P5001-10000/month (P1160-2330/week)', 'P5001-10000/month (P1160-2330/week)'),
-    ('P10001-20000/month (P2330-4600/week)', 'P10001-20000/month (P2330-4600/week)'),
-    ('P20001-30000/month (P4600-7000/week)', 'P20001-30000/month (P4600-7000/week)'),
+    ('P10001-20000/month (P2330-4600/week)',
+     'P10001-20000/month (P2330-4600/week)'),
+    ('P20001-30000/month (P4600-7000/week)',
+     'P20001-30000/month (P4600-7000/week)'),
     ('>P30000/month (>P7000/week)', '>P30000/month (>P7000/week)'),
 )
 TOILET_CHOICE = (
@@ -116,7 +118,8 @@ CANCER_TYPE_CHOICE = (
     ('Lymphoma', 'Lymphoma'),
     ('Liver cancer', 'Liver cancer'),
     ('Eye cancer', 'Eye cancer'),
-    ('Other or multiple cancers, describe:', 'Other or multiple cancers, describe:'),
+    ('Other or multiple cancers, describe:',
+     'Other or multiple cancers, describe:'),
 )
 CANCER_BEFORE_CHOICE = (
     ('Don\'t know', 'Don\'t know'),
@@ -259,38 +262,8 @@ TRADMEDICINE_CHOICE = (
     ('Declined', 'Patient declined to answer'),
 )
 COMMUNITY = (
-    ('Bokaa', 'Bokaa'),
-    ('Digawana', 'Digawana'),
-    ('Gumare', 'Gumare'),
-    ('Gweta', 'Gweta'),
-    ('Lentsweletau', 'Lentsweletau'),
-    ('Lerala', 'Lerala'),
-    ('Letlhakeng', 'Letlhakeng'),
-    ('Mandunyane', 'Mandunyane'),
-    ('Mmankgodi', 'Mmankgodi'),
-    ('Mmadinare', 'Mmadinare'),
-    ('Mmathethe', 'Mmathethe'),
-    ('Masunga', 'Masunga'),
-    ('Maunatlala', 'Maunatlala'),
-    ('Mathangwane', 'Mathangwane'),
-    ('Metsimotlhabe', 'Metsimotlhabe'),
-    ('Molapowabojang', 'Molapowabojang'),
-    ('Nata', 'Nata'),
-    ('Nkange', 'Nkange'),
-    ('Oodi', 'Oodi'),
-    ('Otse', 'Otse'),
-    ('Raikops', 'Raikops'),
-    ('Ramokgonami', 'Ramokgonami'),
-    ('Ranaka', 'Ranaka'),
-    ('Sebina', 'Sebina'),
-    ('Sefare', 'Sefare'),
-    ('Sefophe', 'Sefophe'),
-    ('Shakawe', 'Shakawe'),
-    ('Shoshong', 'Shoshong'),
-    ('Tati Siding', 'Tati Siding'),
-    ('Tsetsebjwe', 'Tsetsebjwe'),
-    ('DWTA', 'Do not want to answer'),
-    ('Other', 'Other community'),
+    ('040', '040 Gaborone'),
+    ('060', '060 Francistown'),
 )
 
 FOOD_SECURITY = (

@@ -1,39 +1,11 @@
 from django import forms
+from edc_base.modelform_mixins import CommonCleanModelFormMixin
 
 from cancer_subject.choices import COMMUNITY
-from cancer_subject.models.subject_eligibility import SubjectEligibility
-# from cancer_subject_validations.form_validators import SubjectConsentFormValidation
-
 from ..models import SubjectConsent
 
 
-class SubjectConsentForm(forms.ModelForm):
-
-    def clean(self):
-        cleaned_data = super().clean()
-#         cleaned_data = SubjectConsentFormValidation(
-#             cleaned_data=cleaned_data).clean()
-        return cleaned_data
-
-    def validate_data_fields(self):
-        screening_identifier = self.cleaned_data.get(
-            'screening_identifier')
-        first_name = self.cleaned_data.get('first_name')
-        initials = self.cleaned_data.get('initials')
-
-        try:
-            subject_eligibility = SubjectEligibility.objects.get(
-                screening_identifier=screening_identifier)
-        except SubjectEligibility.DoesNotExist:
-            raise forms.ValidationError(
-                f'Please complete \'{SubjectEligibility._meta.verbose_name}\' first.')
-        else:
-            if subject_eligibility.first_name != first_name:
-                raise forms.ValidationError({
-                    'first_name': f'Does not match {SubjectEligibility._meta.verbose_name}'})
-            if subject_eligibility.initials != initials:
-                raise forms.ValidationError({
-                    'initials': f'Does not match {SubjectEligibility._meta.verbose_name}'})
+class SubjectConsentForm(CommonCleanModelFormMixin, forms.ModelForm):
 
     study_site = forms.ChoiceField(
         label='Study site',
