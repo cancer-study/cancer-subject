@@ -7,6 +7,7 @@ from model_mommy.recipe import Recipe, seq
 
 from cancer_subject.models import SubjectConsent, SymptomsAndTesting
 from edc_consent.tests import EdcConsentProvider
+from edc_constants.choices import YES
 from cancer_subject.patterns import subject_identifier
 
 
@@ -60,9 +61,10 @@ symptomsandtesting = Recipe(
     trad_doctor_date=fake.last_month,
     facility_first_seen='00-0-00',
     facility_first_seen_other='Church',
-    hiv_tested='Yes',
+    hiv_tested=YES,
     hiv_test_result='Refused',
     pos_date=fake.last_year,
     neg_date=fake.last_year,
-    hiv_result='Pending'
+    hiv_result='Pending',
+    arv_art_therapy=YES,
 )
