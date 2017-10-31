@@ -5,8 +5,9 @@ from faker import Faker
 from faker.providers import BaseProvider
 from model_mommy.recipe import Recipe, seq
 
-from cancer_subject.models import SubjectConsent
+from cancer_subject.models import SubjectConsent, SymptomsAndTesting
 from edc_consent.tests import EdcConsentProvider
+from cancer_subject.patterns import subject_identifier
 
 
 class DateProvider(BaseProvider):
@@ -49,3 +50,19 @@ subjectconsent = Recipe(
     identity_type='OMANG',
     is_dob_estimated='-',
     is_incarcerated=NO,)
+
+symptomsandtesting = Recipe(
+    SymptomsAndTesting,
+    subject_identifier=None,
+    symptom_prompt='bleeding',
+    symptom_date=fake.last_month,
+    medical_doctor_date=fake.last_month,
+    trad_doctor_date=fake.last_month,
+    facility_first_seen='00-0-00',
+    facility_first_seen_other='Church',
+    hiv_tested='Yes',
+    hiv_test_result='Refused',
+    pos_date=fake.last_year,
+    neg_date=fake.last_year,
+    hiv_result='Pending'
+)
