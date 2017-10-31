@@ -5,9 +5,10 @@ from faker import Faker
 from faker.providers import BaseProvider
 from model_mommy.recipe import Recipe, seq
 
-from cancer_subject.models import SubjectConsent, SymptomsAndTesting
+from cancer_subject.models import (
+    SubjectConsent, SymptomsAndTesting, SubjectLocator)
 from edc_consent.tests import EdcConsentProvider
-from edc_constants.choices import YES
+from edc_constants.choices import YES, POS
 from cancer_subject.patterns import subject_identifier
 
 
@@ -62,9 +63,23 @@ symptomsandtesting = Recipe(
     facility_first_seen='00-0-00',
     facility_first_seen_other='Church',
     hiv_tested=YES,
-    hiv_test_result='Refused',
+    hiv_test_result=POS,
     pos_date=fake.last_year,
     neg_date=fake.last_year,
     hiv_result='Pending',
     arv_art_therapy=YES,
-)
+    arv_art_start_date=fake.last_month,
+    arv_art_now=NO,
+    art_art_stop_date=fake.last_week,)
+
+subjeclocator = Recipe(
+    SubjectLocator,
+    alt_contact_cell_number='72123721',
+    has_alt_contact=NO,
+    alt_contact_name='John Doe',
+    alt_contact_rel='Sibling',
+    alt_contact_cell='78298422',
+    other_alt_contact_cell='71297390',
+    alt_contact_tel='3178634',
+    local_clinic='00-0-00',
+    home_village='Oodi',)
