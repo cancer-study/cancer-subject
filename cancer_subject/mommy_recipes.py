@@ -1,3 +1,4 @@
+from datetime import date
 from dateutil.relativedelta import relativedelta
 from edc_base.utils import get_utcnow
 from edc_constants.constants import NO
@@ -6,7 +7,8 @@ from faker.providers import BaseProvider
 from model_mommy.recipe import Recipe, seq
 
 from cancer_subject.models import (
-    SubjectConsent, SymptomsAndTesting, SubjectLocator)
+    SubjectConsent, SymptomsAndTesting, SubjectLocator,
+    RadiationTreatment)
 from edc_consent.tests import EdcConsentProvider
 from edc_constants.choices import YES, POS
 from cancer_subject.patterns import subject_identifier
@@ -83,3 +85,27 @@ subjeclocator = Recipe(
     alt_contact_tel='3178634',
     local_clinic='00-0-00',
     home_village='Oodi',)
+
+radiationtreatment = Recipe(
+    RadiationTreatment,
+    treatment_start_date=fake.last_month(),
+    treatment_end_date=date.today(),
+    tumour_stages='X',
+    lymph_stages='3',
+    metastasis_stages='1',
+    overall_stages='2',
+    stage_modifier='D',
+    treatment_itent='Palliative',
+    treatment_relationship='no modaliites',
+    side_effects_other='dizzyness',
+    response='Almost Complete',
+    response_other='Incomplete',
+    any_missed_doses=NO,
+    if_doses_missed='unresponsive',
+    if_doses_missed_other='incompatible',
+    any_doses_delayed=NO,
+    if_doses_delayed='no transport',
+    if_doses_delayed_other='too expensive',
+    first_course_radiation=YES,
+    comments='few descriptive words here, blah blah',
+    

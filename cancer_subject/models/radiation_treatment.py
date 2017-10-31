@@ -133,6 +133,7 @@ class RadiationTreatment (CrfModelMixin):
         choices=REASONS_MISSED_OR_DELAYED,
     )
     if_doses_missed_other = OtherCharField()
+
     any_doses_delayed = models.CharField(
         verbose_name="Were any doses delayed",
         max_length=15,
