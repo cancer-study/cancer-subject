@@ -1,3 +1,4 @@
+from datetime import date
 from dateutil.relativedelta import relativedelta
 from edc_base.utils import get_utcnow
 from edc_constants.constants import NO
@@ -5,8 +6,12 @@ from faker import Faker
 from faker.providers import BaseProvider
 from model_mommy.recipe import Recipe, seq
 
-from cancer_subject.models import SubjectConsent
+from cancer_subject.models import (
+    SubjectConsent, SymptomsAndTesting, SubjectLocator,
+    RadiationTreatment)
 from edc_consent.tests import EdcConsentProvider
+from edc_constants.choices import YES, POS
+from cancer_subject.patterns import subject_identifier
 
 
 class DateProvider(BaseProvider):
@@ -49,3 +54,58 @@ subjectconsent = Recipe(
     identity_type='OMANG',
     is_dob_estimated='-',
     is_incarcerated=NO,)
+
+symptomsandtesting = Recipe(
+    SymptomsAndTesting,
+    subject_identifier=None,
+    symptom_prompt='bleeding',
+    symptom_date=fake.last_month,
+    medical_doctor_date=fake.last_month,
+    trad_doctor_date=fake.last_month,
+    facility_first_seen='00-0-00',
+    facility_first_seen_other='Church',
+    hiv_tested=YES,
+    hiv_test_result=POS,
+    pos_date=fake.last_year,
+    neg_date=fake.last_year,
+    hiv_result='Pending',
+    arv_art_therapy=YES,
+    arv_art_start_date=fake.last_month,
+    arv_art_now=NO,
+    art_art_stop_date=fake.last_week,)
+
+subjeclocator = Recipe(
+    SubjectLocator,
+    alt_contact_cell_number='72123721',
+    has_alt_contact=NO,
+    alt_contact_name='John Doe',
+    alt_contact_rel='Sibling',
+    alt_contact_cell='78298422',
+    other_alt_contact_cell='71297390',
+    alt_contact_tel='3178634',
+    local_clinic='00-0-00',
+    home_village='Oodi',)
+
+radiationtreatment = Recipe(
+    RadiationTreatment,
+    treatment_start_date=fake.last_month(),
+    treatment_end_date=date.today(),
+    tumour_stages='X',
+    lymph_stages='3',
+    metastasis_stages='1',
+    overall_stages='2',
+    stage_modifier='D',
+    treatment_itent='Palliative',
+    treatment_relationship='no modaliites',
+    side_effects_other='dizzyness',
+    response='Almost Complete',
+    response_other='Incomplete',
+    any_missed_doses=NO,
+    if_doses_missed='unresponsive',
+    if_doses_missed_other='incompatible',
+    any_doses_delayed=NO,
+    if_doses_delayed='no transport',
+    if_doses_delayed_other='too expensive',
+    first_course_radiation=YES,
+    comments='few descriptive words here, blah blah',
+    
