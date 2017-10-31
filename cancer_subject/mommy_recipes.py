@@ -108,4 +108,15 @@ radiationtreatment = Recipe(
     if_doses_delayed_other='too expensive',
     first_course_radiation=YES,
     comments='few descriptive words here, blah blah',
-    
+    treatment_name='Scar Boost',
+    start_date=fake.three_months_ago(),
+    end_date=fake.next_month(),
+    dose_delivered='0.5',
+    dose_described='2.0',
+    fractions='3',
+    dose_per_fraction='2',
+    radiation_technique='Opposite laterals',
+    radiation_technique_other='blah blah',
+    modality='Photons',
+    brachy_length='2',
+    brachy_type='T&SR',)
