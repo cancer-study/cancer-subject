@@ -8,7 +8,8 @@ from model_mommy.recipe import Recipe, seq
 
 from cancer_subject.models import (
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
-    RadiationTreatment)
+    RadiationTreatment, HaartRecord, BaseHaartMedication,
+    CurrentSymptoms)
 from edc_consent.tests import EdcConsentProvider
 from edc_constants.choices import YES, POS
 from cancer_subject.patterns import subject_identifier
@@ -120,3 +121,25 @@ radiationtreatment = Recipe(
     modality='Photons',
     brachy_length='2',
     brachy_type='T&SR',)
+
+haartrecord = Recipe(
+    HaartRecord,
+    haart_status='Never started HAART',
+    comments='blah blah',)
+
+basehaartmedication = Recipe(
+    BaseHaartMedication,
+    drug_name='ATR',
+    mod_reason='13 = Vomiting',
+    arv_reason='1 = Treatment',
+    start_date=fake.three_months_ago(),
+    stop_date=date.today(),)
+
+currentsymptoms = Recipe(
+    CurrentSymptoms,
+    any_worry=YES,
+    symptom_desc='blah blah blah',
+    patient_own_remedy='details here',
+    severity='mild',
+    ra_advice='details here',
+    outcome_update='details here',)

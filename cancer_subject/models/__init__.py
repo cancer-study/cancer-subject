@@ -20,6 +20,7 @@ from .current_symptoms import CurrentSymptoms
 from .enrollment_checklist import EnrollmentChecklist
 from .haart_medication import HaartMedRecord
 from .haart_record import HaartRecord
+from .haart_medication import BaseHaartMedication
 from .identifier_history import IdentifierHistory
 from .lab_result import LabResult
 from .lab_result_cd4 import LabResultCd4
