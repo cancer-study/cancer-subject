@@ -6,6 +6,7 @@ from edc_base.modeladmin_mixins import (
     ModelAdminFormAutoNumberMixin, ModelAdminAuditFieldsMixin,
     ModelAdminReadOnlyMixin, ModelAdminInstitutionMixin)
 from edc_base.modeladmin_mixins import audit_fieldset_tuple
+from edc_base.modeladmin_mixins.model_admin_audit_fields_mixin import audit_fields
 
 from cancer_subject.admin_site import cancer_subject_admin
 
@@ -32,10 +33,15 @@ class EnrollmentChecklistAdmin(ModelAdminMixin,
     fieldsets = (
         (None, {
             'fields': (
+                "subject_identifier",
                 "has_diagnosis",
                 'enrollment_site',
             )}),
         audit_fieldset_tuple)
+
+    def get_readonly_fields(self, request, obj=None):
+        return (super().get_readonly_fields(request, obj=obj)
+                + audit_fields)
 
     radio_fields = {
         "has_diagnosis": admin.VERTICAL,

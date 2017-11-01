@@ -1,3 +1,4 @@
+from .appointment_admin import AppointmentAdmin
 from .base_risk_assessment_admin import *
 from .baseline_hiv_history_admin import *
 from .enrollment_checklist_admin import EnrollmentChecklistAdmin

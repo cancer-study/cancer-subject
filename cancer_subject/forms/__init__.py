@@ -1,3 +1,4 @@
+from .appointment_form import AppointmentForm
 from .base_risk_assessment_form import *
 from .baseline_hiv_history_form import *
 from .enrollment_checklist_form import EnrollmentChecklistForm

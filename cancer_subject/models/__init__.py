@@ -1,4 +1,5 @@
 from .activity_and_functioning import ActivityAndFunctioning
+from .appointment import Appointment
 from .base_risk_assessment import BaseRiskAssessment
 from .base_risk_assessment_alcohol import BaseRiskAssessmentAlcohol
 from .base_risk_assessment_cancer import BaseRiskAssessmentCancer
@@ -38,9 +39,9 @@ from .otr_surgical import OTRSurgical
 from .radiation_treatment import RadiationTreatment, RadiationTreatmentRecord
 from .referral import Referral
 from .signals import *
-from .subject_locator import SubjectLocator
 from .subject_consent import SubjectConsent
 from .subject_eligibility import SubjectEligibility
+from .subject_locator import SubjectLocator
 from .subject_requisition import SubjectRequisition
 from .symptoms_and_testing import SymptomsAndTesting
 from .treatment_response import TreatmentResponse
