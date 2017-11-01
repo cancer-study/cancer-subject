@@ -7,4 +7,5 @@ from .main import *
 from .oncology_treatment_record_admin import *
 from .radiation_treatment_admin import RadiationTreatmentAdmin
 from .subject_consent_admin import SubjectConsentAdmin
+from .subject_locator_admin import SubjectLocatorAdmin
 from .subject_visit_admin import SubjectVisitAdmin

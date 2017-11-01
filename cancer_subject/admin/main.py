@@ -1,23 +1,21 @@
 from django.contrib import admin
-
-from edc_base.modeladmin_mixins.inlines import TabularInlineMixin
 from edc_base.modeladmin_mixins import audit_fieldset_tuple
+from edc_base.modeladmin_mixins.inlines import TabularInlineMixin
 
-from cancer_subject.admin_site import cancer_subject_admin
 from cancer_subject.admin.modeladmin_mixins import CrfModelAdminMixin
+from cancer_subject.admin_site import cancer_subject_admin
+from cancer_subject.forms.main import HaartMedRecordForm, ChemoMedPlanForm
+from cancer_subject.models.chemo_medication import ChemoMedPlan
+from cancer_subject.models.haart_medication import HaartMedRecord
 
 from ..forms import (
     ActivityAndFunctioningForm, CancerDiagnosisForm, HaartRecordForm,
     OncologyTreatmentPlanForm, TreatmentResponseForm, SymptomsAndTestingForm,
     OncologyTreatmentCompletedForm, CurrentSymptomsForm)
-
 from ..models import (
     HaartRecord, OncologyTreatmentPlan, TreatmentResponse,
     OncologyTreatmentCompleted, ActivityAndFunctioning,
     SymptomsAndTesting, CurrentSymptoms, CancerDiagnosis)
-from cancer_subject.models.haart_medication import HaartMedRecord
-from cancer_subject.forms.main import HaartMedRecordForm, ChemoMedPlanForm
-from cancer_subject.models.chemo_medication import ChemoMedPlan
 
 
 class HaartMedRecordInlineAdmin(TabularInlineMixin, admin.TabularInline):
@@ -261,5 +259,4 @@ class CurrentSymptomsAdmin(CrfModelAdminMixin, admin.ModelAdmin):
                 "outcome_update",)}),)
 
     radio_fields = {
-        "any_worry": admin.VERTICAL,
-    }
+        "any_worry": admin.VERTICAL, }

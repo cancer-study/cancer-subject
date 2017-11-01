@@ -7,4 +7,6 @@ from .main import *
 from .oncology_treatment_record_form import *
 from .radiation_treatment_form import RadiationTreatmentForm
 from .subject_consent_form import SubjectConsentForm
+from .subject_locator_form import SubjectLocatorForm
+from .subject_off_study_form import SubjectOffStudyForm
 from .subject_visit_form import SubjectVisitForm
