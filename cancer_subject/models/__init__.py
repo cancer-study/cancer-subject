@@ -1,3 +1,6 @@
+from .ae010 import Ae010
+from .af004 import Af004
+from .af005 import Af005
 from .activity_and_functioning import ActivityAndFunctioning
 from .appointment import Appointment
 from .base_risk_assessment import BaseRiskAssessment
@@ -21,6 +24,7 @@ from .current_symptoms import CurrentSymptoms
 from .enrollment_checklist import EnrollmentChecklist
 from .haart_medication import HaartMedRecord
 from .haart_record import HaartRecord
+from .haart_medication import BaseHaartMedication
 from .identifier_history import IdentifierHistory
 from .lab_result import LabResult
 from .lab_result_cd4 import LabResultCd4
