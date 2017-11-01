@@ -7,8 +7,8 @@ from faker.providers import BaseProvider
 from model_mommy.recipe import Recipe, seq
 
 from cancer_subject.models import (
-    SubjectConsent, SymptomsAndTesting, SubjectLocator,
-    RadiationTreatment, HaartRecord, BaseHaartMedication,
+    Ae010, Af004, Af005, SubjectConsent, SymptomsAndTesting,
+    SubjectLocator, RadiationTreatment, HaartRecord, BaseHaartMedication,
     CurrentSymptoms)
 from edc_consent.tests import EdcConsentProvider
 from edc_constants.choices import YES, POS
@@ -143,3 +143,27 @@ currentsymptoms = Recipe(
     severity='mild',
     ra_advice='details here',
     outcome_update='details here',)
+
+ae010 = Recipe(
+    Ae010,
+    report_type='Resolution',
+    onset_date=fake.last_month(),
+    event_grade='details here',
+    relationship_description='Probably related to study activites',)
+
+aef004 = Recipe(
+    Af004,
+    date_off_study=fake.three_months_ago(),
+    date_last_contact=fake.three_months_ago(),
+    off_study_reason='details here',
+    off_study_code='Death',
+    comments='Details here',)
+
+aef005 = Recipe(
+    Af005,
+    death_date=fake.last_week(),
+    primary_death_cause='Clinical record',
+    death_cause_description='details here',
+    death_cause_category='Cancer',
+    diagnosis_code='details here',
+    comments='details here',)
