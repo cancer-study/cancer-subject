@@ -7,8 +7,11 @@ from faker.providers import BaseProvider
 from model_mommy.recipe import Recipe, seq
 
 from cancer_subject.models import (
-    Ae010, Af004, Af005, SubjectConsent, SymptomsAndTesting,
-    SubjectLocator, RadiationTreatment, HaartRecord, BaseHaartMedication,
+    Ae010, Af004, Af005, BaseRiskAssessmentAlcohol,
+    BaseRiskAssessmentCancer, BaseRiskAssessmentChemical,
+    BaseRiskAssessmentDemo,
+    SubjectConsent, SymptomsAndTesting, SubjectLocator,
+    RadiationTreatment, HaartRecord, BaseHaartMedication,
     CurrentSymptoms)
 from edc_consent.tests import EdcConsentProvider
 from edc_constants.choices import YES, POS
@@ -167,3 +170,52 @@ aef005 = Recipe(
     death_cause_category='Cancer',
     diagnosis_code='details here',
     comments='details here',)
+
+baseriskassessmentalcohol = Recipe(
+    BaseRiskAssessmentAlcohol,
+    alcohol_weekly='3',
+    amount_drinking='8',)
+
+baseriskassessmentcancer = Recipe(
+    BaseRiskAssessmentCancer,
+    family_cancer=YES,
+    family_cancer_type='Breast Cancer',
+    family_cancer_other='other details here',
+    had_previous_cancer=YES,
+    previous_cancer='Esophageal cancer',
+    previous_cancer_other='other details here',)
+
+baseriskassessmentchemical = Recipe(
+    BaseRiskAssessmentChemical,
+    asbestos=YES,
+    asbestos_no_protection='less than 5 years',
+    chemicals=YES,
+    chemicals_time='less than 5 years',
+    arsenic_smelting=YES,
+    total_time_no_protection='between 5 and 20 years',)
+
+baseriskassessmentdemo = Recipe(
+    BaseRiskAssessmentDemo,
+    marital_status='Single',
+    marital_status_other='other details here',
+    race='Asian',
+    race_other='other details here',
+    ethnic_grp='Basarwa',
+    ethnic_grp_other='other details here',
+    community='040',
+    community_other='other details here',
+    district20='Central',
+    setting20='Village',
+    district='Kweneng',
+    setting='Farm/lands',
+    education='Primary',
+    occupation='Domestic work',
+    occupation_other='other details here',
+    money_provide='Unsure',
+    money_provide_other='other details here',
+    money_earned='None',
+    electricity=YES,
+    toilet='Indoor toilet',
+    toilet_other='other details here',
+    household_people='details here',
+    food_security='Rarely',
