@@ -12,7 +12,9 @@ from cancer_subject.models import (
     BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
     BaseRiskAssessmentFemale, BaseRiskAssessmentFuel,
     BaseRiskAssessmentMining, BaseRiskAssessmentSmoking,
-    BaseRiskAssessmentSun, BaseRiskAssessment,
+    BaseRiskAssessmentSun, BaseRiskAssessment, BaselineHIVHistory,
+    BHHCd4, BHHHivTest, BHHWhoIllness, CancerDiagnosis,
+    BaseChemoMedication, LabResultCd4, LabResultChemistry,
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
     CurrentSymptoms)
@@ -284,3 +286,91 @@ baseriskassessment = Recipe(
     has_alcohol=NO,
     tradmedicine='Never',
     is_albino=YES,)
+
+baselinehivhistory = Recipe(
+    BaselineHIVHistory,
+    has_hiv_result=YES,
+    had_who_illnesses=YES,
+    has_cd4=YES,
+    cd4_result='2860',
+    cd4_drawn_date=fake.yesterday(),
+    has_prior_cd4=YES,
+    nadir_cd4='1245',
+    nadir_cd4_drawn_date=fake.yesterday(),
+    has_vl=NO,
+    vl_result='4365',
+    vl_drawn_date=fake.yesterday(),)
+
+bhhcd4 = Recipe(
+    BHHCd4,
+    nadir_cd4='230',
+    nadir_cd4_drawn_date=fake.last_week(),)
+
+bhhivtest = Recipe(
+    BHHHivTest,
+    hiv_drawn_date=fake.yesterday(),
+    hiv_testdate_est=NO,
+    hiv_result='POS',)
+
+bhhwhoillness = Recipe(
+    BHHWhoIllness,
+    who_illness='details here',
+    who_illness_other='other details here',
+    who_illness_date=fake.last_month,)
+
+cancerdiagnosis = Recipe(
+    CancerDiagnosis,
+    onco_number='143098087',
+    pathology_number='8636',
+    pm_number='0123556889',
+    diagnosis=YES,
+    cancer_category='new',
+    symptom_prompt='Lump/Mass',
+    symptom_prompt_other='other details here',
+    symptom_first_noticed=fake.last_month(),
+    first_evaluation=fake.last_month(),
+    date_diagnosed=fake.last_month(),
+    diagnosis_basis='CLinical Only',
+    diagnosis_basis_other='other details here',
+    diagnosis_word='metatstatic breast cancer',
+    cancer_site='C33.1',
+    clinical_diagnosis='M4355/31',
+    tumour='X',
+    tumour_basis='Clinical',
+    lymph_nodes='2',
+    lymph_basis='Pathology',
+    metastasis='O',
+    metastasis_basis='Clinical',
+    cancer_stage='X',
+    cancer_stage_modifier='No stage modifier',
+    any_other_results='other details here',
+    paper_documents='details here',
+    results_to_record='details here',
+    results_to_record_other='other details here',)
+
+basechemomedication = Recipe(
+    BaseChemoMedication,
+    drug_code='AMOX = amoxicillin',
+    dose_category='2 = Reduced Dose',
+    start_date=fake.last_month(),
+    stop_date=fake.last_week,
+    cycle_num='5',
+    interval='1 week',
+    specify_other_med='details here',
+    oncology_treatment_plan='details',
+    otr_chemo='details',)
+
+labresultcd4 = Recipe(
+    LabResultCd4,
+    cd4_drawn_date=fake.last_month,
+    cd4_result='2546',)
+
+labresultchemistry = Recipe(
+    LabResultChemistry,
+    chem_drawn_date=fake.last_week(),
+    alanine='3546',
+    aspartate='4356',
+    bilirubin='45',
+    creatinine='347646',
+    lactate='34657',
+    comments='details here',)

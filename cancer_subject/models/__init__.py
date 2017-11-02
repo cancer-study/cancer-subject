@@ -19,7 +19,7 @@ from .bhh_cd4 import BHHCd4
 from .bhh_hiv_test import BHHHivTest
 from .bhh_who_illness import BHHWhoIllness
 from .cancer_diagnosis import CancerDiagnosis
-from .chemo_medication import ChemoMedRecord, ChemoMedPlan
+from .chemo_medication import BaseChemoMedication, ChemoMedRecord, ChemoMedPlan
 from .current_symptoms import CurrentSymptoms
 from .enrollment_checklist import EnrollmentChecklist
 from .haart_medication import BaseHaartMedication
