@@ -9,7 +9,10 @@ from model_mommy.recipe import Recipe, seq
 from cancer_subject.models import (
     Ae010, Af004, Af005, BaseRiskAssessmentAlcohol,
     BaseRiskAssessmentCancer, BaseRiskAssessmentChemical,
-    BaseRiskAssessmentDemo,
+    BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
+    BaseRiskAssessmentFemale, BaseRiskAssessmentFuel,
+    BaseRiskAssessmentMining, BaseRiskAssessmentSmoking,
+    BaseRiskAssessmentSun, BaseRiskAssessment,
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
     CurrentSymptoms)
@@ -218,4 +221,66 @@ baseriskassessmentdemo = Recipe(
     toilet='Indoor toilet',
     toilet_other='other details here',
     household_people='details here',
-    food_security='Rarely',
+    food_security='Rarely',)
+
+baseriskassessmenteating = Recipe(
+    BaseRiskAssessmentEating,
+    five_fruit=YES,
+    meals_weekly='4',
+    meal_sorghum='5',
+    meal_millet='2',
+    meal_rice='1',
+    meal_peanuts='4',)
+
+baseriskassessmentfemale = Recipe(
+    BaseRiskAssessmentFemale,
+    age_period='14',
+    children='2',
+    years_breastfed=YES,)
+
+baseriskassessmentfuel = Recipe(
+    BaseRiskAssessmentFuel,
+    fuel_20y='solid fuels',
+    fuel_20y_other='other details here',
+    cooking=YES,
+    fuel_mm='electricity',
+    fuel_mm_other='other details here',
+    cooking_mm=YES,)
+
+baseriskassessmentmining = Recipe(
+    BaseRiskAssessmentMining,
+    mine_time='less than 5 years',
+    mine_type='gold',
+    mine_prompt_other='other details here',
+    mine_underground=YES,
+    mine_underground_time='less than 5 years',
+    last_mine=fake.three_months_ago(),)
+
+baseriskassessmentsmoking = Recipe(
+    BaseRiskAssessmentSmoking,
+    smoke_now='yes',
+    cigarette_smoking='14 or fewer cigarettes a day',
+    years_smoked='11',
+    cigarette_smoked='14 or fewer cigarettes a day',
+    when_quit='less than 2 years ago',
+    years_smoked_before='3',)
+
+baseriskassessmentsun = Recipe(
+    BaseRiskAssessmentSun,
+    hours_outdoor='1 hour or less',
+    sleeved_shirt='never',
+    hat='rarely',
+    shade_umbrella='sometimes',
+    sunglasses='often',)
+
+baseriskassessment = Recipe(
+    BaseRiskAssessment,
+    hepatitis=NO,
+    tuberculosis=YES,
+    year_tb='1988',
+    has_worked_mine=YES,
+    has_smoked=NO,
+    age_firstsex='younger than 15 years old',
+    has_alcohol=NO,
+    tradmedicine='Never',
+    is_albino=YES,)
