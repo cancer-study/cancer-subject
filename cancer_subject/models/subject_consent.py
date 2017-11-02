@@ -7,13 +7,23 @@ from edc_base.model_mixins import BaseUuidModel
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
     UpdatesOrCreatesRegistrationModelMixin as BaseUpdatesOrCreatesRegistrationModelMixin)
+from edc_search.model_mixins import SearchSlugManager
 
 from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
 from edc_consent.field_mixins import SampleCollectionFieldsMixin, CitizenFieldsMixin
 from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.field_mixins.bw import IdentityFieldsMixin
-from edc_consent.managers import ConsentManager
+from edc_consent.managers import ConsentManager as SubjectConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
+
+from ..models.model_mixins import SearchSlugModelMixin
+
+
+class ConsentManager(SubjectConsentManager, SearchSlugManager):
+
+    def get_by_natural_key(self, subject_identifier, version):
+        return self.get(
+            subject_identifier=subject_identifier, version=version)
 
 
 class UpdatesOrCreatesRegistrationModelMixin(BaseUpdatesOrCreatesRegistrationModelMixin):
@@ -61,7 +71,7 @@ class SubjectConsent(
         NonUniqueSubjectIdentifierModelMixin,
         IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
         SampleCollectionFieldsMixin, CitizenFieldsMixin,
-        VulnerabilityFieldsMixin, BaseUuidModel):
+        VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel):
     """ A model completed by the user that captures the ICF.
     """
 

@@ -3,9 +3,12 @@ from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_base.model_validators.eligibility import eligible_if_yes
 from edc_constants.choices import YES_NO
-from edc_visit_schedule.model_mixins import EnrollmentModelMixin
+from edc_search.model_mixins import SearchSlugManager
 
 from edc_appointment.model_mixins import CreateAppointmentsMixin
+from edc_visit_schedule.model_mixins import EnrollmentModelMixin
+
+from ..models.model_mixins import SearchSlugModelMixin
 
 
 ENROLLMENT_SITES = (
@@ -16,7 +19,7 @@ ENROLLMENT_SITES = (
 )
 
 
-class EnrollmentManager(models.Manager):
+class EnrollmentManager(SearchSlugManager, models.Manager):
 
     def get_by_natural_key(self, subject_identifier):
         return self.get(
@@ -24,28 +27,8 @@ class EnrollmentManager(models.Manager):
         )
 
 
-# class CancerEnrollmentModelMixin(models.Model):
-#
-#     is_eligible = models.BooleanField(default=False)
-#
-#     loss_reason = models.TextField(
-#         verbose_name='Reason not eligible',
-#         max_length=500,
-#         null=True,
-#         editable=False,
-#         help_text='(stored for the loss form)')
-#
-#     objects = EnrollmentManager()
-#
-#     def natural_key(self):
-#         return (self.subject_identifier,)
-#
-#     class Meta:
-#         abstract = True
-
-
 class EnrollmentChecklist (
-        EnrollmentModelMixin, CreateAppointmentsMixin, BaseUuidModel):
+        EnrollmentModelMixin, SearchSlugModelMixin, CreateAppointmentsMixin, BaseUuidModel):
 
     objects = EnrollmentManager()
 
