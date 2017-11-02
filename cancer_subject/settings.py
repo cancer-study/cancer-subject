@@ -170,5 +170,4 @@ if 'test' in sys.argv and 'mysql' not in DATABASES.get('default').get('ENGINE'):
         "edc_registration": None,
         "edc_sync_files": None,
         "edc_sync": None,
-        "cancer_subject": None,
-        "ambition_screening": None}
+        "cancer_subject": None, }

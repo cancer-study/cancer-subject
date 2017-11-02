@@ -1,16 +1,16 @@
 from django.contrib import admin
-from ..models import (
-    BaseRiskAssessment, BaseRiskAssessmentAlcohol, BaseRiskAssessmentCancer,
-    BaseRiskAssessmentChemical, BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
-    BaseRiskAssessmentMining, BaseRiskAssessmentSmoking, BaseRiskAssessmentSun,
-    BaseRiskAssessmentFuel, BaseRiskAssessmentFemale)
+
+from ..admin_site import cancer_subject_admin
 from ..forms import (
     BaseRiskAssessmentForm, BaseRiskAssessmentAlcoholForm, BaseRiskAssessmentCancerForm,
     BaseRiskAssessmentChemicalForm, BaseRiskAssessmentDemoForm, BaseRiskAssessmentEatingForm,
     BaseRiskAssessmentMiningForm, BaseRiskAssessmentSmokingForm, BaseRiskAssessmentSunForm,
     BaseRiskAssessmentFuelForm, BaseRiskAssessmentFemaleForm)
-
-from ..admin_site import cancer_subject_admin
+from ..models import (
+    BaseRiskAssessment, BaseRiskAssessmentAlcohol, BaseRiskAssessmentCancer,
+    BaseRiskAssessmentChemical, BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
+    BaseRiskAssessmentMining, BaseRiskAssessmentSmoking, BaseRiskAssessmentSun,
+    BaseRiskAssessmentFuel, BaseRiskAssessmentFemale)
 from .modeladmin_mixins import CrfModelAdminMixin
 
 
@@ -182,7 +182,7 @@ class BaseRiskAssessmentFuelAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "fuel_mm",
         "fuel_mm_other",
         "cooking_mm")
- 
+
     radio_fields = {
         "fuel_20y": admin.VERTICAL,
         "cooking": admin.VERTICAL,
