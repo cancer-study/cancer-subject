@@ -48,5 +48,6 @@ from .subject_eligibility import SubjectEligibility
 from .subject_locator import SubjectLocator
 from .subject_offstudy import SubjectOffstudy
 from .subject_requisition import SubjectRequisition
+from .subject_visit import SubjectVisit
 from .symptoms_and_testing import SymptomsAndTesting
 from .treatment_response import TreatmentResponse

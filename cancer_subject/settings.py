@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'rest_framework.authtoken',
+    'edc_reference.apps.AppConfig',
+    'edc_metadata_rules.apps.AppConfig',
     'edc_sync.apps.AppConfig',
     'edc_sync_files.apps.AppConfig',
     'django_crypto_fields.apps.AppConfig',
@@ -59,6 +61,9 @@ INSTALLED_APPS = [
     'cancer_subject.apps.EdcMetadataAppConfig',
     'edc_facility.apps.AppConfig',
     'cancer_visit_schedule.apps.AppConfig',
+    'cancer_metadata_rules.apps.AppConfig',
+    'cancer_reference.apps.AppConfig',
+
 ]
 
 

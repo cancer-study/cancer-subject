@@ -1,5 +1,4 @@
 from datetime import date
-
 from uuid import uuid4
 
 from django.apps import apps as django_apps
@@ -7,10 +6,12 @@ from django.test import TestCase
 from edc_base.utils import get_utcnow
 from edc_constants.constants import FEMALE, MALE, NO, YES
 from edc_registration.models import RegisteredSubject
+from edc_visit_tracking.constants import SCHEDULED
 
 from cancer_subject.forms.subject_consent_form import SubjectConsentForm
 from cancer_subject.models import SubjectConsent, EnrollmentChecklist
 from cancer_subject.models.appointment import Appointment
+from cancer_subject.models.subject_visit import SubjectVisit
 from edc_consent.consent import Consent
 from edc_consent.site_consents import site_consents
 
@@ -105,3 +106,17 @@ class TestEnrollment(TestCase):
             subject_identifier=consent.subject_identifier
         )
         self.assertEqual(Appointment.objects.all().count(), 21)
+
+    def test_subject_visit(self):
+        consent = SubjectConsent.objects.create(
+            **self.options)
+        EnrollmentChecklist.objects.create(
+            has_diagnosis=YES,
+            enrollment_site='gaborone_private_hospital',
+            subject_identifier=consent.subject_identifier
+        )
+        appointment = Appointment.objects.get(visit_code='1000')
+        subject_visit = SubjectVisit.objects.create(
+            appointment=appointment,
+            reason=SCHEDULED)
+        self.assertTrue(subject_visit)

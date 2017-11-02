@@ -1,13 +1,13 @@
 from django.db import models
-
-from edc_base.model_mixins import BaseUuidModel
 from edc_base.model_managers import HistoricalRecords
-from edc_consent.model_mixins import RequiresConsentMixin
-from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
+from edc_base.model_mixins import BaseUuidModel
 from edc_visit_tracking.constants import SCHEDULED
 from edc_visit_tracking.managers import VisitModelManager
 from edc_visit_tracking.model_mixins import (VisitModelMixin,
                                              PreviousVisitError)
+
+from edc_consent.model_mixins import RequiresConsentMixin
+from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
 
 from .appointment import Appointment
 
@@ -20,7 +20,8 @@ class SubjectVisit(VisitModelMixin, CreatesMetadataModelMixin,
     e.g.report_datetime.
     """
 
-    appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT)
+    appointment = models.OneToOneField(
+        Appointment, on_delete=models.PROTECT)
 
     objects = VisitModelManager()
 
