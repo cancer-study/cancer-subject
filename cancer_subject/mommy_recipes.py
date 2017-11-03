@@ -15,6 +15,10 @@ from cancer_subject.models import (
     BaseRiskAssessmentSun, BaseRiskAssessment, BaselineHIVHistory,
     BHHCd4, BHHHivTest, BHHWhoIllness, CancerDiagnosis,
     BaseChemoMedication, LabResultCd4, LabResultChemistry,
+    LabResultHaematology, LabResultHeightWeight, LabResultHiv,
+    LabResultTb, LabResultViralload, LabResult,
+    OncologyTreatmentCompleted, OncologyTreatmentRecord, OTRChemo,
+    OTRRadiation, OTRSurgical, RadiationTreatment, BaseRadiationTreatment,
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
     CurrentSymptoms)
@@ -374,3 +378,123 @@ labresultchemistry = Recipe(
     creatinine='347646',
     lactate='34657',
     comments='details here',)
+
+labresulthaematology = Recipe(
+    LabResultHaematology,
+    haem_drawn_date=fake.last_week,
+    hgb='17',
+    mcv='76',
+    wbc_count='241',
+    anc_count='342',
+    platelet='1412',
+    comments='details here',)
+
+labresultheightweight = Recipe(
+    LabResultHeightWeight,
+    weight='254',
+    height='134',
+    cough2weeks=YES,)
+
+labresulthiv = Recipe(
+    LabResultHiv,
+    test_date=fake.last_week(),
+    test_result='NEG',)
+
+labresulttb = Recipe(
+    LabResultTb,
+    tb_description='description here',
+    tb_treatment='No',
+    tb_treatment_start=fake.last_month(),)
+
+labresultviralload = Recipe(
+    LabResultViralload,
+    vl_drawn_date='details',
+    vl_result='8 > 9',)
+
+labresult = Recipe(
+    LabResult,
+    has_hiv_result=YES,
+    has_cd4=YES,
+    has_vl=YES,
+    has_haem=YES,
+    has_chem=YES,
+    has_other_abnormal=YES,
+    other_abnormal='other results here',
+    abnormal_lab_results='details here',
+    tb_tests=YES,
+    tb_prompt_other='other details here',)
+
+oncologytreamentcompleted = Recipe(
+    OncologyTreatmentCompleted,
+    patient_had_chemo=YES,
+    patient_had_radiation=YES,
+    patient_had_surgery=YES,
+    treatment_detail='details here',
+    patient_follow_up='PMH',
+    patient_follow_up_other='other details here',
+    next_followup='details',)
+
+oncologytreamentrecord = Recipe(
+    OncologyTreatmentRecord,
+    chemo_received=YES,
+    radiation_received=YES,
+    surgical_therapy=YES,
+    comments='details here',)
+
+otrchemo = Recipe(
+    OTRChemo,
+    chemo_intent='Standard',
+    chemo_delays=YES,
+    why_delayed='RenalTox',
+    why_delayed_other='other details here',
+    chemo_reduced=YES,
+    why_reduced='HemeTox',
+    why_reduced_other='other details here',)
+
+otrradiation = Recipe(
+    OTRRadiation,
+    radiation_details=YES,)
+
+otrsurgical = Recipe(
+    OTRSurgical,
+    operation_performed='details',
+    date_operation='details',)
+
+radiationtreatment = Recipe(
+    RadiationTreatment,
+    treatment_start_date=fake.three_months_ago,
+    treatment_end_date=fake.last_week,
+    tumour_stages='X',
+    lymph_stages='O',
+    metastasis_stages='1',
+    overall_stages='3',
+    stage_modifier='A',
+    treatment_itent='Curative',
+    treatment_relationship='no modalities',
+    side_effects='details',
+    side_effects_other='other details here',
+    response='Poor response',
+    response_other='other details here',
+    any_missed_doses=YES,
+    if_doses_missed='unresponsive',
+    if_doses_missed_other='other details here',
+    any_doses_delayed=YES,
+    if_doses_delayed='Toxicity Hematologic',
+    if_doses_delayed_other='other details here',
+    first_course_radiation=YES,
+    comments='detials here',)
+
+baseradiationtreatment = Recipe(
+    BaseRadiationTreatment,
+    treatment_name=fake.last_month,
+    start_date='',
+    end_date='',
+    dose_delivered='',
+    dose_described='',
+    fractions='',
+    dose_per_fraction='',
+    radiation_technique='Photons',
+    radiation_techique_other='other details here',
+    brachy_length='2',
+    brachy_type='T&SR',
+)
