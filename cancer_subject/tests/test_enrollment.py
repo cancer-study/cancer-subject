@@ -124,7 +124,7 @@ class TestEnrollment(TestCase):
     def test_subject_visit_1(self):
         consent = SubjectConsent.objects.create(
             **self.options)
-        EnrollmentChecklist.objects.create(
+        enrollment = EnrollmentChecklist.objects.create(
             has_diagnosis=NO,
             enrollment_site='gaborone_private_hospital',
             subject_identifier=consent.subject_identifier
@@ -132,3 +132,4 @@ class TestEnrollment(TestCase):
         appointment = Appointment.objects.filter(
             subject_identifier=consent.subject_identifier)
         self.assertFalse(appointment)
+        self.assertFalse(enrollment.is_eligible)

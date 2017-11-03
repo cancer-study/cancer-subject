@@ -56,7 +56,6 @@ class EnrollmentChecklist (
         help_text="Hospital where subject is recruited")
 
     history = HistoricalRecords()
-    super
 
     def save(self, *args, **kwargs):
         #self.facility_name = 'clinic'
@@ -66,6 +65,9 @@ class EnrollmentChecklist (
         if self.has_diagnosis == YES:
             super().create_appointments(
                 base_appt_datetime=base_appt_datetime, taken_datetimes=taken_datetimes)
+            self.is_eligible = True
+        else:
+            self.is_eligible = False
 
     class Meta(EnrollmentModelMixin.Meta):
         consent_model = 'cancer_subject.subjectconsent'
