@@ -3,6 +3,7 @@ from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_base.model_validators.eligibility import eligible_if_yes
 from edc_constants.choices import YES_NO
+from edc_constants.constants import YES
 from edc_search.model_mixins import SearchSlugManager
 
 from edc_appointment.model_mixins import CreateAppointmentsMixin
@@ -55,10 +56,16 @@ class EnrollmentChecklist (
         help_text="Hospital where subject is recruited")
 
     history = HistoricalRecords()
+    super
 
     def save(self, *args, **kwargs):
         #self.facility_name = 'clinic'
         super().save(*args, **kwargs)
+
+    def create_appointments(self, base_appt_datetime=None, taken_datetimes=None):
+        if self.has_diagnosis == YES:
+            super().create_appointments(
+                base_appt_datetime=base_appt_datetime, taken_datetimes=taken_datetimes)
 
     class Meta(EnrollmentModelMixin.Meta):
         consent_model = 'cancer_subject.subjectconsent'
