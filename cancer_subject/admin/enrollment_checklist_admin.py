@@ -39,9 +39,7 @@ class EnrollmentChecklistAdmin(ModelAdminMixin,
             )}),
         audit_fieldset_tuple)
 
-    def get_readonly_fields(self, request, obj=None):
-        return (super().get_readonly_fields(request, obj=obj)
-                + audit_fields)
+    readonly_fields = ('subject_identifier',) + audit_fields
 
     radio_fields = {
         "has_diagnosis": admin.VERTICAL,
