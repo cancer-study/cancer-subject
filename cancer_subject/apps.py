@@ -12,12 +12,8 @@ from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_device.constants import CENTRAL_SERVER
 from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
 from edc_lab.apps import AppConfig as BaseEdcLabAppConfig
-from edc_label.apps import AppConfig as BaseEdcLabelAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig, SubjectType, Cap
 from edc_sync_files.apps import AppConfig as BaseEdcSyncFilesAppConfig
-from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
-from edc_visit_tracking.constants import MISSED_VISIT
-from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
 
 from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
@@ -28,6 +24,9 @@ from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
 from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
 from edc_timepoint.timepoint import Timepoint
+from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
+from edc_visit_tracking.constants import MISSED_VISIT
+from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
 
 
 class AppConfig(DjangoApponfig):
@@ -140,10 +139,6 @@ if settings.APP_NAME == 'cancer_subject':
     class EdcSyncAppConfig(BaseEdcSyncAppConfig):
         edc_sync_files_using = True
         role = CENTRAL_SERVER
-
-    class EdcLabelAppConfig(BaseEdcLabelAppConfig):
-        template_folder = os.path.join(
-            settings.STATIC_ROOT, 'cancer', 'label_templates')
 
     class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
         edc_sync_files_using = True

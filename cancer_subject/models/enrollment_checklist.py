@@ -57,10 +57,6 @@ class EnrollmentChecklist (
 
     history = HistoricalRecords()
 
-    def save(self, *args, **kwargs):
-        #self.facility_name = 'clinic'
-        super().save(*args, **kwargs)
-
     def create_appointments(self, base_appt_datetime=None, taken_datetimes=None):
         if self.has_diagnosis == YES:
             super().create_appointments(

@@ -5,8 +5,6 @@ from django.views.generic.base import RedirectView
 
 from .admin_site import cancer_subject_admin
 
-app_name = 'ambition_subject'
-
 urlpatterns = [
     url(r'^admin/', cancer_subject_admin.urls),
     url(r'', RedirectView.as_view(url='/'), name='home_url'),

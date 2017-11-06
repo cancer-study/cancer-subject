@@ -1,6 +1,8 @@
 from datetime import date
+
 from dateutil.relativedelta import relativedelta
 from edc_base.utils import get_utcnow
+from edc_constants.choices import YES, POS
 from edc_constants.constants import NO
 from faker import Faker
 from faker.providers import BaseProvider
@@ -22,9 +24,8 @@ from cancer_subject.models import (
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
     CurrentSymptoms)
-from edc_consent.tests import EdcConsentProvider
-from edc_constants.choices import YES, POS
 from cancer_subject.patterns import subject_identifier
+from edc_consent.tests import EdcConsentProvider
 
 
 class DateProvider(BaseProvider):
@@ -487,12 +488,6 @@ radiationtreatment = Recipe(
 baseradiationtreatment = Recipe(
     BaseRadiationTreatment,
     treatment_name=fake.last_month,
-    start_date='',
-    end_date='',
-    dose_delivered='',
-    dose_described='',
-    fractions='',
-    dose_per_fraction='',
     radiation_technique='Photons',
     radiation_techique_other='other details here',
     brachy_length='2',
