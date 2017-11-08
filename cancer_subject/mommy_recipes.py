@@ -23,7 +23,7 @@ from cancer_subject.models import (
     OTRRadiation, OTRSurgical, RadiationTreatment, BaseRadiationTreatment,
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
-    CurrentSymptoms)
+    CurrentSymptoms, Week16)
 from cancer_subject.patterns import subject_identifier
 from edc_consent.tests import EdcConsentProvider
 
@@ -486,6 +486,15 @@ radiationtreatment = Recipe(
     comments='detials here',)
 
 baseradiationtreatment = Recipe(
+    BaseRadiationTreatment,
+    treatment_name=fake.last_month,
+    radiation_technique='Photons',
+    radiation_techique_other='other details here',
+    brachy_length='2',
+    brachy_type='T&SR',
+)
+
+week16 = Recipe(
     BaseRadiationTreatment,
     treatment_name=fake.last_month,
     radiation_technique='Photons',
