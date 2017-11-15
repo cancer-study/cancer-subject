@@ -154,6 +154,13 @@ GIT_DIR = BASE_DIR
 COUNTRY = 'botswana'
 HOLIDAY_FILE = os.path.join(BASE_DIR, APP_NAME, 'holidays.csv')
 
+DEFAULT_APPOINTMENT_MODEL = 'cancer_subject.appointment'
+
+EDC_SYNC_SERVER_IP = None
+EDC_SYNC_FILES_REMOTE_HOST = None
+EDC_SYNC_FILES_USER = None
+EDC_SYNC_FILES_USB_VOLUME = None
+
 if 'test' in sys.argv and 'mysql' not in DATABASES.get('default').get('ENGINE'):
     MIGRATION_MODULES = {
         "django_crypto_fields": None,
