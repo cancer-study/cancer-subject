@@ -1,3 +1,4 @@
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from edc_base.model_fields.custom_fields import OtherCharField
@@ -129,7 +130,9 @@ class BaseRiskAssessmentDemo (CrfModelMixin):
     household_people = models.IntegerField(
         verbose_name=("How many people, including yourself, stay in "
                       "your household/compound most of the time?"),
-        help_text="",)
+        validators=[MinValueValidator(1)],
+        null=True,
+        blank=True)
 
     food_security = models.CharField(
         verbose_name=("In the past 4 weeks, did you or any household "
