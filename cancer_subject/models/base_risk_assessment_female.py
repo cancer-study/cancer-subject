@@ -1,4 +1,5 @@
 # coding: utf-8
+from django.core.validators import MinValueValidator
 from django.db import models
 
 from ..models.model_mixins import CrfModelMixin
@@ -8,12 +9,15 @@ from edc_constants.choices import YES_NO
 class BaseRiskAssessmentFemale (CrfModelMixin):
 
     age_period = models.IntegerField(
-        verbose_name=("At what age did you start having your menstrual period?"),
+        verbose_name=(
+            "At what age did you start having your menstrual period?"),
         help_text="",)
 
     children = models.IntegerField(
         verbose_name="How many children have you given birth to?",
-        help_text="",)
+        validators=[MinValueValidator(1)],
+        null=True,
+        blank=True)
 
     years_breastfed = models.CharField(
         verbose_name=("Have you breastfed for a total of at least 1 "
