@@ -37,6 +37,7 @@ class SymptomsAndTesting (CrfModelMixin):
         verbose_name="When did you first see a medical doctor "
         "for the symptom?",
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
         help_text="")
@@ -44,6 +45,7 @@ class SymptomsAndTesting (CrfModelMixin):
         verbose_name="When did you first see a traditional doctor for "
         "the symptom?",
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
         help_text="")
@@ -84,6 +86,7 @@ class SymptomsAndTesting (CrfModelMixin):
     neg_date = models.DateField(
         verbose_name="When was your last negative HIV test?",
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
         help_text="if 'within the last 6 months' END form ")
