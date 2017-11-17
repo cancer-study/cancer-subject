@@ -1,4 +1,5 @@
 from django.db import models
+from edc_base.model_validators import date_not_future
 from django.core.validators import RegexValidator
 
 from edc_constants.choices import YES_NO_REFUSED, POS_NEG_REFUSED
@@ -28,6 +29,7 @@ class SymptomsAndTesting (CrfModelMixin):
         verbose_name="When did you first notice the symptom that "
         "led to a diagnosis of cancer?",
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
         help_text="")
