@@ -11,11 +11,13 @@ class BaseRiskAssessmentFemale (CrfModelMixin):
     age_period = models.IntegerField(
         verbose_name=(
             "At what age did you start having your menstrual period?"),
-        help_text="",)
+        validators=[MinValueValidator(11)],
+        null=True,
+        blank=True)
 
     children = models.IntegerField(
         verbose_name="How many children have you given birth to?",
-        validators=[MinValueValidator(1)],
+        validators=[MinValueValidator(0)],
         null=True,
         blank=True)
 
