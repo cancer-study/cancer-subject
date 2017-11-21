@@ -1,6 +1,4 @@
 from django.db import models
-
-
 from edc_base.model_fields import OtherCharField
 from edc_constants.choices import YES_NO_DONT_KNOW
 
@@ -18,7 +16,11 @@ class BaseRiskAssessmentFuel (CrfModelMixin):
         choices=FUEL_HOUSEHOLD20_CHOICE,
         help_text="",)
 
-    fuel_20y_other = OtherCharField()
+    fuel_20y_other = OtherCharField(
+        verbose_name='If yes, specify',
+        max_length=250,
+        blank=True,
+        null=True)
 
     cooking = models.CharField(
         verbose_name=("Over the past 20 years, was cooking usually "
@@ -34,7 +36,11 @@ class BaseRiskAssessmentFuel (CrfModelMixin):
         choices=FUEL_MONTH_CHOICE,
         help_text="",)
 
-    fuel_mm_other = OtherCharField()
+    fuel_mm_other = OtherCharField(
+        verbose_name='If yes, specify',
+        max_length=250,
+        blank=True,
+        null=True)
 
     cooking_mm = models.CharField(
         verbose_name=("In the past month, was cooking usually done "
