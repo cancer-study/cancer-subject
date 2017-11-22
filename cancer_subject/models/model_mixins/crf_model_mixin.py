@@ -4,10 +4,10 @@ from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel, FormAsJSONModelMixin
 from edc_base.model_validators import datetime_not_future
 from edc_base.utils import get_utcnow
+from edc_consent.model_mixins import RequiresConsentMixin
 from edc_offstudy.model_mixins import OffstudyMixin
 from edc_protocol.validators import datetime_not_before_study_start
 
-from edc_consent.model_mixins import RequiresConsentMixin
 from edc_metadata.model_mixins.updates import UpdatesCrfMetadataModelMixin
 from edc_reference.model_mixins import ReferenceModelMixin
 from edc_visit_tracking.managers import CrfModelManager as VisitTrackingCrfModelManager

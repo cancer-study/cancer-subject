@@ -1,17 +1,11 @@
-from django import forms
+from edc_offstudy.modelform_mixins import OffStudyFormMixin
 
-from ..choices.subject_off_study import OFF_STUDY_REASON
-from ..models import SubjectOffstudy
+from ..models.subject_offstudy import SubjectOffstudy
+
 from .form_mixins import SubjectModelFormMixin
 
 
-class SubjectOffStudyForm (SubjectModelFormMixin):
-
-    #     reason = forms.ChoiceField(
-    #         label='Please code the primary reason participant taken off-study',
-    #         choices=[choice for choice in OFF_STUDY_REASON],
-    #         help_text="",
-    #         widget=AdminRadioSelect(renderer=AdminRadioFieldRenderer),)
+class SubjectOffStudyForm (OffStudyFormMixin, SubjectModelFormMixin):
 
     class Meta:
         model = SubjectOffstudy
