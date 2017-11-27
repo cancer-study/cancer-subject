@@ -1,6 +1,5 @@
 from django.contrib import admin
-from edc_base.modeladmin_mixins import audit_fieldset_tuple
-from edc_base.modeladmin_mixins.inlines import TabularInlineMixin
+from edc_model_admin import audit_fieldset_tuple, TabularInlineMixin
 
 from cancer_subject.admin.modeladmin_mixins import CrfModelAdminMixin
 from cancer_subject.admin_site import cancer_subject_admin

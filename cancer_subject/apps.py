@@ -19,7 +19,7 @@ from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
 from edc_base_test.apps import AppConfig as BaseEdcBaseTestAppConfig
 from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
-from edc_facility.facility import Facility
+from edc_facility.apps import AppConfig as BaseEdcFacilityAppConfig
 from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
 from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
@@ -54,26 +54,10 @@ if settings.APP_NAME == 'cancer_subject':
         study_close_datetime = datetime(
             2018, 12, 31, 23, 59, 59, tzinfo=gettz('UTC'))
 
-        @property
-        def site_name(self):
-            return 'Gaborone'
-
-        @property
-        def site_code(self):
-            return '40'
-
     class EdcLabAppConfig(BaseEdcLabAppConfig):
         base_template_name = 'cancer/base.html'
         requisition_model = 'cancer_subject.subjectrequisition'
         result_model = 'edc_lab.result'
-
-        @property
-        def site_name(self):
-            return 'Gaborone'
-
-        @property
-        def site_code(self):
-            return '40'
 
     class EdcBaseAppConfig(BaseEdcBaseAppConfig):
         project_name = 'cancer'
@@ -111,10 +95,14 @@ if settings.APP_NAME == 'cancer_subject':
                 model='cancer_subject.appointment',
                 related_visit_model='cancer_subject.subjectvisit')
         ]
-        facilities = {
-            'clinic': Facility(
-                name='clinic', days=[MO, TU, WE, TH, FR, SA, SU],
-                slots=[99999, 99999, 99999, 99999, 99999, 99999, 99999])}
+
+    class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
+        country = 'botswana'
+        definitions = {
+            '7-day clinic': dict(days=[MO, TU, WE, TH, FR, SA, SU],
+                                 slots=[100, 100, 100, 100, 100, 100, 100]),
+            '5-day clinic': dict(days=[MO, TU, WE, TH, FR],
+                                 slots=[100, 100, 100, 100, 100])}
 
     class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
         timepoints = [

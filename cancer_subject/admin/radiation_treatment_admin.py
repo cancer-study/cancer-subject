@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from edc_base.modeladmin_mixins.inlines import TabularInlineMixin
+from edc_model_admin import TabularInlineMixin
 
 from ..models import RadiationTreatment, RadiationTreatmentRecord
 from ..forms import RadiationTreatmentForm

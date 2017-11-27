@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from edc_base.modeladmin_mixins.inlines import TabularInlineMixin
+from edc_model_admin import TabularInlineMixin
 
 from ..admin_site import cancer_subject_admin
 from ..forms import OncologyTreatmentRecordForm, OTRChemoForm, OTRRadiationForm, OTRSurgicalForm
