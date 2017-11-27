@@ -7,7 +7,6 @@ from django.apps import AppConfig as DjangoApponfig
 from django.conf import settings
 from edc_base.apps import AppConfig as BaseEdcBaseAppConfig
 from edc_base.utils import get_utcnow
-from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
 from edc_constants.constants import FAILED_ELIGIBILITY
 from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_device.constants import CENTRAL_SERVER
@@ -19,6 +18,7 @@ from edc_sync_files.apps import AppConfig as BaseEdcSyncFilesAppConfig
 from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
 from edc_base_test.apps import AppConfig as BaseEdcBaseTestAppConfig
+from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
 from edc_facility.facility import Facility
 from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
@@ -44,17 +44,15 @@ class AppConfig(DjangoApponfig):
 
 
 if settings.APP_NAME == 'cancer_subject':
-
     class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
         protocol = 'BHP045'
         protocol_number = '045'
         protocol_name = 'Cancer'
         protocol_title = ''
-
         study_open_datetime = datetime(
-            2012, 12, 31, 0, 0, 0, tzinfo=gettz('UTC'))
+            2016, 12, 31, 0, 0, 0, tzinfo=gettz('UTC'))
         study_close_datetime = datetime(
-            2019, 12, 31, 0, 0, 0, tzinfo=gettz('UTC'))
+            2018, 12, 31, 23, 59, 59, tzinfo=gettz('UTC'))
 
         @property
         def site_name(self):
