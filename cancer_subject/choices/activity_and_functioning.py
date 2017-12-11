@@ -61,5 +61,4 @@ PERFORM_STATUS_CHOICE = (
     ('2', 'Symptomatic, &lt;50% in bed during the day (Ambulatory and capable of all self care but unable to carry out any work activities. Up and about more than 50% of waking hours)'),
     ('3', '50% in bed, but not bedbound (Capable of only limited self-care, confined to bed or chair 50% or more of waking hours)'),
     ('4', 'Bedbound (Completely disabled. Cannot carry on any self-care. Totally confined to bed or chair)'),
-    ('5', 'Death'),
 )
