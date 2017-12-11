@@ -1,5 +1,6 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
+from edc_base.model_validators import date_not_future
 from edc_constants.choices import YES_NO_DONT_KNOW, YES_NO
 
 from ..choices.base_risk_assessment import (
@@ -24,10 +25,10 @@ class BaseRiskAssessment (CrfModelMixin):
         choices=YES_NO_DONT_KNOW,
         help_text="",)
 
-    year_tb = models.IntegerField(
+    year_tb = models.DateField(
         verbose_name=("In what year did you last have tuberculosis "
                       "(year of diagnosis)?"),
-        validators=[MinValueValidator(1900), MaxValueValidator(2020)],
+        validators=[date_not_future],
         null=True,
         blank=True,
         help_text="",)
