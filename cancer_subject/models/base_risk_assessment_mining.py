@@ -51,4 +51,4 @@ class BaseRiskAssessmentMining (CrfModelMixin):
         app_label = "cancer_subject"
         verbose_name = "Base Risk Assessment: Mining"
         verbose_name_plural = "Base Risk Assessment: Mining"
-#         consent_model = "cancer_subject.subjectconsent"
+        consent_model = "cancer_subject.subjectconsent"
