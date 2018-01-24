@@ -6,14 +6,14 @@ from edc_visit_tracking.managers import VisitModelManager
 from edc_visit_tracking.model_mixins import (VisitModelMixin,
                                              PreviousVisitError)
 
-from edc_consent.model_mixins import RequiresConsentMixin
+from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
 
 from .appointment import Appointment
 
 
 class SubjectVisit(VisitModelMixin, CreatesMetadataModelMixin,
-                   RequiresConsentMixin, BaseUuidModel):
+                   RequiresConsentFieldsModelMixin, BaseUuidModel):
 
     """A model completed by the user that captures the covering
     information for the data collected for this timepoint/appointment,
@@ -36,6 +36,6 @@ class SubjectVisit(VisitModelMixin, CreatesMetadataModelMixin,
     def common_clean_exceptions(self):
         return super().common_clean_exceptions + [PreviousVisitError]
 
-    class Meta(VisitModelMixin.Meta, RequiresConsentMixin.Meta):
+    class Meta(VisitModelMixin.Meta, RequiresConsentFieldsModelMixin.Meta):
         app_label = "cancer_subject"
         consent_model = 'cancer_subject.subjectconsent'

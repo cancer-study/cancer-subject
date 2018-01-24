@@ -3,7 +3,7 @@ from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 
 from edc_base.modeladmin_mixins import audit_fieldset_tuple, audit_fields
-from edc_visit_schedule.admin import (
+from edc_visit_schedule.fieldsets import (
     visit_schedule_fieldset_tuple, visit_schedule_fields)
 from edc_visit_tracking.modeladmin_mixins import VisitModelAdminMixin
 

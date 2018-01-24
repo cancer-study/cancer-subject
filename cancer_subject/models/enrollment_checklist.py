@@ -6,8 +6,8 @@ from edc_constants.choices import YES_NO
 from edc_constants.constants import YES
 from edc_search.model_mixins import SearchSlugManager
 
-from edc_appointment.model_mixins import CreateAppointmentsMixin
-from edc_visit_schedule.model_mixins import EnrollmentModelMixin
+from edc_appointment.model_mixins import AppointmentModelMixin
+# from edc_visit_schedule.model_mixins import EnrollmentModelMixin
 
 from ..models.model_mixins import SearchSlugModelMixin
 
@@ -28,8 +28,8 @@ class EnrollmentManager(SearchSlugManager, models.Manager):
         )
 
 
-class EnrollmentChecklist (
-        EnrollmentModelMixin, SearchSlugModelMixin, CreateAppointmentsMixin, BaseUuidModel):
+class EnrollmentChecklist (SearchSlugModelMixin, AppointmentModelMixin,
+                           BaseUuidModel):
 
     objects = EnrollmentManager()
 
@@ -65,6 +65,6 @@ class EnrollmentChecklist (
         else:
             self.is_eligible = False
 
-    class Meta(EnrollmentModelMixin.Meta):
+    class Meta():
         consent_model = 'cancer_subject.subjectconsent'
         visit_schedule_name = 'visit_schedule1.schedule1'

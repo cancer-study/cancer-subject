@@ -1,12 +1,12 @@
 from django import forms
 
 from cancer_subject.choices.main import APPOINTMENT_REASON
-from edc_appointment.modelform_mixins import AppointmentFormMixin
+# from edc_appointment.model_mixins import AppointmentModelMixin
 
 from ..models import Appointment
 
 
-class AppointmentForm(AppointmentFormMixin, forms.ModelForm):
+class AppointmentForm(forms.ModelForm):
 
     appt_reason = forms.ChoiceField(
         label='Reason for appointment:',

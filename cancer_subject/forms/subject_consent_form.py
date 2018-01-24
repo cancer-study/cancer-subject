@@ -1,11 +1,11 @@
 from django import forms
-from edc_base.modelform_mixins import CommonCleanModelFormMixin
+# from edc_base.modelform_mixins import CommonCleanModelFormMixin
 
 from cancer_subject.choices import COMMUNITY
 from ..models import SubjectConsent
 
 
-class SubjectConsentForm(CommonCleanModelFormMixin, forms.ModelForm):
+class SubjectConsentForm(forms.ModelForm):
 
     study_site = forms.ChoiceField(
         label='Study site',

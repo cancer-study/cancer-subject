@@ -1,7 +1,7 @@
 from django.db import models
 
 from edc_base.model_mixins import BaseUuidModel
-from edc_identifier.models import IdentifierHistoryMixin
+# from edc_identifier.models import IdentifierHistoryMixin
 
 
 class IdentifierManager(models.Manager):
@@ -10,6 +10,6 @@ class IdentifierManager(models.Manager):
         return self.get(identifier=identifier)
 
 
-class IdentifierHistory(IdentifierHistoryMixin, BaseUuidModel):
+class IdentifierHistory(BaseUuidModel):
 
     objects = IdentifierManager()

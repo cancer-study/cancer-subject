@@ -7,10 +7,10 @@ from edc_base.model_validators import CellNumber, TelephoneNumber
 from edc_constants.choices import YES_NO_NA, YES_NO, YES, NOT_APPLICABLE
 from edc_locator.model_mixins import LocatorModelMixin
 
-from edc_consent.model_mixins import RequiresConsentMixin
+from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 
 
-class SubjectLocator(LocatorModelMixin, RequiresConsentMixin, BaseUuidModel):
+class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, BaseUuidModel):
     """A model completed by the user to that captures participant
     locator information and permission to contact.
     """
@@ -131,5 +131,5 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentMixin, BaseUuidModel):
                             info=info, physical_address=self.physical_address)
         return info
 
-    class Meta(RequiresConsentMixin.Meta):
+    class Meta(RequiresConsentFieldsModelMixin.Meta):
         consent_model = 'cancer_subject.subjectconsent'

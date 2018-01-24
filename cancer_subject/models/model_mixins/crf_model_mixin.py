@@ -4,8 +4,8 @@ from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel, FormAsJSONModelMixin
 from edc_base.model_validators import datetime_not_future
 from edc_base.utils import get_utcnow
-from edc_consent.model_mixins import RequiresConsentMixin
-from edc_offstudy.model_mixins import OffstudyMixin
+from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
+from edc_offstudy.model_mixins import OffstudyCrfModelMixin
 from edc_protocol.validators import datetime_not_before_study_start
 
 from edc_metadata.model_mixins.updates import UpdatesCrfMetadataModelMixin
@@ -29,8 +29,8 @@ class CrfModelManager(VisitTrackingCrfModelManager):
         )
 
 
-class CrfModelMixin(VisitTrackingCrfModelMixin, OffstudyMixin,
-                    RequiresConsentMixin, PreviousVisitModelMixin,
+class CrfModelMixin(VisitTrackingCrfModelMixin, OffstudyCrfModelMixin,
+                    RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
                     UpdatesCrfMetadataModelMixin,
                     FormAsJSONModelMixin, ReferenceModelMixin, BaseUuidModel):
 
@@ -55,14 +55,14 @@ class CrfModelMixin(VisitTrackingCrfModelMixin, OffstudyMixin,
         return self.subject_visit.natural_key()
     natural_key.dependencies = ['cancer_subject.subjectvisit']
 
-    class Meta(VisitTrackingCrfModelMixin.Meta, RequiresConsentMixin.Meta):
+    class Meta(VisitTrackingCrfModelMixin.Meta, RequiresConsentFieldsModelMixin.Meta):
         consent_model = 'cancer_subject.subjectconsent'
         abstract = True
 
 
 class CrfModelMixinNonUniqueVisit(
-        VisitTrackingCrfModelMixin, OffstudyMixin,
-        RequiresConsentMixin, PreviousVisitModelMixin,
+        VisitTrackingCrfModelMixin, OffstudyCrfModelMixin,
+        RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
         UpdatesCrfMetadataModelMixin, BaseUuidModel):
 
     """ Base model for all scheduled models (adds key to :class:`SubjectVisit`). """
@@ -85,6 +85,6 @@ class CrfModelMixinNonUniqueVisit(
         return self.subject_visit.natural_key()
     natural_key.dependencies = ['cancer_subject.subjectvisit']
 
-    class Meta(VisitTrackingCrfModelMixin.Meta, RequiresConsentMixin.Meta):
+    class Meta(VisitTrackingCrfModelMixin.Meta, RequiresConsentFieldsModelMixin.Meta):
         consent_model = 'cancer_subject.subjectconsent'
         abstract = True
