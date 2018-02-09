@@ -86,6 +86,71 @@ CARE_REGULARITY = (
     (DWTA, _('Don\'t want to answer')),
 )
 
+CHOICES_FROM_BCPPLIST = (
+    ('improved_hygiene', _('Improved hygiene')),
+    ('reduced_risk_of_HIV', _('Reduced risk of HIV')),
+    ('reduced_risk_of_std',
+     _('reduced risk of other sexually transmitted diseases')),
+    ('reduced_risk_of_cancer', _('Reduced risk of cancer')),
+    ('heart_disease', _('Heart Disease or Stroke')),
+    ('cancer', _('Cancer')),
+    ('tb', _('Tuberculosis')),
+    ('other_serious_infection', _('Other serious infection')),
+    ('radio', _('Radio')),
+    ('TV', _('TV')),
+    ('landline_telephone', _('Landline telephone')),
+    ('cell_phone', _('Cell phone')),
+    ('computer', _('Computer')),
+    ('access_to_internet', _('Access to internet')),
+    ('refrigerator', _('Refrigerator')),
+    ('condoms_consistent_use_(male_or_female)',
+     _('Condoms, consistent use (male or female)')),
+    ('injectable_contraceptive', _('Injectable contraceptive')),
+    ('oral_contraceptive', _('Oral contraceptive')),
+    ('IUD', _('IUD')),
+    ('diaphragm_or_cervical_cap', _('Diaphragm or cervical cap')),
+    ('rhythm_or_menstrual_cycle_timing', _('Rhythm or menstrual cycle timing')),
+    ('withdrawal', _('Withdrawal')),
+    ('myocardial_infarction_(heart_attack)',
+     _('Myocardial infarction (heart attack)')),
+    ('congestive_cardiac_failure', _('Congestive cardiac failure')),
+    ('stroke_(cerebrovascular_accident,CVA)',
+     _('Stroke (cerebrovascular accident, CVA)')),
+    ('partner_or_spouse', _('Partner or spouse')),
+    ('siblings', _('Siblings')),
+    (ALONE, _('Alone')),
+    ('extended_family', _('Extended family')),
+    ('traditional,faith,or_religious_healer/doctor',
+     _('Traditional, faith, or religious healer/doctor')),
+    ('pharmacy', _('Pharmacy')),
+    ('public_or_govt_health_facility_or_clinic',
+     _('Public or government health facility or clinic')),
+    ('private_health_facility_or_clinic',
+     _('Private health facility or clinic')),
+    ('community_health_worker', _('Community health worker')),
+    ('water', _('Water')),
+    ('sewer_(sanitation)', _('Sewer (sanitation)')),
+    ('housing', _('Housing')),
+    ('roads', _('Roads')),
+    ('malaria', _('Malaria')),
+    ('HIV/AIDS', _('HIV/AIDS')),
+    ('schools', _('Schools')),
+    ('unemployment', _('Unemployment')),
+    ('in_this_community', _('In this community')),
+    ('outside_community', _('Outside community')),
+    ('farm_within', _('Farm within this community')),
+    ('farm_outside_this_community', _('Farm outside this community')),
+    ('cattlepost_within', _('Cattle post within this community')),
+    ('cattlepost_outside', _('Cattle post outside this community')),
+    ('motor_vehicle_(car,truck,taxi,etc)',
+     _('Motor vehicle (car,truck,taxi, etc)')),
+    ('tractor', _('Tractor')),
+    ('bicycle', _('Bicycle')),
+    ('motorcycle/scooter', _('Motorcycle/scooter')),
+    ('donkey_or_cow_cart', _('Donkey or cow cart')),
+    ('donkey/horses', _('Donkey/horses')),
+)
+
 CHRONIC_DISEASES = (
     ('diabetes', 'Diabetes'),
     ('high_bp', 'High blood pressure'),
@@ -93,10 +158,54 @@ CHRONIC_DISEASES = (
     (OTHER, 'Other'),
 )
 
+COMMUNITIES = (
+    ('Bokaa', _('Bokaa')),
+    ('Digawana', _('Digawana')),
+    ('Gumare', _('Gumare')),
+    ('Gweta', _('Gweta')),
+    ('Lentsweletau', _('Lentsweletau')),
+    ('Lerala', _('Lerala')),
+    ('Letlhakeng', _('Letlhakeng')),
+    ('Mmandunyane', _('Mmandunyane')),
+    ('Mmankgodi', _('Mmankgodi')),
+    ('Mmadinare', _('Mmadinare')),
+    ('Mmathethe', _('Mmathethe')),
+    ('Masunga', _('Masunga')),
+    ('Maunatlala', _('Maunatlala')),
+    ('Mathangwane', _('Mathangwane')),
+    ('Metsimotlhabe', _('Metsimotlhabe')),
+    ('Molapowabojang', _('Molapowabojang')),
+    ('Nata', _('Nata')),
+    ('Nkange', _('Nkange')),
+    ('Oodi', _('Oodi')),
+    ('Otse', _('Otse')),
+    ('Rakops', _('Rakops')),
+    ('Ramokgonami', _('Ramokgonami')),
+    ('Ranaka', _('Ranaka')),
+    ('Sebina', _('Sebina')),
+    ('Sefhare', _('Sefhare')),
+    ('Sefophe', _('Sefophe')),
+    ('Shakawe', _('Shakawe')),
+    ('Shoshong', _('Shoshong')),
+    ('Tati_Siding', _('Tati_Siding')),
+    ('Tsetsebjwe', _('Tsetsebjwe')),
+    (OTHER, _('Other non study community')),
+)
+
+COMMUNITY_NA = tuple(
+    [(NOT_APPLICABLE, _('Not Applicable'))] + list(COMMUNITIES))
+
 CONTACT_TYPE = (
     ('direct', 'Direct contact with participant'),
     ('indirect', 'Contact with person other than participant'),
     ('no_contact', 'No contact made'),
+)
+
+COUNSELING_SITE = (
+    ('in_home', 'In home'),
+    ('mobile', 'Mobile Unit'),
+    ('tent', 'Tent'),
+    ('clinic', 'Clinic'),
 )
 
 DOCTOR_VISITS = (
@@ -109,6 +218,20 @@ DOCTOR_VISITS = (
     (DWTA, _('Don\'t want to answer')),
 )
 
+DXCANCER_CHOICE = (
+    ('kaposi\'s_sarcoma_(KS)', 'Kaposi\'s sarcoma (KS)'),
+    ('cervical_cancer', 'Cervical cancer'),
+    ('breast_cancer', 'Breast cancer'),
+    ('non-Hodgkin\'s_lymphoma_(NHL)', 'Non-Hodgkin\'s lymphoma (NHL)'),
+    ('colorectal_cancer', 'Colorectal cancer'),
+    ('prostate_cancer', 'Prostate cancer'),
+    ('cancer_of_mouth,throat,voice_box_(larynx)',
+     'Cancer of mouth, throat, voice box (larynx)'),
+    ('cancer_of_oesophagus', 'Cancer of oesophagus'),
+    (OTHER, 'Other, specify:'),
+    (DWTA, 'Don\'t want to answer'),
+)
+
 EMPLOYMENT_INFO = (
     ('govt_sector', _('Yes, In the government sector')),
     ('private_sector', _('Yes, in the private sector')),
@@ -117,6 +240,43 @@ EMPLOYMENT_INFO = (
     ('self_employed_with_own_employees',
      _('Yes, self-employed with own employees')),
     ('not_working', _('No, not working')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
+ENERGY_SOURCE = (
+    ('charcoal/wood', _('Charcoal/wood')),
+    ('paraffin', _('Paraffin')),
+    ('gas', _('Gas')),
+    ('electricity_(mains)', _('Electricity (mains)')),
+    ('electricity_(solar)', _('Electricity (solar)')),
+    ('no_cooking_done', _('No cooking done')),
+    (OTHER, _('Other, specify:')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
+ENROLMENT_REASON = (
+    ('CD4 < 50', _('Most recent (within past 3 months) CD4 < 50')),
+    ('CD4 50-100', _('Most recent (within past 3 months) CD4 50-100')),
+    ('AIDS_opportunistic_infection/condition',
+     _('Current AIDS opportunistic infection/condition')),
+)
+
+FLOORING_TYPE = (
+    ('dirt_or_earth', _('Dirt/earth ')),
+    ('wood_plank', _('Wood, plank')),
+    ('parquet_or_lino', _('Parquet/lino')),
+    ('cement', _('Cement')),
+    ('tile_flooring', _('Tile flooring')),
+    (OTHER, _('Other, specify:')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
+GRANT_TYPE = (
+    ('child_support ', _('Child support ')),
+    ('old_age_pension', _('Old age pension')),
+    ('foster_care', _('Foster care')),
+    ('disability', _('Disability (disability dependency)')),
+    (OTHER, _('Other, specify:')),
     (DWTA, _('Don\'t want to answer')),
 )
 
@@ -137,6 +297,16 @@ HEALTH_CARE_PLACE = (
     (DWTA, _('Don\'t want to answer')),
 )
 
+HIV_DOC_TYPE = (
+    ('tebelopele', 'Tebelopele'),
+    ('lab_result_form', 'Lab result form'),
+    ('ART_prescription', 'ART Prescription'),
+    ('PMTCT_prescription', 'PMTCT Prescription'),
+    ('record_of_CD4_count', 'Record of CD4 count'),
+    ('Ya_Tsie_test_card', 'Ya Tsie Test Card'),
+    (OTHER, 'Other OPD card or ANC card documentation'),
+)
+
 HOSPITALIZATION_REASONS = (
     (NOT_APPLICABLE, "Not applicable"),
     ('tb', 'Tuberculosis (TB, MTB)'),
@@ -153,6 +323,19 @@ HOSPITALIZATION_REASONS = (
     ('medication_toxicity', 'Medication toxicity (specify)'),
     (OTHER, 'Other (specify)'),
     (DONT_KNOW, 'Don\'t know'),
+)
+
+HOUSEHOLD_INCOME = (
+    ('none', _('None')),
+    ('1-200_pula', _('1-200 pula')),
+    ('200-499_pula', _('200-499 pula')),
+    ('500-999_pula', _('500-999 pula')),
+    ('1000-4999_pula', _('1000-4999 pula')),
+    ('5000-10,000_pula', _('5000-10,000 pula')),
+    ('10,0000-20,000_pula', _('10,0000-20,000 pula')),
+    ('more_than_20,000_pula', _('More than 20,000 pula')),
+    (NOT_SURE, _('I am not sure')),
+    (DWTA, _('Don\'t want to answer')),
 )
 
 INTERCOURSE_TYPE = (
@@ -211,6 +394,17 @@ MOBILITY = (
     ('moderate_problems', _('I have moderate problems in walking about')),
     ('severe_problems', _('I have severe problems in walking about')),
     ('unable_to_walk', _('I am unable to walk about')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
+MONTHLY_INCOME = (
+    ('no_income', _('No income')),
+    ('1-199_pula', _('1-199 pula')),
+    ('200-499_pula', _('200-499 pula')),
+    ('500-999_pula', _('500-999 pula')),
+    ('1000-4999_pula', _('1000-4999 pula')),
+    ('5000-10,000_pula', _('5000-10,000 pula')),
+    ('more_than_10,000_pula', _('More than 10,000 pula')),
     (DWTA, _('Don\'t want to answer')),
 )
 
@@ -277,12 +471,52 @@ OFF_STUDY_CODE_CHOICE = (
     (OTHER, 'Other (specify)'),
 )
 
+OPPORTUNISTIC_ILLNESSES = (
+    ('tuberculosis', _('Tuberculosis')),
+    ('wasting', _('Wasting')),
+    ('cryptococcosis', _('Cryptococcosis')),
+    ('severe_bacterial_pneumonia', _('Recurrent severe bacterial pneumonia')),
+    ('esophageal_candidiasis', _('Esophageal candidiasis')),
+    ('pneumocystis_pneumonia', _('Pneumocystis pneumonia')),
+    ('kaposi\'s_sarcoma', _('Kaposi\'s sarcoma')),
+    ('cervical_cancer', _('Cervical cancer')),
+    ('non-Hodgkin\'s_lymphoma', _('Non-Hodgkin\'s lymphoma')),
+    ('other_record', _('Other, record')),
+    ('no_current_AIDS_opportunistic_illness',
+     _('No current AIDS opportunistic illness')),
+)
+
+OTHER_OCCUPATION = (
+    ('none', _('None')),
+    ('studying', _('Studying')),
+    ('doing_housework', _('Doing housework')),
+    ('looking_for_work', _('Looking for work')),
+    ('doing_nothing_(not_looking_for_paid_work)',
+     _('Doing nothing (not looking for paid work)')),
+    ('retired_or_old_age', _('Retired/old age')),
+    ('pregnant_or_recently_pregnant', _('Pregnant or recently pregnant')),
+    ('sick_or_injured', _('Sick or injured')),
+    (OTHER, _('Other, specify:')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
 PAIN = (
     ('no_pain', _('I have no pain or discomfort')),
     ('slight_pain', _('I have slight pain or discomfort')),
     ('moderate_pain', _('I have moderate pain or discomfort')),
     ('severe_pain', _('I have severe pain or discomfort')),
     ('extreme_pain', _('I have extreme pain or discomfort')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
+PLACE_CIRC = (
+    ('govt_clinic_or_hospital', _('Government clinic or hospital')),
+    ('traditional_location_(Bogerwa)', _('Traditional location (Bogerwa)')),
+    ('outreach_site_(mobile_or_temporary_center)',
+     _('Outreach site (mobile or temporary center)')),
+    ('private_practitioner', _('Private practitioner')),
+    (NOT_SURE, _('I am not sure')),
+    (OTHER, _('Other, specify:')),
     (DWTA, _('Don\'t want to answer')),
 )
 
@@ -312,6 +546,23 @@ REFERRAL_APPT_COMMENTS = (
     ("personal_reasons", "personal reasons"),
 )
 
+REFERRAL_REASONS = (
+    ('receive', _('Referred to receive HIV result in clinic')),
+    ('test', _('Referred to test in clinic')),
+    ('protocol', _('Referred as per protocol')),
+)
+
+RELATION = (
+    ('spouse', _('spouse')),
+    ('parent', _('parent')),
+    ('sibling', _('sibling')),
+    ('child', _('child')),
+    ('aunt/uncle', _('aunt/uncle')),
+    ('cousin', _('cousin')),
+    ('partner', _('partner/boyfriend/girlfriend')),
+    (OTHER, _('Other, specify')),
+)
+
 RELATIONSHIP_TYPE = (
     ('longterm_partner', _('Longterm partner (>2 years) or spouse')),
     ('boyfriend_or_girlfriend', _('Boyfriend/Girlfriend')),
@@ -319,6 +570,13 @@ RELATIONSHIP_TYPE = (
     ('one _time_partner', _('One time partner (previously unknown)')),
     ('commercial_sex_worker', _('Commercial sex worker')),
     (OTHER, _('Other, specify:')),
+)
+
+SALARY = (
+    ('fixed_salary', _('Fixed salary')),
+    ('paid_daily', _('Paid daily')),
+    ('paid_hourly', _('Paid hourly')),
+    (DWTA, _('Don\'t want to answer')),
 )
 
 SELF_CARE = (
@@ -337,6 +595,45 @@ SEX_REGULARITY = (
     ('all_the_time', _('All of the time')),
     ('sometimes', _('Sometimes')),
     ('never', _('Never')),
+)
+
+SMALLER_MEALS = (
+    ('never', _('Never')),
+    ('rarely', _('Rarely')),
+    ('sometimes', _('Sometimes')),
+    ('often', _('Often')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
+STI_DX = (
+    ('wasting', 'Severe weight loss (wasting) - more than 10% of body weight'),
+    ('diarrhoea', 'Unexplained diarrhoea for one month'),
+    ('yeast_infection', 'Yeast infection of mouth or oesophagus'),
+    ('pneumonia', 'Severe pneumonia or meningitis or sepsis'),
+    ('PCP', 'PCP (Pneumocystis pneumonia)'),
+    ('herpes', 'Herpes infection for more than one month'),
+    (OTHER, 'Other'),
+)
+
+TIME_UNIT_CHOICE = (
+    ('days', _('Days')),
+    ('months', _('Months')),
+    ('years', _('Years')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
+TOILET_FACILITY = (
+    ('pit_latrine_within_plot', _('Pit latrine within plot')),
+    ('flush_toilet_within_plot', _('Flush toilet within plot')),
+    ('neighbour\'s_flush_toilet', _('Neighbour\'s flush toilet')),
+    ('neighbour\'s_pit_latrine', _('Neighbour''s pit latrine')),
+    ('communal_flush_toilet', _('Communal flush toilet')),
+    ('communal_pit_latrine', _('Communal pit latrine')),
+    ('pail_bucket_latrine', _('Pail bucket latrine')),
+    ('bush', _('Bush')),
+    ('river_or_other_body_of_water', _('River or other body of water')),
+    (OTHER, _('Other, specify:')),
+    (DWTA, _('Don\'t want to answer')),
 )
 
 TRAVEL_HOURS = (
@@ -370,192 +667,66 @@ VISIT_UNSCHEDULED_REASON = (
     (OTHER, _('Other, specify:')),
 )
 
-
-MONTHLY_INCOME = (
-    ('None', _('No income')),
-    ('1-199 pula', _('1-199 pula')),
-    ('200-499 pula', _('200-499 pula')),
-    ('500-999 pula', _('500-999 pula')),
-    ('1000-4999 pula', _('1000-4999 pula')),
-    ('5000-10,000 pula', _('5000-10,000 pula')),
-    ('More than 10,000 pula', _('More than 10,000 pula')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-SALARY = (
-    ('Fixed salary', _('Fixed salary')),
-    ('Paid daily', _('Paid daily')),
-    ('Paid hourly', _('Paid hourly')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-HOUSEHOLD_INCOME = (
-    ('None', _('None')),
-    ('1-200 pula', _('1-200 pula')),
-    ('200-499 pula', _('200-499 pula')),
-    ('500-999 pula', _('500-999 pula')),
-    ('1000-4999 pula', _('1000-4999 pula')),
-    ('5000-10,000 pula', _('5000-10,000 pula')),
-    ('10,0000-20,000 pula', _('10,0000-20,000 pula')),
-    ('More than 20,000 pula', _('More than 20,000 pula')),
-    (NOT_SURE, _('I am not sure')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-OTHER_OCCUPATION = (
-    ('None', _('None')),
-    ('Studying', _('Studying')),
-    ('Doing housework', _('Doing housework')),
-    ('Looking for work', _('Looking for work')),
-    ('Doing nothing (not looking for paid work)',
-     _('Doing nothing (not looking for paid work)')),
-    ('Retired/old age', _('Retired/old age')),
-    ('Pregnant or recently pregnant', _('Pregnant or recently pregnant')),
-    ('Sick or injured', _('Sick or injured')),
-    (OTHER, _('Other, specify:')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-
-HIV_DOC_TYPE = (
-    ('Tebelopele', 'Tebelopele'),
-    ('Lab result form', 'Lab result form'),
-    ('ART Prescription', 'ART Prescription'),
-    ('PMTCT Prescription', 'PMTCT Prescription'),
-    ('Record of CD4 count', 'Record of CD4 count'),
-    ('Ya Tsie Test Card', 'Ya Tsie Test Card'),
-    (OTHER, 'Other OPD card or ANC card documentation'),
-)
-
-GRANT_TYPE = (
-    ('Child support ', _('Child support ')),
-    ('Old age pension', _('Old age pension')),
-    ('Foster care', _('Foster care')),
-    ('Disability', _('Disability (disability dependency)')),
-    (OTHER, _('Other, specify:')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-
-FLOORING_TYPE = (
-    ('Dirt/earth', _('Dirt/earth ')),
-    ('Wood, plank', _('Wood, plank')),
-    ('Parquet/lino', _('Parquet/lino')),
-    ('Cement', _('Cement')),
-    ('Tile flooring', _('Tile flooring')),
-    (OTHER, _('Other, specify:')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-
 WATER_SOURCE = (
-    ('Communal tap', _('Communal tap')),
-    ('Standpipe/tap within plot', _('Standpipe/tap within plot')),
-    ('Piped indoors', _('Piped indoors')),
-    ('Borehore', _('Borehole')),
-    ('Protected well', _('Protected well')),
-    ('Unprotected/shallow well', _('Unprotected/shallow well')),
-    ('River /dam/lake/pan', _('River /dam/lake/pan')),
-    ('Bowser/tanker', _('Bowser/tanker')),
+    ('communal_tap', _('Communal tap')),
+    ('standpipe_or_tap_within_plot', _('Standpipe/tap within plot')),
+    ('piped_indoors', _('Piped indoors')),
+    ('borehole', _('Borehole')),
+    ('protected_well', _('Protected well')),
+    ('unprotected_or_shallow_well', _('Unprotected/shallow well')),
+    ('river/dam/lake/pan', _('River /dam/lake/pan')),
+    ('bowser/tanker', _('Bowser/tanker')),
     (OTHER, _('Other, specify (including unknown):')),
     (DWTA, _('Don\'t want to answer')),
 )
 
-
-ENERGY_SOURCE = (
-    ('Charcoal/wood', _('Charcoal/wood')),
-    ('Paraffin', _('Paraffin')),
-    ('Gas', _('Gas')),
-    ('Electricity (mains)', _('Electricity (mains)')),
-    ('Electricity (solar)', _('Electricity (solar)')),
-    ('No cooking done', _('No cooking done')),
-    (OTHER, _('Other, specify:')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-
-TOILET_FACILITY = (
-    ('Pit latrine within plot', _('Pit latrine within plot')),
-    ('Flush toilet within plot', _('Flush toilet within plot')),
-    ('Neighbour\'s flush toilet', _('Neighbour\'s flush toilet')),
-    ('Neighbour\'s pit latrine', _('Neighbour''s pit latrine')),
-    ('Communal flush toilet', _('Communal flush toilet')),
-    ('Communal pit latrine', _('Communal pit latrine')),
-    ('Pail bucket latrine', _('Pail bucket latrine')),
-    ('Bush', _('Bush')),
-    ('River or other body of water', _('River or other body of water')),
-    (OTHER, _('Other, specify:')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-
-SMALLER_MEALS = (
-    ('Never', _('Never')),
-    ('Rarely', _('Rarely')),
-    ('Sometimes', _('Sometimes')),
-    ('Often', _('Often')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-
-ENROLMENT_REASON = (
-    ('CD4 < 50', _('Most recent (within past 3 months) CD4 < 50')),
-    ('CD4 50-100', _('Most recent (within past 3 months) CD4 50-100')),
-    ('AIDS opportunistic infection/condition',
-     _('Current AIDS opportunistic infection/condition')),
-)
-
-
-OPPORTUNISTIC_ILLNESSES = (
-    ('Tuberculosis', _('Tuberculosis')),
-    ('Wasting', _('Wasting')),
-    ('Cryptococcosis', _('Cryptococcosis')),
-    ('severe bacterial pneumonia', _('Recurrent severe bacterial pneumonia')),
-    ('Esophageal candidiasis', _('Esophageal candidiasis')),
-    ('Pneumocystis pneumonia', _('Pneumocystis pneumonia')),
-    ('Kaposi\'s sarcoma', _('Kaposi\'s sarcoma')),
-    ('Cervical cancer', _('Cervical cancer')),
-    ('Non-Hodgkin\'s lymphoma', _('Non-Hodgkin\'s lymphoma')),
-    ('Other, record', _('Other, record')),
-    ('No current AIDS opportunistic illness',
-     _('No current AIDS opportunistic illness')),
-)
-
-
-REFERRAL_REASONS = (
-    ('receive', _('Referred to receive HIV result in clinic')),
-    ('test', _('Referred to test in clinic')),
-    ('protocol', _('Referred as per protocol')),
-)
-
-RELATION = (
-    ('spouse', _('spouse')),
-    ('parent', _('parent')),
-    ('sibling', _('sibling')),
-    ('child', _('child')),
-    ('aunt/uncle', _('aunt/uncle')),
-    ('cousin', _('cousin')),
-    ('partner', _('partner/boyfriend/girlfriend')),
-    (OTHER, _('Other, specify')),
-)
-
 WHEREACCESS_CHOICE = (
-    ('Traditional, faith, or religious healer/doctor',
+    ('traditional_faith_or_religious_healer/doctor',
      _('Traditional, faith, or religious healer/doctor')),
-    ('Pharmacy', _('Pharmacy')),
-    ('Public or govt',
+    ('pharmacy', _('Pharmacy')),
+    ('public_or_govt',
      _('Public or government health facility or clinic')),
-    ('Private health facility', _('Private health facility or clinic')),
-    ('Community health worker', _('Community health worker')),
+    ('private_health_facility', _('Private health facility or clinic')),
+    ('community_health_worker', _('Community health worker')),
     (OTHER, _('Other, specify:')),
     (DWTA, _('Don\'t want to answer')),
 )
+
+WHERECIRC_CHOICE = (
+    (YES, _('Yes')),
+    ('no_not_sexually_active_and_will_not_become_sexually_active',
+     _('No, not sexually active and will not become sexually active')),
+    ('no,prior_surgical_sterilization',
+     _('No, prior surgical sterilization')),
+    ('no,partner(s)_surgically_sterilized',
+     _('No, partner(s) surgically sterilized')),
+    ('no,post-menopause',
+     _('No, post-menopause (at least 24 consecutive months without a period)')),
+    (OTHER, _('Other, specify:')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
+WHYCIRC_CHOICE = (
+    ('prevent_HIV/AIDS', _('Prevent HIV/AIDS')),
+    ('other_medical_reason', _('Other medical reason')),
+    ('personal_preference', _('Personal preference')),
+    ('improved_hygiene', _('Improved hygiene')),
+    ('cultural_tradition_and/or_religion',
+     _('Cultural tradition and/or religion')),
+    ('acceptance_by_sexual_partner(s)', _('Acceptance by sexual partner(s)')),
+    ('acceptance_by_family, friends, and/or community',
+     _('Acceptance by family, friends, and/or community')),
+    (NOT_SURE, _('I am not sure')),
+    (OTHER, _('Other, specify:')),
+    (DWTA, _('Don\'t want to answer')),
+)
+
 
 YES_NO_RECORD_REFUSAL = (
     (YES, _(YES)),
     (NO, _(NO)),
     (DWTA, _('Don\'t want to answer')),
-    ('record refusal', _('Participant does not want to provide record')),
+    ('record_refusal', _('Participant does not want to provide record')),
 )
 
 YES_NO_UNSURE = (
@@ -564,185 +735,6 @@ YES_NO_UNSURE = (
     (NOT_SURE, _('Not Sure')),
 )
 
-STI_DX = (
-    ('wasting', 'Severe weight loss (wasting) - more than 10% of body weight'),
-    ('diarrhoea', 'Unexplained diarrhoea for one month'),
-    ('yeast infection', 'Yeast infection of mouth or oesophagus'),
-    ('pneumonia', 'Severe pneumonia or meningitis or sepsis'),
-    ('PCP', 'PCP (Pneumocystis pneumonia)'),
-    ('herpes', 'Herpes infection for more than one month'),
-    (OTHER, 'Other'),
-)
-
-CHOICES_FROM_BCPPLIST = (
-    ('Improved hygiene', _('Improved hygiene')),
-    ('Reduced risk of HIV', _('Reduced risk of HIV')),
-    ('Reduced risk of std',
-     _('Reduced risk of other sexually transmitted diseases')),
-    ('Reduced risk of cancer', _('Reduced risk of cancer')),
-    ('heart_disease', _('Heart Disease or Stroke')),
-    ('cancer', _('Cancer')),
-    ('tb', _('Tuberculosis')),
-    ('other_serious_infection', _('Other serious infection')),
-    ('Radio', _('Radio')),
-    ('TV', _('TV')),
-    ('Landline telephone', _('Landline telephone')),
-    ('Cell phone', _('Cell phone')),
-    ('Computer', _('Computer')),
-    ('Access to internet', _('Access to internet')),
-    ('Refrigerator', _('Refrigerator')),
-    ('Condoms, consistent use (male or female)',
-     _('Condoms, consistent use (male or female)')),
-    ('Injectable contraceptive', _('Injectable contraceptive')),
-    ('Oral contraceptive', _('Oral contraceptive')),
-    ('IUD', _('IUD')),
-    ('Diaphragm or cervical cap', _('Diaphragm or cervical cap')),
-    ('hythm or menstrual cycle timing', _('Rhythm or menstrual cycle timing')),
-    ('Withdrawal', _('Withdrawal')),
-    ('Myocardial infarction (heart attack)',
-     _('Myocardial infarction (heart attack)')),
-    ('Congestive cardiac failure', _('Congestive cardiac failure')),
-    ('Stroke (cerebrovascular accident, CVA)',
-     _('Stroke (cerebrovascular accident, CVA)')),
-    ('Partner or spouse', _('Partner or spouse')),
-    ('Siblings', _('Siblings')),
-    (ALONE, _('Alone')),
-    ('Extended family', _('Extended family')),
-    ('Traditional, faith, or religious healer/doctor',
-     _('Traditional, faith, or religious healer/doctor')),
-    ('Pharmacy', _('Pharmacy')),
-    ('public or govt health facility or clinic',
-     _('Public or government health facility or clinic')),
-    ('Private health facility or clinic',
-     _('Private health facility or clinic')),
-    ('Community health worker', _('Community health worker')),
-    ('Water', _('Water')),
-    ('Sewer (sanitation)', _('Sewer (sanitation)')),
-    ('Housing', _('Housing')),
-    ('Roads', _('Roads')),
-    ('Malaria', _('Malaria')),
-    ('HIV/AIDS', _('HIV/AIDS')),
-    ('Schools', _('Schools')),
-    ('Unemployment', _('Unemployment')),
-    ('In this community', _('In this community')),
-    ('Outside community', _('Outside community')),
-    ('Farm within', _('Farm within this community')),
-    ('Farm outside this community', _('Farm outside this community')),
-    ('cattlepost within', _('Cattle post within this community')),
-    ('cattlepost outside', _('Cattle post outside this community')),
-    ('Motor vehicle (car,truck,taxi, etc)',
-     _('Motor vehicle (car,truck,taxi, etc)')),
-    ('Tractor', _('Tractor')),
-    ('Bicycle', _('Bicycle')),
-    ('Motorcycle/scooter', _('Motorcycle/scooter')),
-    ('Donkey or cow cart', _('Donkey or cow cart')),
-    ('Donkey/horses', _('Donkey/horses')),
-)
-
-COUNSELING_SITE = (
-    ('IN_HOME', 'In home'),
-    ('MOBILE', 'Mobile Unit'),
-    ('TENT', 'Tent'),
-    ('CLINIC', 'Clinic'),
-)
-
-PLACE_CIRC = (
-    ('govt clinic or hospital', _('Government clinic or hospital')),
-    ('Traditional location (Bogerwa)', _('Traditional location (Bogerwa)')),
-    ('Outreach site (mobile or temporary center)',
-     _('Outreach site (mobile or temporary center)')),
-    ('Private practitioner', _('Private practitioner')),
-    (NOT_SURE, _('I am not sure')),
-    (OTHER, _('Other, specify:')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-WHYCIRC_CHOICE = (
-    ('Prevent HIV/AIDS', _('Prevent HIV/AIDS')),
-    ('Other medical reason', _('Other medical reason')),
-    ('Personal preference', _('Personal preference')),
-    ('Improved hygiene', _('Improved hygiene')),
-    ('Cultural tradition and/or religion',
-     _('Cultural tradition and/or religion')),
-    ('Acceptance by sexual partner(s)', _('Acceptance by sexual partner(s)')),
-    ('Acceptance by family, friends, and/or community',
-     _('Acceptance by family, friends, and/or community')),
-    (NOT_SURE, _('I am not sure')),
-    (OTHER, _('Other, specify:')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-WHERECIRC_CHOICE = (
-    (YES, _('Yes')),
-    ('No, not sexually active and will not become sexual '
-     'active', _('No, not sexually active and will not become sexual active')),
-    ('No, prior surgical sterilization',
-     _('No, prior surgical sterilization')),
-    ('No, partner(s) surgically sterilized',
-     _('No, partner(s) surgically sterilized')),
-    ('No, post-menopause',
-     _('No, post-menopause (at least 24 consecutive months without a period)')),
-    (OTHER, _('Other, specify:')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-TIME_UNIT_CHOICE = (
-    ('Days', _('Days')),
-    ('Months', _('Months')),
-    ('Years', _('Years')),
-    (DWTA, _('Don\'t want to answer')),
-)
-
-DXCANCER_CHOICE = (
-    ('Kaposi\'s sarcoma (KS)', 'Kaposi\'s sarcoma (KS)'),
-    ('Cervical cancer', 'Cervical cancer'),
-    ('Breast cancer', 'Breast cancer'),
-    ('Non-Hodgkin\'s lymphoma (NHL)', 'Non-Hodgkin\'s lymphoma (NHL)'),
-    ('Colorectal cancer', 'Colorectal cancer'),
-    ('Prostate cancer', 'Prostate cancer'),
-    ('Cancer of mouth, throat, voice box (larynx)',
-     'Cancer of mouth, throat, voice box (larynx)'),
-    ('Cancer of oesophagus', 'Cancer of oesophagus'),
-    (OTHER, 'Other, specify:'),
-    (DWTA, 'Don\'t want to answer'),
-)
-
-COMMUNITIES = (
-    ('Bokaa', _('Bokaa')),
-    ('Digawana', _('Digawana')),
-    ('Gumare', _('Gumare')),
-    ('Gweta', _('Gweta')),
-    ('Lentsweletau', _('Lentsweletau')),
-    ('Lerala', _('Lerala')),
-    ('Letlhakeng', _('Letlhakeng')),
-    ('Mmandunyane', _('Mmandunyane')),
-    ('Mmankgodi', _('Mmankgodi')),
-    ('Mmadinare', _('Mmadinare')),
-    ('Mmathethe', _('Mmathethe')),
-    ('Masunga', _('Masunga')),
-    ('Maunatlala', _('Maunatlala')),
-    ('Mathangwane', _('Mathangwane')),
-    ('Metsimotlhabe', _('Metsimotlhabe')),
-    ('Molapowabojang', _('Molapowabojang')),
-    ('Nata', _('Nata')),
-    ('Nkange', _('Nkange')),
-    ('Oodi', _('Oodi')),
-    ('Otse', _('Otse')),
-    ('Rakops', _('Rakops')),
-    ('Ramokgonami', _('Ramokgonami')),
-    ('Ranaka', _('Ranaka')),
-    ('Sebina', _('Sebina')),
-    ('Sefhare', _('Sefhare')),
-    ('Sefophe', _('Sefophe')),
-    ('Shakawe', _('Shakawe')),
-    ('Shoshong', _('Shoshong')),
-    ('Tati_Siding', _('Tati_Siding')),
-    ('Tsetsebjwe', _('Tsetsebjwe')),
-    (OTHER, _('Other non study community')),
-)
-
-COMMUNITY_NA = tuple(
-    [(NOT_APPLICABLE, _('Not Applicable'))] + list(COMMUNITIES))
 
 VERBAL_HIVRESULT_CHOICE = (
     (POS, _('HIV Positive')),
@@ -1441,4 +1433,5 @@ VISIT_UNSCHEDULED_REASON = (
      'Routine oncology clinic visit (i.e. planned chemo, follow-up)'),
     ('ill_oncology', 'Ill oncology clinic visit'),
     ('patient_called', 'Patient called to come for visit'),
-    (OTHER, 'Other, specify:'))
+    (OTHER, 'Other, specify:')
+)
