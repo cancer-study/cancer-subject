@@ -1,0 +1,59 @@
+{% extends 'cancer_subject/dashboard/sidebar/base_sidebar.html' %}
+
+{% load tz %}
+{% load edc_base_extras %}
+
+
+{% block special_forms %}
+
+<div class="table-responsive small text-default">
+    <table class="table table-condensed">
+        <thead></thead>
+        <tbody>
+
+        <tr>
+        
+        
+        <td class="{% if consent %}success{% else %}warning{% endif %}">
+        {% with wrapped=consent %}
+
+            {% include 'edc_dashboard/controls/change_button.html' %}
+
+        {% endwith %}
+
+        <td class="{% if consent %}success{% else %}warning{% endif %}">
+            <h6>{{ consent.verbose_name|title }} v{{ consent.version }} <span class="text text-muted">{{ consent.consent_datetime|date:"Y-m-d"}}</span></h6> 
+        </td>
+        </tr>
+        <tr>
+            {% with wrapped=subject_locator %}
+                {% include 'edc_dashboard/controls/change_button_as_column.html' %}
+            {% endwith %}
+        </tr>
+        </tbody>
+    </table>
+</div>
+                  
+{% endblock special_forms %}
+
+{% block demographics %}   
+
+    {% include 'cancer_subject/dashboard/sidebar/demographics.html' %}
+
+{% endblock demographics %}
+
+{% block consent_history %}
+
+	<div class="list-group">
+	  {% if not consents %}
+	    <a class="list-group-item" href="#">Never consented</a>
+	  {% endif %}
+	  {% for obj in consents %}
+	       <a class="list-group-item" href="#">
+	            {{ obj.consent_datetime|date:"Y-m-d" }} Version {{ obj.version }}
+	       </a>
+	  {% endfor %}
+	</div>
+
+{% endblock consent_history %}
+
