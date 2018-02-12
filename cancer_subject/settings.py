@@ -25,7 +25,12 @@ SECRET_KEY = 'jwggbn11gw22h6&0n@q0t97e)&)pg^n_*$18xj350f0%w+ywba'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+ETC_DIR = os.path.join(BASE_DIR, 'etc')
+
 ALLOWED_HOSTS = []
+
+SITE_ID = 10
+REVIEWER_SITE_ID = 1
 
 
 # Application definition
@@ -37,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
     'edc_reference.apps.AppConfig',
@@ -45,6 +51,7 @@ INSTALLED_APPS = [
     'edc_sync_files.apps.AppConfig',
     'django_crypto_fields.apps.AppConfig',
     'django_revision.apps.AppConfig',
+    'edc_action_item.apps.AppConfig',
     'edc_registration.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
     'edc_offstudy.apps.AppConfig',
@@ -71,10 +78,13 @@ MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'django.contrib.sites.middleware.CurrentSiteMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'edc_dashboard.middleware.DashboardMiddleware',
+    'edc_subject_dashboard.middleware.DashboardMiddleware',
 ]
 
 ROOT_URLCONF = 'cancer_subject.urls'
@@ -149,7 +159,7 @@ STATIC_URL = '/static/'
 DEVICE_ID = '99'
 EDC_LAB_REQUISITION_MODEL = 'cancer_subject.subjectrequisition'
 DEVICE_ROLE = 'CentralServer'
-KEY_PATH = os.path.join(BASE_DIR, 'crypto_fields')
+# KEY_PATH = os.path.join(BASE_DIR, 'crypto_fields')
 GIT_DIR = BASE_DIR
 COUNTRY = 'botswana'
 HOLIDAY_FILE = os.path.join(BASE_DIR, APP_NAME, 'holidays.csv')
@@ -160,6 +170,12 @@ EDC_SYNC_SERVER_IP = None
 EDC_SYNC_FILES_REMOTE_HOST = None
 EDC_SYNC_FILES_USER = None
 EDC_SYNC_FILES_USB_VOLUME = None
+
+DASHBOARD_URL_NAMES = {
+    'consent_listboard_url': 'cancer_dashboard:consent_listboard_url',
+    'checklist_listboard_url': 'cancer_dashboard:checklist_listboard_url',
+    'subject_dashboard_url': 'cancer_dashboard:subject_dashboard_url',
+}
 
 if 'test' in sys.argv and 'mysql' not in DATABASES.get('default').get('ENGINE'):
     MIGRATION_MODULES = {
