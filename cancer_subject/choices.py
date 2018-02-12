@@ -1,6 +1,6 @@
 from django.utils.translation import ugettext_lazy as _
-from edc_constants.constants import DONT_KNOW, NONE, NOT_SURE, DECLINED
-from edc_constants.constants import NEG, IND, UNK, OTHER, NEVER
+from edc_constants.constants import DONT_KNOW, NONE, NOT_SURE, DECLINED, REFUSED
+from edc_constants.constants import NEG, IND, UNK, OTHER, NEVER, PENDING
 from edc_constants.constants import YES, NO, DWTA, NOT_APPLICABLE, POS
 
 from cancer_subject.constants import (ABLE_TO_PARTICIPATE, MENTAL_INCAPACITY,
@@ -47,7 +47,7 @@ CANCER_BEFORE_CHOICE = (
     ('lymphoma', 'Lymphoma'),
     ('leukemia', 'Leukemia'),
     ('Wilm\'s_Tumor', 'Wilm\'s Tumor'),
-    (OTHER, ' Other or multiple cancers, describe:'),
+    (OTHER, 'Other or multiple cancers, describe:'),
 )
 
 CANCER_CATEGORY_CHOICE = (
@@ -57,6 +57,29 @@ CANCER_CATEGORY_CHOICE = (
      ' this cancer for >1 year)'),
     ('ongoing', 'Ongoing treatment (active treatment for this cancer'
      ' type in past year)'),
+)
+
+CANCER_RESPONSE = (
+    ('progressive_disease', 'Progressive disease (tumors are growing '
+     'or new tumors are appearing)'),
+    ('stable_disease', 'Stable disease (no substantial change in size '
+     'or location of tumors)'),
+    ('partial_response', 'Partial response (at least 50% decrease in '
+     'tumor size, but less than 100% decrease)'),
+    ('complete_response', 'Complete response (all detectable cancer is'
+     ' gone, 100% decrease)'),
+    ('too_early_to_assess_response', 'Too early after treatment to '
+     'assess treatment response'),
+    ('cannot_determine_due_to_pending/missing/unavailable_studies',
+     'Cannot determine due to pending/missing/unavailable studies '
+     '(labs, radiology, exam, etc.)'),
+    ('not_recorded', 'Not recorded'),
+)
+
+CANCER_TREATMENT_GOAL = (
+    ('curative', 'Curative'),
+    ('palliative', 'Palliative'),
+    (UNK, 'Unknown'),
 )
 
 CANCER_TYPE_CHOICE = (
@@ -70,6 +93,13 @@ CANCER_TYPE_CHOICE = (
     ('eye_cancer', 'Eye cancer'),
     ('other_or_multiple_cancers',
      'Other or multiple cancers, describe:'),
+)
+
+CHEMO_INTENT = (
+    ('Standard', 'Standard'),
+    ('adjuvant', 'Adjuvant'),
+    ('neo_adjuvant', 'Neo-Adjuvant'),
+    ('concurrent_with_radiation', 'Concurrent with radiation')
 )
 
 CIGARETTE_SMOKING_CHOICE = (
@@ -114,6 +144,60 @@ DISTRICT20_CHOICE = (
     ('North-West', 'North-West District (includes Chobe/Ngamiland)'),
     ('South-East', 'South-East District'),
     ('Southern', 'Southern District'),
+)
+
+DOSE_CATEGORY = (
+    ('1', '1 = Standard'),
+    ('2', '2 = Reduced Dose'),
+    ('3', '3 = Other '),
+)
+
+DRUG_CODE = (
+    ('AMOX', 'AMOX = amoxicillin'),
+    ('ALLO', 'ALLO = allopurinol'),
+    ('BLEO', 'BLEO = bleomycin'),
+    ('CARB', 'CARB = carboplatin'),
+    ('CARM', 'CARM = carmustine'),
+    ('CAPC', 'CAPC = capecitabine'),
+    ('CDX', 'CDX = casodex'),
+    ('CIPR', 'CIPR = ciprofloxacin'),
+    ('CISP', 'CISP = cisplatin'),
+    ('CYCL', 'CYCL = cyclophosphamide'),
+    ('CYTB', 'CYTB = cytarabine'),
+    ('CTXM', 'CTXM = cotrimoxazole'),
+    ('DAUN', 'DAUN = daunorubicin,'),
+    ('DCAR', 'DCAR = dacarbazine'),
+    ('DEXA', 'DEXA = dexamethasone'),
+    ('DOX', 'DOXO = doxorubicin'),
+    ('DTAX', 'DTAX = docetaxel'),
+    ('ETOP', 'ETOP = etoposide'),
+    ('FLOR', 'FLOR = fluorouracil'),
+    ('GEMC', 'GEMC = gemcitabine'),
+    ('GLEE', 'GLEE = gleevec'),
+    ('HERC', 'HERC = herception'),
+    ('HYDX', 'HYDX = hydroxyurea'),
+    ('IFOS', 'IFOS = ifosfamide'),
+    ('IRIN', 'IRIN = irinotecan'),
+    ('LEUK', 'LEUK = leukovorin'),
+    ('LEUP', 'LEUP = leuprolide'),
+    ('LDOX', 'LDOX = liposomal doxorubicin'),
+    ('MECH', 'MECH = mechlorethamine'),
+    ('METO', 'METO = metocloperamide (maxolone)'),
+    ('METX', 'METX = methatrexate'),
+    ('MITO', 'MITO = mitoxantrone'),
+    ('OXAL', 'OXAL = oxaliplatin'),
+    ('PROC', 'PROC = procarbazine'),
+    ('PROM', 'PROM = promethazine'),
+    ('PRED', 'PRED = prednisone'),
+    ('PTAX', 'PTAX = paclitaxel'),
+    ('RANT', 'RANT = ranitidine'),
+    ('RITX', 'RITX = Rituximab'),
+    ('TAMX', 'TAMX = tamoxifen'),
+    ('VINC', 'VINC = vincristine'),
+    ('VINB', 'VINB = vinblastine'),
+    ('VINO', 'VINO = vinorelbine'),
+    ('ZDX', 'ZDX = zoladex'),
+    ('OTHR', 'OTHR = other'),
 )
 
 DURATION_CHOICE = (
@@ -165,9 +249,9 @@ ETHNIC_GRP_CHOICE = (
 
 FOOD_SECURITY = (
     (NEVER, 'Never'),
-    ('Rarely', 'Rarely'),
-    ('Sometimes', 'Sometimes'),
-    ('Often', 'Often'),
+    ('rarely', 'Rarely'),
+    ('sometimes', 'Sometimes'),
+    ('often', 'Often'),
     (DECLINED, 'Patient declined to answer')
 )
 
@@ -207,14 +291,14 @@ HAART_MEDS_DRUG_NAMES = (
 
 HAART_STATUS_CHOICE = (
     ('never_started_HAART', 'Never started HAART "(skip to Question 4)"'),
-    ('Follow_up_visit', 
-     ' Follow-up visit, no modifications since last visit made to '
+    ('Follow_up_visit',
+     'Follow-up visit, no modifications since last visit made to '
      'HAART treatment "(skip to Question 4)"'),
-    ('enrollment_visit', ' Enrollment visit, patient has taken or '
+    ('enrollment_visit', 'Enrollment visit, patient has taken or '
      'is taking HAART "(go to Question 3, record all current and '
      'past HAART medications)"'),
     ('change_in_at_least_one_antiretroviral_medication',
-     ' Change in at least one antiretroviral medication (dose '
+     'Change in at least one antiretroviral medication (dose '
      'modification, discontinuation, temporary hold, change of '
      'medication) "(go to Question 3)"'),
 )
@@ -251,6 +335,14 @@ HEPATITIS_BEFORE_CHOICE = (
     (DONT_KNOW, 'Don\'t know'),
 )
 
+HIV_TEST_RESULT = (
+    (POS, 'Positive (both rapid tests)'),
+    (NEG, 'Negative (both rapid tests)'),
+    (IND, 'Indeterminate (different results on rapid tests)'),
+    (PENDING, 'Result pending (sent to lab waiting for result)'),
+    (REFUSED, 'Patient refuses HIV testing today'),
+)
+
 HOURS_OUTDOOR_CHOICE = (
     ('1_hour_or_less', '1 hour or less'),
     ('2_hours', '2 hours'),
@@ -258,6 +350,16 @@ HOURS_OUTDOOR_CHOICE = (
     ('4_hours', '4 hours'),
     ('5_hours', '5 hours'),
     ('6_hours', '6 hours'),
+)
+
+INFO_SOURCE_CHOICE = (
+    ('clinic_visit', 'Clinic visit with participant'),
+    ('other_contact_with_participant', 'Other contact with participant'
+     '(i.e telephone call)'),
+    ('health_care_worker', 'Contact with health care worker'),
+    ('family_or_designated_person_who_can_provide_information',
+     'Contact with family or designated person who can provide information'),
+    (OTHER, 'Other, specify:'),
 )
 
 MARITAL_STATUS_CHOICE = (
@@ -330,6 +432,29 @@ MONEY_PROVIDED_CHOICE = (
     (OTHER, 'Other, specify:'),
 )
 
+NUMBER_OF_CHEMO_CYLCES = (
+    ('0', '0'),
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
+    ('5', '5'),
+    ('6', '6'),
+    ('7', '7'),
+    ('8', '8'),
+    (OTHER, 'other'),
+    (UNK, 'unknown'),
+)
+
+NUMBER_OF_CHEMO_INTERVALS = (
+    ('1 week', '1 week'),
+    ('2 weeks', '2 weeks'),
+    ('3 weeks', '3 weeks'),
+    ('4 weeks', '4 weeks'),
+    (OTHER, 'other'),
+    (UNK, 'unknown'),
+)
+
 OCCUPATION_CHOICE = (
     ('housewife', 'Housewife'),
     ('salaried_(govt)', 'Salaried (government)'),
@@ -353,6 +478,21 @@ OFF_STUDY_CODE_CHOICE = (
      'Unable to contact Participant despite repeated attempts '
      '(see MOP for definition of Lost to Follow-Up.)'),
     (OTHER, 'Other, specify:'),
+)
+
+PATIENT_FOLLOW_UP = (
+    ('PMH', 'Princess Marina Hospital'),
+    ('NRH', 'Nyangabgwe Referral Hospital'),
+    ('SEROWE', 'Serowe'),
+    ('MAUN', 'Maun'),
+    (OTHER, 'Other, specify:'),
+)
+
+
+PARTICIPANT_STATUS_CHOICE = (
+    ('on_study', 'On study'),
+    ('off_study', 'Off study'),
+    ('going_off_study_at_this_visit', 'Going off study at this visit'),
 )
 
 PERFORM_STATUS_CHOICE = (
@@ -428,19 +568,33 @@ RELATIONSHIP_DESCRIPTION_CHOICE = (
     ('probably_related',
         'Probably related to study activities'),
     ('possibly_related',
-        ' Possibly related to study activities'),
+        'Possibly related to study activities'),
     ('probably_NOT_related',
-        ' Probably NOT related to study activities'),
+        'Probably NOT related to study activities'),
     ('not_related',
-     ' Not related to study activities'),
+     'Not related to study activities'),
     ('pending,cannot_tell_yet_if_related',
-     ' Pending, cannot tell yet if related to study activities'),
+     'Pending, cannot tell yet if related to study activities'),
 )
 
 REPORT_TYPE_CHOICE = (
     ('original_report', 'Original report of an event'),
     ('updated_information', 'Updated information'),
     ('resolution', 'Resolution'),
+)
+
+REPORT_REASON_CHOICE = (
+    ('quarterly_visit/contact',
+     'Quarterly visit/contact (go to question 5)'),
+    ('unscheduled_visit/contact',
+     'Unscheduled visit/contact (go to question 4)'),
+    ('missed_quarterly_visit',
+     'Missed quarterly visit (go to question 5)'),
+    ('lost_to_follow-up',
+     'Lost to follow-up (use only when taking subject off study)(go to question 6)'),
+    ('Death', 'Death (go to question 6)'),
+    ('off_study', 'Off study'),
+    ('deferred', 'Deferred'),
 )
 
 SETTING_CHOICE = (
@@ -475,8 +629,8 @@ TB_TREATMENT_CHOICE = (
 )
 
 TEST_RESULT_CHOICE = (
-    ('POS', 'Reactive'),
-    ('NEG', 'Non-Reactive'),
+    (POS, 'Reactive'),
+    (NEG, 'Non-Reactive'),
 )
 
 TOILET_CHOICE = (
@@ -496,6 +650,13 @@ TRADMEDICINE_CHOICE = (
     (DECLINED, 'Patient declined to answer'),
 )
 
+VISIT_UNSCHEDULED_REASON = (
+    ('routine_oncology', 'Routine oncology clinic visit (i.e. planned chemo, follow-up)'),
+    ('ill_oncology', 'Ill oncology clinic visit'),
+    ('patient_called', 'Patient called to come for visit'),
+    (OTHER, 'Other, specify:'),
+)
+
 WHO_STAGE_CHOICE = (
     ('wasting', 'Wasting'),
     ('TB', 'Tuberculosis'),
@@ -506,8 +667,57 @@ WHO_STAGE_CHOICE = (
     (OTHER, 'Other, specify:'),
 )
 
+WHY_DELAYED = (
+    ('heme_tox', 'Toxicity - hematologic (anemia, neutropenia,'
+     ' or thromobcytopenia)'),
+    ('hepato_tox', 'Toxicity - hepatitis (jaundice, increased '
+     'bilirubin, ALT/AST, etc.) '),
+    ('renal_tox', 'Toxicity - renal failure (increased creatinine,'
+     ' swelling, etc)'),
+    ('other_tox', 'Toxicity - other, specify '),
+    ('no_response', 'Cancer not responding to treatment'),
+    ('default', 'Defaulted visit or lost-to-follow-up'),
+    ('outage', 'Outage of medication, supplies, laboratory results'),
+    ('clinic_busy', 'Clinic too busy to accommodate'),
+    (OTHER, 'Other, specify:'),
+)
+
+WHY_REDUCED = (
+    ('heme_tox', 'Toxicity - hematologic (anemia, neutropenia, or thromobcytopenia)'),
+    ('hepat_tox', 'Toxicity - hepatitis (jaundice, increased bilirubin, ALT/AST, etc.)'),
+    ('rena_tox', 'Toxicity - renal failure (increased creatinine, swelling, etc)'),
+    ('othe_tox', 'Toxicity - other, specify '),
+    ('no_response', 'Cancer not responding to treatment'),
+    ('default', 'Defaulted visit or lost-to-follow-up'),
+    ('outage', 'Outage of medication, supplies, laboratory results'),
+    ('clinic_busy', 'Clinic too busy to accommodate'),
+    ('standard_protocol', 'Dose reduced due to standard protocol (i.e. '
+     'reduced intensity CHOP)'),
+    (OTHER, 'Other, specify:'),
+)
+
+WHY_REFERRED = (
+    ('IDCC_for_HAART_initiation', ' IDCC (infectious disease) '
+     'for HAART initiation'),
+    ('IDCC_for_modification_of_HAART', ' IDCC (infectious disease) '
+     'for modification of HAART (failure, toxicity, etc)'),
+    ('GOPD,TB_clinic,or_local_clinic_for_evaluation/treatment_of_TB',
+     'GOPD, TB clinic, or local clinic for evaluation/treatment of TB'),
+    ('psychiatry_for_treatment_of_depression_or_other_mental_illness',
+     ' Psychiatry for treatment of depression or other mental illness'),
+    ('social_work_for_assistance_with_food_basket,home_services,or_other_needs',
+     ' Social work for assistance with food basket, home services, or other needs'),
+    (OTHER, ' Other, explain:'),
+)
+
 YES_NO_DECLINED = (
     (YES, YES),
     (NO, NO),
     (DECLINED, 'Patient declined to answer')
+)
+
+YES_NO_DOESNT_WORK = (
+    ('YES', 'Yes'),
+    ('NO', 'Yes'),
+    ('doesnt_work', 'Doesn\'t work'),
 )
