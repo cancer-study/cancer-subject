@@ -1,10 +1,11 @@
 from .appointment_admin import AppointmentAdmin
-from .base_risk_assessment_admin import BaseRiskAssessmentAdmin, BaseRiskAssessmentAlcoholAdmin
-from .base_risk_assessment_admin import BaseRiskAssessmentCancerAdmin, BaseRiskAssessmentChemicalAdmin
-from .base_risk_assessment_admin import BaseRiskAssessmentDemoAdmin, BaseRiskAssessmentEatingAdmin
-from .base_risk_assessment_admin import BaseRiskAssessmentFemaleAdmin, BaseRiskAssessmentFuelAdmin
-from .base_risk_assessment_admin import BaseRiskAssessmentMiningAdmin, BaseRiskAssessmentSmokingAdmin
-from .base_risk_assessment_admin import BaseRiskAssessmentSunAdmin
+from .base_risk_assessment_admin import (
+    BaseRiskAssessmentAdmin, BaseRiskAssessmentAlcoholAdmin,
+    BaseRiskAssessmentCancerAdmin, BaseRiskAssessmentChemicalAdmin,
+    BaseRiskAssessmentDemoAdmin, BaseRiskAssessmentEatingAdmin,
+    BaseRiskAssessmentFemaleAdmin, BaseRiskAssessmentFuelAdmin,
+    BaseRiskAssessmentMiningAdmin, BaseRiskAssessmentSmokingAdmin,
+    BaseRiskAssessmentSunAdmin)
 from .baseline_hiv_history_admin import BaselineHIVHistoryAdmin, BHHHivTestAdmin
 from .baseline_hiv_history_admin import BHHWhoIllnessAdmin, BHHCd4Admin
 from .enrollment_checklist_admin import EnrollmentChecklistAdmin

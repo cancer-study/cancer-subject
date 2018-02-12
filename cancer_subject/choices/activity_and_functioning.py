@@ -56,9 +56,16 @@ PROBS_FROM_WORK_CHOICE = (
     ('No daily activities', 'Could not do daily activities'),
 )
 PERFORM_STATUS_CHOICE = (
-    ('0', 'Asymptomatic (Fully active, able to carry on all pre-disease activities without restriction)'),
-    ('1', 'Symptomatic but completely ambulatory (Restricted in physically strenuous activity but ambulatory and able to carry out work of a light or sedentary nature. For example, light housework, office work)'),
-    ('2', 'Symptomatic, &lt;50% in bed during the day (Ambulatory and capable of all self care but unable to carry out any work activities. Up and about more than 50% of waking hours)'),
-    ('3', '50% in bed, but not bedbound (Capable of only limited self-care, confined to bed or chair 50% or more of waking hours)'),
-    ('4', 'Bedbound (Completely disabled. Cannot carry on any self-care. Totally confined to bed or chair)'),
+    ('0', 'Asymptomatic (Fully active, able to carry on all pre-disease '
+     'activities without restriction)'),
+    ('1', 'Symptomatic but completely ambulatory (Restricted in physically '
+     'strenuous activity but ambulatory and able to carry out work of a light '
+     'or sedentary nature. For example, light housework, office work)'),
+    ('2', 'Symptomatic, &lt;50% in bed during the day (Ambulatory and capable '
+     'of all self care but unable to carry out any work activities. Up and '
+     'about more than 50% of waking hours)'),
+    ('3', '50% in bed, but not bedbound (Capable of only limited self-care, '
+     'confined to bed or chair 50% or more of waking hours)'),
+    ('4', 'Bedbound (Completely disabled. Cannot carry on any self-care. '
+     'Totally confined to bed or chair)'),
 )

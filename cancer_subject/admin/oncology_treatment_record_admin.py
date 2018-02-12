@@ -3,7 +3,8 @@ from django.contrib import admin
 from edc_model_admin import TabularInlineMixin
 
 from ..admin_site import cancer_subject_admin
-from ..forms import OncologyTreatmentRecordForm, OTRChemoForm, OTRRadiationForm, OTRSurgicalForm
+from ..forms import (OncologyTreatmentRecordForm, OTRChemoForm,
+                     OTRRadiationForm, OTRSurgicalForm)
 from ..forms.main import ChemoMedRecordForm
 from ..models import ChemoMedRecord
 from ..models import OncologyTreatmentRecord, OTRChemo, OTRRadiation, OTRSurgical
