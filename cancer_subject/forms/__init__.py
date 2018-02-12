@@ -1,3 +1,6 @@
+from .ae010_form import Ae010Form
+from .af004_form import Af004Form
+from .af005_form import Af005Form
 from .appointment_form import AppointmentForm
 from .base_risk_assessment_form import *
 from .baseline_hiv_history_form import *
