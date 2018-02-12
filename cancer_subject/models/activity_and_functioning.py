@@ -2,7 +2,7 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.activity_and_functioning import (
+from ..choices import (
     HEALTH_RATE_CHOICE, HEALTH_PROBLEMS_CHOICE,
     DIFFICULTY_WORK_CHOICE, BODILY_PAIN_CHOICE,
     ENERGY_CHOICE, HEALTH_PROBS_LIMIT_CHOICE,

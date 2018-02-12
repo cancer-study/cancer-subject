@@ -15,11 +15,6 @@ MODIFIER = (
     ('D', 'D'),
 )
 
-TREATMENT_INTENT = (
-    ('UNK', 'Unknown'),
-    ('Curative', 'Curative'),
-    ('Palliative', 'Palliative'),
-)
 
 TREATMENT_RELATIONSHIP = (
     ('UNK', 'Unknown'),
