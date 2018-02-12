@@ -20,12 +20,10 @@ from cancer_subject.models import (
     LabResultHaematology, LabResultHeightWeight, LabResultHiv,
     LabResultTb, LabResultViralload, LabResult,
     OncologyTreatmentCompleted, OncologyTreatmentRecord, OTRChemo,
-    OTRRadiation, OTRSurgical, RadiationTreatment, BaseRadiationTreatment,
+    OTRRadiation, OTRSurgical, BaseRadiationTreatment,
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
     CurrentSymptoms)
-from cancer_subject.patterns import subject_identifier
-from cancer_subject.patterns import subject_identifier
 from edc_consent.tests import EdcConsentProvider
 
 
