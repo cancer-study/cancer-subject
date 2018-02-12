@@ -2,7 +2,10 @@ from .ae010_form import Ae010Form
 from .af004_form import Af004Form
 from .af005_form import Af005Form
 from .appointment_form import AppointmentForm
-from .base_risk_assessment_form import *
+from .base_risk_assessment_form import BaseRiskAssessmentForm
+from .base_risk_assessment_alcohol_form import BaseRiskAssessmentAlcoholForm
+from .base_risk_assessment_cancer_form import BaseRiskAssessmentCancerForm
+from .base_risk_assessment_chemical_form import BaseRiskAssessmentChemicalForm
 from .baseline_hiv_history_form import *
 from .enrollment_checklist_form import EnrollmentChecklistForm
 from .lab_result_form import *

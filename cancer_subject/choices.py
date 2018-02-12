@@ -1,11 +1,6 @@
-from django.utils.translation import ugettext_lazy as _
-from edc_constants.constants import DONT_KNOW, NONE, NOT_SURE, DECLINED, REFUSED
+from edc_constants.constants import DONT_KNOW, NONE, DECLINED, REFUSED
 from edc_constants.constants import NEG, IND, UNK, OTHER, NEVER, PENDING
-from edc_constants.constants import YES, NO, DWTA, NOT_APPLICABLE, POS
-
-from cancer_subject.constants import (ABLE_TO_PARTICIPATE, MENTAL_INCAPACITY,
-                                      REFUSED, ALONE, NOT_PERFORMED, DAYS, MONTHS,
-                                      YEARS, MARRIED, ZERO)
+from edc_constants.constants import YES, NO, DWTA, POS
 
 
 AGE_FIRSTSEX_CHOICE = (

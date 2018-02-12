@@ -1,6 +1,5 @@
 ABLE_TO_PARTICIPATE = 'able'
 MENTAL_INCAPACITY = 'Mental Incapacity'
-REFUSED = 'REFUSED'
 ALONE = 'Alone'
 NOT_PERFORMED = 'Not performed'
 HOURS = 'hours'
