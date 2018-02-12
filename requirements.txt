@@ -2,8 +2,12 @@ git+https://github.com/botswana-harvard/edc-sync.git
 git+https://github.com/botswana-harvard/edc-sync-files.git
 git+https://github.com/erikvw/django-crypto-fields.git
 git+https://github.com/erikvw/django-revision.git
+git+https://github.com/erikvw/django-simple-history.git
+git+https://github.com/botswana-harvard/edc-base-test.git
+git+https://github.com/botswana-harvard/edc_facility.git
 git+https://github.com/botswana-harvard/edc-registration.git
 git+https://github.com/botswana-harvard/edc-identifier.git
+git+https://github.com/botswana-harvard/edc-metadata-rules.git
 git+https://github.com/botswana-harvard/edc-protocol.git
 git+https://github.com/botswana-harvard/edc-offstudy.git
 git+https://github.com/botswana-harvard/edc-locator.git
@@ -20,3 +24,6 @@ git+https://github.com/botswana-harvard/edc-appointment.git
 git+https://github.com/botswana-harvard/edc-timepoint.git
 git+https://github.com/botswana-harvard/edc-reference.git
 git+https://github.com/botswana-harvard/cancer-subject-validations.git
+git+https://github.com/cancer-study/cancer-visit-schedule.git
+git+https://github.com/cancer-study/cancer-metadata-rules.git
+git+https://github.com/cancer-study/cancer-reference.,git
