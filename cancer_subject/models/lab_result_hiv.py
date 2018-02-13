@@ -2,7 +2,7 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
-from ..choice import TEST_RESULT_CHOICE
+from ..choices import TEST_RESULT_CHOICE
 
 
 class LabResultHiv(CrfModelMixin):
