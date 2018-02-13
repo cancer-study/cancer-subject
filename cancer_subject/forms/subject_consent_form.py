@@ -1,7 +1,7 @@
 from django import forms
 # from edc_base.modelform_mixins import CommonCleanModelFormMixin
 
-from cancer_subject.choices import COMMUNITY
+from ..choices import COMMUNITY
 from ..models import SubjectConsent
 
 
