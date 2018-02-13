@@ -6,9 +6,9 @@ from edc_base.model_fields import OtherCharField
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.oncology_treatment import (CHEMO_INTENT,
-                                          WHY_DELAYED,
-                                          WHY_REDUCED)
+from ..choices import (CHEMO_INTENT,
+                       WHY_DELAYED,
+                       WHY_REDUCED)
 
 
 class OTRChemo (CrfModelMixin):

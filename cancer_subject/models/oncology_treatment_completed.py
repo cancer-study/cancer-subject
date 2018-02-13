@@ -5,7 +5,7 @@ from edc_constants.choices import YES_NO_UNSURE
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.oncology_treatment_completed import PATIENT_FOLLOW_UP
+from ..choices import PATIENT_FOLLOW_UP
 
 
 class OncologyTreatmentCompleted (CrfModelMixin):

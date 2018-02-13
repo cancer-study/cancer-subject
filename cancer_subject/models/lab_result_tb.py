@@ -3,7 +3,7 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.lab_result import TB_TREATMENT_CHOICE
+from ..choices import TB_TREATMENT_CHOICE
 
 
 class LabResultTb(CrfModelMixin):

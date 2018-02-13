@@ -2,7 +2,7 @@ from django.db import models
 
 # from ..cancer_list.models import InfoDeterminant
 
-from ..choices.treatment_response import CANCER_RESPONSE
+from ..choices import CANCER_RESPONSE
 from .model_mixins import CrfModelMixin
 from .list_models import InfoDeterminant
 

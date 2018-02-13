@@ -1,8 +1,6 @@
 from django import forms
-from django.conf import settings
 
 from edc_consent.modelform_mixins import RequiresConsentModelFormMixin
-from edc_consent.site_consents import site_consents
 from edc_visit_tracking.form_validators import VisitFormValidator
 
 from ..models import SubjectVisit

@@ -4,7 +4,7 @@ from django.core.validators import RegexValidator
 
 from edc_constants.choices import YES_NO_REFUSED, POS_NEG_REFUSED
 
-from ..choices.symptoms_and_testing import HIV_TEST_RESULT
+from ..choices import HIV_TEST_RESULT
 from .model_mixins import CrfModelMixin
 
 

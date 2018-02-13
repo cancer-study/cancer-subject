@@ -3,7 +3,7 @@ from django.db import models
 from edc_base.model_mixins import BaseUuidModel
 from edc_constants.choices import YES_NO
 
-from ..choices.referral import WHY_REFERRED
+from ..choices import WHY_REFERRED
 
 
 class Referral (BaseUuidModel):

@@ -3,11 +3,12 @@ from edc_base.model_fields import OtherCharField
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_constants.choices import YES_NO_UNKNOWN
 
-from ..choices.radiation_treatment import (
+from ..choices import (
     STAGES, MODIFIER, TREATMENT_INTENT,
     TREATMENT_RELATIONSHIP, RESPONSE,
     REASONS_MISSED_OR_DELAYED, RADIATION_TECHNIQUE,
     MODALITY, BRACHY_LENGTH, BRACHY_TYPE)
+
 from .list_models import RadiationSideEffects
 from .model_mixins import CrfModelMixin
 
