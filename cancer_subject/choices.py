@@ -733,6 +733,12 @@ TRADMEDICINE_CHOICE = (
     (DECLINED, 'Patient declined to answer'),
 )
 
+TREATMENT_INTENT = (
+    (UNK, 'Unknown'),
+    ('curative', 'Curative'),
+    ('palliative', 'Palliative'),
+)
+
 TREATMENT_RELATIONSHIP = (
     (UNK, 'Unknown'),
     ('no_modalities', 'No other treatment modalities'),
