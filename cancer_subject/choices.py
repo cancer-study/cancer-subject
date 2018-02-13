@@ -33,6 +33,26 @@ BODILY_PAIN_CHOICE = (
     ('very_severe', 'Very serere'),
 )
 
+BRACHY_LENGTH = (
+    ('2', '2'),
+    ('3.5', '3.5'),
+    ('4', '4'),
+    ('6', '6'),
+    ('8', '8'),
+    (OTHER, 'Other'),
+    (UNK, 'Unknown'),
+)
+
+BRACHY_TYPE = (
+    ('T&SR', 'T&SR'),
+    ('T&Ovoids', 'T&Ovoids'),
+    ('T&Cylinder', 'T&Cylinder'),
+    ('Cylinder', 'Cylinder'),
+    ('SR', 'SR'),
+    (OTHER, 'Other'),
+    (UNK, 'Unknown'),
+)
+
 CANCER_BEFORE_CHOICE = (
     (DONT_KNOW, 'Don\'t know'),
     ('cervical_cancer', 'Cervical cancer'),
@@ -402,6 +422,22 @@ MOD_REASON_CHOICE = (
     ('28', '28 = Other (specify in comments) '),
 )
 
+MODIFIER = (
+    ('X', 'X'),
+    ('A', 'A'),
+    ('B', 'B'),
+    ('C', 'C'),
+    ('D', 'D'),
+)
+
+MODALITY = (
+    ('photons', 'Photons'),
+    ('electrons', 'Electrons'),
+    ('brachy', 'Brachy'),
+    ('particle_therapy', 'Particle Therapy'),
+    (OTHER, 'Other Energy'),
+)
+
 MONEY_EARNED_CHOICE = (
     (NONE, 'None'),
     ('<P200/month (P50/week)', '<P200/month (&lt; P50/week)'),
@@ -552,12 +588,12 @@ QUIT_CHOICE = (
 
 RADIATION_TECHNIQUE = (
     ('AP/PA', 'AP/PA'),
-    ('4-field Box', '4-field Box'),
-    ('Opposed Laterals', 'Opposed Laterals'),
-    ('Tangents', 'Tangents'),
+    ('4_field_box', '4-field Box'),
+    ('opposed_laterals', 'Opposed Laterals'),
+    ('tangents', 'Tangents'),
     ('IMRT', 'IMRT'),
-    ('IR 192', 'IR 192'),
-    ('Other', 'Other Technique')
+    ('IR_192', 'IR 192'),
+    (OTHER, 'Other Technique')
 )
 
 RACE_CHOICE = (
@@ -565,6 +601,17 @@ RACE_CHOICE = (
     ('caucasian', 'Caucasian'),
     ('asian', 'Asian'),
     (OTHER, 'Other, specify:'),
+)
+
+REASONS_MISSED_OR_DELAYED = (
+    ('toxicity_hematologic', 'Toxicity- hematologic (anemia, neutropenia, or low plts), '),
+    ('toxicity_skin', 'Toxicity-skin (dermatitis, mucositis), '),
+    ('unresponsive', 'Cancer not responding to treatment'),
+    ('defaulted', 'Defaulted visit or lost to follow-up'),
+    ('machine_downtime', 'Machine down-time or repair'),
+    ('no_accomodation', 'clinic too busy to accommodate'),
+    ('no_transport', 'lack of transportation to facility'),
+    (OTHER, 'Other, specify'),
 )
 
 RELATIONSHIP_DESCRIPTION_CHOICE = (
@@ -602,15 +649,46 @@ REPORT_REASON_CHOICE = (
     ('deferred', 'Deferred'),
 )
 
+RESPONSE = (
+    (UNK, 'Unknown'),
+    ('complete', 'Complete'),
+    ('almost_complete', 'Almost Complete'),
+    ('residual_tumor', 'Residual Tumor'),
+    ('poor_response', 'Poor response'),
+    ('good_palliation', 'Good palliation'),
+    ('modest_palliation', 'Modest Palliation'),
+    ('poor_palliation', 'Poor Palliation'),
+    (OTHER, 'Other, specify'),
+)
+
 SETTING_CHOICE = (
     ('farm/lands', 'Farm/lands'),
     ('village', 'Village'),
     ('city/town', 'City/Town'),
 )
 
+SIDE_EFFECTS = (
+    (UNK, 'Unknown'),
+    ('hyperpigmentation', 'hyperpigmentation'),
+    ('vaginal_stenosis', 'vaginal stenosis'),
+    ('diarrhea_proctitis', 'diarrhea, proctitis'),
+    ('moist_desquamation', 'moist desquamation'),
+    ('fibrosis', 'fibrosis'),
+    (OTHER, 'Other, specify'),
+)
+
 SMOKE_NOW_CHOICE = (
     (YES, YES),
     (NO, 'no, I used to smoke but quit'),
+)
+
+STAGES = (
+    ('X', 'X'),
+    ('0', '0'),
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
+    ('4', '4'),
 )
 
 SYMPTOM_PROMPT_CHOICE = (
@@ -653,6 +731,18 @@ TRADMEDICINE_CHOICE = (
     ('between_5_to_10_times_yearly', 'Between 5 to 10 times a year'),
     ('more_than_10_times_yearly', 'More than 10 times a year'),
     (DECLINED, 'Patient declined to answer'),
+)
+
+TREATMENT_RELATIONSHIP = (
+    (UNK, 'Unknown'),
+    ('no_modalities', 'No other treatment modalities'),
+    ('concurrent_chemo', 'Concurrent chemotherapy'),
+    ('adj_after_surgery', 'Adjuvant after surgery'),
+    ('adj_after_chemo', 'Adjuvant after chemotherapy'),
+    ('adj_after_surgery_and_chemo', 'Adjuvant after surgery and chemotherapy'),
+    ('neo_before_chemo', 'Neoadjuvant before Chemotherapy'),
+    ('neo_before_surgery', 'Neoadjuvant before Surgery'),
+    (OTHER, 'Other, specify'),
 )
 
 VISIT_UNSCHEDULED_REASON = (
