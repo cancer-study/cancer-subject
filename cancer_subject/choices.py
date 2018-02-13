@@ -19,6 +19,12 @@ ARV_REASON_CHOICE = (
     ('3', '3 = PEP '),
 )
 
+ASBESTOS_NO_PROTECTION_CHOICE = (
+    ('<5 years', 'less than 5 years'),
+    ('5 to 20 years', 'between 5 and 20 years'),
+    ('>20 years', 'more than 20 years'),
+)
+
 BASIS_CHOICE = (
     (UNK, 'Unknown'),
     ('clinical', 'Clinical'),
@@ -108,6 +114,12 @@ CANCER_TYPE_CHOICE = (
     ('eye_cancer', 'Eye cancer'),
     ('other_or_multiple_cancers',
      'Other or multiple cancers, describe:'),
+)
+
+CHEMICALS_TIME_CHOICE = (
+    ('<5 years', 'less than 5 years'),
+    ('5 to 20 years', 'between 5 and 20 years'),
+    ('>20 years', 'more than 20 years'),
 )
 
 CHEMO_INTENT = (
@@ -722,6 +734,12 @@ TOILET_CHOICE = (
     ('shared_latrine', 'Shared latrine with other compounds'),
     ('no_latrine', 'No latrine facilities'),
     (OTHER, 'Other, specify:'),
+)
+
+TOTAL_TIME_NO_PROTECTION_CHOICE = (
+    ('<5 years', 'less than 5 years'),
+    ('5 to 20 years', 'between 5 and 20 years'),
+    ('>20 years', 'more than 20 years'),
 )
 
 TRADMEDICINE_CHOICE = (
