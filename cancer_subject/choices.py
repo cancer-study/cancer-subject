@@ -550,6 +550,16 @@ QUIT_CHOICE = (
     ('refused', 'Participant declined to answer')
 )
 
+RADIATION_TECHNIQUE = (
+    ('AP/PA', 'AP/PA'),
+    ('4-field Box', '4-field Box'),
+    ('Opposed Laterals', 'Opposed Laterals'),
+    ('Tangents', 'Tangents'),
+    ('IMRT', 'IMRT'),
+    ('IR 192', 'IR 192'),
+    ('Other', 'Other Technique')
+)
+
 RACE_CHOICE = (
     ('black_african', 'Black African'),
     ('caucasian', 'Caucasian'),
