@@ -13,7 +13,7 @@ from .base_risk_assessment_fuel_form import BaseRiskAssessmentFuelForm
 from .base_risk_assessment_mining_form import BaseRiskAssessmentMiningForm
 from .base_risk_assessment_smoking_form import BaseRiskAssessmentSmokingForm
 from .base_risk_assessment_sun_form import BaseRiskAssessmentSunForm
-from .baseline_hiv_history_form import *
+from .baseline_hiv_history_form import BaselineHIVHistoryForm
 from .enrollment_checklist_form import EnrollmentChecklistForm
 from .lab_result_form import LabResultForm
 from .lab_result_haemotology_form import LabResultHaematologyForm

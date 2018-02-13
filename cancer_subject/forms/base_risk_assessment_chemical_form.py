@@ -8,9 +8,10 @@ from .form_mixins import SubjectModelFormMixin
 class BaseRiskAssessmentChemicalForm (SubjectModelFormMixin):
     def clean(self):
         cleaned_data = self.cleaned_data
-        if cleaned_data.get('asbestos') == YES and not cleaned_data.get('asbestos_no_protection'):
-            raise forms.ValidationError(
-                'If subject has worked with asbestos, how long has he/she worked with it')
+        if(cleaned_data.get('asbestos') == YES
+           and not cleaned_data.get('asbestos_no_protection')):
+            raise forms.ValidationError('If subject has worked with asbestos,'
+                                        ' how long has he/she worked with it')
         if cleaned_data.get('chemicals') == YES and not cleaned_data.get('chemicals_time'):
             raise forms.ValidationError(
                 'If subject has worked with any of the chemicals, how long has it been')
