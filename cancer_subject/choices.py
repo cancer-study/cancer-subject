@@ -570,6 +570,15 @@ POSSIBLE_GRADES = (
     ('1', '1'),
     ('2', '2'),
     ('3', '3'),
+)
+
+POSSIBLE_GRADES2 = (
+    (UNK, 'Unknown'),
+    ('X', 'X'),
+    ('0', '0'),
+    ('1', '1'),
+    ('2', '2'),
+    ('3', '3'),
     ('4', '4'),
 )
 
@@ -648,6 +657,13 @@ REASONS_MISSED_OR_DELAYED = (
     ('no_accomodation', 'clinic too busy to accommodate'),
     ('no_transport', 'lack of transportation to facility'),
     (OTHER, 'Other, specify'),
+)
+
+RECENT_RESULT_CHOICE = (
+    ('reactive', ' Reactive (positive)'),
+    ('non_reactive', ' Non-Reactive (negative)'),
+    (DONT_KNOW,
+     ' Don\'t Know (didn\'t receive result, forgot, etc)'),
 )
 
 RELATIONSHIP_DESCRIPTION_CHOICE = (
