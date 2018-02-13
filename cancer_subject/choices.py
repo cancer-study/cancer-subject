@@ -141,6 +141,23 @@ COMMUNITY = (
     ('060', '060 Francistown'),
 )
 
+DEATH_CAUSE_CATEGORY_CHOICE = (
+    ('no_information_available',
+     'No information available (go to question 6)'),
+    ('cancer ', 'Cancer'),
+    ('HIV_infection_or_HIV/AIDS-related_diagnosis',
+     'HIV infection or HIV/AIDS-related diagnosis'),
+    ('disease/injury_unrelated_to_cancer_or_HIV',
+     'Disease/injury unrelated to cancer or HIV'),
+    ('toxicity_from_cancer_treatment',
+     'Toxicity from cancer treatment (complications of '
+     'chemotherapy, radiation, or surgery)'),
+    ('toxicity_from_HIV/AIDS_treatment',
+     'Toxicity from HIV/AIDS treatment (HAART or treatment of '
+     'HIV/AIDS-related diagnosis)'),
+    (OTHER, 'Other, specify:'),
+)
+
 DIAGNOSIS_BASIS_CHOICE = (
     ('clinica_only', 'Clinical Only'),
     ('clinical_and_radiology', 'Clinical AND Radiology (CT, X-ray, U/S)'),
@@ -161,7 +178,7 @@ DIFFICULTY_WORK_CHOICE = (
     ('no_daily_work', 'Could not do daily work'),
 )
 
-DISTRICT20_CHOICE = (
+DISTRICT_CHOICE = (
     ('Central', 'Central District'),
     ('Ghanzi', 'Ghanzi District'),
     ('Kgalagadi', 'Kgalagadi District'),
@@ -580,6 +597,20 @@ POSSIBLE_OVERALL_STAGE_MODIFIER = (
     ('B', 'B'),
     ('C', 'C'),
     ('D', 'D'),
+)
+
+PRIMARY_DEATH_CAUSE_CHOICE = (
+    ('no_information',
+     'No information will ever be available (go to question 6)'),
+    ('autopsy', 'Autopsy'),
+    ('clinical_record', 'Clinical record'),
+    ('physician/nurse/other_health_care_provider_info',
+     'Information from physician/nurse/other health care provider'),
+    ('relatives_or_friends_info',
+     'Information from participant’s relatives or friends'),
+    ('pending_info',
+     'Information requested, still pending'),
+    (OTHER, 'Other, specify:'),
 )
 
 PROBS_FROM_WORK_CHOICE = (

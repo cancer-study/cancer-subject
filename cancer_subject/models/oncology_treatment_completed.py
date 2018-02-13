@@ -5,7 +5,11 @@ from edc_constants.choices import YES_NO_UNSURE
 
 from .model_mixins import CrfModelMixin
 
+<<<<<<< Updated upstream
 from ..choices import PATIENT_FOLLOW_UP
+=======
+from cancer_subject.choice import PATIENT_FOLLOW_UP
+>>>>>>> Stashed changes
 
 
 class OncologyTreatmentCompleted (CrfModelMixin):

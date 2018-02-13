@@ -2,7 +2,7 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.base_risk_assessment import (
+from cancer_subject.choice import (
     HOURS_OUTDOOR_CHOICE, SLEEVED_SHIRT_CHOICE,
     HAT_CHOICE, SUNGLASSES_CHOICE, SHADE_UMBRELLA_CHOICE)
 

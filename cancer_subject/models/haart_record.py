@@ -2,7 +2,7 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.haart_record import HAART_STATUS_CHOICE
+from cancer_subject.choice import HAART_STATUS_CHOICE
 
 
 class HaartRecord(CrfModelMixin):

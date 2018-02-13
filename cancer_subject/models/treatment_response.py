@@ -2,7 +2,11 @@ from django.db import models
 
 # from ..cancer_list.models import InfoDeterminant
 
+<<<<<<< Updated upstream
 from ..choices import CANCER_RESPONSE
+=======
+from cancer_subject.choice import CANCER_RESPONSE
+>>>>>>> Stashed changes
 from .model_mixins import CrfModelMixin
 from .list_models import InfoDeterminant
 

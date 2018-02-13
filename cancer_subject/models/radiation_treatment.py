@@ -3,7 +3,11 @@ from edc_base.model_fields import OtherCharField
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_constants.choices import YES_NO_UNKNOWN
 
+<<<<<<< Updated upstream
 from ..choices import (
+=======
+from cancer_subject.choice import (
+>>>>>>> Stashed changes
     STAGES, MODIFIER, TREATMENT_INTENT,
     TREATMENT_RELATIONSHIP, RESPONSE,
     REASONS_MISSED_OR_DELAYED, RADIATION_TECHNIQUE,

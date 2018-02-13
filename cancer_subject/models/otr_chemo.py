@@ -6,9 +6,15 @@ from edc_base.model_fields import OtherCharField
 
 from .model_mixins import CrfModelMixin
 
+<<<<<<< Updated upstream
 from ..choices import (CHEMO_INTENT,
                        WHY_DELAYED,
                        WHY_REDUCED)
+=======
+from cancer_subject.choice import (CHEMO_INTENT,
+                                          WHY_DELAYED,
+                                          WHY_REDUCED)
+>>>>>>> Stashed changes
 
 
 class OTRChemo (CrfModelMixin):

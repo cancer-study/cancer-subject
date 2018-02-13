@@ -3,7 +3,11 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
+<<<<<<< Updated upstream
 from ..choices import TB_TREATMENT_CHOICE
+=======
+from cancer_subject.choice import TB_TREATMENT_CHOICE
+>>>>>>> Stashed changes
 
 
 class LabResultTb(CrfModelMixin):

@@ -1,7 +1,7 @@
 from django.db import models
 from edc_base.model_mixins import BaseUuidModel
 
-from ..choices.haart_record import (
+from cancer_subject.choice import (
     MOD_REASON_CHOICE, ARV_REASON_CHOICE, HAART_MEDS_DRUG_NAMES)
 from .haart_record import HaartRecord
 

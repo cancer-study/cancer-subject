@@ -4,7 +4,7 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 
 from .model_mixins.crf_model_mixin import CrfModelMixin
 
-from ..choices.base_risk_assessment import (
+from cancer_subject.choice import (
     SMOKE_NOW_CHOICE,
     CIGARETTE_SMOKING_CHOICE,
     CIGARETTE_SMOKED_CHOICE,

@@ -3,7 +3,7 @@ from django.db import models
 from edc_base.model_validators import date_not_future
 from edc_constants.choices import YES_NO_DONT_KNOW, YES_NO
 
-from ..choices.base_risk_assessment import (
+from cancer_subject.choice import (
     HEPATITIS_BEFORE_CHOICE, AGE_FIRSTSEX_CHOICE,
     TRADMEDICINE_CHOICE, YES_NO_DECLINED)
 from .model_mixins.crf_model_mixin import CrfModelMixin

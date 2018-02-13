@@ -6,7 +6,7 @@ from django.core.validators import RegexValidator
 from edc_constants.choices import YES_NO
 
 from .model_mixins import CrfModelMixin
-from ..choices.cancer_diagnosis import (
+from cancer_subject.choice import (
     CANCER_CATEGORY_CHOICE, SYMPTOM_PROMPT_CHOICE,
     DIAGNOSIS_BASIS_CHOICE, TUMOUR_BASIS_CHOICE,
     LYMPH_BASIS_CHOICE, METASTASIS_BASIS_CHOICE,

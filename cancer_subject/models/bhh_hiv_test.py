@@ -5,7 +5,7 @@ from edc_reference.model_mixins import ReferenceModelMixin
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.baseline_hiv_history import RECENT_RESULT_CHOICE
+from cancer_subject.choice import RECENT_RESULT_CHOICE
 
 
 class BHHHivTest (CrfModelMixin, ReferenceModelMixin):

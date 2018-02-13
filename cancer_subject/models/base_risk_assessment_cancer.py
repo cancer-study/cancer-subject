@@ -3,10 +3,8 @@ from django.db import models
 from edc_constants.choices import YES_NO_DONT_KNOW
 from edc_base.model_fields.custom_fields import OtherCharField
 
+from ..choices import CANCER_BEFORE_CHOICE, CANCER_TYPE_CHOICE
 from .model_mixins import CrfModelMixin
-
-from ..choices import (CANCER_TYPE_CHOICE,
-                       CANCER_BEFORE_CHOICE)
 
 
 class BaseRiskAssessmentCancer (CrfModelMixin):

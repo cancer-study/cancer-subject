@@ -4,7 +4,11 @@ from django.core.validators import RegexValidator
 
 from edc_constants.choices import YES_NO_REFUSED, POS_NEG_REFUSED
 
+<<<<<<< Updated upstream
 from ..choices import HIV_TEST_RESULT
+=======
+from cancer_subject.choice import HIV_TEST_RESULT
+>>>>>>> Stashed changes
 from .model_mixins import CrfModelMixin
 
 

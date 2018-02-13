@@ -3,7 +3,11 @@ from django.db import models
 from edc_base.model_mixins import BaseUuidModel
 from edc_constants.choices import YES_NO
 
+<<<<<<< Updated upstream
 from ..choices import WHY_REFERRED
+=======
+from cancer_subject.choice import WHY_REFERRED
+>>>>>>> Stashed changes
 
 
 class Referral (BaseUuidModel):

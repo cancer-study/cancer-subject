@@ -5,7 +5,7 @@ from edc_constants.choices import YES_NO_DONT_KNOW
 
 from .model_mixins.crf_model_mixin import CrfModelMixin
 
-from ..choices.base_risk_assessment import (
+from cancer_subject.choice import (
     MINE_TIME_CHOICE,
     MINE_TYPE_CHOICE,
     MINE_UNDERGROUND_TIME_CHOICE)

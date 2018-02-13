@@ -2,8 +2,13 @@ from django.db import models
 
 from edc_constants.choices import YES_NO
 
+<<<<<<< Updated upstream
 from ..choices import (CHEMO_INTENT,
                        CANCER_TREATMENT_GOAL)
+=======
+from cancer_subject.choice import (CHEMO_INTENT,
+                                          CANCER_TREATMENT_GOAL)
+>>>>>>> Stashed changes
 from .model_mixins import CrfModelMixin
 
 

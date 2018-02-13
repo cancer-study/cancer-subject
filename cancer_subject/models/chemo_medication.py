@@ -3,7 +3,7 @@ from django.db import models
 
 from edc_base.model_mixins import BaseUuidModel
 
-from ..choices.oncology_treatment import (DRUG_CODE,
+from cancer_subject.choice import (DRUG_CODE,
                                           DOSE_CATEGORY,
                                           NUMBER_OF_CHEMO_CYLCES,
                                           NUMBER_OF_CHEMO_INTERVALS)
