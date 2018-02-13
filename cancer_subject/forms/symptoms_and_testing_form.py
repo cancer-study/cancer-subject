@@ -29,7 +29,8 @@ class SymptomsAndTestingForm (SubjectModelFormMixin):
             raise forms.ValidationError(
                 'Subject is POS, you cannot answer NEG date')
 
-        if cleaned_data.get('hiv_tested') == NO and cleaned_data.get('hiv_test_result') and cleaned_data.get('pos_date'):
+        if cleaned_data.get('hiv_tested') == NO and cleaned_data.get(
+                'hiv_test_result') and cleaned_data.get('pos_date'):
             raise forms.ValidationError(
                 'If subject has NEVER tested for HIV, do not key any result details')
 
