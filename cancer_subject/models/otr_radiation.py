@@ -16,13 +16,14 @@ class OTRRadiation (CrfModelMixin):
     )
 
 #     concomitant = models.CharField(
-#         verbose_name="10. Was radiation given at the same time (concomitant) as chemotherapy?",
+#         verbose_name="10. Was radiation given at the same time (concomitant) "
+#         "as chemotherapy?",
 #         max_length=3,
 #         null=True,
 #         blank=True,
 #         choices=YES_NO,
 #         help_text="",
-#         )
+#     )
 #
 #     amount_radiation = models.CharField(
 #         verbose_name="11. How many radiation treatments were received?",
@@ -30,7 +31,7 @@ class OTRRadiation (CrfModelMixin):
 #         blank=True,
 #         max_length=15,
 #         help_text="",
-#         )
+#     )
 
     class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
