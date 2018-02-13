@@ -1,6 +1,6 @@
 from django import forms
 
-from cancer_subject.choices.main import APPOINTMENT_REASON
+from ..choices import APPOINTMENT_REASON
 # from edc_appointment.model_mixins import AppointmentModelMixin
 
 from ..models import Appointment

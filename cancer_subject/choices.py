@@ -3,6 +3,10 @@ from edc_constants.constants import NEG, IND, UNK, OTHER, NEVER, PENDING
 from edc_constants.constants import YES, NO, DWTA, POS
 
 
+APPOINTMENT_REASON = (
+    ('routine', 'Routine'),
+)
+
 AGE_FIRSTSEX_CHOICE = (
     ('younger_than_15_years_old', 'younger than 15 years old'),
     ('between_15_and_17_years_old', 'between 15 and 17 years old'),
