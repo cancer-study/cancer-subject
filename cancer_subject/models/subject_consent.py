@@ -1,6 +1,6 @@
-from django.apps import apps as django_apps
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
+
 from edc_base.constants import DEFAULT_BASE_FIELDS
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel

@@ -22,21 +22,18 @@ class OncologyTreatmentRecord (CrfModelMixin):
         verbose_name="Has the patient COMPLETED chemotherapy?",
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     radiation_received = models.CharField(
         verbose_name="Did the patient COMPLETE radiation therapy?",
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     surgical_therapy = models.CharField(
         verbose_name="Did patient COMPLETE surgical therapy?",
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     comments = models.CharField(
@@ -44,7 +41,6 @@ class OncologyTreatmentRecord (CrfModelMixin):
         max_length=35,
         null=True,
         blank=True,
-        help_text="",
     )
 
     class Meta(CrfModelMixin.Meta):

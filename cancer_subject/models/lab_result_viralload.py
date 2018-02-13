@@ -10,7 +10,6 @@ class LabResultViralload(CrfModelMixin):
     vl_drawn_date = models.DateField(
         verbose_name="8. Date of HIV viral load",
         max_length=25,
-        help_text="",
     )
 
     vl_result = models.CharField(
@@ -19,7 +18,6 @@ class LabResultViralload(CrfModelMixin):
         validators=[RegexValidator(r'^[<>=]{1}\d+$', 'Result must include \
                                    the quantifier (<, > or =) followed by \
                                    the numeric value',), ],
-        help_text="",
     )
 
     class Meta(CrfModelMixin.Meta):

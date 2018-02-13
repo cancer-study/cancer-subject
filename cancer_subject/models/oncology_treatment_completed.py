@@ -5,11 +5,7 @@ from edc_constants.choices import YES_NO_UNSURE
 
 from .model_mixins import CrfModelMixin
 
-<<<<<<< Updated upstream
 from ..choices import PATIENT_FOLLOW_UP
-=======
-from cancer_subject.choice import PATIENT_FOLLOW_UP
->>>>>>> Stashed changes
 
 
 class OncologyTreatmentCompleted (CrfModelMixin):
@@ -20,21 +16,18 @@ class OncologyTreatmentCompleted (CrfModelMixin):
         verbose_name=("Has the patient had chemotherapy?"),
         max_length=15,
         choices=YES_NO_UNSURE,
-        help_text="",
     )
 
     patient_had_radiation = models.CharField(
         verbose_name=("Has the patient had radiation therapy?"),
         max_length=15,
         choices=YES_NO_UNSURE,
-        help_text="",
     )
 
     patient_had_surgery = models.CharField(
         verbose_name=("Has the patient had surgery?"),
         max_length=15,
         choices=YES_NO_UNSURE,
-        help_text="",
     )
 
     treatment_detail = models.TextField(

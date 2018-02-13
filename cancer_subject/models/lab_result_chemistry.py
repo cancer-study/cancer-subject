@@ -10,8 +10,7 @@ class LabResultChemistry(CrfModelMixin):
         verbose_name="Date of chemistry specimen draw:",
         blank=True,
         null=True,
-        max_length=25,
-        help_text="",)
+        max_length=25,)
 
     alanine = models.DecimalField(
         verbose_name="Alanine aminotransferase (ALT or SGPT):",

@@ -12,7 +12,6 @@ class OTRRadiation (CrfModelMixin):
         verbose_name="Are there radiation details available?",
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
 #     concomitant = models.CharField(
@@ -22,7 +21,6 @@ class OTRRadiation (CrfModelMixin):
 #         null=True,
 #         blank=True,
 #         choices=YES_NO,
-#         help_text="",
 #     )
 #
 #     amount_radiation = models.CharField(
@@ -30,7 +28,6 @@ class OTRRadiation (CrfModelMixin):
 #         null=True,
 #         blank=True,
 #         max_length=15,
-#         help_text="",
 #     )
 
     class Meta(CrfModelMixin.Meta):

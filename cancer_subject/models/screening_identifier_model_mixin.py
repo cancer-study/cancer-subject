@@ -3,7 +3,8 @@ from django.db import models
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 
 
-class ScreeningIdentifierModelMixin(NonUniqueSubjectIdentifierModelMixin, models.Model):
+class ScreeningIdentifierModelMixin(NonUniqueSubjectIdentifierModelMixin,
+                                    models.Model):
 
     def update_subject_identifier_on_save(self):
         """Overridden to not set the subject identifier on save.

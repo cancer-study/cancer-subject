@@ -1,4 +1,3 @@
-from django.apps import apps as django_apps
 from django.db import models
 from django_crypto_fields.fields import EncryptedCharField
 from edc_base.model_managers import HistoricalRecords
@@ -10,7 +9,8 @@ from edc_locator.model_mixins import LocatorModelMixin
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 
 
-class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, BaseUuidModel):
+class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
+                     BaseUuidModel):
     """A model completed by the user to that captures participant
     locator information and permission to contact.
     """
@@ -26,7 +26,6 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, BaseUui
         max_length=8,
         verbose_name="Cell number (alternate)",
         validators=[CellNumber, ],
-        help_text="",
         blank=True,
         null=True)
 
@@ -51,13 +50,11 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, BaseUui
         verbose_name="Relationship to participant",
         blank=True,
         null=True,
-        help_text="",
     )
     alt_contact_cell = EncryptedCharField(
         max_length=8,
         verbose_name="Cell number",
         validators=[CellNumber, ],
-        help_text="",
         blank=True,
         null=True,
     )
@@ -75,7 +72,6 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin, BaseUui
         max_length=8,
         verbose_name="Telephone number",
         validators=[TelephoneNumber, ],
-        help_text="",
         blank=True,
         null=True,
     )

@@ -2,13 +2,9 @@ from django.db import models
 from edc_base.model_validators import date_not_future
 from django.core.validators import RegexValidator
 
-from edc_constants.choices import YES_NO_REFUSED, POS_NEG_REFUSED
+from edc_constants.choices import POS_NEG_REFUSED, YES_NO_REFUSED
 
-<<<<<<< Updated upstream
 from ..choices import HIV_TEST_RESULT
-=======
-from cancer_subject.choice import HIV_TEST_RESULT
->>>>>>> Stashed changes
 from .model_mixins import CrfModelMixin
 
 
@@ -26,8 +22,7 @@ class SymptomsAndTesting (CrfModelMixin):
         verbose_name=("What symptom was most important in prompting "
                       "you to seek care leading to a diagnosis of "
                       "cancer (ie pain, lump, fever, bleeding, etc)?"),
-        max_length=50,
-        help_text="")
+        max_length=50,)
 
     symptom_date = models.DateField(
         verbose_name="When did you first notice the symptom that "
@@ -35,24 +30,24 @@ class SymptomsAndTesting (CrfModelMixin):
         max_length=25,
         validators=[date_not_future],
         null=True,
-        blank=True,
-        help_text="")
+        blank=True,)
+
     medical_doctor_date = models.DateField(
         verbose_name="When did you first see a medical doctor "
         "for the symptom?",
         max_length=25,
         validators=[date_not_future],
         null=True,
-        blank=True,
-        help_text="")
+        blank=True,)
+
     trad_doctor_date = models.DateField(
         verbose_name="When did you first see a traditional doctor for "
         "the symptom?",
         max_length=25,
         validators=[date_not_future],
         null=True,
-        blank=True,
-        help_text="")
+        blank=True,)
+
     facility_first_seen = models.CharField(
         verbose_name="In which facility was this symptom first "
         "presented?",
@@ -63,6 +58,7 @@ class SymptomsAndTesting (CrfModelMixin):
             'code format is XX-X-XX'), ],
         help_text="provide name of clinic if facility code is "
         "unknown or is 00-0-00")
+
     facility_first_seen_other = models.CharField(
         verbose_name="Please provide name of clinic",
         max_length=35,
@@ -72,21 +68,21 @@ class SymptomsAndTesting (CrfModelMixin):
     hiv_tested = models.CharField(
         verbose_name="Have you ever been tested for HIV?",
         max_length=18,
-        choices=YES_NO_REFUSED,
-        help_text="")
+        choices=YES_NO_REFUSED,)
+
     hiv_test_result = models.CharField(
         verbose_name="What was the most recent HIV test result?",
         max_length=18,
         null=True,
         blank=True,
-        choices=POS_NEG_REFUSED,
-        help_text="")
+        choices=POS_NEG_REFUSED,)
+
     pos_date = models.DateField(
         verbose_name="When was your first positive HIV test?",
         max_length=25,
         null=True,
-        blank=True,
-        help_text="")
+        blank=True,)
+
     neg_date = models.DateField(
         verbose_name="When was your last negative HIV test?",
         max_length=25,
@@ -103,6 +99,7 @@ class SymptomsAndTesting (CrfModelMixin):
         help_text=("Provide appropriate post-test counselling and "
                    "referral to care. If indeterminate, send patient "
                    "to the lab for re-testing and ELISA"))
+
     arv_art_therapy = models.CharField(
         verbose_name="Have you ever taken anti-retroviral therapy or "
         "HAART?",
@@ -111,13 +108,14 @@ class SymptomsAndTesting (CrfModelMixin):
         null=True,
         blank=True,
         help_text="if 'NO' END form")
+
     arv_art_start_date = models.DateField(
         verbose_name="When did you start antiretroviral therapy, "
         "or HAART",
         max_length=25,
         null=True,
-        blank=True,
-        help_text="")
+        blank=True,)
+
     arv_art_now = models.CharField(
         verbose_name="Are you taking antiretroviral therapy or "
         "HAART now?",
@@ -126,13 +124,13 @@ class SymptomsAndTesting (CrfModelMixin):
         null=True,
         blank=True,
         help_text="if 'Yes' END form ")
+
     art_art_stop_date = models.DateField(
         verbose_name="When did you most recently stop antiretroviral "
         "therapy, or HAART?",
         max_length=25,
         null=True,
-        blank=True,
-        help_text="")
+        blank=True,)
 
     class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"

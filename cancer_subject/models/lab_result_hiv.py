@@ -1,4 +1,3 @@
-# coding: utf-8
 from django.db import models
 
 from .model_mixins import CrfModelMixin
@@ -9,18 +8,16 @@ from cancer_subject.choice import TEST_RESULT_CHOICE
 class LabResultHiv(CrfModelMixin):
 
     test_date = models.DateField(
-        verbose_name="2. Date of HIV test",
+        verbose_name="Date of HIV test",
         max_length=25,
         null=True,
         blank=True,
-        help_text=""
     )
 
     test_result = models.CharField(
-        verbose_name="3. HIV test result",
+        verbose_name="HIV test result",
         max_length=15,
         choices=TEST_RESULT_CHOICE,
-        help_text="",
     )
 
     def get_test_code(self):

@@ -2,14 +2,8 @@ from django.db import models
 
 from edc_constants.choices import YES_NO
 
-<<<<<<< Updated upstream
-from ..choices import (CHEMO_INTENT,
-                       CANCER_TREATMENT_GOAL)
-=======
-from cancer_subject.choice import (CHEMO_INTENT,
-                                          CANCER_TREATMENT_GOAL)
->>>>>>> Stashed changes
 from .model_mixins import CrfModelMixin
+from ..choices import CANCER_TREATMENT_GOAL, CHEMO_INTENT
 
 
 class OncologyTreatmentPlan (CrfModelMixin):
@@ -26,7 +20,6 @@ class OncologyTreatmentPlan (CrfModelMixin):
         verbose_name="Has a treatment plan been determined?",
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     chemotherapy = models.CharField(
@@ -35,7 +28,6 @@ class OncologyTreatmentPlan (CrfModelMixin):
         null=True,
         blank=True,
         choices=YES_NO,
-        help_text="",
     )
     # This question remains the same but two options have been removed to new Q: treatment_goal
     # To do:
@@ -46,7 +38,6 @@ class OncologyTreatmentPlan (CrfModelMixin):
         choices=CHEMO_INTENT,
         null=True,
         blank=True,
-        help_text="",
     )
 
     radiation_plan = models.CharField(
@@ -55,7 +46,6 @@ class OncologyTreatmentPlan (CrfModelMixin):
         null=True,
         blank=True,
         choices=YES_NO,
-        help_text="",
     )
 
 #     radiation_treatments = models.CharField(
@@ -72,7 +62,6 @@ class OncologyTreatmentPlan (CrfModelMixin):
         null=True,
         blank=True,
         choices=YES_NO,
-        help_text="",
     )
 
     planned_operation = models.CharField(
@@ -80,7 +69,6 @@ class OncologyTreatmentPlan (CrfModelMixin):
         max_length=150,
         null=True,
         blank=True,
-        help_text="",
     )
 
     comments = models.CharField(

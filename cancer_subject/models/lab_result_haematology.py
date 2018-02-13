@@ -11,8 +11,7 @@ class LabResultHaematology(CrfModelMixin):
         verbose_name="Date of haematology specimen draw",
         null=True,
         blank=True,
-        max_length=25,
-        help_text="")
+        max_length=25)
 
     hgb = models.DecimalField(
         verbose_name="Haemoglobin",

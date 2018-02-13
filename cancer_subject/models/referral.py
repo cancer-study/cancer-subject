@@ -3,11 +3,7 @@ from django.db import models
 from edc_base.model_mixins import BaseUuidModel
 from edc_constants.choices import YES_NO
 
-<<<<<<< Updated upstream
 from ..choices import WHY_REFERRED
-=======
-from cancer_subject.choice import WHY_REFERRED
->>>>>>> Stashed changes
 
 
 class Referral (BaseUuidModel):
@@ -17,31 +13,29 @@ class Referral (BaseUuidModel):
     report_datetime = models.DateTimeField(null=True)
 
     referrals = models.CharField(
-        verbose_name=("1. Have any referrals been made that should "
+        verbose_name=("Have any referrals been made that should "
                       "be reported been made "
                       "(by study team or hospital staff)?"),
         max_length=3,
         choices=YES_NO,
-        help_text="( if 'No' , STOP and return form to DMC. )",
+        help_text="(if 'No' , STOP and return form to DMC.)",
     )
 
     why_referred = models.CharField(
-        verbose_name="2. Where and why has patient been referred?",
+        verbose_name="Where and why has patient been referred?",
         max_length=75,
         choices=WHY_REFERRED,
-        help_text="",
     )
 
     referral_date = models.DateTimeField(
-        verbose_name="3. Date of referral?",
+        verbose_name="Date of referral?",
         max_length=25,
         help_text="dd/mm/yyyy",
     )
 
     comments = models.CharField(
-        verbose_name="4. Comments",
+        verbose_name="Comments",
         max_length=35,
-        help_text="",
     )
 
     class Meta:

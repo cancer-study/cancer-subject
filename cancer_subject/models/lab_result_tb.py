@@ -3,11 +3,7 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
-<<<<<<< Updated upstream
 from ..choices import TB_TREATMENT_CHOICE
-=======
-from cancer_subject.choice import TB_TREATMENT_CHOICE
->>>>>>> Stashed changes
 
 
 class LabResultTb(CrfModelMixin):
@@ -16,7 +12,6 @@ class LabResultTb(CrfModelMixin):
         verbose_name=("Describe tubercolosis diagnostic test results "
                       "(record test, date, result and units)"),
         max_length=65,
-        help_text="",
     )
 
     tb_treatment = models.CharField(
@@ -24,7 +19,6 @@ class LabResultTb(CrfModelMixin):
                       "now?"),
         max_length=50,
         choices=TB_TREATMENT_CHOICE,
-        help_text="",
     )
 
     tb_treatment_start = models.DateField(
@@ -33,7 +27,6 @@ class LabResultTb(CrfModelMixin):
         max_length=25,
         null=True,
         blank=True,
-        help_text="",
     )
 
     class Meta(CrfModelMixin.Meta):

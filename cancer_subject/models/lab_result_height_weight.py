@@ -37,7 +37,6 @@ class LabResultHeightWeight(CrfModelMixin):
                       "change bed clothes/sheets)?"),
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     class Meta(CrfModelMixin.Meta):

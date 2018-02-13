@@ -3,18 +3,12 @@ from edc_base.model_fields import OtherCharField
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_constants.choices import YES_NO_UNKNOWN
 
-<<<<<<< Updated upstream
-from ..choices import (
-=======
-from cancer_subject.choice import (
->>>>>>> Stashed changes
-    STAGES, MODIFIER, TREATMENT_INTENT,
-    TREATMENT_RELATIONSHIP, RESPONSE,
-    REASONS_MISSED_OR_DELAYED, RADIATION_TECHNIQUE,
-    MODALITY, BRACHY_LENGTH, BRACHY_TYPE)
-
 from .list_models import RadiationSideEffects
 from .model_mixins import CrfModelMixin
+
+from ..choices import BRACHY_LENGTH, BRACHY_TYPE, MODALITY, MODIFIER
+from ..choices import REASONS_MISSED_OR_DELAYED, RADIATION_TECHNIQUE, RESPONSE
+from ..choices import STAGES, TREATMENT_INTENT, TREATMENT_RELATIONSHIP
 
 
 class RadiationTreatment (CrfModelMixin):
@@ -24,7 +18,6 @@ class RadiationTreatment (CrfModelMixin):
         null=True,
         blank=True,
         max_length=25,
-        help_text="",
     )
 
     treatment_end_date = models.DateField(
@@ -32,7 +25,6 @@ class RadiationTreatment (CrfModelMixin):
         null=True,
         blank=True,
         max_length=25,
-        help_text="",
     )
 
     tumour_stages = models.CharField(
@@ -169,7 +161,6 @@ class RadiationTreatment (CrfModelMixin):
         max_length=250,
         null=True,
         blank=True,
-        help_text="",
     )
 
     class Meta:
@@ -183,21 +174,18 @@ class BaseRadiationTreatment(BaseUuidModel):
     treatment_name = models.CharField(
         verbose_name="Treatment (eg. Pelvis, Tans, Scar Boost)",
         max_length=50,
-        help_text="",
     )
     start_date = models.DateField(
         verbose_name="Start Date",
         max_length=25,
         null=True,
         blank=True,
-        help_text="",
     )
     end_date = models.DateField(
         verbose_name="End Date",
         max_length=25,
         null=True,
         blank=True,
-        help_text="",
     )
     dose_delivered = models.IntegerField(
         verbose_name="Total Dose Delivered (cGy)",

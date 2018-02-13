@@ -1,7 +1,7 @@
 from django.db import models
 
-from edc_constants.choices import YES_NO
 from edc_base.model_fields import OtherCharField
+from edc_constants.choices import YES_NO
 
 from .model_mixins import CrfModelMixin
 
@@ -15,7 +15,6 @@ class LabResult (CrfModelMixin):
                       "not been previously reported?"),
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     has_cd4 = models.CharField(
@@ -23,7 +22,6 @@ class LabResult (CrfModelMixin):
                       "have not been previously reported?"),
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     has_vl = models.CharField(
@@ -31,7 +29,6 @@ class LabResult (CrfModelMixin):
                       "have not been previously reported?"),
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     has_haem = models.CharField(
@@ -39,7 +36,6 @@ class LabResult (CrfModelMixin):
                       "not been previously reported?"),
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     has_chem = models.CharField(
@@ -47,7 +43,6 @@ class LabResult (CrfModelMixin):
                       "not been previously reported?"),
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     has_other_abnormal = models.CharField(
@@ -56,7 +51,6 @@ class LabResult (CrfModelMixin):
                       "changed or delayed planned treatment?"),
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     other_abnormal = OtherCharField()
@@ -66,7 +60,6 @@ class LabResult (CrfModelMixin):
                       "delaying planned treatment (record test, date, "
                       "result and units)"),
         max_length=65,
-        help_text="",
     )
 
     tb_tests = models.CharField(
@@ -74,7 +67,6 @@ class LabResult (CrfModelMixin):
                       "that have not been previously reported?"),
         max_length=3,
         choices=YES_NO,
-        help_text="",
     )
 
     tb_prompt_other = OtherCharField()
