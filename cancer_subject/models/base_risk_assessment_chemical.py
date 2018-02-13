@@ -2,8 +2,7 @@ from django.db import models
 
 from edc_constants.choices import YES_NO_DONT_KNOW
 
-from ..choices import ASBESTOS_NO_PROTECTION_CHOICE, CHEMICALS_TIME_CHOICE
-from ..choices import TOTAL_TIME_NO_PROTECTION_CHOICE
+from ..choices import ASBESTOS_NO_PROTECTION_CHOICE, TIME_CHOICE
 from .model_mixins.crf_model_mixin import CrfModelMixin
 
 
@@ -38,7 +37,7 @@ class BaseRiskAssessmentChemical (CrfModelMixin):
         verbose_name=('What is the total amount of time you worked '
                       'with the chemical(s) without protection?'),
         max_length=25,
-        choices=CHEMICALS_TIME_CHOICE,
+        choices=TIME_CHOICE,
         blank=True,
     )
 
@@ -55,7 +54,7 @@ class BaseRiskAssessmentChemical (CrfModelMixin):
         verbose_name=('What is the total amount of time you worked '
                       'with the process(es) without protection?'),
         max_length=25,
-        choices=TOTAL_TIME_NO_PROTECTION_CHOICE,
+        choices=TIME_CHOICE,
         blank=True,
     )
 

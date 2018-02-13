@@ -116,7 +116,7 @@ CANCER_TYPE_CHOICE = (
      'Other or multiple cancers, describe:'),
 )
 
-CHEMICALS_TIME_CHOICE = (
+TIME_CHOICE = (
     ('<5 years', 'less than 5 years'),
     ('5 to 20 years', 'between 5 and 20 years'),
     ('>20 years', 'more than 20 years'),
