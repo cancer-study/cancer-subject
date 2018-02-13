@@ -291,20 +291,13 @@ ETHNIC_GRP_CHOICE = (
     (OTHER, 'Other, specify:'),
 )
 
-FOOD_SECURITY = (
+FREQUENCY_CHOICE = (
     (NEVER, 'Never'),
     ('rarely', 'Rarely'),
     ('sometimes', 'Sometimes'),
     ('often', 'Often'),
-    (DECLINED, 'Patient declined to answer')
-)
-
-FREQUENCY_CHOICE = (
-    ('never', 'never'),
-    ('rarely', 'rarely'),
-    ('sometimes', 'sometimes'),
-    ('often', 'often'),
     ('always', 'always'),
+    (DECLINED, 'Patient declined to answer')
 )
 
 FUEL_CHOICE = (
