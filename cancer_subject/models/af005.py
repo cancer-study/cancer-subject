@@ -8,7 +8,7 @@ from ..choices import DEATH_CAUSE_CATEGORY_CHOICE, PRIMARY_DEATH_CAUSE_CHOICE
 class Af005 (CrfModelMixin):
 
     death_date = models.DateTimeField(
-        verbose_name='Date of Death: ',
+        verbose_name='Date of Death:',
         max_length=25,
         help_text='dd/mm/yyyy',
     )
@@ -21,7 +21,7 @@ class Af005 (CrfModelMixin):
     )
 
     death_cause_description = models.CharField(
-        verbose_name='Describe the primary cause of death.: ',
+        verbose_name='Describe the primary cause of death.:',
         max_length=35,
     )
 

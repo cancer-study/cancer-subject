@@ -33,6 +33,7 @@ class BaseRiskAssessmentDemo (CrfModelMixin):
         max_length=25,
         choices=ETHNIC_GRP_CHOICE,
     )
+
     ethnic_grp_other = OtherCharField()
 
     # added in upgrade

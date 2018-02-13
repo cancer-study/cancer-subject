@@ -7,17 +7,19 @@ from .model_mixins import CrfModelMixin
 class BaseRiskAssessmentAlcohol (CrfModelMixin):
 
     alcohol_weekly = models.IntegerField(
-        verbose_name=("How many days per week do you drink alcohol?"),
-        validators=[MinValueValidator(1), MaxValueValidator(7)])
+        verbose_name=('How many days per week do you drink alcohol?'),
+        validators=[MinValueValidator(1), MaxValueValidator(7)],
+    )
 
     amount_drinking = models.IntegerField(
-        verbose_name=("On days you drink, how many drinks do you "
-                      "have (one drink is 300ml of "
-                      "beer/chibuku, 150ml of wine,or 50ml of "
-                      "whiskey/vodka/gin)?"),
-        validators=[MinValueValidator(1), MaxValueValidator(100)])
+        verbose_name=('On days you drink, how many drinks do you '
+                      'have (one drink is 300ml of '
+                      'beer/chibuku, 150ml of wine,or 50ml of '
+                      'whiskey/vodka/gin)?'),
+        validators=[MinValueValidator(1), MaxValueValidator(100)],
+    )
 
     class Meta(CrfModelMixin.Meta):
-        app_label = "cancer_subject"
-        verbose_name = "Base Risk Assessment: Alcohol"
-        verbose_name_plural = "Base Risk Assessment: Alcohol"
+        app_label = 'cancer_subject'
+        verbose_name = 'Base Risk Assessment: Alcohol'
+        verbose_name_plural = 'Base Risk Assessment: Alcohol'

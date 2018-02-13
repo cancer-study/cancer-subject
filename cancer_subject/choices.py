@@ -767,7 +767,7 @@ TOILET_CHOICE = (
     (OTHER, 'Other, specify:'),
 )
 
-TOTAL_TIME_NO_PROTECTION_CHOICE = (
+TOTAL_TIME_CHOICE = (
     ('<5 years', 'less than 5 years'),
     ('5 to 20 years', 'between 5 and 20 years'),
     ('>20 years', 'more than 20 years'),
