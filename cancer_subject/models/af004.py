@@ -2,7 +2,7 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.af004 import OFF_STUDY_CODE_CHOICE
+from ..choices import OFF_STUDY_CODE_CHOICE
 
 
 class Af004 (CrfModelMixin):

@@ -2,7 +2,7 @@ from django.db import models
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.ae010 import REPORT_TYPE_CHOICE, RELATIONSHIP_DESCRIPTION_CHOICE
+from ..choices import REPORT_TYPE_CHOICE, RELATIONSHIP_DESCRIPTION_CHOICE
 
 
 class Ae010 (CrfModelMixin):

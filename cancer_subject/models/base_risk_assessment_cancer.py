@@ -5,8 +5,8 @@ from edc_base.model_fields.custom_fields import OtherCharField
 
 from .model_mixins import CrfModelMixin
 
-from ..choices.base_risk_assessment import (CANCER_TYPE_CHOICE,
-                                            CANCER_BEFORE_CHOICE)
+from ..choices import (CANCER_TYPE_CHOICE,
+                       CANCER_BEFORE_CHOICE)
 
 
 class BaseRiskAssessmentCancer (CrfModelMixin):

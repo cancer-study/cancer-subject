@@ -4,9 +4,8 @@ from edc_constants.choices import YES_NO_DONT_KNOW
 
 from .model_mixins.crf_model_mixin import CrfModelMixin
 
-from ..choices.base_risk_assessment import (
-    ASBESTOS_NO_PROTECTION_CHOICE, CHEMICALS_TIME_CHOICE,
-    TOTAL_TIME_NO_PROTECTION_CHOICE)
+from ..choices import (ASBESTOS_NO_PROTECTION_CHOICE, CHEMICALS_TIME_CHOICE,
+                       TOTAL_TIME_NO_PROTECTION_CHOICE)
 
 
 class BaseRiskAssessmentChemical (CrfModelMixin):
