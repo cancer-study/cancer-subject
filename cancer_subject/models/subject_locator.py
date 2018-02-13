@@ -18,13 +18,13 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
     home_visit_permission = models.CharField(
         max_length=25,
         choices=YES_NO,
-        verbose_name=("Has the participant given his/her permission for study"
-                      "staff to make home visits for follow-up purposes?"),
+        verbose_name=('Has the participant given his/her permission for study'
+                      'staff to make home visits for follow-up purposes?'),
     )
 
     alt_contact_cell_number = EncryptedCharField(
         max_length=8,
-        verbose_name="Cell number (alternate)",
+        verbose_name='Cell number (alternate)',
         validators=[CellNumber, ],
         blank=True,
         null=True)
@@ -40,20 +40,20 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
 
     alt_contact_name = EncryptedCharField(
         max_length=35,
-        verbose_name="Full Name of the responsible person",
-        help_text="include first name and surname",
+        verbose_name='Full Name of the responsible person',
+        help_text='include first name and surname',
         blank=True,
         null=True)
 
     alt_contact_rel = EncryptedCharField(
         max_length=35,
-        verbose_name="Relationship to participant",
+        verbose_name='Relationship to participant',
         blank=True,
         null=True,
     )
     alt_contact_cell = EncryptedCharField(
         max_length=8,
-        verbose_name="Cell number",
+        verbose_name='Cell number',
         validators=[CellNumber, ],
         blank=True,
         null=True,
@@ -61,16 +61,16 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
 
     other_alt_contact_cell = EncryptedCharField(
         max_length=8,
-        verbose_name="Cell number (alternate)",
+        verbose_name='Cell number (alternate)',
         validators=[CellNumber, ],
-        help_text="",
+        help_text='',
         blank=True,
         null=True,
     )
 
     alt_contact_tel = EncryptedCharField(
         max_length=8,
-        verbose_name="Telephone number",
+        verbose_name='Telephone number',
         validators=[TelephoneNumber, ],
         blank=True,
         null=True,
@@ -83,8 +83,8 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
 
     @property
     def formatted_locator_information(self):
-        """Returns a formatted string that summarizes contact "
-        "and locator info."""
+        """Returns a formatted string that summarizes contact
+        and locator info."""
         info = 'May not follow-up.'
         may_sms_follow_up = 'SMS permitted' if self.may_sms_follow_up == YES else 'NO SMS!'
         if self.may_follow_up == YES:
