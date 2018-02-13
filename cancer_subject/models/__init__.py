@@ -42,7 +42,6 @@ from .otr_radiation import OTRRadiation
 from .otr_surgical import OTRSurgical
 from .radiation_treatment import RadiationTreatment, RadiationTreatmentRecord
 from .referral import Referral
-from .signals import *
 from .subject_consent import SubjectConsent
 from .subject_locator import SubjectLocator
 from .subject_offstudy import SubjectOffstudy
