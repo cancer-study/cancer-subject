@@ -11,7 +11,7 @@ class BaseRiskAssessmentFemaleAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentFemaleForm
     fields = (
-        "subject_visit",
+        #"subject_visit",
         "age_period",
         "children",
         "years_breastfed")

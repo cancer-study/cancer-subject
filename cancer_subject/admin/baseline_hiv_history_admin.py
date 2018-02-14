@@ -18,7 +18,7 @@ class BaselineHIVHistoryAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'subject_visit',
+                #'subject_visit',
                 'has_hiv_result',
                 'had_who_illnesses',
                 'has_cd4',
@@ -48,7 +48,7 @@ class BHHHivTestAdmin(CrfModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'subject_visit',
+                #'subject_visit',
                 'hiv_drawn_date',
                 'hiv_testdate_est',
                 'hiv_result')}),
@@ -69,7 +69,7 @@ class BHHWhoIllnessAdmin(CrfModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'subject_visit',
+                #'subject_visit',
                 'who_illness_date',
                 'who_illness',
                 'who_illness_other')}),
@@ -85,7 +85,7 @@ class BHHCd4Admin(CrfModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'subject_visit',
+                #'subject_visit',
                 'nadir_cd4',
                 'nadir_cd4_drawn_date',)}),
         audit_fieldset_tuple

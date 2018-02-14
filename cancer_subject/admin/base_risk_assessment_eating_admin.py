@@ -11,7 +11,7 @@ class BaseRiskAssessmentEatingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentEatingForm
     fields = (
-        "subject_visit",
+        #"subject_visit",
         "five_fruit",
         "meals_weekly",
         "meal_sorghum",

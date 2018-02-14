@@ -11,7 +11,7 @@ class BaseRiskAssessmentCancerAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentCancerForm
     fields = (
-        "subject_visit",
+        #"subject_visit",
         "family_cancer",
         "family_cancer_type",
         "family_cancer_other",

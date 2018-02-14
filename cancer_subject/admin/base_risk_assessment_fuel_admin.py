@@ -11,7 +11,7 @@ class BaseRiskAssessmentFuelAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentFuelForm
     fields = (
-        "subject_visit",
+        #"subject_visit",
         "fuel_20y",
         "fuel_20y_other",
         "cooking",

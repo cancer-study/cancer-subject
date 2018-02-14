@@ -12,7 +12,7 @@ class BaseRiskAssessmentDemoAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     form = BaseRiskAssessmentDemoForm
 
     fields = (
-        "subject_visit",
+        #"subject_visit",
         "marital_status",
         "marital_status_other",
         "race",

@@ -19,7 +19,7 @@ class RadiationTreatmentAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     form = RadiationTreatmentForm
     inlines = [RadiationTreatmentRecordInlineAdmin, ]
     fields = (
-        "subject_visit",
+        #"subject_visit",
         "treatment_start_date",
         "treatment_end_date",
         "tumour_stages",

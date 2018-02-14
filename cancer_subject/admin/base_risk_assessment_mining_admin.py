@@ -11,7 +11,7 @@ class BaseRiskAssessmentMiningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentMiningForm
     fields = (
-        "subject_visit",
+        #"subject_visit",
         "mine_time",
         "mine_type",
         "mine_prompt_other",

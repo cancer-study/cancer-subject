@@ -24,6 +24,6 @@ from .baseline_hiv_history_admin import BaselineHIVHistoryAdmin, BHHHivTestAdmin
 # from .oncology_treatment_record_admin import OncologyTreatmentRecordAdmin, OTRChemoAdmin
 # from .oncology_treatment_record_admin import OTRRadiationAdmin, OTRSurgicalAdmin
 from .radiation_treatment_admin import RadiationTreatmentAdmin
-from .subject_consent_admin import SubjectConsentAdmin
+#from .subject_consent_admin import SubjectConsentAdmin
 from .subject_locator_admin import SubjectLocatorAdmin
 #from .subject_visit_admin import SubjectVisitAdmin
