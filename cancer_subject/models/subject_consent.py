@@ -3,6 +3,8 @@ from django.db import models
 
 from edc_base.constants import DEFAULT_BASE_FIELDS
 from edc_base.model_managers import HistoricalRecords
+from edc_base.sites import CurrentSiteManager
+from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.model_mixins import BaseUuidModel
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
@@ -71,7 +73,8 @@ class SubjectConsent(
         NonUniqueSubjectIdentifierModelMixin,
         IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
         SampleCollectionFieldsMixin, CitizenFieldsMixin,
-        VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel):
+        VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel,
+        SiteModelMixin):
     """ A model completed by the user that captures the ICF.
     """
 
@@ -80,6 +83,8 @@ class SubjectConsent(
     consent = ConsentManager()
 
     history = HistoricalRecords()
+
+    on_site = CurrentSiteManager()
 
     def __str__(self):
         return f'{self.subject_identifier} V{self.version}'
