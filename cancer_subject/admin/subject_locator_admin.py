@@ -47,22 +47,24 @@ class SubjectLocatorAdmin(ModelAdminMixin, admin.ModelAdmin):
 
     radio_fields = {
         'home_visit_permission': admin.VERTICAL,
-        'may_follow_up': admin.VERTICAL,
-        'may_sms_follow_up': admin.VERTICAL,
+        #         'may_follow_up': admin.VERTICAL,
+        #         'may_sms_follow_up': admin.VERTICAL,
         'has_alt_contact': admin.VERTICAL,
         'may_call_work': admin.VERTICAL,
-        'may_contact_someone': admin.VERTICAL, }
+        #         'may_contact_someone': admin.VERTICAL
+    }
 
     list_filter = (
-        'may_follow_up',
-        'may_contact_someone',
+        #         'may_follow_up',
+        #         'may_contact_someone',
         'may_call_work',
         'home_visit_permission')
 
     list_display = (
         'subject_identifier',
         'home_visit_permission',
-        'may_follow_up',
+        #         'may_follow_up',
         'has_alt_contact',
         'may_call_work',
-        'may_contact_someone')
+        #         'may_contact_someone'
+    )

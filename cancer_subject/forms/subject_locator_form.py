@@ -4,7 +4,7 @@ from ..models import SubjectLocator
 from .form_mixins import SubjectModelFormMixin
 
 
-class SubjectLocatorForm (SubjectModelFormMixin):
+class SubjectLocatorForm(SubjectModelFormMixin):
 
     subject_identifier = forms.CharField(
         label='Subject identifier',
