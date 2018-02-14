@@ -1,8 +1,8 @@
 from ..models import BaseRiskAssessmentAlcohol
-# from .form_mixins import SubjectModelFormMixin
+from .form_mixins import SubjectModelFormMixin
 
 
-class BaseRiskAssessmentAlcoholForm:  # (SubjectModelFormMixin):
+class BaseRiskAssessmentAlcoholForm(SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentAlcohol
