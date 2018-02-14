@@ -22,6 +22,7 @@ class BaseRiskAssessmentAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "has_alcohol",
         "tradmedicine",
         "is_albino")
+
     radio_fields = {
         # "participant_interviewed": admin.VERTICAL,
         "hepatitis": admin.VERTICAL,

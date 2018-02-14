@@ -127,5 +127,5 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
                             info=info, physical_address=self.physical_address)
         return info
 
-    class Meta(RequiresConsentFieldsModelMixin.Meta):
-        consent_model = 'cancer_subject.subjectconsent'
+    # class Meta(RequiresConsentFieldsModelMixin.Meta):
+        #consent_model = 'cancer_subject.subjectconsent'

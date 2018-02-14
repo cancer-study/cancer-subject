@@ -1,8 +1,8 @@
 from ..models import BaseRiskAssessmentEating
-from .form_mixins import SubjectModelFormMixin
+#from .form_mixins import SubjectModelFormMixin
 
 
-class BaseRiskAssessmentEatingForm (SubjectModelFormMixin):
+class BaseRiskAssessmentEatingForm:  # (SubjectModelFormMixin):
 
     class Meta:
         model = BaseRiskAssessmentEating

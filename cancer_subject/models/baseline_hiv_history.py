@@ -3,12 +3,13 @@ from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import RegexValidator
 
 from edc_constants.choices import YES_NO, YES_NO_DONT_KNOW
-from edc_reference.model_mixins import ReferenceModelMixin
+#from edc_reference.model_mixins import ReferenceModelMixin
 
 from .model_mixins import CrfModelMixin
 
 
-class BaselineHIVHistory (CrfModelMixin, ReferenceModelMixin):
+class BaselineHIVHistory (CrfModelMixin):
+    #, ReferenceModelMixin):
 
     has_hiv_result = models.CharField(
         verbose_name=('Has the participant been previously '

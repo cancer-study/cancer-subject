@@ -9,8 +9,8 @@ from edc_base.modeladmin_mixins import (
     ModelAdminReadOnlyMixin, ModelAdminInstitutionMixin,
     FormAsJSONModelAdminMixin, ModelAdminRedirectOnDeleteMixin)
 
-from edc_visit_tracking.modeladmin_mixins import (
-    CrfModelAdminMixin as VisitTrackingCrfModelAdminMixin)
+# from edc_visit_tracking.modeladmin_mixins import (
+#     CrfModelAdminMixin as VisitTrackingCrfModelAdminMixin)
 
 
 class ModelAdminMixin(ModelAdminNextUrlRedirectMixin, ModelAdminFormInstructionsMixin,
@@ -23,12 +23,12 @@ class ModelAdminMixin(ModelAdminNextUrlRedirectMixin, ModelAdminFormInstructions
     empty_value_display = '-'
 
 
-class CrfModelAdminMixin(VisitTrackingCrfModelAdminMixin,
-                         ModelAdminRedirectOnDeleteMixin,
-                         ModelAdminMixin,
-                         FieldsetsModelAdminMixin,
-                         FormAsJSONModelAdminMixin,
-                         admin.ModelAdmin):
+class CrfModelAdminMixin(  # VisitTrackingCrfModelAdminMixin,
+        ModelAdminRedirectOnDeleteMixin,
+        ModelAdminMixin,
+        FieldsetsModelAdminMixin,
+        FormAsJSONModelAdminMixin,
+        admin.ModelAdmin):
 
     post_url_on_delete_name = 'cancer_subject:dashboard_url'
     instructions = (

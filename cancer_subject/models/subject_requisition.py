@@ -6,36 +6,39 @@ from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_lab.models.model_mixins.requisition import RequisitionModelMixin
 from edc_lab.models.model_mixins.requisition import RequisitionStatusMixin
 from edc_lab.models.model_mixins.requisition import RequisitionIdentifierMixin
-from edc_metadata.model_mixins.updates import UpdatesRequisitionMetadataModelMixin
-from edc_offstudy.model_mixins import OffstudyModelMixin
+#from edc_metadata.model_mixins.updates import UpdatesRequisitionMetadataModelMixin
+#from edc_offstudy.model_mixins import OffstudyModelMixin
 from edc_search.model_mixins import SearchSlugManager
-from edc_visit_tracking.managers import (
-    CrfModelManager as VisitTrackingCrfModelManager)
-from edc_visit_tracking.model_mixins import CrfModelMixin as VisitTrackingCrfModelMixin
-from edc_visit_tracking.model_mixins import PreviousVisitModelMixin
+# from edc_visit_tracking.managers import (
+#     CrfModelManager as VisitTrackingCrfModelManager)
+# from edc_visit_tracking.model_mixins import CrfModelMixin as VisitTrackingCrfModelMixin
+# from edc_visit_tracking.model_mixins import PreviousVisitModelMixin
 
 from .model_mixins.search_slug_model_mixin import SearchSlugModelMixin
-from .subject_visit import SubjectVisit
+#from .subject_visit import SubjectVisit
 
 
-class Manager(VisitTrackingCrfModelManager, SearchSlugManager):
-    pass
+# class Manager(VisitTrackingCrfModelManager, SearchSlugManager):
+#     pass
 
 
 class SubjectRequisition(
         RequisitionModelMixin, RequisitionStatusMixin,
         RequisitionIdentifierMixin,
-        VisitTrackingCrfModelMixin, OffstudyModelMixin,
-        RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
-        UpdatesRequisitionMetadataModelMixin, SearchSlugModelMixin,
-        BaseUuidModel):
+        # VisitTrackingCrfModelMixin,
+        # OffstudyModelMixin,
+        RequiresConsentFieldsModelMixin,
+        # PreviousVisitModelMixin,
+        # UpdatesRequisitionMetadataModelMixin,
+        SearchSlugModelMixin, models.Model):
+       # BaseUuidModel):
 
-    subject_visit = models.ForeignKey(SubjectVisit, on_delete=PROTECT)
+    #subject_visit = models.ForeignKey(SubjectVisit, on_delete=PROTECT)
     search_slug_fields = [
         'subject_identifier', 'requisition_identifier',
         'human_readable_identifier', 'identifier_prefix']
 
-    objects = Manager()
+    #objects = Manager()
 
     def save(self, *args, **kwargs):
         if not self.id:
@@ -52,7 +55,7 @@ class SubjectRequisition(
             'human_readable_identifier', 'identifier_prefix'])
         return fields
 
-    class Meta(VisitTrackingCrfModelMixin.Meta,
-               RequiresConsentFieldsModelMixin.Meta):
-        consent_model = 'ambition_subject.subjectconsent'
+    class Meta:  # (VisitTrackingCrfModelMixin.Meta,
+               # RequiresConsentFieldsModelMixin.Meta):
+        #consent_model = 'ambition_subject.subjectconsent'
         app_label = 'ambition_subject'

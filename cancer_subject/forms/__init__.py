@@ -1,7 +1,7 @@
 from .ae010_form import Ae010Form
 from .af004_form import Af004Form
 from .af005_form import Af005Form
-from .appointment_form import AppointmentForm
+#from .appointment_form import AppointmentForm
 from .base_risk_assessment_alcohol_form import BaseRiskAssessmentAlcoholForm
 from .base_risk_assessment_cancer_form import BaseRiskAssessmentCancerForm
 from .base_risk_assessment_chemical_form import BaseRiskAssessmentChemicalForm
@@ -13,8 +13,9 @@ from .base_risk_assessment_fuel_form import BaseRiskAssessmentFuelForm
 from .base_risk_assessment_mining_form import BaseRiskAssessmentMiningForm
 from .base_risk_assessment_smoking_form import BaseRiskAssessmentSmokingForm
 from .base_risk_assessment_sun_form import BaseRiskAssessmentSunForm
-from .baseline_hiv_history_form import BaselineHIVHistoryForm
-from .enrollment_checklist_form import EnrollmentChecklistForm
+from .baseline_hiv_history_form import BaselineHIVHistoryForm, BHHHivTestForm
+from .baseline_hiv_history_form import BHHWhoIllnessForm, BHHCd4Form
+#from .enrollment_checklist_form import EnrollmentChecklistForm
 from .lab_result_form import LabResultForm
 from .lab_result_haemotology_form import LabResultHaematologyForm
 from .lab_result_height_weight_form import LabResultHeightWeightForm
@@ -28,5 +29,5 @@ from .oncology_treatment_completed_form import OncologyTreatmentCompletedForm
 from .radiation_treatment_form import RadiationTreatmentForm
 from .subject_consent_form import SubjectConsentForm
 from .subject_locator_form import SubjectLocatorForm
-from .subject_off_study_form import SubjectOffStudyForm
-from .subject_visit_form import SubjectVisitForm
+#from .subject_off_study_form import SubjectOffStudyForm
+#from .subject_visit_form import SubjectVisitForm

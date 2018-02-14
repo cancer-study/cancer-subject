@@ -4,8 +4,8 @@ from edc_base.modeladmin_mixins import audit_fieldset_tuple
 
 from ..admin.modeladmin_mixins import CrfModelAdminMixin
 from ..admin_site import cancer_subject_admin
-from ..forms import (
-    BaselineHIVHistoryForm, BHHHivTestForm, BHHWhoIllnessForm, BHHCd4Form)
+from ..forms import BaselineHIVHistoryForm, BHHHivTestForm
+from ..forms import BHHWhoIllnessForm, BHHCd4Form
 from ..models import BaselineHIVHistory, BHHHivTest, BHHWhoIllness, BHHCd4
 from .modeladmin_mixins import ModelAdminMixin
 
