@@ -9,4 +9,4 @@ class SubjectVisitModelAdmin (BaseVisitTrackingModelAdmin):
     visit_model = SubjectVisit
     visit_model_foreign_key = 'subject_visit'
     dashboard_type = 'subject'
-    #date_heirarchy = 'subject_visit__report_datetime'
+    # date_heirarchy = 'subject_visit__report_datetime'

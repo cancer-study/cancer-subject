@@ -18,14 +18,15 @@ class SubjectVisitForm (BaseConsentedModelForm):
     reason = forms.ChoiceField(
         label='Reason for visit',
         choices=SubjectVisit().get_visit_reason_choices(),
-        help_text="If 'unscheduled', information is usually reported at the next scheduled visit, but exceptions may arise",
+        help_text="If 'unscheduled', information is usually reported "
+        "at the next scheduled visit, but exceptions may arise",
         widget=AdminRadioSelect(renderer=AdminRadioFieldRenderer),
-        )
+    )
     info_source = forms.ChoiceField(
         label='Source of information',
         choices=[choice for choice in VISIT_INFO_SOURCE],
         widget=AdminRadioSelect(renderer=AdminRadioFieldRenderer),
-        )
+    )
 
     def clean(self):
 
@@ -33,11 +34,17 @@ class SubjectVisitForm (BaseConsentedModelForm):
 
         """validate data"""
         if cleaned_data['reason'] == 'missed' and not cleaned_data['reason_missed']:
-            raise forms.ValidationError('Please provide the reason the scheduled visit was missed')
+            raise forms.ValidationError(
+                'Please provide the reason the scheduled visit was missed')
         if cleaned_data['reason'] != 'missed' and cleaned_data['reason_missed']:
-            raise forms.ValidationError("Reason for visit is NOT 'missed' but you provided a reason missed. Please correct.")
-        if cleaned_data['info_source'] == 'OTHER' and not cleaned_data['info_source_other']:
-            raise forms.ValidationError("Source of information is 'OTHER', please provide details below your choice")
+            raise forms.ValidationError(
+                "Reason for visit is NOT 'missed' but you "
+                "provided a reason missed. Please correct.")
+        if (cleaned_data['info_source'] == 'OTHER'
+                and not cleaned_data['info_source_other']):
+            raise forms.ValidationError(
+                "Source of information is 'OTHER', please "
+                "provide details below your choice")
 
         cleaned_data = super(SubjectVisitForm, self).clean()
 

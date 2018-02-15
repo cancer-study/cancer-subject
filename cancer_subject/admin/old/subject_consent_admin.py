@@ -1,14 +1,14 @@
 # from django.contrib import admin
-# 
+#
 # from ..models import SubjectConsent
 # from ..forms import SubjectConsentForm
-# 
-# 
+#
+#
 # # SubjectConsent
 # class SubjectConsentAdmin(BaseConsentModelAdmin):
 #     date_heirarchy = 'consent_datetime'
 #     form = SubjectConsentForm
-# 
+#
 #     def __init__(self, *args, **kwargs):
 #         super(SubjectConsentAdmin, self).__init__(*args, **kwargs)
 #         self.fields = (
