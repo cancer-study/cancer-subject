@@ -10,8 +10,10 @@ from .base_risk_assessment_fuel_admin import BaseRiskAssessmentFuelAdmin
 from .base_risk_assessment_mining_admin import BaseRiskAssessmentMiningAdmin
 from .base_risk_assessment_smoking_admin import BaseRiskAssessmentSmokingAdmin
 from .base_risk_assessment_sun_admin import BaseRiskAssessmentSunAdmin
-from .baseline_hiv_history_admin import BHHWhoIllnessAdmin, BHHCd4Admin
-from .baseline_hiv_history_admin import BaselineHIVHistoryAdmin, BHHHivTestAdmin
+from .baseline_hiv_history_admin import BaselineHIVHistoryAdmin
+from .bhh_cd4_admin import BHHCd4Admin
+from .bhh_hiv_test_admin import BHHHivTestAdmin
+from .bhh_who_illness_admin import BHHWhoIllnessAdmin
 #from .enrollment_checklist_admin import EnrollmentChecklistAdmin
 # from .lab_result_admin import LabResultAdmin, LabResultHeightWeightAdmin
 # from .lab_result_admin import LabResultHivAdmin, LabResultCd4Admin, LabResultViralloadAdmin
