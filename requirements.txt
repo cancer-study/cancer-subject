@@ -4,6 +4,7 @@ git+https://github.com/erikvw/django-crypto-fields.git
 git+https://github.com/erikvw/django-revision.git
 git+https://github.com/erikvw/django-simple-history.git
 git+https://github.com/botswana-harvard/edc-action-item.git
+git+https://github.com/botswana-harvard/edc-action-item.git
 git+https://github.com/botswana-harvard/edc-base-test.git
 git+https://github.com/botswana-harvard/edc-facility.git
 git+https://github.com/botswana-harvard/edc-form-validators.git
