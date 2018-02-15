@@ -23,6 +23,9 @@ from .lab_result_height_weight_admin import LabResultHeightWeightAdmin
 from .lab_result_hiv_admin import LabResultHivAdmin
 from .lab_result_tb_admin import LabResultTbAdmin
 from .lab_result_viralload_admin import LabResultViralloadAdmin
+from .otr_chemo_admin import OTRChemoAdmin
+from .otr_radiation_admin import OTRRadiationAdmin
+from .otr_surgical_form import OTRSurgicalAdmin
 # from .main import ActivityAndFunctioningAdmin, CancerDiagnosisAdmin
 # from .main import HaartRecordAdmin, OncologyTreatmentPlanAdmin, TreatmentResponseAdmin
 # from .main import SymptomsAndTestingAdmin, OncologyTreatmentCompletedAdmin

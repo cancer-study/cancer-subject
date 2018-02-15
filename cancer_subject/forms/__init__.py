@@ -24,10 +24,13 @@ from .lab_result_tb_form import LabResultTbForm
 from .lab_result_viralload_form import LabResultViralloadForm
 from .lab_result_chemistry_form import LabResultChemistryForm
 from .lab_result_cd4_form import LabResultCd4Form
-from .main import *
+# from .main import *
 from .oncology_treatment_record_form import OncologyTreatmentRecordForm
 from .oncology_treatment_plan_form import OncologyTreatmentPlanForm
 from .oncology_treatment_completed_form import OncologyTreatmentCompletedForm
+from .otr_chemo_form import OTRChemoForm
+from .otr_radiation_form import OTRRadiationForm
+from .otr_surgical_form import OTRSurgicalForm
 from .radiation_treatment_form import RadiationTreatmentForm
 from .subject_consent_form import SubjectConsentForm
 from .subject_locator_form import SubjectLocatorForm
