@@ -34,4 +34,4 @@ git+https://github.com/botswana-harvard/edc-reference.git
 git+https://github.com/botswana-harvard/cancer-subject-validations.git
 git+https://github.com/cancer-study/cancer-visit-schedule.git
 git+https://github.com/cancer-study/cancer-metadata-rules.git
-git+https://github.com/cancer-study/cancer-reference.,git
+git+https://github.com/cancer-study/cancer-reference.git
