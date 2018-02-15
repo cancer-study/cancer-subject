@@ -11,7 +11,7 @@ class BaseRiskAssessmentAlcoholAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentAlcoholForm
     fields = (
-        #"subject_visit",
+        "subject_visit",
         "alcohol_weekly",
         "amount_drinking")
     radio_fields = {}

@@ -15,14 +15,14 @@ from edc_lab.apps import AppConfig as BaseEdcLabAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
 from edc_sync_files.apps import AppConfig as BaseEdcSyncFilesAppConfig
 
-# from edc_appointment.appointment_config import AppointmentConfig
-# from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
+from edc_appointment.appointment_config import AppointmentConfig
+from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
 from edc_base_test.apps import AppConfig as BaseEdcBaseTestAppConfig
 from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
 from edc_facility.apps import AppConfig as BaseEdcFacilityAppConfig
-#from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
+from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
-#from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
+from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
 from edc_timepoint.timepoint import Timepoint
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import MISSED_VISIT
@@ -82,19 +82,19 @@ if settings.APP_NAME == 'cancer_subject':
     class EdcIdentifierAppConfig(BaseEdcIdentifierAppConfig):
         identifier_prefix = '092'
 
-#     class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):
-#         reason_field = {'cancer_subject.subjectvisit': 'reason'}
-#         create_on_reasons = [SCHEDULED, UNSCHEDULED]
-#         delete_on_reasons = [LOST_VISIT, FAILED_ELIGIBILITY, MISSED_VISIT]
+    class EdcMetadataAppConfig(BaseEdcMetadataAppConfig):
+        reason_field = {'cancer_subject.subjectvisit': 'reason'}
+        create_on_reasons = [SCHEDULED, UNSCHEDULED]
+        delete_on_reasons = [LOST_VISIT, FAILED_ELIGIBILITY, MISSED_VISIT]
 
-#     class EdcAppointmentAppConfig(BaseEdcAppointmentAppConfig):
-#         app_label = 'cancer_subject'
-#         default_appt_type = 'clinic'
-#         configurations = [
-#             AppointmentConfig(
-#                 model='cancer_subject.appointment',
-#                 related_visit_model='cancer_subject.subjectvisit')
-#         ]
+    class EdcAppointmentAppConfig(BaseEdcAppointmentAppConfig):
+        app_label = 'cancer_subject'
+        default_appt_type = 'clinic'
+        configurations = [
+            AppointmentConfig(
+                model='cancer_subject.appointment',
+                related_visit_model='cancer_subject.subjectvisit')
+        ]
 
     class EdcFacilityAppConfig(BaseEdcFacilityAppConfig):
         country = 'botswana'
@@ -104,21 +104,21 @@ if settings.APP_NAME == 'cancer_subject':
             '5-day clinic': dict(days=[MO, TU, WE, TH, FR],
                                  slots=[100, 100, 100, 100, 100])}
 
-#     class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
-#         timepoints = [
-#             Timepoint(
-#                 model='cancer_subject.appointment',
-#                 datetime_field='appt_datetime',
-#                 status_field='appt_status',
-#                 closed_status='DONE'
-#             ),
-#             Timepoint(
-#                 model='cancer_subject.historicalappointment',
-#                 datetime_field='appt_datetime',
-#                 status_field='appt_status',
-#                 closed_status='DONE'
-#             ),
-#         ]
+    class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
+        timepoints = [
+            Timepoint(
+                model='cancer_subject.appointment',
+                datetime_field='appt_datetime',
+                status_field='appt_status',
+                closed_status='DONE'
+            ),
+            Timepoint(
+                model='cancer_subject.historicalappointment',
+                datetime_field='appt_datetime',
+                status_field='appt_status',
+                closed_status='DONE'
+            ),
+        ]
 
     class EdcSyncAppConfig(BaseEdcSyncAppConfig):
         edc_sync_files_using = True

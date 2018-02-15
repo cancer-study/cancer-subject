@@ -11,7 +11,7 @@ class BaseRiskAssessmentSmokingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentSmokingForm
     fields = (
-        #"subject_visit",
+        "subject_visit",
         "smoke_now",
         "cigarette_smoking",
         "years_smoked",

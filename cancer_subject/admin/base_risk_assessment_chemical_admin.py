@@ -11,7 +11,7 @@ class BaseRiskAssessmentChemicalAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentChemicalForm
     fields = (
-        #"subject_visit",
+        "subject_visit",
         "asbestos",
         "asbestos_no_protection",
         "chemicals",

@@ -45,8 +45,8 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
-    #'edc_reference.apps.AppConfig',
-    #'edc_metadata_rules.apps.AppConfig',
+    'edc_reference.apps.AppConfig',
+    'edc_metadata_rules.apps.AppConfig',
     #'edc_sync.apps.AppConfig',
     #'edc_sync_files.apps.AppConfig',
     'django_crypto_fields.apps.AppConfig',
@@ -55,18 +55,18 @@ INSTALLED_APPS = [
     'edc_action_item.apps.AppConfig',
     'edc_registration.apps.AppConfig',
     'edc_identifier.apps.AppConfig',
-    #'edc_offstudy.apps.AppConfig',
+    'edc_offstudy.apps.AppConfig',
     'edc_locator.apps.AppConfig',
     'edc_lab.apps.AppConfig',
-    #     'edc_visit_schedule.apps.AppConfig',
+    'edc_visit_schedule.apps.AppConfig',
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
     'cancer_subject.apps.AppConfig',
     'edc_base_test.apps.AppConfig',
     'cancer_subject.apps.EdcDeviceAppConfig',
     'cancer_subject.apps.EdcProtocolAppConfig',
-    #'cancer_subject.apps.EdcAppointmentAppConfig',
-    #'cancer_subject.apps.EdcTimepointAppConfig',
-    #'cancer_subject.apps.EdcMetadataAppConfig',
+    'cancer_subject.apps.EdcAppointmentAppConfig',
+    'cancer_subject.apps.EdcTimepointAppConfig',
+    'cancer_subject.apps.EdcMetadataAppConfig',
     'cancer_visit_schedule.apps.AppConfig',
     'cancer_metadata_rules.apps.AppConfig',
     'cancer_reference.apps.AppConfig',
@@ -112,11 +112,19 @@ WSGI_APPLICATION = 'cancer_subject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
+# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': os.path.join(ETC_DIR, 'mysql.conf'),
+        },
+    },
 }
 
 

@@ -12,7 +12,6 @@ class BaseRiskAssessmentAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     form = BaseRiskAssessmentForm
     fields = (
         "subject_visit",
-        # "participant_interviewed",
         "hepatitis",
         "tuberculosis",
         "year_tb",

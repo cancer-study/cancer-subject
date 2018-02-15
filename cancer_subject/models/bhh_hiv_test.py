@@ -1,15 +1,14 @@
 from django.db import models
 
 from edc_constants.choices import YES_NO
-#from edc_reference.model_mixins import ReferenceModelMixin
+from edc_reference.model_mixins import ReferenceModelMixin
 
 from .model_mixins import CrfModelMixin
 
 from ..choices import RECENT_RESULT_CHOICE
 
 
-class BHHHivTest (CrfModelMixin):
-    #, ReferenceModelMixin):
+class BHHHivTest (CrfModelMixin, ReferenceModelMixin):
 
     hiv_drawn_date = models.DateField(
         verbose_name='Date of most recent HIV test:',

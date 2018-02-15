@@ -2,7 +2,7 @@ from .activity_and_functioning import ActivityAndFunctioning
 from .ae010 import Ae010
 from .af004 import Af004
 from .af005 import Af005
-#from .appointment import Appointment
+from .appointment import Appointment
 from .base_risk_assessment import BaseRiskAssessment
 from .base_risk_assessment_alcohol import BaseRiskAssessmentAlcohol
 from .base_risk_assessment_cancer import BaseRiskAssessmentCancer
@@ -21,7 +21,7 @@ from .bhh_who_illness import BHHWhoIllness
 from .cancer_diagnosis import CancerDiagnosis
 from .chemo_medication import BaseChemoMedication, ChemoMedRecord, ChemoMedPlan
 from .current_symptoms import CurrentSymptoms
-#from .enrollment_checklist import EnrollmentChecklist
+from .enrollment_checklist import EnrollmentChecklist
 from .haart_medication import BaseHaartMedication
 from .haart_medication import HaartMedRecord
 from .haart_record import HaartRecord
@@ -44,8 +44,8 @@ from .radiation_treatment import RadiationTreatment, RadiationTreatmentRecord
 from .referral import Referral
 from .subject_consent import SubjectConsent
 from .subject_locator import SubjectLocator
-#from .subject_offstudy import SubjectOffstudy
+from .subject_offstudy import SubjectOffstudy
 from .subject_requisition import SubjectRequisition
-#from .subject_visit import SubjectVisit
+from .subject_visit import SubjectVisit
 from .symptoms_and_testing import SymptomsAndTesting
 from .treatment_response import TreatmentResponse

@@ -18,7 +18,7 @@ class BaselineHIVHistoryAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                #'subject_visit',
+                'subject_visit',
                 'has_hiv_result',
                 'had_who_illnesses',
                 'has_cd4',

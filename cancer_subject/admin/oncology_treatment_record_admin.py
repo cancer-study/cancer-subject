@@ -16,7 +16,7 @@ class OncologyTreatmentRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OncologyTreatmentRecordForm
     fields = (
-        #"subject_visit",
+        "subject_visit",
         "chemo_received",
         "radiation_received",
         "surgical_therapy",
@@ -42,7 +42,7 @@ class OTRChemoAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     form = OTRChemoForm
     inlines = [ChemoMedRecordInlineAdmin, ]
     fields = (
-        #"subject_visit",
+        "subject_visit",
         "chemo_intent",
         "chemo_delays",
         "why_delayed",
@@ -63,7 +63,7 @@ class OTRRadiationAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OTRRadiationForm
     fields = (
-        #"subject_visit",
+        "subject_visit",
         "radiation_details",
     )
     radio_fields = {
@@ -79,6 +79,6 @@ class OTRSurgicalAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = OTRSurgicalForm
     fields = (
-        #"subject_visit",
+        "subject_visit",
         "operation_performed",
         "date_operation")

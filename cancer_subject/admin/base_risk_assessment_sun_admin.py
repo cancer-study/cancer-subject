@@ -11,7 +11,7 @@ class BaseRiskAssessmentSunAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 
     form = BaseRiskAssessmentSunForm
     fields = (
-        #"subject_visit",
+        "subject_visit",
         "hours_outdoor",
         "sleeved_shirt",
         "hat",
