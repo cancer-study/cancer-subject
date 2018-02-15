@@ -22,6 +22,8 @@ from .lab_result_height_weight_form import LabResultHeightWeightForm
 from .lab_result_hiv_form import LabResultHivForm
 from .lab_result_tb_form import LabResultTbForm
 from .lab_result_viralload_form import LabResultViralloadForm
+from .lab_result_chemistry_form import LabResultChemistryForm
+from .lab_result_cd4_form import LabResultCd4Form
 from .main import *
 from .oncology_treatment_record_form import OncologyTreatmentRecord
 from .oncology_treatment_plan_form import OncologyTreatmentPlanForm
