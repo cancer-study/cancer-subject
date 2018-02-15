@@ -15,10 +15,10 @@ from .bhh_cd4_admin import BHHCd4Admin
 from .bhh_hiv_test_admin import BHHHivTestAdmin
 from .bhh_who_illness_admin import BHHWhoIllnessAdmin
 #from .enrollment_checklist_admin import EnrollmentChecklistAdmin
-# from .lab_result_admin import LabResultAdmin, LabResultHeightWeightAdmin
-# from .lab_result_admin import LabResultHivAdmin, LabResultCd4Admin, LabResultViralloadAdmin
-# from .lab_result_admin import LabResultHaematologyAdmin, LabResultChemistryAdmin
-# from .lab_result_admin import LabResultTbAdmin
+from .lab_result_admin import LabResultAdmin, LabResultHeightWeightAdmin
+from .lab_result_admin import LabResultHivAdmin, LabResultCd4Admin, LabResultViralloadAdmin
+from .lab_result_admin import LabResultHaematologyAdmin, LabResultChemistryAdmin
+from .lab_result_admin import LabResultTbAdmin
 # from .main import ActivityAndFunctioningAdmin, CancerDiagnosisAdmin
 # from .main import HaartRecordAdmin, OncologyTreatmentPlanAdmin, TreatmentResponseAdmin
 # from .main import SymptomsAndTestingAdmin, OncologyTreatmentCompletedAdmin
