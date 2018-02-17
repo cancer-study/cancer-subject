@@ -27,7 +27,7 @@ DEBUG = True
 
 ETC_DIR = os.path.join(BASE_DIR, 'etc')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cancer-test.bhp.org.bw']
 
 SITE_ID = 10
 REVIEWER_SITE_ID = 1
