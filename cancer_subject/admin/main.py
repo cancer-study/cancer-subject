@@ -138,34 +138,6 @@
 #         "haart_status": admin.VERTICAL}
 #
 #
-# @admin.register(OncologyTreatmentPlan, site=cancer_subject_admin)
-# class OncologyTreatmentPlanAdmin(CrfModelAdminMixin, admin.ModelAdmin):
-#
-#     form = OncologyTreatmentPlanForm
-#     inlines = [ChemoMedPlanInlineAdmin, ]
-#     fieldsets = (
-#         (None, {
-#             'fields': (
-#                 "subject_visit",
-#                 "treatment_goal",
-#                 "treatment_plan",
-#                 "chemotherapy",
-#                 "chemo_intent",
-#                 "radiation_plan",
-#                 "surgical_plan",
-#                 "planned_operation",
-#                 "comments")}),
-#         audit_fieldset_tuple)
-#
-#     radio_fields = {
-#         "treatment_goal": admin.VERTICAL,
-#         "treatment_plan": admin.VERTICAL,
-#         "chemotherapy": admin.VERTICAL,
-#         "chemo_intent": admin.VERTICAL,
-#         "radiation_plan": admin.VERTICAL,
-#         "surgical_plan": admin.VERTICAL}
-#
-#
 # @admin.register(TreatmentResponse, site=cancer_subject_admin)
 # class TreatmentResponseAdmin(CrfModelAdminMixin, admin.ModelAdmin):
 #

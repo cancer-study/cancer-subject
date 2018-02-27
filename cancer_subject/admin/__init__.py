@@ -37,3 +37,4 @@ from .radiation_treatment_admin import RadiationTreatmentAdmin
 # from .subject_consent_admin import SubjectConsentAdmin
 from .subject_locator_admin import SubjectLocatorAdmin
 # from .subject_visit_admin import SubjectVisitAdmin
+from .symptoms_and_testing_admin import SymptomsAndTestingAdmin
