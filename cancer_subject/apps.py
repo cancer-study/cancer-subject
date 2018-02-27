@@ -13,7 +13,7 @@ from edc_device.constants import CENTRAL_SERVER
 from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
 from edc_lab.apps import AppConfig as BaseEdcLabAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
-from edc_sync_files.apps import AppConfig as BaseEdcSyncFilesAppConfig
+# from edc_sync_files.apps import AppConfig as BaseEdcSyncFilesAppConfig
 
 from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
@@ -21,7 +21,7 @@ from edc_base_test.apps import AppConfig as BaseEdcBaseTestAppConfig
 from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
 from edc_facility.apps import AppConfig as BaseEdcFacilityAppConfig
 from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
-from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
+# from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
 from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
 from edc_timepoint.timepoint import Timepoint
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
@@ -120,10 +120,10 @@ if settings.APP_NAME == 'cancer_subject':
             ),
         ]
 
-    class EdcSyncAppConfig(BaseEdcSyncAppConfig):
-        edc_sync_files_using = True
-        role = CENTRAL_SERVER
-
-    class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
-        edc_sync_files_using = True
-        role = CENTRAL_SERVER
+#     class EdcSyncAppConfig(BaseEdcSyncAppConfig):
+#         edc_sync_files_using = True
+#         role = CENTRAL_SERVER
+#
+#     class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
+#         edc_sync_files_using = True
+#         role = CENTRAL_SERVER

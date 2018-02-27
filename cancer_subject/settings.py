@@ -16,6 +16,10 @@ import sys
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = 'cancer_subject'
+
+
+ETC_DIR = os.path.join(BASE_DIR, 'etc')
+
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.10/howto/deployment/checklist/
 
@@ -59,6 +63,7 @@ INSTALLED_APPS = [
     'edc_locator.apps.AppConfig',
     'edc_lab.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
+    'cancer_dashboard.apps.AppConfig',
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
     'cancer_subject.apps.AppConfig',
     'edc_base_test.apps.AppConfig',

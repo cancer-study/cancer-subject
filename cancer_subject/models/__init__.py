@@ -37,6 +37,7 @@ from .lab_result_viralload import LabResultViralload
 from .oncology_treatment_completed import OncologyTreatmentCompleted
 from .oncology_treatment_plan import OncologyTreatmentPlan
 from .oncology_treatment_record import OncologyTreatmentRecord
+from .onschedule import OnSchedule
 from .otr_chemo import OTRChemo
 from .otr_radiation import OTRRadiation
 from .otr_surgical import OTRSurgical

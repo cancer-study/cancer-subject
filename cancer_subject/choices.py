@@ -1,6 +1,7 @@
 from edc_constants.constants import DONT_KNOW, NONE, DECLINED, REFUSED
 from edc_constants.constants import NEG, IND, UNK, OTHER, NEVER, PENDING
 from edc_constants.constants import YES, NO, DWTA, POS
+from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, MISSED_VISIT
 
 
 APPOINTMENT_REASON = (
@@ -393,7 +394,7 @@ HOURS_OUTDOOR_CHOICE = (
     ('6_hours', '6 hours'),
 )
 
-INFO_SOURCE_CHOICE = (
+INFO_SOURCE = (
     ('clinic_visit', 'Clinic visit with participant'),
     ('other_contact_with_participant', 'Other contact with participant'
      '(i.e telephone call)'),
@@ -811,6 +812,12 @@ TREATMENT_RELATIONSHIP = (
     ('neo_before_chemo', 'Neoadjuvant before Chemotherapy'),
     ('neo_before_surgery', 'Neoadjuvant before Surgery'),
     (OTHER, 'Other, specify'),
+)
+
+VISIT_REASON = (
+    (SCHEDULED, 'Scheduled'),
+    (UNSCHEDULED, 'Not scheduled'),
+    (MISSED_VISIT, 'Missed'),
 )
 
 VISIT_UNSCHEDULED_REASON = (
