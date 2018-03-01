@@ -28,7 +28,7 @@ from .otr_chemo_admin import OTRChemoAdmin
 from .otr_radiation_admin import OTRRadiationAdmin
 from .otr_surgical_form import OTRSurgicalAdmin
 from .oncology_treatment_plan_admin import OncologyTreatmentPlanAdmin
-# from .main import ActivityAndFunctioningAdmin, CancerDiagnosisAdmin
+from .activity_and_functioning_admin import ActivityAndFunctioningAdmin
 # from .main import HaartRecordAdmin, OncologyTreatmentPlanAdmin, TreatmentResponseAdmin
 # from .main import SymptomsAndTestingAdmin, OncologyTreatmentCompletedAdmin
 # from .main import CurrentSymptomsAdmin

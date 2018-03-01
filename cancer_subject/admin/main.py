@@ -30,37 +30,6 @@
 #     extra = 1
 #
 #
-# @admin.register(ActivityAndFunctioning, site=cancer_subject_admin)
-# class ActivityAndFunctioningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
-#
-#     form = ActivityAndFunctioningForm
-#
-#     fieldsets = (
-#         (None, {
-#             'fields': (
-#                 'report_datetime',
-#                 'subject_visit',
-#                 "health_rate",
-#                 "health_problems",
-#                 "difficulty_work",
-#                 "bodily_pain",
-#                 "energy",
-#                 "health_probs_limit",
-#                 "emotional_probs",
-#                 "probs_from_work",
-#                 "perform_status")}),
-#         audit_fieldset_tuple
-#     )
-#     radio_fields = {
-#         "health_rate": admin.VERTICAL,
-#         "health_problems": admin.VERTICAL,
-#         "difficulty_work": admin.VERTICAL,
-#         "bodily_pain": admin.VERTICAL,
-#         "energy": admin.VERTICAL,
-#         "health_probs_limit": admin.VERTICAL,
-#         "emotional_probs": admin.VERTICAL,
-#         "probs_from_work": admin.VERTICAL,
-#         "perform_status": admin.VERTICAL}
 #
 #
 # @admin.register(CancerDiagnosis, site=cancer_subject_admin)
@@ -157,37 +126,6 @@
 #         "tx_info_determinant",)
 #
 #
-# @admin.register(SymptomsAndTesting, site=cancer_subject_admin)
-# class SymptomsAndTestingAdmin(CrfModelAdminMixin, admin.ModelAdmin):
-#
-#     form = SymptomsAndTestingForm
-#
-#     fieldsets = (
-#         (None, {
-#             'fields': (
-#                 "report_datetime",
-#                 "subject_visit",
-#                 "symptom_prompt",
-#                 "symptom_date",
-#                 "medical_doctor_date",
-#                 "trad_doctor_date",
-#                 "facility_first_seen",
-#                 "facility_first_seen_other",
-#                 "hiv_tested",
-#                 "hiv_test_result",
-#                 "pos_date",
-#                 "neg_date",
-#                 "hiv_result",
-#                 "arv_art_therapy",
-#                 "arv_art_start_date",
-#                 "arv_art_now",
-#                 "art_art_stop_date",)}),)
-#     radio_fields = {
-#         "hiv_tested": admin.VERTICAL,
-#         "hiv_test_result": admin.VERTICAL,
-#         "hiv_result": admin.VERTICAL,
-#         "arv_art_therapy": admin.VERTICAL,
-#         "arv_art_now": admin.VERTICAL}
 #
 #
 # @admin.register(OncologyTreatmentCompleted, site=cancer_subject_admin)
