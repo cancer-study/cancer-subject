@@ -14,7 +14,9 @@ from .baseline_hiv_history_admin import BaselineHIVHistoryAdmin
 from .bhh_cd4_admin import BHHCd4Admin
 from .bhh_hiv_test_admin import BHHHivTestAdmin
 from .bhh_who_illness_admin import BHHWhoIllnessAdmin
+from .cancer_diagnosis_admin import CancerDiagnosisAdmin
 from .enrollment_checklist_admin import EnrollmentChecklistAdmin
+from .haart_record_admin import HaartRecordAdmin
 from .lab_result_admin import LabResultAdmin, LabResultAdminMixin
 from .lab_result_cd4_admin import LabResultCd4Admin
 from .lab_result_chemistry_admin import LabResultChemistryAdmin

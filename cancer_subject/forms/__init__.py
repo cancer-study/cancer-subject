@@ -18,7 +18,10 @@ from .baseline_hiv_history_form import BaselineHIVHistoryForm
 from .bhh_hiv_test_form import BHHHivTestForm
 from .bhh_who_illness_form import BHHWhoIllnessForm
 from .bhh_cd4_form import BHHCd4Form
+from .cancer_diagnoses_form import CancerDiagnosisForm
 from .enrollment_checklist_form import EnrollmentChecklistForm
+from .haart_record_form import HaartRecordForm
+from .haart_med_record_form import HaartMedRecordForm
 from .lab_result_form import LabResultForm
 from .lab_result_haemotology_form import LabResultHaematologyForm
 from .lab_result_height_weight_form import LabResultHeightWeightForm

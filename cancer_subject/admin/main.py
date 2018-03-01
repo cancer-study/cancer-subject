@@ -17,113 +17,11 @@
 #     SymptomsAndTesting, CurrentSymptoms, CancerDiagnosis)
 #
 #
-# class HaartMedRecordInlineAdmin(TabularInlineMixin, admin.TabularInline):
-#
-#     model = HaartMedRecord
-#     form = HaartMedRecordForm
-#     extra = 1
-#
 #
 # class ChemoMedPlanInlineAdmin(TabularInlineMixin, admin.TabularInline):
 #     model = ChemoMedPlan
 #     form = ChemoMedPlanForm
 #     extra = 1
-#
-#
-#
-#
-# @admin.register(CancerDiagnosis, site=cancer_subject_admin)
-# class CancerDiagnosisAdmin(CrfModelAdminMixin, admin.ModelAdmin):
-#
-#     form = CancerDiagnosisForm
-#
-#     fieldsets = (
-#         (None, {
-#             'fields': (
-#                 'report_datetime',
-#                 'subject_visit',
-#                 "onco_number",
-#                 "pathology_number",
-#                 "pm_number",
-#                 "diagnosis",
-#                 "cancer_category",
-#                 "symptom_prompt",
-#                 "symptom_prompt_other",
-#                 "symptom_first_noticed",
-#                 "first_evaluation",
-#                 "trad_evaluation",
-#                 "date_diagnosed",
-#                 "diagnosis_basis",
-#                 "diagnosis_basis_other",
-#                 "diagnosis_word",
-#                 "cancer_site",
-#                 "clinical_diagnosis",
-#                 "tumour",
-#                 "tumour_basis",
-#                 "lymph_nodes",
-#                 "lymph_basis",
-#                 "metastasis",
-#                 "metastasis_basis",
-#                 "cancer_stage",
-#                 "cancer_stage_modifier",
-#                 "any_other_results",
-#                 "paper_documents",
-#                 "results_to_record",
-#                 "results_to_record_other",)}),
-#         audit_fieldset_tuple
-#     )
-#     radio_fields = {
-#         "diagnosis": admin.VERTICAL,
-#         "cancer_category": admin.VERTICAL,
-#         "symptom_prompt": admin.VERTICAL,
-#         "diagnosis_basis": admin.VERTICAL,
-#         "tumour": admin.VERTICAL,
-#         "tumour_basis": admin.VERTICAL,
-#         "lymph_nodes": admin.VERTICAL,
-#         "lymph_basis": admin.VERTICAL,
-#         "metastasis": admin.VERTICAL,
-#         "metastasis_basis": admin.VERTICAL,
-#         "cancer_stage": admin.VERTICAL,
-#         "cancer_stage_modifier": admin.VERTICAL,
-#         "any_other_results": admin.VERTICAL}
-#     filter_horizontal = ('results_to_record',)
-#
-#
-# @admin.register(HaartRecord, site=cancer_subject_admin)
-# class HaartRecordAdmin(CrfModelAdminMixin, admin.ModelAdmin):
-#
-#     form = HaartRecordForm
-#     inlines = [HaartMedRecordInlineAdmin, ]
-#     fieldsets = (
-#         (None, {
-#             'fields': (
-#                 'report_datetime',
-#                 "subject_visit",
-#                 "haart_status",
-#                 "comments")}),
-#         audit_fieldset_tuple)
-#
-#     radio_fields = {
-#         "haart_status": admin.VERTICAL}
-#
-#
-# @admin.register(TreatmentResponse, site=cancer_subject_admin)
-# class TreatmentResponseAdmin(CrfModelAdminMixin, admin.ModelAdmin):
-#
-#     form = TreatmentResponseForm
-#
-#     fieldsets = (
-#         (None, {
-#             'fields': (
-#                 "subject_visit",
-#                 "tx_response_class",
-#                 "tx_info_determinant",
-#                 "tx_response_date",
-#                 "tx_response")}),)
-#     radio_fields = {
-#         "tx_response_class": admin.VERTICAL}
-#     filter_horizontal = (
-#         "tx_info_determinant",)
 #
 #
 #
