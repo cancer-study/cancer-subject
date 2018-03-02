@@ -14,7 +14,9 @@ from .baseline_hiv_history_admin import BaselineHIVHistoryAdmin
 from .bhh_cd4_admin import BHHCd4Admin
 from .bhh_hiv_test_admin import BHHHivTestAdmin
 from .bhh_who_illness_admin import BHHWhoIllnessAdmin
+from .cancer_diagnosis_admin import CancerDiagnosisAdmin
 from .enrollment_checklist_admin import EnrollmentChecklistAdmin
+from .haart_record_admin import HaartRecordAdmin
 from .lab_result_admin import LabResultAdmin, LabResultAdminMixin
 from .lab_result_cd4_admin import LabResultCd4Admin
 from .lab_result_chemistry_admin import LabResultChemistryAdmin
@@ -28,7 +30,7 @@ from .otr_chemo_admin import OTRChemoAdmin
 from .otr_radiation_admin import OTRRadiationAdmin
 from .otr_surgical_form import OTRSurgicalAdmin
 from .oncology_treatment_plan_admin import OncologyTreatmentPlanAdmin
-# from .main import ActivityAndFunctioningAdmin, CancerDiagnosisAdmin
+from .activity_and_functioning_admin import ActivityAndFunctioningAdmin
 # from .main import HaartRecordAdmin, OncologyTreatmentPlanAdmin, TreatmentResponseAdmin
 # from .main import SymptomsAndTestingAdmin, OncologyTreatmentCompletedAdmin
 # from .main import CurrentSymptomsAdmin
@@ -37,5 +39,6 @@ from .oncology_treatment_plan_admin import OncologyTreatmentPlanAdmin
 from .radiation_treatment_admin import RadiationTreatmentAdmin
 from .subject_consent_admin import SubjectConsentAdmin
 from .subject_locator_admin import SubjectLocatorAdmin
+from .subject_offstudy_admin import SubjectOffStudyAdmin
 from .subject_visit_admin import SubjectVisitAdmin
 from .symptoms_and_testing_admin import SymptomsAndTestingAdmin

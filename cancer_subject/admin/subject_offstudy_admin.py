@@ -17,8 +17,9 @@ class SubjectOffStudyAdmin(ModelAdminMixin, admin.ModelAdmin):
             'fields': (
                 'subject_identifier',
                 'offstudy_datetime',
-                'reason',
-                'reason_other',
-                'comment')}),
+                'offstudy_reason',
+                'offstudy_reason_other',
+                'comment'
+            )}),
         audit_fieldset_tuple,
     )

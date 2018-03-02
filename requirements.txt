@@ -2,6 +2,7 @@ git+https://github.com/cancer-study/cancer-metadata-rules.git@develop#egg=cancer
 git+https://github.com/cancer-study/cancer-reference.git@develop#egg=cancer_reference
 git+https://github.com/botswana-harvard/cancer-subject-validations.git@develop#egg=cancer_subject_validations
 git+https://github.com/cancer-study/cancer-visit-schedule.git@develop#egg=cancer_visit_schedule
+git+https://github.com/cancer-study/cancer-dashboard.git@develop#egg=cancer_dashboard
 git+https://github.com/botswana-harvard/edc-sync.git@develop#egg=edc_sync
 git+https://github.com/botswana-harvard/edc-sync-files.git@develop#egg=edc_sync_files
 git+https://github.com/erikvw/django-crypto-fields.git@develop#egg=django_crypto_fields
