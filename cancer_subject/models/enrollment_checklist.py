@@ -2,6 +2,7 @@ from django.db import models
 from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_base.model_validators.eligibility import eligible_if_yes
+from edc_base.utils import get_utcnow
 from edc_constants.choices import YES_NO
 from edc_constants.constants import YES
 from edc_search.model_mixins import SearchSlugManager
@@ -9,6 +10,7 @@ from edc_search.model_mixins import SearchSlugManager
 from edc_appointment.model_mixins import AppointmentModelMixin
 # from edc_visit_schedule.model_mixins import EnrollmentModelMixin
 
+from ..eligibility import Eligibility
 from ..models.model_mixins import SearchSlugModelMixin
 
 
@@ -28,13 +30,20 @@ class EnrollmentManager(SearchSlugManager, models.Manager):
         )
 
 
-class EnrollmentChecklist (SearchSlugModelMixin, AppointmentModelMixin,
+class EnrollmentChecklist (SearchSlugModelMixin,  # , AppointmentModelMixin,
                            BaseUuidModel):
+
+    eligibility_cls = Eligibility
 
     objects = EnrollmentManager()
 
     def natural_key(self):
         return (self.subject_identifier,)
+
+    report_datetime = models.DateTimeField(
+        verbose_name='Report Date and Time',
+        default=get_utcnow,
+        help_text='Date and time of report.')
 
     subject_identifier = models.CharField(
         verbose_name='Subject Identifier',
@@ -55,6 +64,10 @@ class EnrollmentChecklist (SearchSlugModelMixin, AppointmentModelMixin,
         choices=ENROLLMENT_SITES,
         help_text="Hospital where subject is recruited")
 
+    eligible = models.BooleanField(
+        default=False,
+        editable=False)
+
     history = HistoricalRecords()
 
     def create_appointments(self, base_appt_datetime=None, taken_datetimes=None):
@@ -64,6 +77,13 @@ class EnrollmentChecklist (SearchSlugModelMixin, AppointmentModelMixin,
             self.is_eligible = True
         else:
             self.is_eligible = False
+
+    def save(self, *args, **kwargs):
+        eligibility_obj = self.eligibility_cls(
+            cancer_status=self.has_diagnosis)
+        self.eligible = eligibility_obj.eligible
+        print(">>>>>>>>>>>>", self.eligible)
+        super().save(*args, **kwargs)
 
     class Meta():
         consent_model = 'cancer_subject.subjectconsent'

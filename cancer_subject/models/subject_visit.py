@@ -1,4 +1,5 @@
 from django.db import models
+from edc_appointment.models import Appointment
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
 from edc_base.sites.site_model_mixin import SiteModelMixin
@@ -11,7 +12,7 @@ from edc_visit_tracking.model_mixins import (VisitModelMixin)
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
 
-from .appointment import Appointment
+# from .appointment import Appointment
 from ..choices import INFO_SOURCE, REASONS_MISSED_OR_DELAYED
 from ..choices import VISIT_REASON, VISIT_UNSCHEDULED_REASON
 
@@ -24,8 +25,7 @@ class SubjectVisit(VisitModelMixin, ReferenceModelMixin, CreatesMetadataModelMix
     e.g.report_datetime.
     """
 
-    appointment = models.OneToOneField(
-        Appointment, on_delete=models.PROTECT)
+    appointment = models.OneToOneField(Appointment, on_delete=models.PROTECT)
 
     reason = models.CharField(
         verbose_name='What is the reason for this visit report?',
