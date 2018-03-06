@@ -1,22 +1,22 @@
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
 
+
 from edc_base.constants import DEFAULT_BASE_FIELDS
 from edc_base.model_managers import HistoricalRecords
+from edc_base.model_mixins import BaseUuidModel
 from edc_base.sites import CurrentSiteManager
 from edc_base.sites.site_model_mixin import SiteModelMixin
-from edc_base.model_mixins import BaseUuidModel
+from edc_consent.field_mixins import IdentityFieldsMixin
+from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
+from edc_consent.field_mixins import SampleCollectionFieldsMixin, CitizenFieldsMixin
+from edc_consent.field_mixins import VulnerabilityFieldsMixin
+from edc_consent.managers import ConsentManager as SubjectConsentManager
+from edc_consent.model_mixins import ConsentModelMixin
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
     UpdatesOrCreatesRegistrationModelMixin as BaseUpdatesOrCreatesRegistrationModelMixin)
 from edc_search.model_mixins import SearchSlugManager
-
-from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
-from edc_consent.field_mixins import SampleCollectionFieldsMixin, CitizenFieldsMixin
-from edc_consent.field_mixins import VulnerabilityFieldsMixin
-from edc_consent.field_mixins import IdentityFieldsMixin
-from edc_consent.managers import ConsentManager as SubjectConsentManager
-from edc_consent.model_mixins import ConsentModelMixin
 
 from ..models.model_mixins import SearchSlugModelMixin
 
@@ -69,18 +69,19 @@ class UpdatesOrCreatesRegistrationModelMixin(BaseUpdatesOrCreatesRegistrationMod
 
 
 class SubjectConsent(
-        ConsentModelMixin, UpdatesOrCreatesRegistrationModelMixin,
+        ConsentModelMixin, SiteModelMixin, UpdatesOrCreatesRegistrationModelMixin,
         NonUniqueSubjectIdentifierModelMixin,
         IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
         SampleCollectionFieldsMixin, CitizenFieldsMixin,
-        VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel,
-        SiteModelMixin):
+        VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel):
     """ A model completed by the user that captures the ICF.
     """
 
     is_signed = models.BooleanField(default=False, editable=False)
 
-    consent = ConsentManager()
+    consent = SubjectConsentManager()
+
+    objects = ConsentManager()
 
     history = HistoricalRecords()
 

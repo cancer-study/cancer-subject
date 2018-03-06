@@ -33,8 +33,9 @@ class EnrollmentChecklistAdmin(ModelAdminMixin,
     fieldsets = (
         (None, {
             'fields': (
-                "subject_identifier",
-                "has_diagnosis",
+                'report_datetime',
+                'subject_identifier',
+                'has_diagnosis',
                 'enrollment_site',
             )}),
         audit_fieldset_tuple)
@@ -43,5 +44,5 @@ class EnrollmentChecklistAdmin(ModelAdminMixin,
     readonly_fields = ('subject_identifier',)
 
     radio_fields = {
-        "has_diagnosis": admin.VERTICAL,
-        "enrollment_site": admin.VERTICAL, }
+        'has_diagnosis': admin.VERTICAL,
+        'enrollment_site': admin.VERTICAL, }
