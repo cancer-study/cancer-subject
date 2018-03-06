@@ -18,7 +18,7 @@ from .cancer_diagnosis_admin import CancerDiagnosisAdmin
 from .enrollment_checklist_admin import EnrollmentChecklistAdmin
 from .haart_record_admin import HaartRecordAdmin
 from .lab_result_admin import LabResultAdmin, LabResultAdminMixin
-from .lab_result_cd4_admin import LabResultCd4Admin
+# from .lab_result_cd4_admin import LabResultCd4Admin
 from .lab_result_chemistry_admin import LabResultChemistryAdmin
 from .lab_result_haemotology_admin import LabResultHaematologyAdmin
 from .lab_result_height_weight_admin import LabResultHeightWeightAdmin
