@@ -16,7 +16,7 @@ class BaseRiskAssessmentFuel (CrfModelMixin):
     )
 
     fuel_20y_other = OtherCharField(
-        verbose_name='If yes, specify',
+        verbose_name='If other, specify',
         max_length=250,
         blank=True,
         null=True)
@@ -36,7 +36,7 @@ class BaseRiskAssessmentFuel (CrfModelMixin):
     )
 
     fuel_mm_other = OtherCharField(
-        verbose_name='If yes, specify',
+        verbose_name='If other, specify',
         max_length=250,
         blank=True,
         null=True)
