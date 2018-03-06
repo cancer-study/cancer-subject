@@ -46,7 +46,7 @@ class BaseRiskAssessmentDemo (CrfModelMixin):
 
     district20 = models.CharField(
         verbose_name=('Over the past 20 years, which district have '
-                      'you ived in the most?'),
+                      'you lived in the most?'),
         max_length=55,
         choices=DISTRICT_CHOICE,
     )
