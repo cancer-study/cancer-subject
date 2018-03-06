@@ -27,7 +27,7 @@ from .lab_result_tb_admin import LabResultTbAdmin
 from .lab_result_viralload_admin import LabResultViralloadAdmin
 from .onschedule_admin import OnScheduleAdmin
 from .otr_chemo_admin import OTRChemoAdmin
-from .otr_radiation_admin import OTRRadiationAdmin
+# from .otr_radiation_admin import OTRRadiationAdmin
 from .otr_surgical_form import OTRSurgicalAdmin
 from .oncology_treatment_plan_admin import OncologyTreatmentPlanAdmin
 from .activity_and_functioning_admin import ActivityAndFunctioningAdmin
