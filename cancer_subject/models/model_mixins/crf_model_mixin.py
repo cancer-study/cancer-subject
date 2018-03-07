@@ -3,6 +3,7 @@ from django.db.models.deletion import PROTECT
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel, FormAsJSONModelMixin
 from edc_base.model_validators import datetime_not_future
+from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.utils import get_utcnow
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_offstudy.model_mixins import OffstudyCrfModelMixin
@@ -31,7 +32,7 @@ class CrfModelManager(VisitTrackingCrfModelManager):
 
 class CrfModelMixin(VisitTrackingCrfModelMixin, OffstudyCrfModelMixin,
                     ReferenceModelMixin, PreviousVisitModelMixin,
-                    UpdatesCrfMetadataModelMixin,
+                    UpdatesCrfMetadataModelMixin, SiteModelMixin,
                     FormAsJSONModelMixin, RequiresConsentFieldsModelMixin, BaseUuidModel):
 
     """ Base model for all scheduled models (adds key to :class:`SubjectVisit`).
