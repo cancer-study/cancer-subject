@@ -46,7 +46,6 @@ class SubjectLocatorAdmin(ModelAdminMixin, admin.ModelAdmin):
 
     radio_fields = {
         'home_visit_permission': admin.VERTICAL,
-        'home_visit_permission': admin.VERTICAL,
         'may_sms': admin.VERTICAL,
         'has_alt_contact': admin.VERTICAL,
         'may_call_work': admin.VERTICAL,

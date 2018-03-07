@@ -39,11 +39,13 @@
 # #         'registered_subject__study_site',
 # #         'registered_subject__registration_datetime',
 # #     ]
-# # #     list_display = ('registered_subject', 'subject_visit', 'death_date', 'created', 'user_created',)
+# # #     list_display = ('registered_subject', 'subject_visit',
+#                             'death_date', 'created', 'user_created',)
 # #
 # #     def formfield_for_foreignkey(self, db_field, request, **kwargs):
 # #         if db_field.name == "subject_visit":
-# #             # subject_visit = SubjectVisit.objects.filter(id=request.GET.get(db_field.name))
+# #             # subject_visit = SubjectVisit.objects.filter(
+#                                     id=request.GET.get(db_field.name))
 # #             kwargs["queryset"] = SubjectVisit.objects.filter(
 # #                 id=request.GET.get(db_field.name, None))
 # # return super(SubjectDeathAdmin, self).formfield_for_foreignkey(db_field,
