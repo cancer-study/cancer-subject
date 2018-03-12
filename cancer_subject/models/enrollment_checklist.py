@@ -1,14 +1,15 @@
+import re
+from django.apps import apps as django_apps
 from django.db import models
-from edc_base.model_managers.historical_records import HistoricalRecords
-from edc_base.model_mixins.base_uuid_model import BaseUuidModel
-from edc_base.model_validators.eligibility import eligible_if_yes
+from edc_base.model_managers import HistoricalRecords
+from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_validators import eligible_if_yes
+from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.utils import get_utcnow
 from edc_constants.choices import YES_NO
 from edc_constants.constants import YES
+from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_search.model_mixins import SearchSlugManager
-
-from edc_appointment.model_mixins import AppointmentModelMixin
-# from edc_visit_schedule.model_mixins import EnrollmentModelMixin
 
 from ..eligibility import Eligibility
 from ..models.model_mixins import SearchSlugModelMixin
@@ -30,26 +31,15 @@ class EnrollmentManager(SearchSlugManager, models.Manager):
         )
 
 
-class EnrollmentChecklist (SearchSlugModelMixin,  # , AppointmentModelMixin,
-                           BaseUuidModel):
+class EnrollmentChecklist (SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
+                           SearchSlugModelMixin, BaseUuidModel):
 
     eligibility_cls = Eligibility
-
-    objects = EnrollmentManager()
-
-    def natural_key(self):
-        return (self.subject_identifier,)
 
     report_datetime = models.DateTimeField(
         verbose_name='Report Date and Time',
         default=get_utcnow,
         help_text='Date and time of report.')
-
-    subject_identifier = models.CharField(
-        verbose_name='Subject Identifier',
-        max_length=50,
-        blank=True,
-        unique=True)
 
     has_diagnosis = models.CharField(
         verbose_name="Has a cancer diagnosis been documented? ",
@@ -68,7 +58,18 @@ class EnrollmentChecklist (SearchSlugModelMixin,  # , AppointmentModelMixin,
         default=False,
         editable=False)
 
+    objects = EnrollmentManager()
+
+    def natural_key(self):
+        return (self.subject_identifier,)
+
     history = HistoricalRecords()
+
+    def save(self, *args, **kwargs):
+        eligibility_obj = self.eligibility_cls(
+            cancer_status=self.has_diagnosis)
+        self.eligible = eligibility_obj.eligible
+        super().save(*args, **kwargs)
 
     def create_appointments(self, base_appt_datetime=None, taken_datetimes=None):
         if self.has_diagnosis == YES:
@@ -77,13 +78,6 @@ class EnrollmentChecklist (SearchSlugModelMixin,  # , AppointmentModelMixin,
             self.is_eligible = True
         else:
             self.is_eligible = False
-
-    def save(self, *args, **kwargs):
-        eligibility_obj = self.eligibility_cls(
-            cancer_status=self.has_diagnosis)
-        self.eligible = eligibility_obj.eligible
-        print(">>>>>>>>>>>>", self.eligible)
-        super().save(*args, **kwargs)
 
     class Meta():
         consent_model = 'cancer_subject.subjectconsent'

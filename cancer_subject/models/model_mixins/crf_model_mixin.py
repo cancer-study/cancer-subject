@@ -7,10 +7,13 @@ from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.utils import get_utcnow
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_offstudy.model_mixins import OffstudyCrfModelMixin
-from edc_protocol.validators import datetime_not_before_study_start
+# from edc_protocol.validators import datetime_not_before_study_start
 
 from edc_metadata.model_mixins.updates import UpdatesCrfMetadataModelMixin
 from edc_reference.model_mixins import ReferenceModelMixin
+from edc_visit_schedule.model_mixins import SubjectScheduleCrfModelMixin
+from edc_visit_tracking.model_mixins import CrfModelMixin as BaseCrfModelMixin
+
 from edc_visit_tracking.managers import CrfModelManager as VisitTrackingCrfModelManager
 from edc_visit_tracking.model_mixins import (
     CrfModelMixin as VisitTrackingCrfModelMixin, PreviousVisitModelMixin)
@@ -30,61 +33,36 @@ class CrfModelManager(VisitTrackingCrfModelManager):
         )
 
 
-class CrfModelMixin(VisitTrackingCrfModelMixin, OffstudyCrfModelMixin,
-                    ReferenceModelMixin, PreviousVisitModelMixin,
+class CrfModelMixin(BaseCrfModelMixin, SubjectScheduleCrfModelMixin,
+                    RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
                     UpdatesCrfMetadataModelMixin, SiteModelMixin,
-                    FormAsJSONModelMixin, RequiresConsentFieldsModelMixin, BaseUuidModel):
+                    FormAsJSONModelMixin, ReferenceModelMixin, BaseUuidModel):
 
-    """ Base model for all scheduled models (adds key to :class:`SubjectVisit`).
+    """ Base model for all scheduled models
     """
 
     subject_visit = models.OneToOneField(SubjectVisit, on_delete=PROTECT)
 
-    report_datetime = models.DateTimeField(
-        verbose_name="Report Date",
-        validators=[
-            datetime_not_future, datetime_not_before_study_start],
-        default=get_utcnow,
-        help_text=('If reporting today, use today\'s date/time, otherwise use '
-                   'the date/time this information was reported.'))
-
-    objects = CrfModelManager()
-
-    history = HistoricalRecords()
-
     def natural_key(self):
         return self.subject_visit.natural_key()
-    natural_key.dependencies = ['cancer_subject.subjectvisit']
+    natural_key.dependencies = ['cancer_subject.subjectvisit', 'sites.Site']
 
-    class Meta (VisitTrackingCrfModelMixin.Meta,
-                RequiresConsentFieldsModelMixin.Meta):
-        consent_model = 'cancer_subject.subjectconsent'
+    class Meta:
         abstract = True
 
 
-class CrfModelMixinNonUniqueVisit(VisitTrackingCrfModelMixin, OffstudyCrfModelMixin,
+class CrfModelMixinNonUniqueVisit(BaseCrfModelMixin, SubjectScheduleCrfModelMixin,
                                   RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
-                                  UpdatesCrfMetadataModelMixin, BaseUuidModel):
+                                  SiteModelMixin, UpdatesCrfMetadataModelMixin,
+                                  BaseUuidModel):
 
     """ Base model for all scheduled models (adds key to :class:`SubjectVisit`). """
 
-    subject_visit = models.ForeignKey(SubjectVisit, on_delete=PROTECT)
-
-    report_datetime = models.DateTimeField(
-        verbose_name="Report Date",
-        validators=[
-            datetime_not_future, ],
-        default=get_utcnow,
-        help_text=('If reporting today, use today\'s date/time, otherwise use '
-                   'the date/time this information was reported.'))
-
-    objects = CrfModelManager()
-
-    history = HistoricalRecords()
+    subject_visit = models.OneToOneField(SubjectVisit, on_delete=PROTECT)
 
     def natural_key(self):
         return self.subject_visit.natural_key()
-    natural_key.dependencies = ['cancer_subject.subjectvisit']
+    natural_key.dependencies = ['cancer_subject.subjectvisit', 'sites.Site']
 
     class Meta  (VisitTrackingCrfModelMixin.Meta,
                  RequiresConsentFieldsModelMixin.Meta):

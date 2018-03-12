@@ -1,5 +1,4 @@
 from django import forms
-# from edc_base.modelform_mixins import CommonCleanModelFormMixin
 
 from ..models import EnrollmentChecklist
 
@@ -10,6 +9,10 @@ class SubjectModelFormMixin(forms.ModelForm):
 
 
 class EnrollmentChecklistForm(SubjectModelFormMixin):
+
+    subject_identifier = forms.CharField(
+        label='Subject identifier',
+        widget=forms.TextInput(attrs={'readonly': 'readonly'}))
 
     class Meta:
         model = EnrollmentChecklist
