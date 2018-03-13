@@ -37,7 +37,7 @@ class AppConfig(DjangoApponfig):
     screening_age_adult_lower = 18
 
     def ready(self):
-        pass
+        from .models.signals import enrollment_checklist_on_post_save
 
         # if 'migrate' not in sys.argv and 'makemigrations' not in sys.argv:
         #    load_randomization()
@@ -92,7 +92,7 @@ if settings.APP_NAME == 'cancer_subject':
         default_appt_type = 'clinic'
         configurations = [
             AppointmentConfig(
-                model='cancer_subject.appointment',
+                model='edc_appointment.appointment',
                 related_visit_model='cancer_subject.subjectvisit')
         ]
 
@@ -107,7 +107,7 @@ if settings.APP_NAME == 'cancer_subject':
     class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
         timepoints = [
             Timepoint(
-                model='cancer_subject.appointment',
+                model='edc_appointment.appointment',
                 datetime_field='appt_datetime',
                 status_field='appt_status',
                 closed_status='DONE'

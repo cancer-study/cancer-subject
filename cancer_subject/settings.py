@@ -178,7 +178,7 @@ GIT_DIR = BASE_DIR
 COUNTRY = 'botswana'
 HOLIDAY_FILE = os.path.join(BASE_DIR, APP_NAME, 'holidays.csv')
 
-DEFAULT_APPOINTMENT_MODEL = 'cancer_subject.appointment'
+DEFAULT_APPOINTMENT_MODEL = 'edc_appointment.appointment'
 
 EDC_SYNC_SERVER_IP = None
 EDC_SYNC_FILES_REMOTE_HOST = None
