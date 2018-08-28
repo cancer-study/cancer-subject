@@ -15,6 +15,7 @@ from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.field_mixins import IdentityFieldsMixin
 from edc_consent.managers import ConsentManager as SubjectConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
+from edc_base.sites.site_model_mixin import SiteModelMixin
 
 from ..models.model_mixins import SearchSlugModelMixin
 
@@ -67,7 +68,7 @@ class UpdatesOrCreatesRegistrationModelMixin(BaseUpdatesOrCreatesRegistrationMod
 
 
 class SubjectConsent(
-        ConsentModelMixin, UpdatesOrCreatesRegistrationModelMixin,
+        ConsentModelMixin, SiteModelMixin, UpdatesOrCreatesRegistrationModelMixin,
         NonUniqueSubjectIdentifierModelMixin,
         IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
         SampleCollectionFieldsMixin, CitizenFieldsMixin,

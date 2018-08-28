@@ -24,6 +24,8 @@ class SubjectVisitAdmin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin)
         (None, {
             'fields': [
                 'appointment',
+                'reason',
+                'reason_unscheduled',
                 'report_datetime',
                 'comments']}),
         visit_schedule_fieldset_tuple,
@@ -32,25 +34,21 @@ class SubjectVisitAdmin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin)
     list_display = (
         'appointment',
         'report_datetime',
-        'reason',
-        'info_source',
         'created',
         'user_created',
     )
 
     list_filter = (
         'report_datetime',
-        'reason',
-        'appointment__appt_status',
         'appointment__visit_code',
     )
 
-    search_fields = (
-        'appointment__subject_identifier',
-        'appointment__registered_subject__registration_identifier',
-        'appointment__registered_subject__first_name',
-        'appointment__registered_subject__identity',
-    )
+#     search_fields = (
+#         'appointment__subject_identifier',
+#         'appointment__registered_subject__registration_identifier',
+#         'appointment__registered_subject__first_name',
+#         'appointment__registered_subject__identity',
+#     )
 
     def get_readonly_fields(self, request, obj=None):
         return (super().get_readonly_fields(request, obj=obj) + audit_fields

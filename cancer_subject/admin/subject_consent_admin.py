@@ -60,7 +60,6 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
         "language": admin.VERTICAL,
         "may_store_samples": admin.VERTICAL,
         "study_questions": admin.VERTICAL,
-        "identity_type": admin.VERTICAL,
     }
 
     def get_readonly_fields(self, request, obj=None):

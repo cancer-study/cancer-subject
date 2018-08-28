@@ -8,8 +8,11 @@ from edc_visit_tracking.model_mixins import (VisitModelMixin,
 
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_metadata.model_mixins.creates import CreatesMetadataModelMixin
+from edc_appointment.models import Appointment
+from edc_constants.constants import NOT_APPLICABLE
 
-from .appointment import Appointment
+from ..choices import VISIT_UNSCHEDULED_REASON, VISIT_REASON, VISIT_INFO_SOURCE
+from edc_base.model_fields.custom_fields import OtherCharField
 
 
 class SubjectVisit(VisitModelMixin, CreatesMetadataModelMixin,
@@ -22,6 +25,36 @@ class SubjectVisit(VisitModelMixin, CreatesMetadataModelMixin,
 
     appointment = models.OneToOneField(
         Appointment, on_delete=models.PROTECT)
+
+    reason = models.CharField(
+        verbose_name='What is the reason for this visit report?',
+        max_length=25,
+        choices=VISIT_REASON)
+
+    reason_unscheduled = models.CharField(
+        verbose_name=(
+            'If \'Unscheduled\' above, provide reason for '
+            'the unscheduled visit'),
+        max_length=25,
+        choices=VISIT_UNSCHEDULED_REASON,
+        default=NOT_APPLICABLE)
+
+    reason_missed = models.CharField(
+        verbose_name='If \'Missed\' above, provide the reason the scheduled visit was missed',
+        max_length=35,
+        choices=VISIT_REASON,
+        blank=True,
+        null=True)
+
+    info_source = models.CharField(
+        verbose_name='What is the main source of this information?',
+        max_length=25,
+        choices=VISIT_INFO_SOURCE)
+
+    info_source_other = OtherCharField(
+        verbose_name='Other, specify',
+        max_length=25,
+    )
 
     objects = VisitModelManager()
 

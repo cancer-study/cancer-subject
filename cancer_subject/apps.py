@@ -17,13 +17,12 @@ from edc_sync_files.apps import AppConfig as BaseEdcSyncFilesAppConfig
 
 from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
-from edc_base_test.apps import AppConfig as BaseEdcBaseTestAppConfig
 from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
 from edc_facility.apps import AppConfig as BaseEdcFacilityAppConfig
 from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
-from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
-from edc_timepoint.timepoint import Timepoint
+# from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
+# from edc_timepoint.timepoint import Timepoint
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import MISSED_VISIT
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
@@ -65,8 +64,8 @@ if settings.APP_NAME == 'cancer_subject':
         copyright = '2017-{}'.format(get_utcnow().year)
         license = None
 
-    class EdcBaseTestAppConfig(BaseEdcBaseTestAppConfig):
-        consent_model = 'cancer_subject.subjectconsent'
+#     class EdcBaseTestAppConfig(BaseEdcBaseTestAppConfig):
+#         consent_model = 'cancer_subject.subjectconsent'
 
     class EdcConsentAppConfig(BaseEdcConsentAppConfig):
         pass
@@ -92,7 +91,7 @@ if settings.APP_NAME == 'cancer_subject':
         default_appt_type = 'clinic'
         configurations = [
             AppointmentConfig(
-                model='cancer_subject.appointment',
+                model='edc_appointment.appointment',
                 related_visit_model='cancer_subject.subjectvisit')
         ]
 
@@ -104,26 +103,22 @@ if settings.APP_NAME == 'cancer_subject':
             '5-day clinic': dict(days=[MO, TU, WE, TH, FR],
                                  slots=[100, 100, 100, 100, 100])}
 
-    class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
-        timepoints = [
-            Timepoint(
-                model='cancer_subject.appointment',
-                datetime_field='appt_datetime',
-                status_field='appt_status',
-                closed_status='DONE'
-            ),
-            Timepoint(
-                model='cancer_subject.historicalappointment',
-                datetime_field='appt_datetime',
-                status_field='appt_status',
-                closed_status='DONE'
-            ),
-        ]
+#     class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
+#         timepoints = [
+#             Timepoint(
+#                 model='cancer_subject.appointment',
+#                 datetime_field='appt_datetime',
+#                 status_field='appt_status',
+#                 closed_status='DONE'
+#             ),
+#             Timepoint(
+#                 model='cancer_subject.historicalappointment',
+#                 datetime_field='appt_datetime',
+#                 status_field='appt_status',
+#                 closed_status='DONE'
+#             ),
+#         ]
 
     class EdcSyncAppConfig(BaseEdcSyncAppConfig):
-        edc_sync_files_using = True
-        role = CENTRAL_SERVER
-
-    class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
         edc_sync_files_using = True
         role = CENTRAL_SERVER
