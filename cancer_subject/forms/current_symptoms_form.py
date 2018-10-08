@@ -13,8 +13,8 @@ class CurrentSymptomsForm (SubjectModelFormMixin):
 
         if (cleaned_data.get('any_worry') == YES
                 and not cleaned_data.get('symptom_desc')):
-            raise forms.ValidationError('If patient is worried, please'
-                                        ' provide a description of their symptom')
+            raise forms.ValidationError('If patient is worried, please provide'
+                                        ' a description of their symptom')
         if (cleaned_data.get('any_worry') == YES
                 and not cleaned_data.get('patient_own_remedy')):
             raise forms.ValidationError(
@@ -23,7 +23,8 @@ class CurrentSymptomsForm (SubjectModelFormMixin):
         if (cleaned_data.get('any_worry') == YES
                 and not cleaned_data.get('severity')):
             raise forms.ValidationError('How severe is/are the symptom(s)?')
-#         if cleaned_data.get('ra_advice') and not cleaned_data.get('outcome_update'):
+#         if cleaned_data.get('ra_advice') and not cleaned_data.get(
+#                'outcome_update'):
 #             raise forms.ValidationError('If RA has provided advice/help,'
 # ' what is the outcome or update?')
 

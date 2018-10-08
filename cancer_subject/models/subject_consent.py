@@ -1,21 +1,21 @@
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
-
-
 from edc_base.constants import DEFAULT_BASE_FIELDS
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
 from edc_base.sites import CurrentSiteManager
 from edc_base.sites.site_model_mixin import SiteModelMixin
+from edc_consent.field_mixins import (SampleCollectionFieldsMixin,
+                                      CitizenFieldsMixin)
 from edc_consent.field_mixins import IdentityFieldsMixin
 from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
-from edc_consent.field_mixins import SampleCollectionFieldsMixin, CitizenFieldsMixin
 from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.managers import ConsentManager as SubjectConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
-    UpdatesOrCreatesRegistrationModelMixin as BaseUpdatesOrCreatesRegistrationModelMixin)
+    UpdatesOrCreatesRegistrationModelMixin 
+    as BaseUpdatesOrCreatesRegistrationModelMixin)
 from edc_search.model_mixins import SearchSlugManager
 
 from ..models.model_mixins import SearchSlugModelMixin
@@ -28,7 +28,8 @@ class ConsentManager(SubjectConsentManager, SearchSlugManager):
             subject_identifier=subject_identifier, version=version)
 
 
-class UpdatesOrCreatesRegistrationModelMixin(BaseUpdatesOrCreatesRegistrationModelMixin):
+class UpdatesOrCreatesRegistrationModelMixin(
+        BaseUpdatesOrCreatesRegistrationModelMixin):
 
     @property
     def registration_unique_field(self):
@@ -61,15 +62,17 @@ class UpdatesOrCreatesRegistrationModelMixin(BaseUpdatesOrCreatesRegistrationMod
             except AttributeError:
                 pass
         if self.registration_unique_field not in unique_fields:
-            raise ImproperlyConfigured('Field is not unique. Got {}.{} -- {}'.format(
-                self._meta.label_lower, self.registration_unique_field))
+            raise ImproperlyConfigured(
+                'Field is not unique. Got {}.{} -- {}'.format(
+                    self._meta.label_lower, self.registration_unique_field))
 
     class Meta:
         abstract = True
 
 
 class SubjectConsent(
-        ConsentModelMixin, SiteModelMixin, UpdatesOrCreatesRegistrationModelMixin,
+        ConsentModelMixin, SiteModelMixin,
+        UpdatesOrCreatesRegistrationModelMixin,
         NonUniqueSubjectIdentifierModelMixin,
         IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
         SampleCollectionFieldsMixin, CitizenFieldsMixin,

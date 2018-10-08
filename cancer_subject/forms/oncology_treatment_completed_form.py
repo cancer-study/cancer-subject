@@ -1,9 +1,8 @@
 from django import forms
-
 from edc_constants.constants import YES
 
-from .modelform_mixin import SubjectModelFormMixin
 from ..models import OncologyTreatmentCompleted
+from .modelform_mixin import SubjectModelFormMixin
 
 
 class OncologyTreatmentCompletedForm (SubjectModelFormMixin):
@@ -13,16 +12,16 @@ class OncologyTreatmentCompletedForm (SubjectModelFormMixin):
 
         if (cleaned_data.get('patient_had_chemo') == YES
                 and not cleaned_data.get('treatment_detail')):
-            raise forms.ValidationError(
-                'Treatment is planned. Please provide details of the treatment')
+            raise forms.ValidationError('Treatment is planned. Please '
+                                        'provide details of the treatment')
         if (cleaned_data.get('patient_had_radiation') == YES
                 and not cleaned_data.get('treatment_detail')):
-            raise forms.ValidationError(
-                'Treatment is planned. Please provide details of the treatment')
+            raise forms.ValidationError('Treatment is planned. Please '
+                                        'provide details of the treatment')
         if (cleaned_data.get('patient_had_surgery') == YES
                 and not cleaned_data.get('treatment_detail')):
-            raise forms.ValidationError(
-                'Treatment is planned. Please provide details of the treatment')
+            raise forms.ValidationError('Treatment is planned. Please '
+                                        'provide details of the treatment')
 
         cleaned_data = super(OncologyTreatmentCompletedForm, self).clean()
 

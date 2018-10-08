@@ -11,11 +11,12 @@ class BaseRiskAssessmentSmokingForm (SubjectModelFormMixin):
 
         if (cleaned_data.get('smoke_now') == 'no'
                 and cleaned_data.get('cigarette_smoking')):
-            raise forms.ValidationError(
-                'Subject quit smoking. DO NOT give any details about smoking NOW.')
-        if cleaned_data.get('smoke_now') == 'no' and cleaned_data.get('years_smoked'):
-            raise forms.ValidationError(
-                'Subject quit smoking. DO NOT give any details about smoking NOW.')
+            raise forms.ValidationError('Subject quit smoking. DO NOT give '
+                                        'any details about smoking NOW.')
+        if (cleaned_data.get('smoke_now') == 'no'
+                and cleaned_data.get('years_smoked')):
+            raise forms.ValidationError('Subject quit smoking. DO NOT give'
+                                        ' any details about smoking NOW.')
 
         if (cleaned_data.get('smoke_now') == 'no'
                 and not cleaned_data.get('cigarette_smoked')):

@@ -24,7 +24,8 @@ class SubjectConsentForm (SubjectModelFormMixin):
         if caps.match(field_value):
             True
         else:
-            raise forms.ValidationError('PLEASE USE ALL CAPS FOR {}'.format(field_name))
+            raise forms.ValidationError(
+                'PLEASE USE ALL CAPS FOR {}'.format(field_name))
 
     class Meta:
         model = SubjectConsent

@@ -18,12 +18,14 @@ class CancerDiagnosisForm (SubjectModelFormMixin):
 # 'fill out the LabResult:Haematology form')
 
     # validating cancer_diagnosis
-        if cleaned_data['diagnosis'] == YES and not cleaned_data['cancer_category']:
+        if (cleaned_data['diagnosis'] == YES
+                and not cleaned_data['cancer_category']):
             raise forms.ValidationError(
                 'If patient is diagnosed with cancer, provide cancer_case')
-#         if cleaned_data['diagnosis'] == YES and not cleaned_data['symptom_prompt']:
-#             raise forms.ValidationError('If patient is diagnosed with cancer, '
-# 'which symptom led to diagnosis of cancer')
+#         if (cleaned_data['diagnosis'] == YES
+#            and not cleaned_data['symptom_prompt']):
+#             raise forms.ValidationError('If patient is diagnosed with '
+#                        'cancer,which symptom led to diagnosis of cancer')
 #
 #         if cleaned_data['symptom_prompt'] and not '
 # 'cleaned_data['symptom_first_noticed']:

@@ -27,12 +27,12 @@ from .enrollment_checklist import EnrollmentChecklist
 
 @receiver(post_save, weak=False, sender=EnrollmentChecklist,
           dispatch_uid='enrollment_checklist_on_post_save')
-def enrollment_checklist_on_post_save(sender, instance, raw, created, **kwargs):
+def enrollment_checklist_on_post_save(sender, instance, raw, created,
+                                      **kwargs):
     """Creates an onschedule instance for this enrolled subject, if
     it does not exist.
     """
 
-    print("coming through..!!!!!")
     if not raw:
         if not created:
             _, schedule = site_visit_schedules.get_by_onschedule_model(

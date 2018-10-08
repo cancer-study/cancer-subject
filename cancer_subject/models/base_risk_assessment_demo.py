@@ -1,12 +1,12 @@
 from django.core.validators import MinValueValidator
 from django.db import models
-
 from edc_base.model_fields.custom_fields import OtherCharField
 from edc_constants.choices import YES_NO
 
+from ..choices import (MARITAL_STATUS_CHOICE, MONEY_PROVIDED_CHOICE,
+                       OCCUPATION_CHOICE)
 from ..choices import DISTRICT_CHOICE, COMMUNITY, EDUCATION_CHOICE
 from ..choices import ETHNIC_GRP_CHOICE, FREQUENCY_CHOICE, MONEY_EARNED_CHOICE
-from ..choices import MARITAL_STATUS_CHOICE, MONEY_PROVIDED_CHOICE, OCCUPATION_CHOICE
 from ..choices import SETTING_CHOICE, TOILET_CHOICE, RACE_CHOICE
 from .model_mixins import CrfModelMixin
 

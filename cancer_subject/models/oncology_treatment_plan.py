@@ -1,9 +1,8 @@
 from django.db import models
-
 from edc_constants.choices import YES_NO
 
-from .model_mixins import CrfModelMixin
 from ..choices import CANCER_TREATMENT_GOAL, CHEMO_INTENT
+from .model_mixins import CrfModelMixin
 
 
 class OncologyTreatmentPlan (CrfModelMixin):
@@ -29,7 +28,8 @@ class OncologyTreatmentPlan (CrfModelMixin):
         blank=True,
         choices=YES_NO,
     )
-    # This question remains the same but two options have been removed to new Q: treatment_goal
+    # This question remains the same but two options have been removed to new
+    # Q: treatment_goal
     # To do:
     # Data migration for responses here to move them to newQ
     chemo_intent = models.CharField(

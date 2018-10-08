@@ -1,8 +1,7 @@
 from django.db import models
 
-from .model_mixins import CrfModelMixin
-
 from ..choices import TEST_RESULT_CHOICE
+from .model_mixins import CrfModelMixin
 
 
 class LabResultHiv(CrfModelMixin):
@@ -27,7 +26,8 @@ class LabResultHiv(CrfModelMixin):
 #         '''Returns a result value for given attr name for the lab_tracker.'''
 #         retval = None
 #         if not attr in dir(self):
-#             raise TypeError('Attribute {0} does not exist in model {1}'.format(
+#             raise TypeError(
+#                 'Attribute {0} does not exist in model {1}'.format(
 #                 attr, self._meta.object_name))
 #         if attr == 'hiv_result':
 #             if self.test_result.lower() == 'pos':

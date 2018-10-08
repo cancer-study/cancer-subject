@@ -1,15 +1,15 @@
 #!/usr/bin/python -u
 # coding: utf-8
-from django.db import models
 from django.core.validators import RegexValidator
-
+from django.db import models
 from edc_base.model_fields.custom_fields import OtherCharField
 from edc_constants.choices import YES_NO
 
 from ..choices import CANCER_CATEGORY_CHOICE, DIAGNOSIS_BASIS_CHOICE
-from ..choices import METASTASIS_POSSIBLE_GRADES, POSSIBLE_OVERALL_STAGE_MODIFIER
+from ..choices import METASTASIS_POSSIBLE_GRADES
 from ..choices import POSSIBLE_GRADES, BASIS_CHOICE
 from ..choices import POSSIBLE_OVERALL_STAGES, SYMPTOM_PROMPT_CHOICE
+from ..choices import POSSIBLE_OVERALL_STAGE_MODIFIER
 from .list_models import ResultsToRecord
 from .model_mixins import CrfModelMixin
 

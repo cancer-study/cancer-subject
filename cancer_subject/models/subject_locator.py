@@ -3,10 +3,9 @@ from django_crypto_fields.fields import EncryptedCharField
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
 from edc_base.model_validators import CellNumber, TelephoneNumber
+from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_constants.choices import YES_NO_NA, YES_NO, YES, NOT_APPLICABLE
 from edc_locator.model_mixins import LocatorModelMixin
-
-from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 
 
 class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
@@ -86,7 +85,8 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
         """Returns a formatted string that summarizes contact
         and locator info."""
         info = 'May not follow-up.'
-        may_sms_follow_up = 'SMS permitted' if self.may_sms_follow_up == YES else 'NO SMS!'
+        may_sms_follow_up = ('SMS permitted'
+                             if self.may_sms_follow_up == YES else 'NO SMS!')
         if self.may_follow_up == YES:
             info = (
                 '{may_sms_follow_up}\n'
@@ -107,7 +107,8 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
                     'Work Phone: {subject_work_phone}\n'
                     '').format(
                         info=info,
-                        subject_work_place=self.subject_work_place or '(work place not known)',
+                        subject_work_place=(self.subject_work_place
+                                            or '(work place not known)'),
                         subject_work_phone=self.subject_work_phone)
             if self.may_contact_someone == YES:
                 info = (

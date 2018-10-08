@@ -9,7 +9,7 @@ from edc_death_report.model_mixins import DeathReportModelMixin
 # from edc.subject.adverse_event.models import BaseBaseDeath
 
 # from .subject_off_study_mixin import SubjectOffStudyMixin
-from .model_mixins import CrfModelMixin
+#from .model_mixins import CrfModelMixin
 from .subject_visit import SubjectVisit
 
 

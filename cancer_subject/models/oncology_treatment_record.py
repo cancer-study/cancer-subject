@@ -11,8 +11,9 @@ class OncologyTreatmentRecord (CrfModelMixin):
     """ CA007 """
 # v2 removed this first question
 #    treatment_received = models.CharField(
-#        verbose_name=('1. Has the patient received cancer treatment (chemotherapy, '
-#                      'radiation, surgery) that has not yet been recorded?'),
+#        verbose_name=('1. Has the patient received cancer treatment (
+#                         'chemotherapy, radiation, surgery) that has not '
+#                         'yet been recorded?'),
 #        max_length=3,
 #        choices=YES_NO,
 #        help_text='',

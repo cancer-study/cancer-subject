@@ -31,8 +31,8 @@ class EnrollmentManager(SearchSlugManager, models.Manager):
         )
 
 
-class EnrollmentChecklist (SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
-                           SearchSlugModelMixin, BaseUuidModel):
+class EnrollmentChecklist(SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
+                          SearchSlugModelMixin, BaseUuidModel):
 
     eligibility_cls = Eligibility
 
@@ -71,10 +71,12 @@ class EnrollmentChecklist (SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
         self.eligible = eligibility_obj.eligible
         super().save(*args, **kwargs)
 
-    def create_appointments(self, base_appt_datetime=None, taken_datetimes=None):
+    def create_appointments(self, base_appt_datetime=None,
+                            taken_datetimes=None):
         if self.has_diagnosis == YES:
             super().create_appointments(
-                base_appt_datetime=base_appt_datetime, taken_datetimes=taken_datetimes)
+                base_appt_datetime=base_appt_datetime,
+                taken_datetimes=taken_datetimes)
             self.is_eligible = True
         else:
             self.is_eligible = False
