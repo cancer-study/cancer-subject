@@ -1,0 +1,3 @@
+include AUTHORS CHANGES README.md LICENCE
+recursive-include cancer_subject/templates *
+
