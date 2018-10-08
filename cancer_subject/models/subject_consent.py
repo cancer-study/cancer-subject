@@ -14,7 +14,7 @@ from edc_consent.managers import ConsentManager as SubjectConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
-    UpdatesOrCreatesRegistrationModelMixin 
+    UpdatesOrCreatesRegistrationModelMixin
     as BaseUpdatesOrCreatesRegistrationModelMixin)
 from edc_search.model_mixins import SearchSlugManager
 

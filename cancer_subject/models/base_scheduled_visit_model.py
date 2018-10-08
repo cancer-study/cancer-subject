@@ -12,7 +12,7 @@
 #
 # class BaseScheduledVisitModel(CrfModelMixin):
 #
-#     """ Base model for all scheduled models 
+#     """ Base model for all scheduled models
 #         (adds key to :class:`SubjectVisit`). """
 #
 #     report_datetime = models.DateTimeField("Today's date",

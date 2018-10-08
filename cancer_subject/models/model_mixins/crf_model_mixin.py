@@ -6,21 +6,20 @@ from edc_base.model_validators import datetime_not_future
 from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.utils import get_utcnow
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
-from edc_offstudy.model_mixins import OffstudyCrfModelMixin
-# from edc_protocol.validators import datetime_not_before_study_start
-
 from edc_metadata.model_mixins.updates import UpdatesCrfMetadataModelMixin
+from edc_offstudy.model_mixins import OffstudyCrfModelMixin
 from edc_reference.model_mixins import ReferenceModelMixin
 from edc_visit_schedule.model_mixins import SubjectScheduleCrfModelMixin
-from edc_visit_tracking.model_mixins import CrfModelMixin as BaseCrfModelMixin
-
-from edc_visit_tracking.managers import CrfModelManager as VisitTrackingCrfModelManager
+from edc_visit_tracking.managers import (
+    CrfModelManager as VisitTrackingCrfModelManager)
 from edc_visit_tracking.model_mixins import (
     CrfModelMixin as VisitTrackingCrfModelMixin, PreviousVisitModelMixin)
+from edc_visit_tracking.model_mixins import CrfModelMixin as BaseCrfModelMixin
 
 from ..subject_visit import SubjectVisit
 
 
+# from edc_protocol.validators import datetime_not_before_study_start
 class CrfModelManager(VisitTrackingCrfModelManager):
 
     def get_by_natural_key(self, subject_identifier, visit_schedule_name,
@@ -35,8 +34,9 @@ class CrfModelManager(VisitTrackingCrfModelManager):
 
 class CrfModelMixin(BaseCrfModelMixin, SubjectScheduleCrfModelMixin,
                     RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
-                    UpdatesCrfMetadataModelMixin, SiteModelMixin, OffstudyCrfModelMixin,
-                    FormAsJSONModelMixin, ReferenceModelMixin, BaseUuidModel):
+                    UpdatesCrfMetadataModelMixin, SiteModelMixin,
+                    OffstudyCrfModelMixin, FormAsJSONModelMixin,
+                    ReferenceModelMixin, BaseUuidModel):
 
     """ Base model for all scheduled models
     """
@@ -51,12 +51,16 @@ class CrfModelMixin(BaseCrfModelMixin, SubjectScheduleCrfModelMixin,
         abstract = True
 
 
-class CrfModelMixinNonUniqueVisit(BaseCrfModelMixin, SubjectScheduleCrfModelMixin,
-                                  RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
+class CrfModelMixinNonUniqueVisit(BaseCrfModelMixin,
+                                  SubjectScheduleCrfModelMixin,
+                                  RequiresConsentFieldsModelMixin,
+                                  PreviousVisitModelMixin,
                                   SiteModelMixin, UpdatesCrfMetadataModelMixin,
                                   BaseUuidModel):
 
-    """ Base model for all scheduled models (adds key to :class:`SubjectVisit`). """
+    """ Base model for all scheduled models
+     (adds key to :class:`SubjectVisit`).
+    """
 
     subject_visit = models.OneToOneField(SubjectVisit, on_delete=PROTECT)
 

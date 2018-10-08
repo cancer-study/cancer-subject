@@ -1,20 +1,20 @@
 from django.contrib import admin
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
-
 from edc_base.modeladmin_mixins import audit_fieldset_tuple, audit_fields
 from edc_visit_schedule.fieldsets import (
     visit_schedule_fieldset_tuple, visit_schedule_fields)
 from edc_visit_tracking.modeladmin_mixins import VisitModelAdminMixin
 
+from ..admin_site import cancer_subject_admin
 from ..forms import SubjectVisitForm
 from ..models import SubjectVisit, SubjectRequisition
 from .modeladmin_mixins import ModelAdminMixin
-from ..admin_site import cancer_subject_admin
 
 
 @admin.register(SubjectVisit, site=cancer_subject_admin)
-class SubjectVisitAdmin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
+class SubjectVisitAdmin(VisitModelAdminMixin, ModelAdminMixin,
+                        admin.ModelAdmin):
 
     form = SubjectVisitForm
 

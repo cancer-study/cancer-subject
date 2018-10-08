@@ -15,8 +15,8 @@ from ..models import SubjectConsent
 
 @admin.register(SubjectConsent, site=cancer_subject_admin)
 class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
-                          ModelAdminInstitutionMixin, ModelAdminNextUrlRedirectMixin,
-                          admin.ModelAdmin):
+                          ModelAdminInstitutionMixin,
+                          ModelAdminNextUrlRedirectMixin, admin.ModelAdmin):
 
     form = SubjectConsentForm
 

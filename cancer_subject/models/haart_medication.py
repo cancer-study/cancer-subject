@@ -2,7 +2,7 @@ from django.db import models
 from edc_base.model_mixins import BaseUuidModel
 
 from ..choices import HAART_MEDS_DRUG_NAMES
-from ..choices import MOD_REASON_CHOICE, ARV_REASON_CHOICE, 
+from ..choices import MOD_REASON_CHOICE, ARV_REASON_CHOICE
 from .haart_record import HaartRecord
 
 

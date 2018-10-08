@@ -1,14 +1,14 @@
 from django.contrib import admin
-
 from edc_model_admin import TabularInlineMixin
 
-from ..models import RadiationTreatment, RadiationTreatmentRecord
-from ..forms import RadiationTreatmentForm
 from ..admin_site import cancer_subject_admin
+from ..forms import RadiationTreatmentForm
+from ..models import RadiationTreatment, RadiationTreatmentRecord
 from .modeladmin_mixins import CrfModelAdminMixin
 
 
-class RadiationTreatmentRecordInlineAdmin(TabularInlineMixin, admin.TabularInline):
+class RadiationTreatmentRecordInlineAdmin(TabularInlineMixin,
+                                          admin.TabularInline):
     model = RadiationTreatmentRecord
     extra = 1
 

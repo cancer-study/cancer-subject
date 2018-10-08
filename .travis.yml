@@ -14,7 +14,7 @@ install:
 - pip install -e .
 - pip install -q -r requirements.txt
 before_script:
-- flake8
+- flake8  --ignore=C901,F401,W503
 - mysql -e 'create database edc character set utf8;'
 script:
 - coverage run --source=cancer_subject manage.py test

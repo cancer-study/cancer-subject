@@ -13,7 +13,8 @@ from ..forms import EnrollmentChecklistForm
 from ..models import EnrollmentChecklist
 
 
-class ModelAdminMixin(ModelAdminNextUrlRedirectMixin, ModelAdminFormAutoNumberMixin,
+class ModelAdminMixin(ModelAdminNextUrlRedirectMixin,
+                      ModelAdminFormAutoNumberMixin,
                       ModelAdminRevisionMixin, ModelAdminReplaceLabelTextMixin,
                       ModelAdminInstitutionMixin):
 
@@ -74,5 +75,6 @@ class EnrollmentChecklistAdmin(ModelAdminMixin, FieldsetsModelAdminMixin,
 #             screening_identifier=request.GET.get('screening_identifier'))
 #         if subject_screening.mental_status == ABNORMAL:
 #             form = self.replace_label_text(
-#                 form, 'participant', 'next of kin', skip_fields=['is_incarcerated'])
+#                 form, 'participant',
+#                 'next of kin', skip_fields=['is_incarcerated'])
 #         return form

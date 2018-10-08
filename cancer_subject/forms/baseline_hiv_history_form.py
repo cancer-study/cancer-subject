@@ -7,6 +7,7 @@ from .form_mixins import SubjectModelFormMixin
 
 # BaselineHIVHistory
 class BaselineHIVHistoryForm (SubjectModelFormMixin):
+
     def clean(self):
         cleaned_data = self.cleaned_data
         if (cleaned_data.get('has_cd4') == YES

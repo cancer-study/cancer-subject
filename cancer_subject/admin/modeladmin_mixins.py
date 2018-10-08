@@ -2,18 +2,18 @@ from django.contrib import admin
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
-from edc_fieldsets import FieldsetsModelAdminMixin
 from edc_base.modeladmin_mixins import (
     ModelAdminNextUrlRedirectMixin, ModelAdminFormInstructionsMixin,
     ModelAdminFormAutoNumberMixin, ModelAdminAuditFieldsMixin,
     ModelAdminReadOnlyMixin, ModelAdminInstitutionMixin,
     FormAsJSONModelAdminMixin, ModelAdminRedirectOnDeleteMixin)
-
+from edc_fieldsets import FieldsetsModelAdminMixin
 from edc_visit_tracking.modeladmin_mixins import (
     CrfModelAdminMixin as VisitTrackingCrfModelAdminMixin)
 
 
-class ModelAdminMixin(ModelAdminNextUrlRedirectMixin, ModelAdminFormInstructionsMixin,
+class ModelAdminMixin(ModelAdminNextUrlRedirectMixin,
+                      ModelAdminFormInstructionsMixin,
                       ModelAdminFormAutoNumberMixin, ModelAdminRevisionMixin,
                       ModelAdminAuditFieldsMixin, ModelAdminReadOnlyMixin,
                       ModelAdminInstitutionMixin):
@@ -44,5 +44,6 @@ class CrfModelAdminMixin(VisitTrackingCrfModelAdminMixin,
 
     def view_on_site(self, obj):
         return reverse(
-            'cancer_dashboard:subject_dashboard_url', kwargs=dict(
+            'cancer_dashboard:subject_dashboard_url',
+            kwargs=dict(
                 subject_identifier=obj.subject_visit.appointment.subject_identifier))
