@@ -37,7 +37,7 @@ from .otr_radiation_form import OTRRadiationForm
 from .otr_surgical_form import OTRSurgicalForm
 from .radiation_treatment_form import RadiationTreatmentForm
 from .subject_consent_form import SubjectConsentForm
-#from .subject_locator_form import SubjectLocatorForm
+# from .subject_locator_form import SubjectLocatorForm
 from .subject_off_study_form import SubjectOffStudyForm
 from .subject_visit_form import SubjectVisitForm
 from .symptoms_and_testing_form import SymptomsAndTestingForm
