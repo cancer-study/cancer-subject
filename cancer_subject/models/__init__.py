@@ -44,7 +44,7 @@ from .otr_surgical import OTRSurgical
 from .radiation_treatment import RadiationTreatment, RadiationTreatmentRecord
 from .referral import Referral
 from .subject_consent import SubjectConsent
-from .subject_locator import SubjectLocator
+#from .subject_locator import SubjectLocator
 from .subject_offstudy import SubjectOffstudy
 from .subject_requisition import SubjectRequisition
 from .subject_visit import SubjectVisit
