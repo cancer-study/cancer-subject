@@ -28,12 +28,12 @@ from .otr_chemo_admin import OTRChemoAdmin
 from .otr_surgical_form import OTRSurgicalAdmin
 from .radiation_treatment_admin import RadiationTreatmentAdmin
 from .subject_consent_admin import SubjectConsentAdmin
+from .subject_locator_admin import SubjectLocatorAdmin
 from .subject_offstudy_admin import SubjectOffStudyAdmin
 from .subject_visit_admin import SubjectVisitAdmin
 from .symptoms_and_testing_admin import SymptomsAndTestingAdmin
 
 
-# from .subject_locator_admin import SubjectLocatorAdmin
 # from .lab_result_cd4_admin import LabResultCd4Admin
 # from .lab_result_height_weight_admin import LabResultHeightWeightAdmin
 # from .lab_result_hiv_admin import LabResultHivAdmin

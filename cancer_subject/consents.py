@@ -3,10 +3,9 @@ from datetime import datetime
 import arrow
 from dateutil.tz import gettz
 from django.apps import apps as django_apps
-from edc_constants.constants import MALE, FEMALE
-
 from edc_consent.consent import Consent
 from edc_consent.site_consents import site_consents
+from edc_constants.constants import MALE, FEMALE
 
 
 app_config = django_apps.get_app_config('edc_protocol')
