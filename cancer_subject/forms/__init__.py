@@ -2,6 +2,7 @@ from .activity_and_functioning import ActivityAndFunctioningForm
 from .ae010_form import Ae010Form
 from .af004_form import Af004Form
 from .af005_form import Af005Form
+from .appointment_form import AppointmentForm
 from .base_risk_assessment_alcohol_form import BaseRiskAssessmentAlcoholForm
 from .base_risk_assessment_cancer_form import BaseRiskAssessmentCancerForm
 from .base_risk_assessment_chemical_form import BaseRiskAssessmentChemicalForm
@@ -37,10 +38,9 @@ from .otr_radiation_form import OTRRadiationForm
 from .otr_surgical_form import OTRSurgicalForm
 from .radiation_treatment_form import RadiationTreatmentForm
 from .subject_consent_form import SubjectConsentForm
-# from .subject_locator_form import SubjectLocatorForm
 from .subject_off_study_form import SubjectOffStudyForm
 from .subject_visit_form import SubjectVisitForm
 from .symptoms_and_testing_form import SymptomsAndTestingForm
 
 
-# from .appointment_form import AppointmentForm
+# from .subject_locator_form import SubjectLocatorForm
