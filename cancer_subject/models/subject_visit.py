@@ -13,6 +13,8 @@ from edc_visit_tracking.model_mixins import (VisitModelMixin)
 
 from ..choices import INFO_SOURCE, REASONS_MISSED_OR_DELAYED
 from ..choices import VISIT_REASON, VISIT_UNSCHEDULED_REASON
+from edc_visit_tracking.choices import VISIT_INFO_SOURCE
+from edc_model_fields.fields.other_charfield import OtherCharField
 
 
 # from .appointment import Appointment
@@ -49,6 +51,36 @@ class SubjectVisit(VisitModelMixin, ReferenceModelMixin,
         verbose_name='What is the main source of this information?',
         max_length=25,
         choices=INFO_SOURCE)
+
+    reason = models.CharField(
+        verbose_name='What is the reason for this visit report?',
+        max_length=25,
+        choices=VISIT_REASON)
+
+    reason_unscheduled = models.CharField(
+        verbose_name=(
+            'If \'Unscheduled\' above, provide reason for '
+            'the unscheduled visit'),
+        max_length=25,
+        choices=VISIT_UNSCHEDULED_REASON,
+        default=NOT_APPLICABLE)
+
+    reason_missed = models.CharField(
+        verbose_name='If \'Missed\' above, provide the reason the scheduled visit was missed',
+        max_length=35,
+        choices=VISIT_REASON,
+        blank=True,
+        null=True)
+
+    info_source = models.CharField(
+        verbose_name='What is the main source of this information?',
+        max_length=25,
+        choices=VISIT_INFO_SOURCE)
+
+    info_source_other = OtherCharField(
+        verbose_name='Other, specify',
+        max_length=25,
+    )
 
     objects = VisitModelManager()
 

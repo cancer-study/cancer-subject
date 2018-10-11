@@ -35,7 +35,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
                 'guardian_name',
                 'is_dob_estimated',
                 'identity',
-                #                 'identity_type',
+                'identity_type',
                 'confirm_identity',
                 'study_site',
                 'is_incarcerated',
@@ -60,7 +60,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminRevisionMixin,
         "language": admin.VERTICAL,
         "may_store_samples": admin.VERTICAL,
         "study_questions": admin.VERTICAL,
-        #         "identity_type": admin.VERTICAL,
+        "identity_type": admin.VERTICAL,
     }
 
     def get_readonly_fields(self, request, obj=None):

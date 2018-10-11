@@ -546,7 +546,6 @@ PATIENT_FOLLOW_UP = (
     (OTHER, 'Other, specify:'),
 )
 
-
 PARTICIPANT_STATUS_CHOICE = (
     ('on_study', 'On study'),
     ('off_study', 'Off study'),

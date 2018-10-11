@@ -17,7 +17,6 @@ import sys
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 APP_NAME = 'cancer_subject'
 
-
 ETC_DIR = os.path.join(BASE_DIR, 'etc')
 
 # Quick-start development settings - unsuitable for production
@@ -49,10 +48,12 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'rest_framework',
     'rest_framework.authtoken',
+    'django_crypto_fields.apps.AppConfig',
+    'django_revision.apps.AppConfig',
+    'edc_action_item.apps.AppConfig',
+    'edc_timepoint.apps.AppConfig',
     'edc_reference.apps.AppConfig',
     'edc_metadata_rules.apps.AppConfig',
-    # 'edc_sync.apps.AppConfig',
-    # 'edc_sync_files.apps.AppConfig',
     'django_crypto_fields.apps.AppConfig',
     'django_revision.apps.AppConfig',
     'edc_base.apps.AppConfig',
@@ -64,11 +65,9 @@ INSTALLED_APPS = [
     'cancer_dashboard.apps.AppConfig',
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
     'cancer_subject.apps.AppConfig',
-    'edc_base_test.apps.AppConfig',
     'cancer_subject.apps.EdcDeviceAppConfig',
     'cancer_subject.apps.EdcProtocolAppConfig',
     'cancer_subject.apps.EdcAppointmentAppConfig',
-    'cancer_subject.apps.EdcTimepointAppConfig',
     'cancer_subject.apps.EdcMetadataAppConfig',
     'cancer_visit_schedule.apps.AppConfig',
     'cancer_metadata_rules.apps.AppConfig',
@@ -177,6 +176,12 @@ COUNTRY = 'botswana'
 HOLIDAY_FILE = os.path.join(BASE_DIR, APP_NAME, 'holidays.csv')
 
 DEFAULT_APPOINTMENT_MODEL = 'edc_appointment.appointment'
+
+DASHBOARD_URL_NAMES = {
+    'subject_listboard_url': 'cancer_dashboard:subject_listboard_url',
+    'screening_listboard_url': 'cancer_dashboard:screening_listboard_url',
+    'subject_dashboard_url': 'cancer_dashboard:subject_dashboard_url',
+}
 
 EDC_SYNC_SERVER_IP = None
 EDC_SYNC_FILES_REMOTE_HOST = None
