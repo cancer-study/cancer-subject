@@ -1,5 +1,5 @@
 from cancer_subject_validations.form_validators import (
-    BaseRiskAssessmentCancerFormValidation)
+    BaseRiskAssessementCancerFormValidator)
 
 from ..models import BaseRiskAssessmentCancer
 from .form_mixins import SubjectModelFormMixin
@@ -7,7 +7,7 @@ from .form_mixins import SubjectModelFormMixin
 
 class BaseRiskAssessmentCancerForm (SubjectModelFormMixin):
 
-    form_validator_cls = BaseRiskAssessmentCancerFormValidation
+    form_validator_cls = BaseRiskAssessementCancerFormValidator
 
     class Meta:
         model = BaseRiskAssessmentCancer
