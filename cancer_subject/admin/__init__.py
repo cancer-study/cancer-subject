@@ -32,20 +32,3 @@ from .subject_locator_admin import SubjectLocatorAdmin
 from .subject_offstudy_admin import SubjectOffStudyAdmin
 from .subject_visit_admin import SubjectVisitAdmin
 from .symptoms_and_testing_admin import SymptomsAndTestingAdmin
-
-
-# from .lab_result_cd4_admin import LabResultCd4Admin
-# from .lab_result_height_weight_admin import LabResultHeightWeightAdmin
-# from .lab_result_hiv_admin import LabResultHivAdmin
-# from .lab_result_tb_admin import LabResultTbAdmin
-# from .lab_result_viralload_admin import LabResultViralloadAdmin
-# from .otr_radiation_admin import OTRRadiationAdmin
-# from .main import (HaartRecordAdmin,
-#                     OncologyTreatmentPlanAdmin,
-#                     TreatmentResponseAdmin)
-# from .main import SymptomsAndTestingAdmin, OncologyTreatmentCompletedAdmin
-# from .main import CurrentSymptomsAdmin
-# from .oncology_treatment_record_admin import (OncologyTreatmentRecordAdmin,
-#                                                 OTRChemoAdmin)
-# from .oncology_treatment_record_admin import (OTRRadiationAdmin,
-#                                                 OTRSurgicalAdmin)
