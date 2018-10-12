@@ -1,6 +1,5 @@
 from django.db import models
 
-
 from ..choices import HOURS_OUTDOOR_CHOICE, FREQUENCY_CHOICE
 from .model_mixins import CrfModelMixin
 

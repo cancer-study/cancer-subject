@@ -1,5 +1,3 @@
-#!/usr/bin/python -u
-# coding: utf-8
 from django.core.validators import RegexValidator
 from django.db import models
 from edc_base.model_fields.custom_fields import OtherCharField

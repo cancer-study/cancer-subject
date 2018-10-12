@@ -80,6 +80,12 @@ class SubjectConsent(
     """ A model completed by the user that captures the ICF.
     """
 
+    subject_screening_model = 'ambition_screening.subjectscreening'
+
+    screening_identifier = models.CharField(
+        verbose_name='Screening identifier',
+        max_length=50)
+
     is_signed = models.BooleanField(default=False, editable=False)
 
     consent = SubjectConsentManager()
@@ -93,8 +99,24 @@ class SubjectConsent(
     def __str__(self):
         return f'{self.subject_identifier} V{self.version}'
 
+    def save(self, *args, **kwargs):
+        subject_screening = self.get_subject_screening()
+        self.gender = subject_screening.gender
+        self.subject_type = 'subject'
+        super().save(*args, **kwargs)
+
     def natural_key(self):
         return (self.subject_identifier, self.version,)
+
+    def get_subject_screening(self):
+        """Returns the subject screening model instance.
+
+        Instance must exist since SubjectScreening is completed
+        before consent.
+        """
+        model_cls = django_apps.get_model(self.subject_screening_model)
+        return model_cls.objects.get(
+            screening_identifier=self.screening_identifier)
 
     class Meta(ConsentModelMixin.Meta):
         app_label = 'cancer_subject'

@@ -1,17 +1,17 @@
-from cancer_screening.models import SubjectScreening
 from django.conf import settings
 from django.contrib import admin
 from django.core.exceptions import ObjectDoesNotExist, MultipleObjectsReturned
 from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
+from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from edc_constants.constants import ABNORMAL
 from edc_model_admin import (
     ModelAdminFormAutoNumberMixin, ModelAdminInstitutionMixin,
     audit_fieldset_tuple, audit_fields, ModelAdminNextUrlRedirectMixin,
     ModelAdminNextUrlRedirectError, ModelAdminReplaceLabelTextMixin)
-from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
 from simple_history.admin import SimpleHistoryAdmin
+from cancer_screening.models import SubjectScreening
 
 from ..admin_site import cancer_subject_admin
 from ..forms import SubjectConsentForm

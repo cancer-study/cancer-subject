@@ -8,7 +8,6 @@ from edc_appointment.appointment_config import AppointmentConfig
 from edc_appointment.apps import AppConfig as BaseEdcAppointmentAppConfig
 from edc_base.apps import AppConfig as BaseEdcBaseAppConfig
 from edc_base.utils import get_utcnow
-from edc_consent.apps import AppConfig as BaseEdcConsentAppConfig
 from edc_constants.constants import FAILED_ELIGIBILITY
 from edc_device.apps import AppConfig as BaseEdcDeviceAppConfig
 from edc_device.constants import CENTRAL_SERVER
@@ -28,6 +27,7 @@ from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
 # from edc_sync.apps import AppConfig as BaseEdcSyncAppConfig
 class AppConfig(DjangoApponfig):
     name = 'cancer_subject'
+    verbose_name = 'Cancer Subject CRFs'
     admin_site_name = 'cancer_subject_admin'
 
     screening_age_adult_upper = 99
@@ -35,9 +35,6 @@ class AppConfig(DjangoApponfig):
 
     def ready(self):
         from .models.signals import enrollment_checklist_on_post_save
-
-        # if 'migrate' not in sys.argv and 'makemigrations' not in sys.argv:
-        #    load_randomization()
 
 
 if settings.APP_NAME == 'cancer_subject':
@@ -62,12 +59,6 @@ if settings.APP_NAME == 'cancer_subject':
         copyright = '2017-{}'.format(get_utcnow().year)
         license = None
 
-#     class EdcBaseTestAppConfig(BaseEdcBaseTestAppConfig):
-#         consent_model = 'cancer_subject.subjectconsent'
-
-    class EdcConsentAppConfig(BaseEdcConsentAppConfig):
-        pass
-
     class EdcDeviceAppConfig(BaseEdcDeviceAppConfig):
         device_role = CENTRAL_SERVER
         device_id = '99'
@@ -85,7 +76,6 @@ if settings.APP_NAME == 'cancer_subject':
         delete_on_reasons = [LOST_VISIT, FAILED_ELIGIBILITY, MISSED_VISIT]
 
     class EdcAppointmentAppConfig(BaseEdcAppointmentAppConfig):
-        app_label = 'cancer_subject'
         default_appt_type = 'clinic'
         configurations = [
             AppointmentConfig(
@@ -116,11 +106,3 @@ if settings.APP_NAME == 'cancer_subject':
                 closed_status='DONE'
             ),
         ]
-
-#     class EdcSyncAppConfig(BaseEdcSyncAppConfig):
-#         edc_sync_files_using = True
-#         role = CENTRAL_SERVER
-#
-#     class EdcSyncFilesAppConfig(BaseEdcSyncFilesAppConfig):
-#         edc_sync_files_using = True
-#         role = CENTRAL_SERVER

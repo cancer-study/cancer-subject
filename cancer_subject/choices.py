@@ -136,7 +136,8 @@ CHEMO_INTENT = (
 
 CIGARETTE_SMOKING_CHOICE = (
     ('14_or_fewer_cigarettes_daily', '14 or fewer cigarettes a day'),
-    ('between_15_and_25 cigarettes_daily', 'between 15 and 25 cigarettes a day'),
+    ('between_15_and_25 cigarettes_daily',
+     'between 15 and 25 cigarettes a day'),
     ('more_than_25_cigarettes_daily', 'more than 25 cigarettes a day'),
     ('refused', 'Participant declined to answer')
 )
@@ -404,6 +405,15 @@ INFO_SOURCE = (
     (OTHER, 'Other, specify:'),
 )
 
+ID_TYPE = (
+    ('country_id', 'Country ID number'),
+    ('drivers', 'Driver\'s license'),
+    ('passport', 'Passport'),
+    ('hospital_no', 'Hospital number'),
+    ('country_id_rcpt', 'Country ID receipt'),
+    (OTHER, 'Other'),
+)
+
 MARITAL_STATUS_CHOICE = (
     ('single', 'Single'),
     ('married', 'Married'),
@@ -472,7 +482,8 @@ MONEY_EARNED_CHOICE = (
     ('P501-1000/month (P120-230/week)', 'P501-1000/month (P120-230/week)'),
     ('P1001-2500/month (P230-580/week)', 'P1001-2500/month (P230-580/week)'),
     ('P2501-5000/month (P580-1160/week)', 'P2501-5000/month (P580-1160/week)'),
-    ('P5001-10000/month (P1160-2330/week)', 'P5001-10000/month (P1160-2330/week)'),
+    ('P5001-10000/month (P1160-2330/week)',
+     'P5001-10000/month (P1160-2330/week)'),
     ('P10001-20000/month (P2330-4600/week)',
      'P10001-20000/month (P2330-4600/week)'),
     ('P20001-30000/month (P4600-7000/week)',
@@ -653,7 +664,8 @@ RACE_CHOICE = (
 )
 
 REASONS_MISSED_OR_DELAYED = (
-    ('toxicity_hematologic', 'Toxicity- hematologic (anemia, neutropenia, or low plts), '),
+    ('toxicity_hematologic',
+     'Toxicity- hematologic (anemia, neutropenia, or low plts), '),
     ('toxicity_skin', 'Toxicity-skin (dermatitis, mucositis), '),
     ('unresponsive', 'Cancer not responding to treatment'),
     ('defaulted', 'Defaulted visit or lost to follow-up'),
@@ -820,7 +832,8 @@ VISIT_REASON = (
 )
 
 VISIT_UNSCHEDULED_REASON = (
-    ('routine_oncology', 'Routine oncology clinic visit (i.e. planned chemo, follow-up)'),
+    ('routine_oncology',
+     'Routine oncology clinic visit (i.e. planned chemo, follow-up)'),
     ('ill_oncology', 'Ill oncology clinic visit'),
     ('patient_called', 'Patient called to come for visit'),
     (OTHER, 'Other, specify:'),
@@ -852,9 +865,12 @@ WHY_DELAYED = (
 )
 
 WHY_REDUCED = (
-    ('heme_tox', 'Toxicity - hematologic (anemia, neutropenia, or thromobcytopenia)'),
-    ('hepat_tox', 'Toxicity - hepatitis (jaundice, increased bilirubin, ALT/AST, etc.)'),
-    ('rena_tox', 'Toxicity - renal failure (increased creatinine, swelling, etc)'),
+    ('heme_tox',
+     'Toxicity - hematologic (anemia, neutropenia, or thromobcytopenia)'),
+    ('hepat_tox',
+     'Toxicity - hepatitis (jaundice, increased bilirubin, ALT/AST, etc.)'),
+    ('rena_tox',
+     'Toxicity - renal failure (increased creatinine, swelling, etc)'),
     ('othe_tox', 'Toxicity - other, specify '),
     ('no_response', 'Cancer not responding to treatment'),
     ('default', 'Defaulted visit or lost-to-follow-up'),
