@@ -122,5 +122,6 @@ class SubjectConsent(
         app_label = 'cancer_subject'
         get_latest_by = 'consent_datetime'
         unique_together = (('subject_identifier', 'version'),
+                           ('subject_identifier', 'screening_identifier'),
                            ('first_name', 'dob', 'initials', 'version'))
         ordering = ('-created',)
