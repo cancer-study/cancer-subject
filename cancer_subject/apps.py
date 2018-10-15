@@ -1,5 +1,4 @@
 from datetime import datetime
-
 from dateutil.relativedelta import MO, TU, WE, TH, FR, SA, SU
 from dateutil.tz import gettz
 from django.apps import AppConfig as DjangoApponfig

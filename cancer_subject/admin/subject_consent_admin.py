@@ -5,7 +5,6 @@ from django.urls.base import reverse
 from django.urls.exceptions import NoReverseMatch
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
 from edc_consent.modeladmin_mixins import ModelAdminConsentMixin
-from edc_constants.constants import ABNORMAL
 from edc_model_admin import (
     ModelAdminFormAutoNumberMixin, ModelAdminInstitutionMixin,
     audit_fieldset_tuple, audit_fields, ModelAdminNextUrlRedirectMixin,
@@ -61,6 +60,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
                 'is_literate',
                 'witness_name',
                 'consent_datetime',
+                'study_site',
                 'dob',
                 'guardian_name',
                 'is_dob_estimated',
@@ -128,15 +128,3 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
                 subject_identifier=obj.subject_identifier)
         extra_context.update({'protected': protected})
         return super().delete_view(request, object_id, extra_context)
-
-    def get_form(self, request, obj=None, **kwargs):
-        """Returns a form after replacing
-        'participant' with 'next of kin'.
-        """
-        form = super().get_form(request, obj=obj, **kwargs)
-        subject_screening = SubjectScreening.objects.get(
-            screening_identifier=request.GET.get('screening_identifier'))
-        if subject_screening.mental_status == ABNORMAL:
-            form = self.replace_label_text(
-                form, 'participant', 'next of kin', skip_fields=['is_incarcerated'])
-        return form

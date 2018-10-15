@@ -20,6 +20,9 @@ class SubjectConsentForm(forms.ModelForm):
         help_text="",
         widget=forms.RadioSelect())
 
+    def clean(self):
+        print(">>>>>>>>>>>>>>>>>>>>>>>>>>>", self.errors.keys())
+
     class Meta:
         model = SubjectConsent
         fields = '__all__'

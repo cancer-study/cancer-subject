@@ -1,3 +1,4 @@
+from django.apps import apps as django_apps
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
 from edc_base.constants import DEFAULT_BASE_FIELDS
@@ -80,7 +81,7 @@ class SubjectConsent(
     """ A model completed by the user that captures the ICF.
     """
 
-    subject_screening_model = 'ambition_screening.subjectscreening'
+    subject_screening_model = 'cancer_screening.subjectscreening'
 
     screening_identifier = models.CharField(
         verbose_name='Screening identifier',
