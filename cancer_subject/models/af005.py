@@ -43,5 +43,5 @@ class Af005 (CrfModelMixin):
     )
 
     class Meta(CrfModelMixin.Meta):
-        app_label = 'cancer'
+        app_label = 'cancer_subject'
         verbose_name = 'AF005 Death Record'
