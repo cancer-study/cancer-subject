@@ -43,8 +43,8 @@ class UpdatesOrCreatesRegistrationModelMixin(
         """
         registration_options = {}
         for field in self.registration_model._meta.get_fields():
-            if (field.name not in DEFAULT_BASE_FIELDS + ['_state'] +
-                    [self.registration_unique_field]):
+            if (field.name not in DEFAULT_BASE_FIELDS + ['_state']
+                    + [self.registration_unique_field]):
                 try:
                     registration_options.update({field.name: getattr(
                         self, field.name)})
