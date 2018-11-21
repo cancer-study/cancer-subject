@@ -15,8 +15,6 @@ from edc_identifier.apps import AppConfig as BaseEdcIdentifierAppConfig
 from edc_lab.apps import AppConfig as BaseEdcLabAppConfig
 from edc_metadata.apps import AppConfig as BaseEdcMetadataAppConfig
 from edc_protocol.apps import AppConfig as BaseEdcProtocolAppConfig
-from edc_timepoint.apps import AppConfig as BaseEdcTimepointAppConfig
-from edc_timepoint.timepoint import Timepoint
 from edc_visit_tracking.apps import AppConfig as BaseEdcVisitTrackingAppConfig
 from edc_visit_tracking.constants import MISSED_VISIT
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, LOST_VISIT
@@ -89,19 +87,3 @@ if settings.APP_NAME == 'cancer_subject':
                                  slots=[100, 100, 100, 100, 100, 100, 100]),
             '5-day clinic': dict(days=[MO, TU, WE, TH, FR],
                                  slots=[100, 100, 100, 100, 100])}
-
-    class EdcTimepointAppConfig(BaseEdcTimepointAppConfig):
-        timepoints = [
-            Timepoint(
-                model='edc_appointment.appointment',
-                datetime_field='appt_datetime',
-                status_field='appt_status',
-                closed_status='DONE'
-            ),
-            Timepoint(
-                model='cancer_subject.historicalappointment',
-                datetime_field='appt_datetime',
-                status_field='appt_status',
-                closed_status='DONE'
-            ),
-        ]

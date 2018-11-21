@@ -58,5 +58,5 @@ class SubjectRequisition(
 
     class Meta (VisitTrackingCrfModelMixin.Meta,
                 RequiresConsentFieldsModelMixin.Meta):
-        consent_model = 'ambition_subject.subjectconsent'
-        app_label = 'ambition_subject'
+        consent_model = 'cancer_subject.subjectconsent'
+        app_label = 'cancer_subject'

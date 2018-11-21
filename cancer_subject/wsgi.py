@@ -1,5 +1,5 @@
 """
-WSGI config for ambition_subject project.
+WSGI config for cacner_subject project.
 
 It exposes the WSGI callable as a module-level variable named ``application``.
 

@@ -20,11 +20,10 @@ from cancer_subject.models import (
     LabResultHaematology, LabResultHeightWeight, LabResultHiv,
     LabResultTb, LabResultViralload, LabResult,
     OncologyTreatmentCompleted, OncologyTreatmentRecord, OTRChemo,
-    OTRRadiation, OTRSurgical, BaseRadiationTreatment,
+    OTRRadiation, OTRSurgical,
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
     CurrentSymptoms)
-from edc_consent.tests import EdcConsentProvider
 
 
 class DateProvider(BaseProvider):
@@ -50,17 +49,16 @@ class DateProvider(BaseProvider):
 
 fake = Faker()
 fake.add_provider(DateProvider)
-fake.add_provider(EdcConsentProvider)
+# fake.add_provider(EdcConsentProvider)
 
 subjectconsent = Recipe(
     SubjectConsent,
     subject_identifier=None,
-    study_site='40',
     consent_datetime=get_utcnow(),
-    dob=fake.dob_for_consenting_adult,
+    dob=get_utcnow() - relativedelta(years=25),
     first_name=fake.first_name,
     last_name=fake.last_name,
-    initials=fake.initials,
+    initials='XX',
     gender='M',
     identity=seq('12315678'),
     confirm_identity=seq('12315678'),
@@ -72,20 +70,20 @@ symptomsandtesting = Recipe(
     SymptomsAndTesting,
     subject_identifier=None,
     symptom_prompt='bleeding',
-    symptom_date=fake.last_month,
-    medical_doctor_date=fake.last_month,
-    trad_doctor_date=fake.last_month,
+    symptom_date=get_utcnow() - relativedelta(months=1),
+    medical_doctor_date=get_utcnow() - relativedelta(months=1),
+    trad_doctor_date=get_utcnow() - relativedelta(months=1),
     facility_first_seen='00-0-00',
     facility_first_seen_other='Church',
     hiv_tested=YES,
     hiv_test_result=POS,
-    pos_date=fake.last_year,
-    neg_date=fake.last_year,
+    pos_date=get_utcnow() - relativedelta(years=1),
+    neg_date=get_utcnow() - relativedelta(years=1),
     hiv_result='Pending',
     arv_art_therapy=YES,
-    arv_art_start_date=fake.last_month,
+    arv_art_start_date=get_utcnow() - relativedelta(months=1),
     arv_art_now=NO,
-    art_art_stop_date=fake.last_week,)
+    art_art_stop_date=get_utcnow() - relativedelta(weeks=1,))
 
 subjeclocator = Recipe(
     SubjectLocator,
@@ -101,7 +99,7 @@ subjeclocator = Recipe(
 
 radiationtreatment = Recipe(
     RadiationTreatment,
-    treatment_start_date=fake.last_month(),
+    treatment_start_date=get_utcnow() - relativedelta(months=1),
     treatment_end_date=date.today(),
     tumour_stages='X',
     lymph_stages='3',
@@ -159,21 +157,21 @@ currentsymptoms = Recipe(
 ae010 = Recipe(
     Ae010,
     report_type='Resolution',
-    onset_date=fake.last_month(),
+    onset_date=get_utcnow() - relativedelta(months=1),
     event_grade='details here',
     relationship_description='Probably related to study activites',)
 
 aef004 = Recipe(
     Af004,
-    date_off_study=fake.three_months_ago(),
-    date_last_contact=fake.three_months_ago(),
+    date_off_study=get_utcnow() - relativedelta(months=3),
+    date_last_contact=get_utcnow() - relativedelta(months=3),
     off_study_reason='details here',
     off_study_code='Death',
     comments='Details here',)
 
 aef005 = Recipe(
     Af005,
-    death_date=fake.last_week(),
+    death_date=get_utcnow() - relativedelta(weeks=1),
     primary_death_cause='Clinical record',
     death_cause_description='details here',
     death_cause_category='Cancer',
@@ -308,7 +306,7 @@ baselinehivhistory = Recipe(
 bhhcd4 = Recipe(
     BHHCd4,
     nadir_cd4='230',
-    nadir_cd4_drawn_date=fake.last_week(),)
+    nadir_cd4_drawn_date=get_utcnow() - relativedelta(weeks=1),)
 
 bhhivtest = Recipe(
     BHHHivTest,
@@ -320,7 +318,7 @@ bhhwhoillness = Recipe(
     BHHWhoIllness,
     who_illness='details here',
     who_illness_other='other details here',
-    who_illness_date=fake.last_month,)
+    who_illness_date=get_utcnow() - relativedelta(months=1),)
 
 cancerdiagnosis = Recipe(
     CancerDiagnosis,
@@ -331,9 +329,9 @@ cancerdiagnosis = Recipe(
     cancer_category='new',
     symptom_prompt='Lump/Mass',
     symptom_prompt_other='other details here',
-    symptom_first_noticed=fake.last_month(),
-    first_evaluation=fake.last_month(),
-    date_diagnosed=fake.last_month(),
+    symptom_first_noticed=get_utcnow() - relativedelta(months=1),
+    first_evaluation=get_utcnow() - relativedelta(months=1),
+    date_diagnosed=get_utcnow() - relativedelta(months=1),
     diagnosis_basis='CLinical Only',
     diagnosis_basis_other='other details here',
     diagnosis_word='metatstatic breast cancer',
@@ -356,8 +354,8 @@ basechemomedication = Recipe(
     BaseChemoMedication,
     drug_code='AMOX = amoxicillin',
     dose_category='2 = Reduced Dose',
-    start_date=fake.last_month(),
-    stop_date=fake.last_week,
+    start_date=get_utcnow() - relativedelta(months=1),
+    stop_date=get_utcnow() - relativedelta(weeks=1,),
     cycle_num='5',
     interval='1 week',
     specify_other_med='details here',
@@ -366,12 +364,12 @@ basechemomedication = Recipe(
 
 labresultcd4 = Recipe(
     LabResultCd4,
-    cd4_drawn_date=fake.last_month,
+    cd4_drawn_date=get_utcnow() - relativedelta(months=1),
     cd4_result='2546',)
 
 labresultchemistry = Recipe(
     LabResultChemistry,
-    chem_drawn_date=fake.last_week(),
+    chem_drawn_date=get_utcnow() - relativedelta(weeks=1),
     alanine='3546',
     aspartate='4356',
     bilirubin='45',
@@ -381,7 +379,7 @@ labresultchemistry = Recipe(
 
 labresulthaematology = Recipe(
     LabResultHaematology,
-    haem_drawn_date=fake.last_week,
+    haem_drawn_date=get_utcnow() - relativedelta(weeks=1,),
     hgb='17',
     mcv='76',
     wbc_count='241',
@@ -397,14 +395,14 @@ labresultheightweight = Recipe(
 
 labresulthiv = Recipe(
     LabResultHiv,
-    test_date=fake.last_week(),
+    test_date=get_utcnow() - relativedelta(weeks=1),
     test_result='NEG',)
 
 labresulttb = Recipe(
     LabResultTb,
     tb_description='description here',
     tb_treatment='No',
-    tb_treatment_start=fake.last_month(),)
+    tb_treatment_start=get_utcnow() - relativedelta(months=1),)
 
 labresultviralload = Recipe(
     LabResultViralload,
@@ -463,7 +461,7 @@ otrsurgical = Recipe(
 radiationtreatment = Recipe(
     RadiationTreatment,
     treatment_start_date=fake.three_months_ago,
-    treatment_end_date=fake.last_week,
+    treatment_end_date=get_utcnow() - relativedelta(weeks=1,),
     tumour_stages='X',
     lymph_stages='O',
     metastasis_stages='1',
@@ -484,26 +482,26 @@ radiationtreatment = Recipe(
     first_course_radiation=YES,
     comments='detials here',)
 
-baseradiationtreatment = Recipe(
-    BaseRadiationTreatment,
-    treatment_name='Pelvis',
-    start_date=fake.last_month,
-    end_date=fake.last_week,
-    dose_delivered='2',
-    dose_described='6',
-    fractions='5',
-    dose_per_fraction='13',
-    radiation_technique='Tangents',
-    radiation_techique_other='other details here',
-    modality='Electrons',
-    brachy_length='2',
-)
+# baseradiationtreatment = Recipe(
+#     BaseRadiationTreatment,
+#     treatment_name='Pelvis',
+#     start_date=get_utcnow() - relativedelta(months=1),
+#     end_date=get_utcnow() - relativedelta(weeks=1,),
+#     dose_delivered='2',
+#     dose_described='6',
+#     fractions='5',
+#     dose_per_fraction='13',
+#     radiation_technique='Tangents',
+#     radiation_techique_other='other details here',
+#     modality='Electrons',
+#     brachy_length='2',
+# )
 
-week16 = Recipe(
-    BaseRadiationTreatment,
-    treatment_name=fake.last_month,
-    radiation_technique='Photons',
-    radiation_techique_other='other details here',
-    brachy_length='2',
-    brachy_type='T&SR',
-)
+# week16 = Recipe(
+#     BaseRadiationTreatment,
+#     treatment_name=get_utcnow() - relativedelta(months=1),
+#     radiation_technique='Photons',
+#     radiation_techique_other='other details here',
+#     brachy_length='2',
+#     brachy_type='T&SR',
+# )

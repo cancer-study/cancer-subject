@@ -32,7 +32,7 @@ ETC_DIR = os.path.join(BASE_DIR, 'etc')
 
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cancer-test.bhp.org.bw']
 
-SITE_ID = 10
+SITE_ID = 40
 REVIEWER_SITE_ID = 1
 
 
@@ -47,9 +47,14 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'django.contrib.sites',
     'django_crypto_fields.apps.AppConfig',
+    'edc_consent.apps.AppConfig',
     'edc_metadata_rules.apps.AppConfig',
     'edc_registration.apps.AppConfig',
+    'edc_timepoint.apps.AppConfig',
+    'edc_visit_schedule.apps.AppConfig',
+    'cancer_screening.apps.AppConfig',
     'cancer_subject.apps.AppConfig',
+    'cancer_visit_schedule.apps.AppConfig',
     'cancer_subject.apps.EdcAppointmentAppConfig',
     'cancer_subject.apps.EdcBaseAppConfig',
     'cancer_subject.apps.EdcDeviceAppConfig',
@@ -58,9 +63,7 @@ INSTALLED_APPS = [
     'cancer_subject.apps.EdcLabAppConfig',
     'cancer_subject.apps.EdcMetadataAppConfig',
     'cancer_subject.apps.EdcProtocolAppConfig',
-    'cancer_subject.apps.EdcTimepointAppConfig',
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
-    'cancer_screening.apps.AppConfig',
     #     'rest_framework',
     #     'rest_framework.authtoken',
     #     'edc_reference.apps.AppConfig',
@@ -73,7 +76,6 @@ INSTALLED_APPS = [
     #     'edc_lab.apps.AppConfig',
     #     'edc_visit_schedule.apps.AppConfig',
     #     'cancer_dashboard.apps.AppConfig',
-    #     'cancer_visit_schedule.apps.AppConfig',
     #     'cancer_metadata_rules.apps.AppConfig',
     #     'cancer_reference.apps.AppConfig',
 
@@ -197,20 +199,16 @@ DASHBOARD_URL_NAMES = {
     'subject_dashboard_url': 'cancer_dashboard:subject_dashboard_url',
 }
 
-if 'test' in sys.argv and 'mysql' not in DATABASES.get('default').get('ENGINE'):
-    MIGRATION_MODULES = {
-        "django_crypto_fields": None,
-        "edc_call_manager": None,
-        "edc_appointment": None,
-        "edc_call_manager": None,
-        "edc_consent": None,
-        "edc_death_report": None,
-        "edc_export": None,
-        "edc_identifier": None,
-        "edc_lab": None,
-        "edc_metadata": None,
-        "edc_rule_groups": None,
-        "edc_registration": None,
-        "edc_sync_files": None,
-        "edc_sync": None,
-        "cancer_subject": None, }
+if 'test' in sys.argv:
+
+    class DisableMigrations:
+
+        def __contains__(self, item):
+            return True
+
+        def __getitem__(self, item):
+            return None
+
+    MIGRATION_MODULES = DisableMigrations()
+    PASSWORD_HASHERS = ('django.contrib.auth.hashers.MD5PasswordHasher', )
+    DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'
