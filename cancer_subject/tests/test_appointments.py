@@ -1,6 +1,4 @@
-import re
-
-from django.test import TestCase, tag
+from django.test import TestCase
 from edc_appointment.models.appointment import Appointment
 from edc_base.utils import get_utcnow
 from edc_facility.import_holidays import import_holidays
