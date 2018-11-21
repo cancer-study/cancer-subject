@@ -1,7 +1,7 @@
 from django import forms
+from edc_appointment.models.appointment import Appointment
 
 from ..choices import APPOINTMENT_REASON
-from ..models import Appointment
 
 
 class AppointmentForm(forms.ModelForm):

@@ -1,10 +1,10 @@
 from django.contrib import admin
+from edc_appointment.models.appointment import Appointment
 from edc_base.modeladmin_mixins import audit_fieldset_tuple
 
 from cancer_subject.admin_site import cancer_subject_admin
 
 from ..forms import AppointmentForm
-from ..models import Appointment
 from .modeladmin_mixins import ModelAdminMixin
 
 
