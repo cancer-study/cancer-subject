@@ -4,6 +4,7 @@ from dateutil.relativedelta import relativedelta
 from edc_base.utils import get_utcnow
 from edc_constants.choices import YES, POS
 from edc_constants.constants import NO
+from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
 from faker.providers import BaseProvider
 from model_mommy.recipe import Recipe, seq
@@ -23,7 +24,7 @@ from cancer_subject.models import (
     OTRRadiation, OTRSurgical,
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
-    CurrentSymptoms)
+    CurrentSymptoms, SubjectVisit)
 
 
 class DateProvider(BaseProvider):
@@ -65,6 +66,10 @@ subjectconsent = Recipe(
     identity_type='OMANG',
     is_dob_estimated='-',
     is_incarcerated=NO,)
+
+subjectvisit = Recipe(
+    SubjectVisit,
+    reason=SCHEDULED,)
 
 symptomsandtesting = Recipe(
     SymptomsAndTesting,
