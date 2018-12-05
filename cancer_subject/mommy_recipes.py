@@ -24,7 +24,7 @@ from cancer_subject.models import (
     OTRRadiation, OTRSurgical,
     SubjectConsent, SymptomsAndTesting, SubjectLocator,
     RadiationTreatment, HaartRecord, BaseHaartMedication,
-    CurrentSymptoms, SubjectVisit)
+    CurrentSymptoms, SubjectVisit, OncologyTreatmentPlan)
 
 
 class DateProvider(BaseProvider):
@@ -486,6 +486,16 @@ radiationtreatment = Recipe(
     if_doses_delayed_other='other details here',
     first_course_radiation=YES,
     comments='detials here',)
+
+oncologytreatmentplan = Recipe(
+    OncologyTreatmentPlan,
+    treatment_goal='curative',
+    treatment_plan=YES,
+    chemotherapy=YES,
+    chemo_intent='adjuvant',
+    radiation_plan=YES,
+    surgical_plan=NO)
+
 
 # baseradiationtreatment = Recipe(
 #     BaseRadiationTreatment,

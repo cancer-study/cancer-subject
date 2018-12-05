@@ -1,13 +1,14 @@
 from django.test import TestCase, tag
-from django.test.utils import override_settings
 from edc_appointment.models import Appointment
 from edc_base.utils import get_utcnow
-from edc_constants.constants import YES
+from edc_constants.constants import YES, NO
 from edc_facility.import_holidays import import_holidays
-from edc_metadata.constants import REQUIRED
+from edc_metadata.constants import REQUIRED, NOT_REQUIRED
 from edc_metadata.models import CrfMetadata
 from edc_visit_tracking.constants import SCHEDULED
 from model_mommy import mommy
+
+from ..models import SubjectVisit
 
 
 class TestSubjectRules(TestCase):
@@ -23,12 +24,33 @@ class TestSubjectRules(TestCase):
             screening_identifier=screening.screening_identifier)
 
         for appointment in Appointment.objects.all().order_by('timepoint'):
-            self.subject_visit = mommy.make_recipe(
+            mommy.make_recipe(
                 'cancer_subject.subjectvisit',
                 appointment=appointment,
                 reason=SCHEDULED)
-            print('code:', self.subject_visit)
 
     @tag('rule')
-    def test_1(self):
-        pass
+    def test_radiationtreatment_required(self):
+        subject_visit = SubjectVisit.objects.get(visit_code=1000)
+        self.consent = mommy.make_recipe(
+            'cancer_subject.oncologytreatmentplan',
+            subject_visit=subject_visit,
+            radiation_plan=YES)
+        self.assertEqual(
+            CrfMetadata.objects.get(
+                model='cancer_subject.radiationtreatment',
+                subject_identifier=self.consent.subject_identifier,
+                visit_code=1000).entry_status, REQUIRED)
+
+    @tag('rule')
+    def test_radiationtreatment_not_required(self):
+        subject_visit = SubjectVisit.objects.get(visit_code=1000)
+        self.consent = mommy.make_recipe(
+            'cancer_subject.oncologytreatmentplan',
+            subject_visit=subject_visit,
+            radiation_plan=NO)
+        self.assertEqual(
+            CrfMetadata.objects.get(
+                model='cancer_subject.radiationtreatment',
+                subject_identifier=self.consent.subject_identifier,
+                visit_code=1000).entry_status, NOT_REQUIRED)
