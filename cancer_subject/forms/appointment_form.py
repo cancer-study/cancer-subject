@@ -12,8 +12,11 @@ class AppointmentForm(AppointmentFormValidator, forms.ModelForm):
         choices=APPOINTMENT_REASON,
         widget=forms.RadioSelect)
 
-    def validate_appt_reason(self):
-        pass
+    def clean(self):
+        self.validate_appt_reason()
+
+        def validate_appt_reason(self):
+            pass
 
     class Meta:
         model = Appointment
