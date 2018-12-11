@@ -6,12 +6,8 @@ from ..models import LabResult
 from .modeladmin_mixins import ModelAdminMixin
 
 
-class LabResultAdminMixin(ModelAdminMixin, admin.ModelAdmin):
-    pass
-
-
 @admin.register(LabResult, site=cancer_subject_admin)
-class LabResultAdmin(LabResultAdminMixin):
+class LabResultAdmin(ModelAdminMixin, admin.ModelAdmin):
 
     form = LabResultForm
     fields = (
