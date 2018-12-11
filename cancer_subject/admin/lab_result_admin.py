@@ -30,4 +30,3 @@ class LabResultAdmin(CrfModelAdminMixin):
         "has_chem": admin.VERTICAL,
         "has_other_abnormal": admin.VERTICAL,
         "tb_tests": admin.VERTICAL}
-    filter_horizontal = ()
