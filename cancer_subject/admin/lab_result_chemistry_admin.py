@@ -3,11 +3,11 @@ from django.contrib import admin
 from ..admin_site import cancer_subject_admin
 from ..forms import LabResultChemistryForm
 from ..models import LabResultChemistry
-from ..admin import LabResultAdminMixin
+from .modeladmin_mixins import CrfModelAdminMixin
 
 
 @admin.register(LabResultChemistry, site=cancer_subject_admin)
-class LabResultChemistryAdmin(LabResultAdminMixin):
+class LabResultChemistryAdmin(CrfModelAdminMixin):
 
     form = LabResultChemistryForm
     fields = (

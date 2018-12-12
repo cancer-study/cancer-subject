@@ -3,15 +3,11 @@ from django.contrib import admin
 from ..admin_site import cancer_subject_admin
 from ..forms import LabResultForm
 from ..models import LabResult
-from .modeladmin_mixins import ModelAdminMixin
-
-
-class LabResultAdminMixin(ModelAdminMixin, admin.ModelAdmin):
-    pass
+from .modeladmin_mixins import CrfModelAdminMixin
 
 
 @admin.register(LabResult, site=cancer_subject_admin)
-class LabResultAdmin(LabResultAdminMixin):
+class LabResultAdmin(CrfModelAdminMixin):
 
     form = LabResultForm
     fields = (
@@ -34,4 +30,3 @@ class LabResultAdmin(LabResultAdminMixin):
         "has_chem": admin.VERTICAL,
         "has_other_abnormal": admin.VERTICAL,
         "tb_tests": admin.VERTICAL}
-    filter_horizontal = ()

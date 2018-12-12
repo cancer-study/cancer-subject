@@ -3,7 +3,7 @@ from edc_appointment.constants import UNSCHEDULED_APPT, IN_PROGRESS_APPT
 from edc_appointment.models.appointment import Appointment
 from edc_base.utils import get_utcnow
 from edc_facility.import_holidays import import_holidays
-from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED
+from edc_visit_tracking.constants import UNSCHEDULED
 from model_mommy import mommy
 
 

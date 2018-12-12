@@ -1,13 +1,14 @@
 from django.contrib import admin
 
+
 from ..admin_site import cancer_subject_admin
 from ..forms import LabResultHaematologyForm
 from ..models import LabResultHaematology
-from ..admin import LabResultAdminMixin
+from .modeladmin_mixins import CrfModelAdminMixin
 
 
 @admin.register(LabResultHaematology, site=cancer_subject_admin)
-class LabResultHaematologyAdmin(LabResultAdminMixin):
+class LabResultHaematologyAdmin(CrfModelAdminMixin):
 
     form = LabResultHaematologyForm
     fields = (

@@ -1,11 +1,13 @@
 from django import forms
+
 from edc_base.sites.forms import SiteModelFormMixin
 from edc_form_validators import FormValidatorMixin
 from edc_appointment.form_validators import (
     AppointmentFormValidator as BaseAppointmentFormValidator)
+from edc_appointment.constants import UNSCHEDULED_APPT
 
 from ..models import Appointment
-from edc_appointment.constants import UNSCHEDULED_APPT
+
 
 
 class AppointmentFormValidator(BaseAppointmentFormValidator):

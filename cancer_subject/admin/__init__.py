@@ -19,10 +19,12 @@ from .bhh_who_illness_admin import BHHWhoIllnessAdmin
 from .cancer_diagnosis_admin import CancerDiagnosisAdmin
 from .enrollment_checklist_admin import EnrollmentChecklistAdmin
 from .haart_record_admin import HaartRecordAdmin
-from .lab_result_admin_mixin import LabResultAdminMixin
 from .lab_result_chemistry_admin import LabResultChemistryAdmin
 from .lab_result_haemotology_admin import LabResultHaematologyAdmin
+from .lab_result_height_weight_admin import LabResultHeightWeightAdmin
+from .lab_result_tb_admin import LabResultTbAdmin
 from .oncology_treatment_plan_admin import OncologyTreatmentPlanAdmin
+from .oncology_treatment_record_admin import OncologyTreatmentRecordAdmin
 from .onschedule_admin import OnScheduleAdmin
 from .otr_chemo_admin import OTRChemoAdmin
 from .otr_surgical_form import OTRSurgicalAdmin
