@@ -36,7 +36,7 @@ class SubjectVisit(VisitModelMixin, ReferenceModelMixin, CreatesMetadataModelMix
         verbose_name=(
             'If \'Unscheduled\' above, provide reason for '
             'the unscheduled visit'),
-        max_length=25,
+        max_length=50,
         blank=True,
         null=True,
         choices=VISIT_UNSCHEDULED_REASON,
