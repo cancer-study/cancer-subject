@@ -179,7 +179,7 @@ GIT_DIR = BASE_DIR
 COUNTRY = 'botswana'
 HOLIDAY_FILE = os.path.join(BASE_DIR, APP_NAME, 'holidays.csv')
 
-DEFAULT_APPOINTMENT_MODEL = 'edc_appointment.appointment'
+DEFAULT_APPOINTMENT_MODEL = 'cancer_subject.appointment'
 
 DASHBOARD_URL_NAMES = {
     'subject_listboard_url': 'cancer_dashboard:subject_listboard_url',
