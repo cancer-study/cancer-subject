@@ -13,6 +13,7 @@ from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
 from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.managers import ConsentManager as SubjectConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
+from edc_constants.choices import GENDER
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
     UpdatesOrCreatesRegistrationModelMixin
@@ -86,6 +87,13 @@ class SubjectConsent(
     screening_identifier = models.CharField(
         verbose_name='Screening identifier',
         max_length=50)
+
+    gender = models.CharField(
+        verbose_name="Gender",
+        choices=GENDER,
+        max_length=1,
+        null=True,
+        blank=False)
 
     is_signed = models.BooleanField(default=False, editable=False)
 
