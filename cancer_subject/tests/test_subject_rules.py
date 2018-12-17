@@ -1,5 +1,4 @@
 from django.test import TestCase, tag
-from edc_appointment.models import Appointment
 from edc_base.utils import get_utcnow
 from edc_constants.constants import YES, NO
 from edc_facility.import_holidays import import_holidays
@@ -8,6 +7,7 @@ from edc_metadata.models import CrfMetadata
 from edc_visit_tracking.constants import SCHEDULED
 from model_mommy import mommy
 
+from ..models import Appointment
 from ..models import SubjectVisit
 
 

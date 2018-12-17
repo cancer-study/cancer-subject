@@ -1,17 +1,15 @@
 from django import forms
-
-from edc_base.sites.forms import SiteModelFormMixin
-from edc_form_validators import FormValidatorMixin
+from edc_appointment.constants import UNSCHEDULED_APPT
 from edc_appointment.form_validators import (
     AppointmentFormValidator as BaseAppointmentFormValidator)
-from edc_appointment.constants import UNSCHEDULED_APPT
+from edc_base.sites.forms import SiteModelFormMixin
+from edc_form_validators import FormValidatorMixin
 
 from ..models import Appointment
 
 
-
 class AppointmentFormValidator(BaseAppointmentFormValidator):
-    
+
     def validate_appt_reason(self):
         """Raises if visit_code_sequence is not 0 and appt_reason
         is not UNSCHEDULED_APPT.

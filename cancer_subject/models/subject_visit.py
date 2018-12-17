@@ -1,5 +1,4 @@
 from django.db import models
-from edc_appointment.models import Appointment
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
 from edc_base.sites import CurrentSiteManager as BaseCurrentSiteManager
@@ -12,6 +11,7 @@ from edc_visit_tracking.managers import VisitModelManager
 from edc_visit_tracking.model_mixins import VisitModelMixin
 
 from ..choices import INFO_SOURCE, VISIT_UNSCHEDULED_REASON, VISIT_REASON
+from .appointment import Appointment
 
 
 class CurrentSiteManager(VisitModelManager, BaseCurrentSiteManager):

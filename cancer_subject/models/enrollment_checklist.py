@@ -65,21 +65,21 @@ class EnrollmentChecklist(SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
 
     history = HistoricalRecords()
 
-    def save(self, *args, **kwargs):
-        eligibility_obj = self.eligibility_cls(
-            cancer_status=self.has_diagnosis)
-        self.eligible = eligibility_obj.eligible
-        super().save(*args, **kwargs)
-
-    def create_appointments(self, base_appt_datetime=None,
-                            taken_datetimes=None):
-        if self.has_diagnosis == YES:
-            super().create_appointments(
-                base_appt_datetime=base_appt_datetime,
-                taken_datetimes=taken_datetimes)
-            self.is_eligible = True
-        else:
-            self.is_eligible = False
+#     def save(self, *args, **kwargs):
+#         eligibility_obj = self.eligibility_cls(
+#             cancer_status=self.has_diagnosis)
+#         self.eligible = eligibility_obj.eligible
+#         super().save(*args, **kwargs)
+#
+#     def create_appointments(self, base_appt_datetime=None,
+#                             taken_datetimes=None):
+#         if self.has_diagnosis == YES:
+#             super().create_appointments(
+#                 base_appt_datetime=base_appt_datetime,
+#                 taken_datetimes=taken_datetimes)
+#             self.is_eligible = True
+#         else:
+#             self.is_eligible = False
 
     class Meta():
         consent_model = 'cancer_subject.subjectconsent'
