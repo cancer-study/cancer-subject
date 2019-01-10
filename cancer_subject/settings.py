@@ -46,20 +46,19 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django.contrib.sites',
-    'django_revision.apps.AppConfig',
     'django_crypto_fields.apps.AppConfig',
+    'django_revision.apps.AppConfig',
     'rest_framework',
     'rest_framework.authtoken',
     'edc_base.apps.AppConfig',
     'edc_prn.apps.AppConfig',
-    'edc_consent.apps.AppConfig',
-    'edc_metadata_rules.apps.AppConfig',
     'edc_reference.apps.AppConfig',
-    'edc_registration.apps.AppConfig',
+    'edc_metadata_rules.apps.AppConfig',
+    'edc_consent.apps.AppConfig',
     'edc_device.apps.AppConfig',
+    'edc_registration.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'cancer_metadata_rules.apps.AppConfig',
-    'cancer_screening.apps.AppConfig',
     'cancer_subject.apps.AppConfig',
     'cancer_reference.apps.AppConfig',
     'cancer_visit_schedule.apps.AppConfig',
@@ -71,13 +70,6 @@ INSTALLED_APPS = [
     'cancer_subject.apps.EdcMetadataAppConfig',
     'cancer_subject.apps.EdcProtocolAppConfig',
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
-    #     # 'edc_sync.apps.AppConfig',
-    #     # 'edc_sync_files.apps.AppConfig',
-    #     'edc_offstudy.apps.AppConfig',
-    #     'cancer_dashboard.apps.AppConfig',
-    #
-    #
-
 ]
 
 

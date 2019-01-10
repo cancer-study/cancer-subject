@@ -1,5 +1,3 @@
-import re
-from django.apps import apps as django_apps
 from django.db import models
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
@@ -7,7 +5,6 @@ from edc_base.model_validators import eligible_if_yes
 from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.utils import get_utcnow
 from edc_constants.choices import YES_NO
-from edc_constants.constants import YES
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_search.model_mixins import SearchSlugManager
 
@@ -70,16 +67,6 @@ class EnrollmentChecklist(SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
 #             cancer_status=self.has_diagnosis)
 #         self.eligible = eligibility_obj.eligible
 #         super().save(*args, **kwargs)
-#
-#     def create_appointments(self, base_appt_datetime=None,
-#                             taken_datetimes=None):
-#         if self.has_diagnosis == YES:
-#             super().create_appointments(
-#                 base_appt_datetime=base_appt_datetime,
-#                 taken_datetimes=taken_datetimes)
-#             self.is_eligible = True
-#         else:
-#             self.is_eligible = False
 
     class Meta():
         consent_model = 'cancer_subject.subjectconsent'

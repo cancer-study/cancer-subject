@@ -12,11 +12,8 @@ class TestSubjectConsent(TestCase):
 
     def setUp(self):
         import_holidays()
-        subject_screening = mommy.make_recipe(
-            'cancer_screening.subjectscreening')
 
         options = {
-            'screening_identifier': subject_screening.screening_identifier,
             'consent_datetime': get_utcnow, }
         consent = mommy.make_recipe(
             'cancer_subject.subjectconsent', **options)

@@ -82,12 +82,6 @@ class SubjectConsent(
     """ A model completed by the user that captures the ICF.
     """
 
-    subject_screening_model = 'cancer_screening.subjectscreening'
-
-    screening_identifier = models.CharField(
-        verbose_name='Screening identifier',
-        max_length=50)
-
     gender = models.CharField(
         verbose_name="Gender",
         choices=GENDER,
@@ -119,6 +113,5 @@ class SubjectConsent(
         app_label = 'cancer_subject'
         get_latest_by = 'consent_datetime'
         unique_together = (('subject_identifier', 'version'),
-                           ('subject_identifier', 'screening_identifier'),
                            ('first_name', 'dob', 'initials', 'version'))
         ordering = ('-created',)

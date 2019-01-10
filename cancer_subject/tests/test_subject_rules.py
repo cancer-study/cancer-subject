@@ -15,13 +15,9 @@ class TestSubjectRules(TestCase):
 
     def setUp(self):
         import_holidays()
-        screening = mommy.make_recipe(
-            'cancer_screening.subjectscreening',
-            report_datetime=get_utcnow())
         self.consent = mommy.make_recipe(
             'cancer_subject.subjectconsent',
-            consent_datetime=get_utcnow(),
-            screening_identifier=screening.screening_identifier)
+            consent_datetime=get_utcnow())
 
         for appointment in Appointment.objects.all().order_by('timepoint'):
             mommy.make_recipe(

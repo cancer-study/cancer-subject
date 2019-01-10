@@ -10,7 +10,6 @@ from edc_model_admin import (
     audit_fieldset_tuple, audit_fields, ModelAdminNextUrlRedirectMixin,
     ModelAdminNextUrlRedirectError, ModelAdminReplaceLabelTextMixin)
 from simple_history.admin import SimpleHistoryAdmin
-from cancer_screening.models import SubjectScreening
 
 from ..admin_site import cancer_subject_admin
 from ..forms import SubjectConsentForm
@@ -51,7 +50,6 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
     fieldsets = (
         (None, {
             'fields': (
-                'screening_identifier',
                 'subject_identifier',
                 'first_name',
                 'last_name',
@@ -82,7 +80,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
             'description': 'The following questions are directed to the interviewer.'}),
         audit_fieldset_tuple)
 
-    search_fields = ('subject_identifier', 'screening_identifier', 'identity')
+    search_fields = ('subject_identifier', 'identity')
 
     radio_fields = {
         "assessment_score": admin.VERTICAL,
