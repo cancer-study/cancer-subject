@@ -19,7 +19,7 @@ from .bhh_cd4_form import BHHCd4Form
 from .bhh_hiv_test_form import BHHHivTestForm
 from .bhh_who_illness_form import BHHWhoIllnessForm
 from .cancer_diagnoses_form import CancerDiagnosisForm
-from .enrollment_checklist_form import EnrollmentChecklistForm
+from .subject_screening_form import SubjectScreeningForm
 from .haart_med_record_form import HaartMedRecordForm
 from .haart_record_form import HaartRecordForm
 from .lab_result_cd4_form import LabResultCd4Form

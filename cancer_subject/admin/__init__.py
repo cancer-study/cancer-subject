@@ -17,7 +17,7 @@ from .bhh_cd4_admin import BHHCd4Admin
 from .bhh_hiv_test_admin import BHHHivTestAdmin
 from .bhh_who_illness_admin import BHHWhoIllnessAdmin
 from .cancer_diagnosis_admin import CancerDiagnosisAdmin
-from .enrollment_checklist_admin import EnrollmentChecklistAdmin
+from .subject_screening_admin import SubjectScreeningAdmin
 from .haart_record_admin import HaartRecordAdmin
 from .lab_result_chemistry_admin import LabResultChemistryAdmin
 from .lab_result_haemotology_admin import LabResultHaematologyAdmin

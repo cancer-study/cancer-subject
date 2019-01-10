@@ -1,16 +1,15 @@
 from django.contrib import admin
-from django.urls.base import reverse
-from django.urls.exceptions import NoReverseMatch
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
 from edc_fieldsets import FieldsetsModelAdminMixin
 from edc_model_admin import (
     ModelAdminFormAutoNumberMixin, ModelAdminInstitutionMixin,
-    audit_fieldset_tuple, audit_fields, ModelAdminNextUrlRedirectError,
     ModelAdminNextUrlRedirectMixin, ModelAdminReplaceLabelTextMixin)
+from edc_model_admin.model_admin_audit_fields_mixin import (
+    audit_fields, audit_fieldset_tuple)
 
 from ..admin_site import cancer_subject_admin
-from ..forms import EnrollmentChecklistForm
-from ..models import EnrollmentChecklist
+from ..forms import SubjectScreeningForm
+from ..models import SubjectScreening
 
 
 class ModelAdminMixin(ModelAdminNextUrlRedirectMixin,
@@ -22,28 +21,12 @@ class ModelAdminMixin(ModelAdminNextUrlRedirectMixin,
     date_hierarchy = 'modified'
     empty_value_display = '-'
 
-#     def redirect_url(self, request, obj, post_url_continue=None):
-#         redirect_url = super().redirect_url(
-#             request, obj, post_url_continue=post_url_continue)
-#         if request.GET.dict().get('next'):
-#             url_name = request.GET.dict().get('next').split(',')[0]
-#             attrs = request.GET.dict().get('next').split(',')[1:]
-#             options = {k: request.GET.dict().get(k)
-#                        for k in attrs if request.GET.dict().get(k)}
-#             options.update(subject_identifier=obj.subject_identifier)
-#             try:
-#                 redirect_url = reverse(url_name, kwargs=options)
-#             except NoReverseMatch as e:
-#                 raise ModelAdminNextUrlRedirectError(
-#                     f'{e}. Got url_name={url_name}, kwargs={options}.')
-#         return redirect_url
 
-
-@admin.register(EnrollmentChecklist, site=cancer_subject_admin)
-class EnrollmentChecklistAdmin(ModelAdminMixin, FieldsetsModelAdminMixin,
+@admin.register(SubjectScreening, site=cancer_subject_admin)
+class SubjectScreeningAdmin(ModelAdminMixin, FieldsetsModelAdminMixin,
                                admin.ModelAdmin):
 
-    form = EnrollmentChecklistForm
+    form = SubjectScreeningForm
 
     fieldsets = (
         (None, {

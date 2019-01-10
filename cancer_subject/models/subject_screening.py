@@ -28,7 +28,7 @@ class EnrollmentManager(SearchSlugManager, models.Manager):
         )
 
 
-class EnrollmentChecklist(SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
+class SubjectScreening(SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
                           SearchSlugModelMixin, BaseUuidModel):
 
     eligibility_cls = Eligibility

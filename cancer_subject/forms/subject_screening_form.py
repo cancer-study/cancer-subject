@@ -1,6 +1,6 @@
 from django import forms
 
-from ..models import EnrollmentChecklist
+from ..models import SubjectScreening
 
 
 class SubjectModelFormMixin(forms.ModelForm):
@@ -8,12 +8,12 @@ class SubjectModelFormMixin(forms.ModelForm):
     pass
 
 
-class EnrollmentChecklistForm(SubjectModelFormMixin):
+class SubjectScreeningForm(SubjectModelFormMixin):
 
     subject_identifier = forms.CharField(
         label='Subject identifier',
         widget=forms.TextInput(attrs={'readonly': 'readonly'}))
 
     class Meta:
-        model = EnrollmentChecklist
+        model = SubjectScreening
         fields = '__all__'

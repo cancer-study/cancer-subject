@@ -2,7 +2,7 @@ from django.db.models.signals import post_save
 from django.dispatch import receiver
 from edc_visit_schedule.site_visit_schedules import site_visit_schedules
 
-from .enrollment_checklist import EnrollmentChecklist
+from cancer_subject.models.subject_screening import EnrollmentChecklist
 
 
 @receiver(post_save, weak=False, sender=EnrollmentChecklist,

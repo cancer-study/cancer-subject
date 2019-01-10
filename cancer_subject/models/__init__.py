@@ -21,7 +21,7 @@ from .bhh_who_illness import BHHWhoIllness
 from .cancer_diagnosis import CancerDiagnosis
 from .chemo_medication import BaseChemoMedication, ChemoMedRecord, ChemoMedPlan
 from .current_symptoms import CurrentSymptoms
-from .enrollment_checklist import EnrollmentChecklist
+from .subject_screening import SubjectScreening
 from .haart_medication import BaseHaartMedication
 from .haart_medication import HaartMedRecord
 from .haart_record import HaartRecord

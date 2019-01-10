@@ -82,6 +82,14 @@ class SubjectConsent(
     """ A model completed by the user that captures the ICF.
     """
 
+    subject_screening_model = 'cancer_subject.subjectscreening'
+
+    screening_identifier = models.CharField(
+        verbose_name='Screening identifier',
+        null=True,
+        blank=False,
+        max_length=50)
+
     gender = models.CharField(
         verbose_name="Gender",
         choices=GENDER,
