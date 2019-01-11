@@ -87,7 +87,7 @@ class SubjectConsent(
     screening_identifier = models.CharField(
         verbose_name='Screening identifier',
         null=True,
-        blank=False,
+        blank=True,
         max_length=50)
 
     gender = models.CharField(

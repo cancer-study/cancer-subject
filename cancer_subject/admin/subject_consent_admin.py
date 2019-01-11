@@ -51,6 +51,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
         (None, {
             'fields': (
                 'subject_identifier',
+                'screening_identifier',
                 'first_name',
                 'last_name',
                 'initials',
@@ -96,6 +97,8 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
         "may_store_samples": admin.VERTICAL,
         "study_questions": admin.VERTICAL,
     }
+
+    readonly_fields = ('screening_identifier',)
 
     def get_readonly_fields(self, request, obj=None):
         return (super().get_readonly_fields(request, obj=obj)

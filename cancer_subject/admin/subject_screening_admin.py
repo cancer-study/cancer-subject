@@ -38,8 +38,6 @@ class SubjectScreeningAdmin(ModelAdminMixin, FieldsetsModelAdminMixin,
             )}),
         audit_fieldset_tuple)
 
-#     readonly_fields = ('subject_identifier',) + audit_fields
-#     readonly_fields = ('subject_identifier',)
     search_fields = ('subject_identifier',)
 
     radio_fields = {
@@ -49,15 +47,3 @@ class SubjectScreeningAdmin(ModelAdminMixin, FieldsetsModelAdminMixin,
     def get_readonly_fields(self, request, obj=None):
         return (super().get_readonly_fields(request, obj=obj)
                 + audit_fields)
-
-#     def get_form(self, request, obj=None, **kwargs):
-#         """Returns a form after adding subject_identifier
-#         """
-#         form = super().get_form(request, obj=obj, **kwargs)
-#         subject_screening = SubjectConsent.objects.get(
-#             screening_identifier=request.GET.get('screening_identifier'))
-#         if subject_screening.mental_status == ABNORMAL:
-#             form = self.replace_label_text(
-#                 form, 'participant',
-#                 'next of kin', skip_fields=['is_incarcerated'])
-#         return form

@@ -5,11 +5,12 @@ from edc_base.model_validators import eligible_if_yes
 from edc_base.sites.site_model_mixin import SiteModelMixin
 from edc_base.utils import get_utcnow
 from edc_constants.choices import YES_NO
-from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
+from edc_identifier.model_mixins import UniqueSubjectIdentifierFieldMixin
 from edc_search.model_mixins import SearchSlugManager
 
 from ..eligibility import Eligibility
 from ..models.model_mixins import SearchSlugModelMixin
+from ..screening_identifier import ScreeningIdentifier
 
 
 ENROLLMENT_SITES = (
@@ -28,10 +29,17 @@ class EnrollmentManager(SearchSlugManager, models.Manager):
         )
 
 
-class SubjectScreening(SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
+class SubjectScreening(SiteModelMixin, UniqueSubjectIdentifierFieldMixin,
                           SearchSlugModelMixin, BaseUuidModel):
 
     eligibility_cls = Eligibility
+    identifier_cls = ScreeningIdentifier
+
+    screening_identifier = models.CharField(
+        verbose_name="Eligibility Identifier",
+        max_length=36,
+        unique=True,
+        editable=False)
 
     report_datetime = models.DateTimeField(
         verbose_name='Report Date and Time',
@@ -57,17 +65,29 @@ class SubjectScreening(SiteModelMixin, NonUniqueSubjectIdentifierModelMixin,
 
     objects = EnrollmentManager()
 
+    def __str__(self):
+        return f'{self.screening_identifier}, {self.subject_identifier}'
+
     def natural_key(self):
         return (self.subject_identifier,)
 
     history = HistoricalRecords()
 
-#     def save(self, *args, **kwargs):
-#         eligibility_obj = self.eligibility_cls(
-#             cancer_status=self.has_diagnosis)
-#         self.eligible = eligibility_obj.eligible
-#         super().save(*args, **kwargs)
+    def save(self, *args, **kwargs):
+        eligibility_obj = self.eligibility_cls(
+            cancer_status=self.has_diagnosis)
+        self.eligible = eligibility_obj.eligible
+        if not self.id:
+            self.screening_identifier = self.identifier_cls().identifier
+        super().save(*args, **kwargs)
 
-    class Meta():
-        consent_model = 'cancer_subject.subjectconsent'
-        visit_schedule_name = 'visit_schedule1.schedule1'
+    @property
+    def schedule_name(self):
+        """Return a visit schedule name.
+        """
+        return 'schedule'
+
+    class Meta:
+        app_label = 'cancer_subject'
+        verbose_name = "Cancer Eligibility"
+        verbose_name_plural = "Cancer Eligibility"

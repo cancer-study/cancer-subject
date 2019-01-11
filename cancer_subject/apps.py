@@ -31,6 +31,9 @@ class AppConfig(DjangoApponfig):
     screening_age_adult_upper = 99
     screening_age_adult_lower = 18
 
+    def ready(self):
+        from .models import subject_screening_on_post_save
+
 
 if settings.APP_NAME == 'cancer_subject':
     class EdcProtocolAppConfig(BaseEdcProtocolAppConfig):
