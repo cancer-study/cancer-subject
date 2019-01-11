@@ -23,14 +23,15 @@ ENROLLMENT_SITES = (
 
 class EnrollmentManager(SearchSlugManager, models.Manager):
 
-    def get_by_natural_key(self, subject_identifier):
+    def get_by_natural_key(self, screening_identifier):
         return self.get(
-            subject_identifier=subject_identifier
+            screening_identifier=screening_identifier
         )
 
 
-class SubjectScreening(SiteModelMixin, UniqueSubjectIdentifierFieldMixin,
-                          SearchSlugModelMixin, BaseUuidModel):
+class SubjectScreening(
+        UniqueSubjectIdentifierFieldMixin, SiteModelMixin,
+        SearchSlugModelMixin, BaseUuidModel):
 
     eligibility_cls = Eligibility
     identifier_cls = ScreeningIdentifier
