@@ -10,7 +10,8 @@ from .modeladmin_mixins import ModelAdminMixin
 
 
 @admin.register(SubjectVisit, site=cancer_subject_admin)
-class SubjectVisitAdmin(VisitModelAdminMixin, ModelAdminMixin, admin.ModelAdmin):
+class SubjectVisitAdmin(
+        ModelAdminMixin, VisitModelAdminMixin, admin.ModelAdmin):
 
     form = SubjectVisitForm
 
