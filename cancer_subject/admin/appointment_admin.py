@@ -47,7 +47,7 @@ class AppointmentAdmin(ModelAdminFormInstructionsMixin, ModelAdminNextUrlRedirec
                 'subject_identifier',
                 'appt_datetime',
                 'appt_type',
-                #                 'appt_status',
+                'appt_status',
                 'appt_reason',
                 'comment')})),
         ('Timepoint', ({
