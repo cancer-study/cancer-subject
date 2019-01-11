@@ -18,6 +18,12 @@ class TestSubjectRules(TestCase):
         self.consent = mommy.make_recipe(
             'cancer_subject.subjectconsent',
             consent_datetime=get_utcnow())
+        options = {
+            'subject_identifier': self.consent.subject_identifier,
+            'has_diagnosis': YES,
+            'enrollment_site': 'gaborone_private_hospital'}
+        mommy.make_recipe(
+            'cancer_subject.subjectscreening', **options)
 
         for appointment in Appointment.objects.all().order_by('timepoint'):
             mommy.make_recipe(
@@ -28,7 +34,7 @@ class TestSubjectRules(TestCase):
     @tag('rule')
     def test_radiationtreatment_required(self):
         subject_visit = SubjectVisit.objects.get(visit_code=1000)
-        self.consent = mommy.make_recipe(
+        mommy.make_recipe(
             'cancer_subject.oncologytreatmentplan',
             subject_visit=subject_visit,
             radiation_plan=YES)
@@ -41,7 +47,7 @@ class TestSubjectRules(TestCase):
     @tag('rule')
     def test_radiationtreatment_not_required(self):
         subject_visit = SubjectVisit.objects.get(visit_code=1000)
-        self.consent = mommy.make_recipe(
+        mommy.make_recipe(
             'cancer_subject.oncologytreatmentplan',
             subject_visit=subject_visit,
             radiation_plan=NO)

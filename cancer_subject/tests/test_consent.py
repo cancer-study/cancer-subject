@@ -3,7 +3,7 @@ import re
 from django.core.exceptions import ObjectDoesNotExist
 from django.test import TestCase, tag
 from edc_base.utils import get_utcnow
-from edc_constants.constants import UUID_PATTERN
+from edc_constants.constants import UUID_PATTERN, YES
 from edc_facility.import_holidays import import_holidays
 from edc_registration.models import RegisteredSubject
 from model_mommy import mommy
@@ -39,6 +39,12 @@ class TestSubjectConsent(TestCase):
         subject_consent = mommy.make_recipe(
             'cancer_subject.subjectconsent',
             consent_datetime=get_utcnow)
+        options = {
+            'subject_identifier': subject_consent.subject_identifier,
+            'has_diagnosis': YES,
+            'enrollment_site': 'gaborone_private_hospital'}
+        mommy.make_recipe(
+            'cancer_subject.subjectscreening', **options)
 
         try:
             OnSchedule.objects.get(

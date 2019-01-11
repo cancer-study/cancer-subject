@@ -14,7 +14,7 @@ from ..screening_identifier import ScreeningIdentifier
 
 
 ENROLLMENT_SITES = (
-    ('gaborone_private_hospital', ' Gaborone Private Hospital (GPH)'),
+    ('gaborone_private_hospital', 'Gaborone Private Hospital (GPH)'),
     ('nyangabgwe_referral_Hospital', 'Nyangabgwe Referral Hospital (NRH)'),
     ('princess_marina_hospital', 'Princess Marina Hospital (PMH)'),
     ('bokamoso_private_hospital', 'Bokamoso Private Hospital (BPH)'),

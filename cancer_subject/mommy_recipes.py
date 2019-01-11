@@ -9,22 +9,22 @@ from faker import Faker
 from faker.providers import BaseProvider
 from model_mommy.recipe import Recipe, seq
 
-from cancer_subject.models import (
-    Ae010, Af004, Af005, BaseRiskAssessmentAlcohol,
-    BaseRiskAssessmentCancer, BaseRiskAssessmentChemical,
-    BaseRiskAssessmentDemo, BaseRiskAssessmentEating,
-    BaseRiskAssessmentFemale, BaseRiskAssessmentFuel,
-    BaseRiskAssessmentMining, BaseRiskAssessmentSmoking,
-    BaseRiskAssessmentSun, BaseRiskAssessment, BaselineHIVHistory,
-    BHHCd4, BHHHivTest, BHHWhoIllness, CancerDiagnosis,
-    BaseChemoMedication, LabResultCd4, LabResultChemistry,
-    LabResultHaematology, LabResultHeightWeight, LabResultHiv,
-    LabResultTb, LabResultViralload, LabResult,
-    OncologyTreatmentCompleted, OncologyTreatmentRecord, OTRChemo,
-    OTRRadiation, OTRSurgical,
-    SubjectConsent, SymptomsAndTesting, SubjectLocator,
-    RadiationTreatment, HaartRecord, BaseHaartMedication,
-    CurrentSymptoms, SubjectVisit, OncologyTreatmentPlan)
+from .models import Ae010, Af004, Af005, BaseRiskAssessmentAlcohol
+from .models import BHHCd4, BHHHivTest, BHHWhoIllness, CancerDiagnosis
+from .models import BaseChemoMedication, LabResultCd4, LabResultChemistry
+from .models import BaseRiskAssessmentCancer, BaseRiskAssessmentChemical
+from .models import BaseRiskAssessmentDemo, BaseRiskAssessmentEating
+from .models import BaseRiskAssessmentFemale, BaseRiskAssessmentFuel
+from .models import BaseRiskAssessmentMining, BaseRiskAssessmentSmoking
+from .models import BaseRiskAssessmentSun, BaseRiskAssessment
+from .models import CurrentSymptoms, SubjectVisit, OncologyTreatmentPlan
+from .models import LabResultHaematology, LabResultHeightWeight
+from .models import LabResultTb, LabResultViralload, LabResult
+from .models import OTRRadiation, OTRSurgical
+from .models import OncologyTreatmentCompleted, OncologyTreatmentRecord
+from .models import RadiationTreatment, HaartRecord, BaseHaartMedication
+from .models import SubjectConsent, SymptomsAndTesting, SubjectLocator
+from .models import SubjectScreening, BaselineHIVHistory, OTRChemo, LabResultHiv
 
 
 class DateProvider(BaseProvider):
@@ -495,6 +495,12 @@ oncologytreatmentplan = Recipe(
     chemo_intent='adjuvant',
     radiation_plan=YES,
     surgical_plan=NO)
+
+subjectscreening = Recipe(
+    SubjectScreening,
+    has_diagnosis=YES,
+    enrollment_site='gaborone_private_hospital'
+)
 
 
 # baseradiationtreatment = Recipe(

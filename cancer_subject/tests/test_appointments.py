@@ -1,6 +1,7 @@
 from django.test import TestCase, tag
 from edc_appointment.constants import UNSCHEDULED_APPT, IN_PROGRESS_APPT
 from edc_base.utils import get_utcnow
+from edc_constants.constants import YES
 from edc_facility.import_holidays import import_holidays
 from edc_visit_tracking.constants import UNSCHEDULED
 from model_mommy import mommy
@@ -18,6 +19,12 @@ class TestSubjectConsent(TestCase):
         consent = mommy.make_recipe(
             'cancer_subject.subjectconsent', **options)
         self.subject_identifier = consent.subject_identifier
+        options = {
+            'subject_identifier': self.subject_identifier,
+            'has_diagnosis': YES,
+            'enrollment_site': 'gaborone_private_hospital'}
+        mommy.make_recipe(
+            'cancer_subject.subjectscreening', **options)
 
     def test_appointments_creation(self):
         """Assert appointment triggering method creates appointments.
