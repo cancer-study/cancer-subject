@@ -1,11 +1,15 @@
 from django.contrib import admin
 from django_revision.modeladmin_mixin import ModelAdminRevisionMixin
-from edc_fieldsets import FieldsetsModelAdminMixin
+
+from edc_base.sites.admin import ModelAdminSiteMixin
 from edc_model_admin import (
-    ModelAdminFormAutoNumberMixin, ModelAdminInstitutionMixin,
-    ModelAdminNextUrlRedirectMixin, ModelAdminReplaceLabelTextMixin)
+    ModelAdminNextUrlRedirectMixin, ModelAdminFormInstructionsMixin,
+    ModelAdminFormAutoNumberMixin, ModelAdminAuditFieldsMixin,
+    ModelAdminReadOnlyMixin, ModelAdminInstitutionMixin,
+    ModelAdminRedirectOnDeleteMixin)
 from edc_model_admin.model_admin_audit_fields_mixin import (
     audit_fields, audit_fieldset_tuple)
+from edc_metadata import NextFormGetter
 
 from ..admin_site import cancer_subject_admin
 from ..forms import SubjectScreeningForm
@@ -13,18 +17,22 @@ from ..models import SubjectScreening
 
 
 class ModelAdminMixin(ModelAdminNextUrlRedirectMixin,
-                      ModelAdminFormAutoNumberMixin,
-                      ModelAdminRevisionMixin, ModelAdminReplaceLabelTextMixin,
-                      ModelAdminInstitutionMixin):
+                      ModelAdminFormInstructionsMixin,
+                      ModelAdminFormAutoNumberMixin, ModelAdminRevisionMixin,
+                      ModelAdminAuditFieldsMixin, ModelAdminReadOnlyMixin,
+                      ModelAdminInstitutionMixin,
+                      ModelAdminRedirectOnDeleteMixin,
+                      ModelAdminSiteMixin):
 
     list_per_page = 10
     date_hierarchy = 'modified'
     empty_value_display = '-'
+    next_form_getter_cls = NextFormGetter
 
 
 @admin.register(SubjectScreening, site=cancer_subject_admin)
-class SubjectScreeningAdmin(ModelAdminMixin, FieldsetsModelAdminMixin,
-                               admin.ModelAdmin):
+class SubjectScreeningAdmin(
+        ModelAdminMixin, admin.ModelAdmin):
 
     form = SubjectScreeningForm
 
