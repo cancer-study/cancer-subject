@@ -1,12 +1,14 @@
-from django import forms
-from edc_constants.constants import YES, NO
-
+from cancer_subject_validations.form_validators import (
+    BaseLineHivHistoryFormValidator
+)
 from ..models import BaselineHIVHistory
 from .form_mixins import SubjectModelFormMixin
 
 
 # BaselineHIVHistory
 class BaselineHIVHistoryForm (SubjectModelFormMixin):
+
+    form_validator_cls = BaseLineHivHistoryFormValidator
 
     class Meta:
         model = BaselineHIVHistory
