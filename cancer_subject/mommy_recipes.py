@@ -7,7 +7,9 @@ from edc_constants.constants import NO
 from edc_visit_tracking.constants import SCHEDULED
 from faker import Faker
 from faker.providers import BaseProvider
-from model_mommy.recipe import Recipe, seq
+from model_mommy.recipe import Recipe, seq, related
+
+from cancer_subject.models.list_models import ResultsToRecord
 
 from .models import Ae010, Af004, Af005, BaseRiskAssessmentAlcohol
 from .models import BHHCd4, BHHHivTest, BHHWhoIllness, CancerDiagnosis
@@ -20,7 +22,7 @@ from .models import BaseRiskAssessmentSun, BaseRiskAssessment
 from .models import CurrentSymptoms, SubjectVisit, OncologyTreatmentPlan
 from .models import LabResultHaematology, LabResultHeightWeight
 from .models import LabResultTb, LabResultViralload, LabResult
-from .models import OTRRadiation, OTRSurgical
+from .models import OTRRadiation, OTRSurgical, ResultsToRecord
 from .models import OncologyTreatmentCompleted, OncologyTreatmentRecord
 from .models import RadiationTreatment, HaartRecord, BaseHaartMedication
 from .models import SubjectConsent, SymptomsAndTesting, SubjectLocator
@@ -325,6 +327,11 @@ bhhwhoillness = Recipe(
     who_illness_other='other details here',
     who_illness_date=get_utcnow() - relativedelta(months=1),)
 
+results_to_record = Recipe(
+    ResultsToRecord,
+    name='heamatology'
+)
+
 cancerdiagnosis = Recipe(
     CancerDiagnosis,
     onco_number='143098087',
@@ -352,7 +359,7 @@ cancerdiagnosis = Recipe(
     cancer_stage_modifier='No stage modifier',
     any_other_results='other details here',
     paper_documents='details here',
-    results_to_record='details here',
+    results_to_record=related('results_to_record'),
     results_to_record_other='other details here',)
 
 basechemomedication = Recipe(
