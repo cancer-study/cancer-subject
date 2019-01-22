@@ -35,8 +35,7 @@ class CrfModelManager(VisitTrackingCrfModelManager):
 class CrfModelMixin(BaseCrfModelMixin, SubjectScheduleCrfModelMixin,
                     RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
                     UpdatesCrfMetadataModelMixin, SiteModelMixin,
-                    OffstudyCrfModelMixin, FormAsJSONModelMixin,
-                    ReferenceModelMixin, BaseUuidModel):
+                    FormAsJSONModelMixin, ReferenceModelMixin, BaseUuidModel):
 
     """ Base model for all scheduled models
     """
