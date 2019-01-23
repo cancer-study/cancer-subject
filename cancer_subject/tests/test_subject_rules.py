@@ -7,10 +7,10 @@ from edc_metadata.models import CrfMetadata
 from edc_visit_tracking.constants import SCHEDULED
 from model_mommy import mommy
 
-from ..models import Appointment
-from ..models import SubjectVisit
+from ..models import Appointment, SubjectVisit, ResultsToRecord
 
 
+@tag('rule')
 class TestSubjectRules(TestCase):
 
     def setUp(self):
@@ -25,13 +25,15 @@ class TestSubjectRules(TestCase):
         mommy.make_recipe(
             'cancer_subject.subjectscreening', **options)
 
-        for appointment in Appointment.objects.all().order_by('timepoint'):
-            mommy.make_recipe(
-                'cancer_subject.subjectvisit',
-                appointment=appointment,
-                reason=SCHEDULED)
+        appointments = Appointment.objects.filter(
+            subject_identifier=self.consent.subject_identifier)
+        self.assertEqual(appointments.count(), 21)
 
-    @tag('rule')
+        mommy.make_recipe(
+            'cancer_subject.subjectvisit',
+            appointment=Appointment.objects.get(visit_code='1000'),
+            reason=SCHEDULED)
+
     def test_radiationtreatment_required(self):
         subject_visit = SubjectVisit.objects.get(visit_code=1000)
         mommy.make_recipe(
@@ -44,7 +46,6 @@ class TestSubjectRules(TestCase):
                 subject_identifier=self.consent.subject_identifier,
                 visit_code=1000).entry_status, REQUIRED)
 
-    @tag('rule')
     def test_radiationtreatment_not_required(self):
         subject_visit = SubjectVisit.objects.get(visit_code=1000)
         mommy.make_recipe(
@@ -54,5 +55,71 @@ class TestSubjectRules(TestCase):
         self.assertEqual(
             CrfMetadata.objects.get(
                 model='cancer_subject.radiationtreatment',
+                subject_identifier=self.consent.subject_identifier,
+                visit_code=1000).entry_status, NOT_REQUIRED)
+
+    def test_lab_result_haematology_required(self):
+        subject_visit = SubjectVisit.objects.get(visit_code=1000)
+        ResultsToRecord.objects.create(
+            name='haematology')
+
+        options = {'subject_visit': subject_visit,
+                   'results_to_record': ResultsToRecord.objects.all()}
+        cancer_diagnosis = mommy.make_recipe(
+            'cancer_subject.cancerdiagnosis', **options)
+        cancer_diagnosis.results_to_record.set(ResultsToRecord.objects.all())
+        cancer_diagnosis.save()
+
+        self.assertEqual(
+            CrfMetadata.objects.get(
+                model='cancer_subject.labresulthaematology',
+                subject_identifier=self.consent.subject_identifier,
+                visit_code=1000).entry_status, REQUIRED)
+
+    def test_lab_result_haematology_not_required(self):
+        subject_visit = SubjectVisit.objects.get(visit_code=1000)
+        ResultsToRecord.objects.create(
+            name='blah!')
+
+        mommy.make_recipe(
+            'cancer_subject.cancerdiagnosis',
+            subject_visit=subject_visit,
+            results_to_record=ResultsToRecord.objects.all())
+
+        self.assertEqual(
+            CrfMetadata.objects.get(
+                model='cancer_subject.labresulthaematology',
+                subject_identifier=self.consent.subject_identifier,
+                visit_code=1000).entry_status, NOT_REQUIRED)
+
+    def test_lab_result_chemistry_required(self):
+        subject_visit = SubjectVisit.objects.get(visit_code=1000)
+        ResultsToRecord.objects.create(
+            name='chemistry')
+
+        cancer_diagnosis = mommy.make_recipe(
+            'cancer_subject.cancerdiagnosis',
+            subject_visit=subject_visit)
+        cancer_diagnosis.results_to_record.set(ResultsToRecord.objects.all())
+        cancer_diagnosis.save()
+
+        self.assertEqual(
+            CrfMetadata.objects.get(
+                model='cancer_subject.labresultchemistry',
+                subject_identifier=self.consent.subject_identifier,
+                visit_code=1000).entry_status, REQUIRED)
+
+    def test_lab_result_chemistry_not_required(self):
+        subject_visit = SubjectVisit.objects.get(visit_code=1000)
+        ResultsToRecord.objects.create(name='none')
+
+        mommy.make_recipe(
+            'cancer_subject.cancerdiagnosis',
+            subject_visit=subject_visit,
+            results_to_record=ResultsToRecord.objects.all())
+
+        self.assertEqual(
+            CrfMetadata.objects.get(
+                model='cancer_subject.labresultchemistry',
                 subject_identifier=self.consent.subject_identifier,
                 visit_code=1000).entry_status, NOT_REQUIRED)
