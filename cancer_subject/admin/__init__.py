@@ -34,3 +34,4 @@ from .subject_locator_admin import SubjectLocatorAdmin
 from .subject_offstudy_admin import SubjectOffStudyAdmin
 from .subject_visit_admin import SubjectVisitAdmin
 from .symptoms_and_testing_admin import SymptomsAndTestingAdmin
+from .current_symptoms_admin import CurrentSymptomsAdmin

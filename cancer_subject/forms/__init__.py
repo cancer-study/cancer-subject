@@ -42,3 +42,4 @@ from .subject_locator_form import SubjectLocatorForm
 from .subject_off_study_form import SubjectOffStudyForm
 from .subject_visit_form import SubjectVisitForm
 from .symptoms_and_testing_form import SymptomsAndTestingForm
+from .current_symptoms_form import CurrentSymptomsForm
