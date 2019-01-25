@@ -15,7 +15,7 @@ class OncologyTreatmentCompletedAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'patient_had_chemo'
+                'patient_had_chemo',
                 'patient_had_radiation',
                 'patient_had_surgery',
                 'treatment_detail',

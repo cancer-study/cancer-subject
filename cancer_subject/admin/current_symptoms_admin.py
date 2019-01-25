@@ -15,7 +15,8 @@ class CurrentSymptomsAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
-                'any_worry'
+                'subject_visit',
+                'any_worry',
                 'symptom_desc',
                 'patient_own_remedy',
                 'severity',
