@@ -29,3 +29,8 @@ class CurrentSymptomsAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         'any_worry': admin.VERTICAL,
         'severity': admin.VERTICAL
     }
+
+    list_display = (
+        'symptom_desc', 'patient_own_remedy', 'ra_advice',
+        'outcome_update'
+    )
