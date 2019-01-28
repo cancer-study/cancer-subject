@@ -1,10 +1,11 @@
 from django import forms
 
+from edc_consent.modelform_mixins import ConsentModelFormMixin
 from ..choices import COMMUNITY, ID_TYPE
 from ..models import SubjectConsent
 
 
-class SubjectConsentForm(forms.ModelForm):
+class SubjectConsentForm(ConsentModelFormMixin, forms.ModelForm):
 
     identity_type = forms.CharField(
         label='What type of identity number is this?',
