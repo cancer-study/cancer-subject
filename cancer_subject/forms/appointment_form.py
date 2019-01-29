@@ -15,10 +15,16 @@ class AppointmentFormValidator(BaseAppointmentFormValidator):
         is not UNSCHEDULED_APPT.
         """
         appt_reason = self.cleaned_data.get('appt_reason')
-        if (appt_reason and self.instance.visit_code not in ['1000']
+        appt_type = self.cleaned_data.get('appt_type')
+        if (appt_reason and self.instance.visit_code != '1000'
                 and appt_reason != UNSCHEDULED_APPT):
             raise forms.ValidationError({
                 'appt_reason': f'Expected {UNSCHEDULED_APPT.title()}'})
+        if (appt_type in ['telephone', 'clinic', 'home']
+                and self.instance.visit_code == '1000'):
+            raise forms.ValidationError({
+                'appt_type': f'Only follow up appointments can be done via telephone, '
+                'at home or clinic.'})
 
 
 class AppointmentForm(SiteModelFormMixin, FormValidatorMixin, forms.ModelForm):
