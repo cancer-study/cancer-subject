@@ -60,6 +60,7 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
                 'witness_name',
                 'consent_datetime',
                 'study_site',
+                'gender',
                 'dob',
                 'guardian_name',
                 'is_dob_estimated',

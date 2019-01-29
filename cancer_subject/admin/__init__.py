@@ -17,12 +17,13 @@ from .bhh_cd4_admin import BHHCd4Admin
 from .bhh_hiv_test_admin import BHHHivTestAdmin
 from .bhh_who_illness_admin import BHHWhoIllnessAdmin
 from .cancer_diagnosis_admin import CancerDiagnosisAdmin
-from .subject_screening_admin import SubjectScreeningAdmin
+from .current_symptoms_admin import CurrentSymptomsAdmin
 from .haart_record_admin import HaartRecordAdmin
 from .lab_result_chemistry_admin import LabResultChemistryAdmin
 from .lab_result_haemotology_admin import LabResultHaematologyAdmin
 from .lab_result_height_weight_admin import LabResultHeightWeightAdmin
 from .lab_result_tb_admin import LabResultTbAdmin
+from .oncology_treatment_completed_admin import OncologyTreatmentCompletedAdmin
 from .oncology_treatment_plan_admin import OncologyTreatmentPlanAdmin
 from .oncology_treatment_record_admin import OncologyTreatmentRecordAdmin
 from .onschedule_admin import OnScheduleAdmin
@@ -32,7 +33,6 @@ from .radiation_treatment_admin import RadiationTreatmentAdmin
 from .subject_consent_admin import SubjectConsentAdmin
 from .subject_locator_admin import SubjectLocatorAdmin
 from .subject_offstudy_admin import SubjectOffStudyAdmin
+from .subject_screening_admin import SubjectScreeningAdmin
 from .subject_visit_admin import SubjectVisitAdmin
 from .symptoms_and_testing_admin import SymptomsAndTestingAdmin
-from .current_symptoms_admin import CurrentSymptomsAdmin
-from .oncology_treatment_completed_admin import OncologyTreatmentCompletedAdmin
