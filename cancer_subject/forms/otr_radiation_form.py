@@ -1,9 +1,7 @@
-from .form_mixins import SubjectModelFormMixin
-from ..models import OTRRadiation
+from cancer_subject_validations.form_validators import OTRRadiationFormValidation
 
-from cancer_subject_validations.form_validators import (
-    OTRRadiationFormValidation
-)
+from ..models import OTRRadiation
+from .form_mixins import SubjectModelFormMixin
 
 
 class OTRRadiationForm (SubjectModelFormMixin):

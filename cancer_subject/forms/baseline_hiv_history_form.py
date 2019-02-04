@@ -1,6 +1,5 @@
-from cancer_subject_validations.form_validators import (
-    BaseLineHivHistoryFormValidator
-)
+from cancer_subject_validations.form_validators import BaseLineHivHistoryFormValidator
+
 from ..models import BaselineHIVHistory
 from .form_mixins import SubjectModelFormMixin
 

@@ -1,12 +1,7 @@
-from django import forms
-from edc_constants.constants import YES
+from cancer_subject_validations.form_validators import OncologyTreatmentCompletedFormValidator
 
 from ..models import OncologyTreatmentCompleted
 from .modelform_mixin import SubjectModelFormMixin
-
-from cancer_subject_validations.form_validators import (
-    OncologyTreatmentCompletedFormValidator
-)
 
 
 class OncologyTreatmentCompletedForm (SubjectModelFormMixin):

@@ -1,8 +1,7 @@
-from .form_mixins import SubjectModelFormMixin
+from cancer_subject_validations.form_validators import OTRChemoFormValidation
+
 from ..models import OTRChemo
-from cancer_subject_validations.form_validators import (
-    OTRChemoFormValidation
-)
+from .form_mixins import SubjectModelFormMixin
 
 
 class OTRChemoForm (SubjectModelFormMixin):

@@ -1,9 +1,7 @@
+from ..models import LabResult
 from .modelform_mixin import SubjectModelFormMixin
 
-from ..models import LabResult
 
-
-# LabResult
 class LabResultForm (SubjectModelFormMixin):
 
     class Meta:

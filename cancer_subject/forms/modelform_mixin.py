@@ -1,11 +1,12 @@
 from django import forms
+from edc_base.sites.forms import SiteModelFormMixin
+from edc_form_validators.form_validator_mixin import FormValidatorMixin
+from edc_visit_tracking.modelform_mixins.visit_tracking_modelform_mixin import VisitTrackingModelFormMixin
 
-# ,  CommonCleanModelFormMixin
-from edc_base.modelform_mixins import JSONModelFormMixin
-
-# from ..models import SubjectVisit
+from ..models import SubjectVisit
 
 
-class SubjectModelFormMixin(JSONModelFormMixin, forms.ModelForm):
+class SubjectModelFormMixin(SiteModelFormMixin, VisitTrackingModelFormMixin,
+                            FormValidatorMixin, forms.ModelForm):
 
-    visit_model = None
+    visit_model = SubjectVisit

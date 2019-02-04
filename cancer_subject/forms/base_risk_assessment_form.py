@@ -1,6 +1,5 @@
-from cancer_subject_validations.form_validators import (
-    BaseRiskAssessmentFormValidator
-)
+from cancer_subject_validations.form_validators import BaseRiskAssessmentFormValidator
+
 from ..models import BaseRiskAssessment
 
 from .form_mixins import SubjectModelFormMixin
