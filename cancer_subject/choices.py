@@ -576,6 +576,8 @@ PERFORM_STATUS_CHOICE = (
      'confined to bed or chair 50% or more of waking hours)'),
     ('4', 'Bedbound (Completely disabled. Cannot carry on any self-care. '
      'Totally confined to bed or chair)'),
+    ('death',
+     'Death (complete the AF005 Death Record form)'),
 )
 
 POSSIBLE_GRADES = (
