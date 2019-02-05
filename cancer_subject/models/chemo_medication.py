@@ -1,5 +1,5 @@
 from django.db import models
-
+from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
 
 from ..choices import DRUG_CODE, DOSE_CATEGORY, NUMBER_OF_CHEMO_CYLCES
@@ -69,15 +69,49 @@ class BaseChemoMedication(BaseUuidModel):
         abstract = True
 
 
+class ChemoMedPlanManager(models.Manager):
+
+    def get_by_natural_key(self, drug_code, dose_category, subject_identifier,
+                           visit_schedule_name, schedule_name, visit_code):
+        return self.get(
+            drug_code=drug_code,
+            dose_category=dose_category,
+            subject_visit__subject_identifier=subject_identifier,
+            subject_visit__visit_schedule_name=visit_schedule_name,
+            subject_visit__schedule_name=schedule_name,
+            subject_visit__visit_code=visit_code)
+
+
 class ChemoMedPlan(BaseChemoMedication):
 
     oncology_treatment_plan = models.ForeignKey(
         OncologyTreatmentPlan,
         on_delete=models.PROTECT)
 
+    history = HistoricalRecords()
+
+    def natural_key(self):
+        return (self.drug_code, self.dose_category) + self.oncology_treatment_plan.natural_key()
+    natural_key.dependencies = ['cancer_subject.oncology_treatment_plan']
+
     class Meta:
         app_label = 'cancer_subject'
         verbose_name = 'Chemo Medication Plan'
+        unique_together = ('oncology_treatment_plan',
+                           'drug_code', 'dose_category')
+
+
+class ChemoMedRecordManager(models.Manager):
+
+    def get_by_natural_key(self, drug_code, dose_category, subject_identifier,
+                           visit_schedule_name, schedule_name, visit_code):
+        return self.get(
+            drug_code=drug_code,
+            dose_category=dose_category,
+            subject_visit__subject_identifier=subject_identifier,
+            subject_visit__visit_schedule_name=visit_schedule_name,
+            subject_visit__schedule_name=schedule_name,
+            subject_visit__visit_code=visit_code)
 
 
 class ChemoMedRecord(BaseChemoMedication):
@@ -86,6 +120,13 @@ class ChemoMedRecord(BaseChemoMedication):
         OTRChemo,
         on_delete=models.PROTECT)
 
+    history = HistoricalRecords()
+
+    def natural_key(self):
+        return (self.drug_code, self.dose_category) + self.otr_chemo.natural_key()
+    natural_key.dependencies = ['cancer_subject.oncology_treatment_plan']
+
     class Meta:
         app_label = 'cancer_subject'
         verbose_name = 'Chemo Medication Record'
+        unique_together = ('otr_chemo', 'drug_code', 'dose_category')
