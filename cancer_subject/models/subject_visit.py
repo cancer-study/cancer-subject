@@ -46,7 +46,7 @@ class SubjectVisit(
 
     info_source = models.CharField(
         verbose_name='What is the main source of this information?',
-        max_length=25,
+        max_length=40,
         choices=INFO_SOURCE)
 
     on_site = CurrentSiteManager()
