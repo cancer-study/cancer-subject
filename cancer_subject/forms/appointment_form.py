@@ -16,7 +16,7 @@ class AppointmentFormValidator(BaseAppointmentFormValidator):
         """
         appt_reason = self.cleaned_data.get('appt_reason')
         appt_type = self.cleaned_data.get('appt_type')
-        if (appt_reason and self.instance.visit_code != '1000'
+        if (appt_reason and self.instance.visit_code == '1000'
                 and appt_reason != UNSCHEDULED_APPT):
             raise forms.ValidationError({
                 'appt_reason': f'Expected {UNSCHEDULED_APPT.title()}'})

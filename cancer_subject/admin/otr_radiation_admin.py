@@ -1,7 +1,5 @@
 from django.contrib import admin
 
-from edc_model_admin import TabularInlineMixin
-
 from ..admin_site import cancer_subject_admin
 from ..forms import OTRRadiationForm
 from ..models import OTRRadiation

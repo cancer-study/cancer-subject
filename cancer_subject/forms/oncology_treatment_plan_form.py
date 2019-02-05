@@ -4,7 +4,6 @@ from ..models import OncologyTreatmentPlan
 from .modelform_mixin import SubjectModelFormMixin
 
 
-# OncologyTreatmentPlan
 class OncologyTreatmentPlanForm (SubjectModelFormMixin):
 
     form_validator_cls = OncologyTreatmentPlanFormValidator
