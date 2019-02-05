@@ -10,6 +10,8 @@ from ..models import Appointment
 
 class AppointmentFormValidator(BaseAppointmentFormValidator):
 
+    appointment_model = 'cancer_subject.appointment'
+
     def validate_appt_reason(self):
         """Raises if visit_code_sequence is not 0 and appt_reason
         is not UNSCHEDULED_APPT.
