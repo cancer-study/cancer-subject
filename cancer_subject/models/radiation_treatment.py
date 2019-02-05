@@ -1,14 +1,26 @@
 from django.db import models
 from edc_base.model_fields import OtherCharField
+from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
 from edc_constants.choices import YES_NO_UNKNOWN
-
-from .list_models import RadiationSideEffects
-from .model_mixins import CrfModelMixin
 
 from ..choices import BRACHY_LENGTH, BRACHY_TYPE, MODALITY, MODIFIER
 from ..choices import REASONS_MISSED_OR_DELAYED, RADIATION_TECHNIQUE, RESPONSE
 from ..choices import STAGES, TREATMENT_INTENT, TREATMENT_RELATIONSHIP
+from .list_models import RadiationSideEffects
+from .model_mixins import CrfModelMixin
+
+
+class RadiationTreatmentRecordManager(models.Manager):
+
+    def get_by_natural_key(self, treatment_name, subject_identifier,
+                           visit_schedule_name, schedule_name, visit_code):
+        return self.get(
+            drug_code=treatment_name,
+            subject_visit__subject_identifier=subject_identifier,
+            subject_visit__visit_schedule_name=visit_schedule_name,
+            subject_visit__schedule_name=schedule_name,
+            subject_visit__visit_code=visit_code)
 
 
 class RadiationTreatment (CrfModelMixin):
@@ -241,6 +253,12 @@ class RadiationTreatmentRecord(BaseRadiationTreatment):
     radiation_treatment = models.ForeignKey(
         RadiationTreatment,
         on_delete=models.PROTECT)
+
+    history = HistoricalRecords()
+
+    def natural_key(self):
+        return (self.treatment_name) + self.radiation_treatment.natural_key()
+    natural_key.dependencies = ['cancer_subject.radiation_treatment']
 
     class Meta:
         app_label = 'cancer_subject'
