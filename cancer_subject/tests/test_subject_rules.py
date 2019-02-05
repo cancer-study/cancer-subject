@@ -58,10 +58,11 @@ class TestSubjectRules(TestCase):
                 subject_identifier=self.consent.subject_identifier,
                 visit_code=1000).entry_status, NOT_REQUIRED)
 
+    @tag('r1')
     def test_lab_result_haematology_required(self):
         subject_visit = SubjectVisit.objects.get(visit_code=1000)
         ResultsToRecord.objects.create(
-            name='haematology')
+            name='Haematology')
 
         options = {'subject_visit': subject_visit,
                    'results_to_record': ResultsToRecord.objects.all()}
@@ -76,6 +77,7 @@ class TestSubjectRules(TestCase):
                 subject_identifier=self.consent.subject_identifier,
                 visit_code=1000).entry_status, REQUIRED)
 
+    @tag('r1')
     def test_lab_result_haematology_not_required(self):
         subject_visit = SubjectVisit.objects.get(visit_code=1000)
         ResultsToRecord.objects.create(
@@ -92,10 +94,11 @@ class TestSubjectRules(TestCase):
                 subject_identifier=self.consent.subject_identifier,
                 visit_code=1000).entry_status, NOT_REQUIRED)
 
+    @tag('r1')
     def test_lab_result_chemistry_required(self):
         subject_visit = SubjectVisit.objects.get(visit_code=1000)
         ResultsToRecord.objects.create(
-            name='chemistry')
+            name='Chemistry')
 
         cancer_diagnosis = mommy.make_recipe(
             'cancer_subject.cancerdiagnosis',
@@ -109,9 +112,10 @@ class TestSubjectRules(TestCase):
                 subject_identifier=self.consent.subject_identifier,
                 visit_code=1000).entry_status, REQUIRED)
 
+    @tag('r1')
     def test_lab_result_chemistry_not_required(self):
         subject_visit = SubjectVisit.objects.get(visit_code=1000)
-        ResultsToRecord.objects.create(name='none')
+        ResultsToRecord.objects.create(name='None')
 
         mommy.make_recipe(
             'cancer_subject.cancerdiagnosis',
