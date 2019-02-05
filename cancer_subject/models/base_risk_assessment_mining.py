@@ -1,6 +1,6 @@
 from django.db import models
-
 from edc_base.model_fields.custom_fields import OtherCharField
+from edc_base.model_validators.date import date_not_future
 from edc_constants.choices import YES_NO_DONT_KNOW
 
 from ..choices import MINE_TYPE_CHOICE, TOTAL_TIME_CHOICE
@@ -40,6 +40,7 @@ class BaseRiskAssessmentMining (CrfModelMixin):
 
     last_mine = models.DateField(
         verbose_name='When did you last work in a mine?',
+        validators=[date_not_future],
         max_length=25,
     )
 
