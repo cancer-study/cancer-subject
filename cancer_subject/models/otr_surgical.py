@@ -6,16 +6,14 @@ from .model_mixins import CrfModelMixin
 class OTRSurgical (CrfModelMixin):
 
     operation_performed = models.CharField(
-        verbose_name='What operation was performed?: ',
+        verbose_name='What operation was performed?',
         max_length=100,
     )
 
     date_operation = models.DateField(
         verbose_name='Date of operation?',
         max_length=15,
-        blank=True,
         validators=[date_not_future],
-        null=True,
     )
 
     class Meta(CrfModelMixin.Meta):
