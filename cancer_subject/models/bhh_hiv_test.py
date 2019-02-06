@@ -1,17 +1,17 @@
 from django.db import models
-
+from edc_base.model_validators.date import date_not_future
 from edc_constants.choices import YES_NO
 from edc_reference.model_mixins import ReferenceModelMixin
 
-from .model_mixins import CrfModelMixin
-
 from ..choices import RECENT_RESULT_CHOICE
+from .model_mixins import CrfModelMixin
 
 
 class BHHHivTest (CrfModelMixin, ReferenceModelMixin):
 
     hiv_drawn_date = models.DateField(
         verbose_name='Date of most recent HIV test:',
+        validators=[date_not_future],
         max_length=25,
     )
 
