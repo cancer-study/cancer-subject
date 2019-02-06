@@ -409,7 +409,6 @@ ID_TYPE = (
     ('country_id', 'Country ID number'),
     ('drivers', 'Driver\'s license'),
     ('passport', 'Passport'),
-    ('hospital_no', 'Hospital number'),
     ('country_id_rcpt', 'Country ID receipt'),
     (OTHER, 'Other'),
 )
