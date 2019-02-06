@@ -2,6 +2,7 @@ from django.db import models
 from edc_base.model_fields import OtherCharField
 from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins.base_uuid_model import BaseUuidModel
+from edc_base.model_validators.date import date_not_future
 from edc_constants.choices import YES_NO_UNKNOWN
 
 from ..choices import BRACHY_LENGTH, BRACHY_TYPE, MODALITY, MODIFIER
@@ -30,10 +31,12 @@ class RadiationTreatment (CrfModelMixin):
         null=True,
         blank=True,
         max_length=25,
+        validators=[date_not_future],
     )
 
     treatment_end_date = models.DateField(
         verbose_name='Treatment end date',
+        validators=[date_not_future],
         null=True,
         blank=True,
         max_length=25,
@@ -190,12 +193,14 @@ class BaseRadiationTreatment(BaseUuidModel):
     start_date = models.DateField(
         verbose_name='Start Date',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
     )
     end_date = models.DateField(
         verbose_name='End Date',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
     )

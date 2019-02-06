@@ -1,6 +1,7 @@
 # coding: utf-8
-from django.db import models
 from django.core.validators import RegexValidator
+from django.db import models
+from edc_base.model_validators.date import date_not_future
 
 from .model_mixins import CrfModelMixin
 
@@ -10,6 +11,7 @@ class LabResultViralload(CrfModelMixin):
     vl_drawn_date = models.DateField(
         verbose_name='8. Date of HIV viral load',
         max_length=25,
+        validators=[date_not_future],
     )
 
     vl_result = models.CharField(

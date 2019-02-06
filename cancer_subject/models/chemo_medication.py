@@ -1,6 +1,7 @@
 from django.db import models
 from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_validators.date import date_not_future
 
 from ..choices import DRUG_CODE, DOSE_CATEGORY, NUMBER_OF_CHEMO_CYLCES
 from ..choices import NUMBER_OF_CHEMO_INTERVALS
@@ -27,13 +28,16 @@ class BaseChemoMedication(BaseUuidModel):
     start_date = models.DateField(
         verbose_name='Date that chemotherapy was started:',
         max_length=35,
+        validators=[date_not_future],
     )
 
     stop_date = models.DateField(
         verbose_name='Date of last chemotherapy dose:',
+        max_length=35,
+        validators=[date_not_future],
         null=True,
         blank=True,
-        max_length=35,
+
     )
 
     cycle_num = models.CharField(

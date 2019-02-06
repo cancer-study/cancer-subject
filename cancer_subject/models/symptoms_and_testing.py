@@ -1,7 +1,6 @@
+from django.core.validators import RegexValidator
 from django.db import models
 from edc_base.model_validators import date_not_future
-from django.core.validators import RegexValidator
-
 from edc_constants.choices import POS_NEG_REFUSED, YES_NO_REFUSED
 
 from ..choices import HIV_TEST_RESULT
@@ -113,6 +112,7 @@ class SymptomsAndTesting (CrfModelMixin):
         verbose_name='When did you start antiretroviral therapy, '
         'or HAART',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,)
 
@@ -129,6 +129,7 @@ class SymptomsAndTesting (CrfModelMixin):
         verbose_name='When did you most recently stop antiretroviral '
         'therapy, or HAART?',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,)
 

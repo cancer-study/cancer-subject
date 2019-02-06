@@ -1,6 +1,7 @@
 from django.db import models
 from edc_base.model_managers.historical_records import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_validators.date import date_not_future
 
 from ..choices import HAART_MEDS_DRUG_NAMES
 from ..choices import MOD_REASON_CHOICE, ARV_REASON_CHOICE
@@ -45,12 +46,14 @@ class BaseHaartMedication(BaseUuidModel):
     start_date = models.DateField(
         verbose_name='Date Started:',
         max_length=25,
+        validators=[date_not_future],
         help_text='dd/mm/yyyy',
     )
 
     stop_date = models.DateField(
         verbose_name='Date Stopped:',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
         help_text='dd/mm/yyyy',

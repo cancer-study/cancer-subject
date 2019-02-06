@@ -1,7 +1,8 @@
 from django.db import models
+from edc_constants.choices import YES_NO_UNSURE
+from edc_constants.constants import NOT_APPLICABLE
 
-from edc_constants.choices import NOT_APPLICABLE, SEVERITY_LEVEL, YES_NO_UNSURE
-
+from ..choices import SEVERITY_LEVEL
 from .model_mixins import CrfModelMixin
 
 
@@ -33,8 +34,6 @@ class CurrentSymptoms (CrfModelMixin):
         max_length=250,
         choices=SEVERITY_LEVEL,
         default=NOT_APPLICABLE,
-        blank=False,
-        null=True,
         help_text=('If you determine that participant could have '
                    'Grade 4 illness please assist '
                    'them to as best as possible by immediately '

@@ -1,6 +1,6 @@
 from edc_constants.constants import DONT_KNOW, NONE, DECLINED, REFUSED
 from edc_constants.constants import NEG, IND, UNK, OTHER, NEVER, PENDING
-from edc_constants.constants import YES, NO, DWTA, POS
+from edc_constants.constants import YES, NO, DWTA, POS, NOT_APPLICABLE
 from edc_visit_tracking.constants import SCHEDULED, UNSCHEDULED, MISSED_VISIT
 
 
@@ -734,6 +734,13 @@ SETTING_CHOICE = (
     ('farm/lands', 'Farm/lands'),
     ('village', 'Village'),
     ('city/town', 'City/Town'),
+)
+
+SEVERITY_LEVEL = (
+    ('mild', 'Mild'),
+    ('moderate', 'Moderate'),
+    ('severe', 'Severe'),
+    (NOT_APPLICABLE, 'Not applicable'),
 )
 
 SIDE_EFFECTS = (

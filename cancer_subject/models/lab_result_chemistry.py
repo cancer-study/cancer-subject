@@ -1,5 +1,6 @@
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from edc_base.model_validators.date import date_not_future
 
 from .model_mixins import CrfModelMixin
 
@@ -8,9 +9,10 @@ class LabResultChemistry(CrfModelMixin):
 
     chem_drawn_date = models.DateField(
         verbose_name='Date of chemistry specimen draw:',
+        max_length=25,
+        validators=[date_not_future],
         blank=True,
-        null=True,
-        max_length=25,)
+        null=True,)
 
     alanine = models.DecimalField(
         verbose_name='Alanine aminotransferase (ALT or SGPT):',
