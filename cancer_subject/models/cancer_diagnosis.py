@@ -1,6 +1,7 @@
 from django.core.validators import RegexValidator
 from django.db import models
 from edc_base.model_fields.custom_fields import OtherCharField
+from edc_base.model_validators.date import date_not_future
 from edc_constants.choices import YES_NO
 
 from ..choices import CANCER_CATEGORY_CHOICE, DIAGNOSIS_BASIS_CHOICE
@@ -68,6 +69,7 @@ class CancerDiagnosis (CrfModelMixin):
         verbose_name=('When did the patient first notice the symptom '
                       '(pain, lump, etc.) that led to diagnosis of '
                       'cancer?'),
+        validators=[date_not_future],
         null=True,
         blank=True,
         max_length=25,
@@ -77,6 +79,7 @@ class CancerDiagnosis (CrfModelMixin):
         verbose_name=('When did the patient first receive an evaluation '
                       'by a doctor or nurse for the symptom that led to '
                       'diagnosis of cancer?'),
+        validators=[date_not_future],
         null=True,
         blank=True,
         max_length=25,
@@ -86,6 +89,7 @@ class CancerDiagnosis (CrfModelMixin):
         verbose_name=('When did the patient first receive an evaluation '
                       'by a \'Traditional Doctor or Sangoma\' for the '
                       'symptom that led to diagnosis of cancer?'),
+        validators=[date_not_future],
         max_length=25,
         null=True,
         blank=True,
@@ -93,6 +97,7 @@ class CancerDiagnosis (CrfModelMixin):
 
     date_diagnosed = models.DateField(
         verbose_name='Date of cancer diagnosis',
+        validators=[date_not_future],
         null=True,
         blank=True,
         max_length=25,
