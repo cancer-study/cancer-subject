@@ -1,10 +1,10 @@
 from django.contrib import admin
 from edc_model_admin import audit_fieldset_tuple
 
+from ..admin_site import cancer_subject_admin
 from ..forms import OncologyTreatmentCompletedForm
 from ..models import OncologyTreatmentCompleted
 from .modeladmin_mixins import CrfModelAdminMixin
-from ..admin_site import cancer_subject_admin
 
 
 @admin.register(OncologyTreatmentCompleted, site=cancer_subject_admin)
@@ -15,6 +15,7 @@ class OncologyTreatmentCompletedAdmin(CrfModelAdminMixin, admin.ModelAdmin):
     fieldsets = (
         (None, {
             'fields': (
+                'subject_visit',
                 'patient_had_chemo',
                 'patient_had_radiation',
                 'patient_had_surgery',
