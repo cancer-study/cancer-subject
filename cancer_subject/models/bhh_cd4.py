@@ -1,5 +1,6 @@
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from edc_base.model_validators.date import date_not_future
 
 from .model_mixins import CrfModelMixin
 
@@ -19,6 +20,7 @@ class BHHCd4 (CrfModelMixin):
     nadir_cd4_drawn_date = models.DateField(
         verbose_name='Date \'CD4\' test was run:',
         max_length=25,
+        validators=[date_not_future],
         null=True,
     )
 

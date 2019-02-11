@@ -1,7 +1,7 @@
-from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.core.validators import RegexValidator
-
+from django.db import models
+from edc_base.model_validators.date import date_not_future
 from edc_constants.choices import YES_NO, YES_NO_DONT_KNOW
 from edc_reference.model_mixins import ReferenceModelMixin
 
@@ -46,6 +46,7 @@ class BaselineHIVHistory (CrfModelMixin, ReferenceModelMixin):
     cd4_drawn_date = models.DateField(
         verbose_name='Date of recent CD4?',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
     )
@@ -71,6 +72,7 @@ class BaselineHIVHistory (CrfModelMixin, ReferenceModelMixin):
     nadir_cd4_drawn_date = models.DateField(
         verbose_name='Date of lowest CD4',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
     )
@@ -96,6 +98,7 @@ class BaselineHIVHistory (CrfModelMixin, ReferenceModelMixin):
     vl_drawn_date = models.DateField(
         verbose_name='Date of HIV viral load',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
     )

@@ -1,4 +1,5 @@
 from django.db import models
+from edc_base.model_validators.date import date_not_future
 
 from ..choices import TEST_RESULT_CHOICE
 from .model_mixins import CrfModelMixin
@@ -9,6 +10,7 @@ class LabResultHiv(CrfModelMixin):
     test_date = models.DateField(
         verbose_name='Date of HIV test',
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
     )

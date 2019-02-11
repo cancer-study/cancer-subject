@@ -1,7 +1,7 @@
 # coding: utf-8
-from django.db import models
-
 from django.core.validators import MaxValueValidator, MinValueValidator
+from django.db import models
+from edc_base.model_validators.date import date_not_future
 
 from .model_mixins import CrfModelMixin
 
@@ -11,6 +11,7 @@ class LabResultCd4(CrfModelMixin):
     cd4_drawn_date = models.DateField(
         verbose_name='Date of CD4 cell count',
         max_length=25,
+        validators=[date_not_future],
     )
 
     cd4_result = models.DecimalField(

@@ -1,9 +1,9 @@
 # coding: utf-8
 from django.db import models
-
-from .model_mixins import CrfModelMixin
+from edc_base.model_validators.date import date_not_future
 
 from ..choices import TB_TREATMENT_CHOICE
+from .model_mixins import CrfModelMixin
 
 
 class LabResultTb(CrfModelMixin):
@@ -25,6 +25,7 @@ class LabResultTb(CrfModelMixin):
         verbose_name=('When did the participant\'s treatment for '
                       'tuberculosis begin?'),
         max_length=25,
+        validators=[date_not_future],
         null=True,
         blank=True,
     )
