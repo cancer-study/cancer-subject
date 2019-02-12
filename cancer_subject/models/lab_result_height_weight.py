@@ -16,8 +16,6 @@ class LabResultHeightWeight(CrfModelMixin):
         verbose_name='Weight',
         max_digits=4,
         decimal_places=1,
-        null=False,
-        blank=True,
         validators=[MinValueValidator(15), MaxValueValidator(400)],
         help_text='kg'
     )
@@ -26,8 +24,6 @@ class LabResultHeightWeight(CrfModelMixin):
         verbose_name='Height:',
         max_digits=4,
         decimal_places=1,
-        null=False,
-        blank=True,
         validators=[MinValueValidator(50), MaxValueValidator(250)],
         help_text='cm'
     )
