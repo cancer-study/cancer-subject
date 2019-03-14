@@ -22,7 +22,7 @@ class BaseRiskAssessmentDemo (CrfModelMixin):
 
     race = models.CharField(
         verbose_name='Race:',
-        max_length=15,
+        max_length=50,
         choices=RACE_CHOICE,
     )
 

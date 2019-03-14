@@ -1,6 +1,6 @@
 from django.core.validators import RegexValidator
 from django.db import models
-from edc_base.model_fields.custom_fields import OtherCharField
+from edc_base.model_fields.custom_fields import OtherCharField as BaseOtherCharField
 from edc_base.model_validators.date import date_not_future
 from edc_constants.choices import YES_NO
 
@@ -12,6 +12,10 @@ from ..choices import POSSIBLE_OVERALL_STAGE_MODIFIER
 from .list_models import ResultsToRecord
 from .model_mixins import CrfModelMixin
 
+
+class OtherCharField(BaseOtherCharField):
+    DEFAULT_MAX_LENGTH = 250
+    
 
 class CancerDiagnosis (CrfModelMixin):
 
@@ -111,11 +115,11 @@ class CancerDiagnosis (CrfModelMixin):
         choices=DIAGNOSIS_BASIS_CHOICE,
     )
 
-    diagnosis_basis_other = OtherCharField()
+    diagnosis_basis_other = OtherCharField(max_length=250,)
 
     diagnosis_word = models.CharField(
         verbose_name=('Diagnosis'),
-        max_length=100,
+        max_length=250,
         null=True,
         blank=True,
         help_text='In words, metatstatic breast cancer, kaposis of right leg',

@@ -17,7 +17,7 @@ class LabResultTb(CrfModelMixin):
     tb_treatment = models.CharField(
         verbose_name=('Is participant being treated for tuberculosis '
                       'now?'),
-        max_length=50,
+        max_length=250,
         choices=TB_TREATMENT_CHOICE,
     )
 
