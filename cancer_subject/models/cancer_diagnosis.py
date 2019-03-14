@@ -1,7 +1,9 @@
 from django.core.validators import RegexValidator
 from django.db import models
+
 from edc_base.model_fields.custom_fields import OtherCharField as BaseOtherCharField
 from edc_base.model_validators.date import date_not_future
+from edc_base.model_fields.custom_fields import OtherCharField
 from edc_constants.choices import YES_NO
 
 from ..choices import CANCER_CATEGORY_CHOICE, DIAGNOSIS_BASIS_CHOICE
@@ -76,7 +78,7 @@ class CancerDiagnosis (CrfModelMixin):
         validators=[date_not_future],
         null=True,
         blank=True,
-        max_length=25,
+        max_length=25
     )
 
     first_evaluation = models.DateField(
@@ -86,7 +88,7 @@ class CancerDiagnosis (CrfModelMixin):
         validators=[date_not_future],
         null=True,
         blank=True,
-        max_length=25,
+        max_length=25
     )
 
     trad_evaluation = models.DateField(
@@ -104,7 +106,7 @@ class CancerDiagnosis (CrfModelMixin):
         validators=[date_not_future],
         null=True,
         blank=True,
-        max_length=25,
+        max_length=25
     )
 
     diagnosis_basis = models.CharField(

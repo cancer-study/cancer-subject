@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 from django.core.validators import MaxValueValidator, MinValueValidator
 
 from edc_constants.choices import YES_NO
@@ -15,8 +16,6 @@ class LabResultHeightWeight(CrfModelMixin):
         verbose_name='Weight',
         max_digits=4,
         decimal_places=1,
-        null=True,
-        blank=True,
         validators=[MinValueValidator(15), MaxValueValidator(400)],
         help_text='kg'
     )
@@ -25,8 +24,6 @@ class LabResultHeightWeight(CrfModelMixin):
         verbose_name='Height:',
         max_digits=4,
         decimal_places=1,
-        null=True,
-        blank=True,
         validators=[MinValueValidator(50), MaxValueValidator(250)],
         help_text='cm'
     )
