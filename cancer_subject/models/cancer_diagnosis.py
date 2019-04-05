@@ -8,7 +8,7 @@ from edc_constants.choices import YES_NO
 
 from ..choices import CANCER_CATEGORY_CHOICE, DIAGNOSIS_BASIS_CHOICE
 from ..choices import METASTASIS_POSSIBLE_GRADES
-from ..choices import POSSIBLE_GRADES, BASIS_CHOICE
+from ..choices import TUMOUR_POSSIBLE_GRADES, TUMOUR_BASIS_CHOICE
 from ..choices import POSSIBLE_OVERALL_STAGES, SYMPTOM_PROMPT_CHOICE
 from ..choices import POSSIBLE_OVERALL_STAGE_MODIFIER
 from .list_models import ResultsToRecord
@@ -156,7 +156,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=POSSIBLE_GRADES,
+        choices=TUMOUR_POSSIBLE_GRADES,
         help_text='For Kaposi\'s record T here, 0 or 1',
     )
 
@@ -165,7 +165,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=BASIS_CHOICE,
+        choices=TUMOUR_BASIS_CHOICE,
     )
 
     lymph_nodes = models.CharField(
@@ -173,7 +173,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=POSSIBLE_GRADES,
+        choices=TUMOUR_POSSIBLE_GRADES,
         help_text='For Kaposi\'s record I here, 0 or 1',
     )
 
@@ -182,7 +182,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=BASIS_CHOICE,
+        choices=TUMOUR_BASIS_CHOICE,
     )
 
     metastasis = models.CharField(
@@ -199,7 +199,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=BASIS_CHOICE,
+        choices=TUMOUR_BASIS_CHOICE,
     )
 
     cancer_stage = models.CharField(

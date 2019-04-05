@@ -2,7 +2,7 @@ from django.db import models
 from edc_constants.choices import YES_NO_UNSURE
 from edc_constants.constants import NOT_APPLICABLE
 
-from ..choices import SEVERITY_LEVEL
+from ..choices import SEVERITY
 from .model_mixins import CrfModelMixin
 
 
@@ -32,7 +32,7 @@ class CurrentSymptoms (CrfModelMixin):
     severity = models.CharField(
         verbose_name='Severity:',
         max_length=250,
-        choices=SEVERITY_LEVEL,
+        choices=SEVERITY,
         default=NOT_APPLICABLE,
         help_text=('If you determine that participant could have '
                    'Grade 4 illness please assist '

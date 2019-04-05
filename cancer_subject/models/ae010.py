@@ -1,6 +1,7 @@
 from django.db import models
 
 from ..choices import REPORT_TYPE_CHOICE, RELATIONSHIP_DESCRIPTION_CHOICE
+
 from .model_mixins import CrfModelMixin
 
 

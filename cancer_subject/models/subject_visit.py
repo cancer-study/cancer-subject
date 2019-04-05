@@ -10,7 +10,7 @@ from edc_reference.model_mixins import ReferenceModelMixin
 from edc_visit_tracking.managers import VisitModelManager
 from edc_visit_tracking.model_mixins import VisitModelMixin
 
-from ..choices import INFO_SOURCE, VISIT_UNSCHEDULED_REASON, VISIT_REASON
+from ..choices import VISIT_INFO_SOURCE, VISIT_UNSCHEDULED_REASON, VISIT_REASON
 from .appointment import Appointment
 
 
@@ -47,7 +47,7 @@ class SubjectVisit(
     info_source = models.CharField(
         verbose_name='What is the main source of this information?',
         max_length=40,
-        choices=INFO_SOURCE)
+        choices=VISIT_INFO_SOURCE)
 
     on_site = CurrentSiteManager()
 
