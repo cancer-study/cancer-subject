@@ -1,11 +1,16 @@
 from django.contrib import admin
 from edc_base.modeladmin_mixins import audit_fieldset_tuple
 
-from ..admin_site import cancer_subject_admin
 
+
+from ..admin_site import cancer_subject_admin
 from ..forms import SubjectLocatorForm
 from ..models import SubjectLocator
 from .modeladmin_mixins import ModelAdminMixin
+from edc_locator.fieldsets import subject_contacts_fieldset,\
+    work_contacts_fieldset, indirect_contacts_fieldset
+from ..fieldsets import other_indirect_contacts_fieldset
+
 
 
 @admin.register(SubjectLocator, site=cancer_subject_admin)
@@ -17,52 +22,37 @@ class SubjectLocatorAdmin(ModelAdminMixin, admin.ModelAdmin):
         (None, {
             'fields': (
                 'subject_identifier',
-                'mail_address',
-                'home_visit_permission',
-                'physical_address',
-                'may_sms',
-                'subject_cell',
-                'subject_cell_alt',
-                'subject_phone',
-                'subject_phone_alt',
-                'may_contact_indirectly',
-                'indirect_contact_name',
-                'indirect_contact_relation',
-                'indirect_contact_physical_address',
-                'indirect_contact_cell',
-                'alt_contact_cell_number',
-                'indirect_contact_phone',
-                'has_alt_contact',
-                'alt_contact_name',
-                'alt_contact_rel',
-                'alt_contact_cell',
-                'other_alt_contact_cell',
-                'alt_contact_tel',
-                'may_call_work',
-                'subject_work_place',
-                'subject_work_phone')}),
+                'date_signed',
+                'local_clinic',
+                'home_village',
+            )}),
+        subject_contacts_fieldset,
+        work_contacts_fieldset,
+        indirect_contacts_fieldset,
+        other_indirect_contacts_fieldset,
         audit_fieldset_tuple,
     )
 
     radio_fields = {
-        'home_visit_permission': admin.VERTICAL,
+        'may_visit_home': admin.VERTICAL,
+        'may_call': admin.VERTICAL,
         'may_sms': admin.VERTICAL,
-        'has_alt_contact': admin.VERTICAL,
         'may_call_work': admin.VERTICAL,
-        'may_contact_indirectly': admin.VERTICAL
-    }
+        'may_contact_indirectly': admin.VERTICAL}
 
     list_filter = (
-        #         'may_follow_up',
-        #         'may_contact_someone',
+        'may_visit_home',
+        'may_call',
+        'may_sms',
         'may_call_work',
-        'home_visit_permission')
+        'may_contact_indirectly')
 
     list_display = (
         'subject_identifier',
-        'home_visit_permission',
-        #         'may_follow_up',
-        'has_alt_contact',
-        'may_call_work',
-        #         'may_contact_someone'
-    )
+        'visit_home',
+        'call',
+        'sms',
+        'call_work',
+        'contact_indirectly')
+
+    search_fields = ('subject_identifier', )
