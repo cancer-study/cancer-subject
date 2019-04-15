@@ -45,6 +45,7 @@ class BaseRiskAssessmentDemoAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "district": admin.VERTICAL,
         "setting": admin.VERTICAL,
         "education": admin.VERTICAL,
+        "community": admin.VERTICAL,
         "occupation": admin.VERTICAL,
         "money_provide": admin.VERTICAL,
         "money_earned": admin.VERTICAL,
