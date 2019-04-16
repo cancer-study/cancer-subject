@@ -49,6 +49,7 @@ class SubjectLocatorAdmin(ModelAdminMixin, admin.ModelAdmin):
 
     list_display = (
         'subject_identifier',
+#         'dashboard',
         'visit_home',
         'call',
         'sms',
