@@ -4,19 +4,17 @@ from django.db import models
 from django.utils import timezone
 
 
-from edc_base.sites import CurrentSiteManager, SiteModelMixin
+from cancer_subject.action_items import SUBJECT_LOCATOR_ACTION
 from django_crypto_fields.fields import EncryptedCharField
 from edc_action_item.model_mixins import ActionModelMixin
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
+from edc_base.model_validators.bw import BWTelephoneNumber
+from edc_base.model_validators.phone import CellNumber
+from edc_base.sites import CurrentSiteManager, SiteModelMixin
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
 from edc_constants.choices import YES_NO
 from edc_locator.model_mixins import LocatorModelMixin, LocatorManager
-from edc_base.model_validators.bw import BWCellNumber, BWTelephoneNumber
-
-
-
-SUBJECT_LOCATOR_ACTION = 'submit-subject-locator'
 
 
 class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
@@ -80,7 +78,7 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
     alt_contact_cell = EncryptedCharField(
         max_length=8,
         verbose_name="Cell number",
-        validators=[BWCellNumber, ],
+        validators=[CellNumber, ],
         help_text="",
         blank=True,
         null=True,
@@ -89,7 +87,7 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
     other_alt_contact_cell = EncryptedCharField(
         max_length=8,
         verbose_name="Cell number (alternate)",
-        validators=[BWCellNumber, ],
+        validators=[CellNumber, ],
         help_text="",
         blank=True,
         null=True,
