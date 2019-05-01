@@ -14,6 +14,7 @@ class OTRSurgical (CrfModelMixin):
         verbose_name='Date of operation?',
         max_length=15,
         validators=[date_not_future],
+        null=True
     )
 
     class Meta(CrfModelMixin.Meta):

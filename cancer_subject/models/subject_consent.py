@@ -20,7 +20,7 @@ from edc_registration.model_mixins import (
     as BaseUpdatesOrCreatesRegistrationModelMixin)
 from edc_search.model_mixins import SearchSlugManager
 
-from ..models.model_mixins import SearchSlugModelMixin
+from .model_mixins import SearchSlugModelMixin
 
 
 class ConsentManager(SubjectConsentManager, SearchSlugManager):

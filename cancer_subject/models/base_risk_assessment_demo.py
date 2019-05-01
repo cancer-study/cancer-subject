@@ -6,7 +6,7 @@ from edc_constants.choices import YES_NO
 from ..choices import (MARITAL_STATUS_CHOICE, MONEY_PROVIDED_CHOICE,
                        OCCUPATION_CHOICE)
 from ..choices import DISTRICT_CHOICE, COMMUNITY, EDUCATION_CHOICE
-from ..choices import ETHNIC_GRP_CHOICE, FREQUENCY_CHOICE, MONEY_EARNED_CHOICE
+from ..choices import ETHNIC_GRP_CHOICE, FOOD_SECURITY, MONEY_EARNED_CHOICE
 from ..choices import SETTING_CHOICE, TOILET_CHOICE, RACE_CHOICE
 from .model_mixins import CrfModelMixin
 
@@ -22,7 +22,7 @@ class BaseRiskAssessmentDemo (CrfModelMixin):
 
     race = models.CharField(
         verbose_name='Race:',
-        max_length=15,
+        max_length=50,
         choices=RACE_CHOICE,
     )
 
@@ -126,7 +126,7 @@ class BaseRiskAssessmentDemo (CrfModelMixin):
                       'felt you needed, or even to skip a meal, '
                       'because there was not enough food?'),
         max_length=15,
-        choices=FREQUENCY_CHOICE,
+        choices=FOOD_SECURITY,
     )
 
     class Meta(CrfModelMixin.Meta):

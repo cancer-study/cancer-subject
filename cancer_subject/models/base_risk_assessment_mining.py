@@ -3,7 +3,7 @@ from edc_base.model_fields.custom_fields import OtherCharField
 from edc_base.model_validators.date import date_not_future
 from edc_constants.choices import YES_NO_DONT_KNOW
 
-from ..choices import MINE_TYPE_CHOICE, TOTAL_TIME_CHOICE
+from ..choices import MINE_TYPE_CHOICE, MINE_TIME_CHOICE
 from .model_mixins.crf_model_mixin import CrfModelMixin
 
 
@@ -13,7 +13,7 @@ class BaseRiskAssessmentMining (CrfModelMixin):
         verbose_name=('What is the total amount of time you '
                       'worked in the mine?'),
         max_length=25,
-        choices=TOTAL_TIME_CHOICE,
+        choices=MINE_TIME_CHOICE,
     )
 
     mine_type = models.CharField(
@@ -34,7 +34,7 @@ class BaseRiskAssessmentMining (CrfModelMixin):
         verbose_name=('What is the total amount of time you '
                       'worked UNDERGROUND in the mine?'),
         max_length=25,
-        choices=TOTAL_TIME_CHOICE,
+        choices=MINE_TIME_CHOICE,
         blank=True,
     )
 

@@ -2,7 +2,7 @@
 from django.db import models
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-from ..choices import CIGARETTE_SMOKING_CHOICE, SMOKE_NOW_CHOICE, QUIT_CHOICE
+from ..choices import CIGARETTE_SMOKING_CHOICE, SMOKE_NOW_CHOICE, WHEN_QUIT_CHOICE
 from .model_mixins.crf_model_mixin import CrfModelMixin
 
 
@@ -41,7 +41,7 @@ class BaseRiskAssessmentSmoking (CrfModelMixin):
     when_quit = models.CharField(
         verbose_name='When did you quit smoking cigarettes?',
         max_length=35,
-        choices=QUIT_CHOICE,
+        choices=WHEN_QUIT_CHOICE,
         null=True,
         blank=True,
     )

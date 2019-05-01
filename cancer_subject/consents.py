@@ -25,3 +25,4 @@ v1 = Consent(
     gender=[MALE, FEMALE])
 
 site_consents.register(v1)
+    

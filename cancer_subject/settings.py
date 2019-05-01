@@ -28,8 +28,6 @@ SECRET_KEY = 'jwggbn11gw22h6&0n@q0t97e)&)pg^n_*$18xj350f0%w+ywba'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ETC_DIR = os.path.join(BASE_DIR, 'etc')
-
 ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cancer-test.bhp.org.bw']
 
 SITE_ID = 40
@@ -110,20 +108,20 @@ WSGI_APPLICATION = 'cancer_subject.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-    }
-}
 # DATABASES = {
 #     'default': {
-#         'ENGINE': 'django.db.backends.mysql',
-#         'OPTIONS': {
-#             'read_default_file': os.path.join(ETC_DIR, 'mysql.conf'),
-#         },
-#     },
+#         'ENGINE': 'django.db.backends.sqlite3',
+#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#     }
 # }
+DATABASES = {
+    'default': {
+        'ENGINE': 'django.db.backends.mysql',
+        'OPTIONS': {
+            'read_default_file': os.path.join(ETC_DIR, 'mysql.conf'),
+        },
+    },
+}
 
 
 # Password validation

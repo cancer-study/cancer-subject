@@ -1,17 +1,23 @@
 from django.core.validators import RegexValidator
 from django.db import models
+
+from edc_base.model_fields.custom_fields import OtherCharField as BaseOtherCharField
 from edc_base.model_validators.date import date_not_future
 from edc_base.model_fields.custom_fields import OtherCharField
 from edc_constants.choices import YES_NO
 
 from ..choices import CANCER_CATEGORY_CHOICE, DIAGNOSIS_BASIS_CHOICE
 from ..choices import METASTASIS_POSSIBLE_GRADES
-from ..choices import POSSIBLE_GRADES, BASIS_CHOICE
+from ..choices import TUMOUR_POSSIBLE_GRADES, TUMOUR_BASIS_CHOICE
 from ..choices import POSSIBLE_OVERALL_STAGES, SYMPTOM_PROMPT_CHOICE
 from ..choices import POSSIBLE_OVERALL_STAGE_MODIFIER
 from .list_models import ResultsToRecord
 from .model_mixins import CrfModelMixin
 
+
+class OtherCharField(BaseOtherCharField):
+    DEFAULT_MAX_LENGTH = 250
+    
 
 class CancerDiagnosis (CrfModelMixin):
 
@@ -111,11 +117,11 @@ class CancerDiagnosis (CrfModelMixin):
         choices=DIAGNOSIS_BASIS_CHOICE,
     )
 
-    diagnosis_basis_other = OtherCharField()
+    diagnosis_basis_other = OtherCharField(max_length=250,)
 
     diagnosis_word = models.CharField(
         verbose_name=('Diagnosis'),
-        max_length=100,
+        max_length=250,
         null=True,
         blank=True,
         help_text='In words, metatstatic breast cancer, kaposis of right leg',
@@ -150,7 +156,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=POSSIBLE_GRADES,
+        choices=TUMOUR_POSSIBLE_GRADES,
         help_text='For Kaposi\'s record T here, 0 or 1',
     )
 
@@ -159,7 +165,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=BASIS_CHOICE,
+        choices=TUMOUR_BASIS_CHOICE,
     )
 
     lymph_nodes = models.CharField(
@@ -167,7 +173,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=POSSIBLE_GRADES,
+        choices=TUMOUR_POSSIBLE_GRADES,
         help_text='For Kaposi\'s record I here, 0 or 1',
     )
 
@@ -176,7 +182,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=BASIS_CHOICE,
+        choices=TUMOUR_BASIS_CHOICE,
     )
 
     metastasis = models.CharField(
@@ -193,7 +199,7 @@ class CancerDiagnosis (CrfModelMixin):
         max_length=15,
         null=True,
         blank=True,
-        choices=BASIS_CHOICE,
+        choices=TUMOUR_BASIS_CHOICE,
     )
 
     cancer_stage = models.CharField(

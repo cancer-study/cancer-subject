@@ -2,7 +2,7 @@ from django.db import models
 from edc_base.model_fields import OtherCharField
 from edc_constants.choices import YES_NO_DONT_KNOW
 
-from ..choices import FUEL_CHOICE
+from ..choices import FUEL_MONTH_CHOICE
 from ..models.model_mixins import CrfModelMixin
 
 
@@ -12,7 +12,7 @@ class BaseRiskAssessmentFuel (CrfModelMixin):
         verbose_name=('Over the past 20 years, what type of fuel was '
                       'used most for cooking/heating in your household?'),
         max_length=55,
-        choices=FUEL_CHOICE,
+        choices=FUEL_MONTH_CHOICE,
     )
 
     fuel_20y_other = OtherCharField(
@@ -32,7 +32,7 @@ class BaseRiskAssessmentFuel (CrfModelMixin):
         verbose_name=('In the past month, what type of fuel was used '
                       'most for cooking / heating in your household?'),
         max_length=55,
-        choices=FUEL_CHOICE,
+        choices=FUEL_MONTH_CHOICE,
     )
 
     fuel_mm_other = OtherCharField(

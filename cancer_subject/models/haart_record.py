@@ -10,7 +10,7 @@ class HaartRecord(CrfModelMixin):
     haart_status = models.CharField(
         verbose_name=('What is the status of the participant\'s '
                       'antiretroviral treatment (HAART)?'),
-        max_length=145,
+        max_length=250,
         choices=HAART_STATUS_CHOICE,
         null=True,
         blank=True,

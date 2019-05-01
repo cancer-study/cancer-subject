@@ -1,13 +1,17 @@
 from django import forms
+from edc_form_validators import FormValidatorMixin
+from edc_locator.forms.subject_locator_form_validator import SubjectLocatorFormValidator
 
 from ..models import SubjectLocator
-from .form_mixins import SubjectModelFormMixin
 
 
-class SubjectLocatorForm(SubjectModelFormMixin):
+class SubjectLocatorForm(FormValidatorMixin, forms.ModelForm):
+
+    form_validator_cls = SubjectLocatorFormValidator
 
     subject_identifier = forms.CharField(
-        label='Subject identifier',
+        label='Subject Identifier',
+        required=False,
         widget=forms.TextInput(attrs={'readonly': 'readonly'}))
 
     class Meta:
