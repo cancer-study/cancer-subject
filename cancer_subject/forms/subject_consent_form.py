@@ -1,9 +1,9 @@
-from cancer_subject_validations.form_validators import SubjectConsentFormValidation
-
 from django import forms
 from edc_consent.modelform_mixins import ConsentModelFormMixin
 
-from ..choices import COMMUNITY, ID_TYPE
+from cancer_subject_validations.form_validators import SubjectConsentFormValidation
+
+from ..choices import ID_TYPE
 from ..models import SubjectConsent
 from .form_mixins import SubjectModelFormMixin
 
@@ -16,12 +16,6 @@ class SubjectConsentForm(ConsentModelFormMixin, SubjectModelFormMixin,
     identity_type = forms.CharField(
         label='What type of identity number is this?',
         widget=forms.RadioSelect(choices=list(ID_TYPE)))
-
-    study_site = forms.ChoiceField(
-        label='Study site',
-        choices=COMMUNITY,
-        help_text="",
-        widget=forms.RadioSelect())
 
     class Meta:
         model = SubjectConsent

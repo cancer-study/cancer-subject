@@ -68,10 +68,6 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
                 'identity_type',
                 'confirm_identity',
                 'is_incarcerated')}),
-        ('Sample collection and storage', {
-            'fields': (
-                'may_store_samples',
-                'may_store_genetic_samples')}),
         ('Review Questions', {
             'fields': (
                 'consent_reviewed',
