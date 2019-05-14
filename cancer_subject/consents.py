@@ -21,8 +21,7 @@ v1 = Consent(
         datetime(2019, 12, 31, 23, 59, 59), tzinfo=tzinfo).to('UTC').datetime,
     age_min=18,
     age_is_adult=18,
-    age_max=64,
+    age_max=120,
     gender=[MALE, FEMALE])
 
 site_consents.register(v1)
-    
