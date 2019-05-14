@@ -59,7 +59,6 @@ class SubjectConsentAdmin(ModelAdminConsentMixin, ModelAdminMixin, SimpleHistory
                 'is_literate',
                 'witness_name',
                 'consent_datetime',
-                'study_site',
                 'gender',
                 'dob',
                 'guardian_name',
