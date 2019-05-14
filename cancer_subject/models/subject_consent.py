@@ -119,8 +119,7 @@ class SubjectConsent(
 
     def get_search_slug_fields(self):
         fields = super().get_search_slug_fields()
-        fields.extend([
-            'subject_identifier', 'identity', 'screening_identifier'])
+        fields.extend(['identity', 'screening_identifier'])
         return fields
 
     class Meta(ConsentModelMixin.Meta):
