@@ -117,6 +117,12 @@ class SubjectConsent(
     def natural_key(self):
         return (self.subject_identifier, self.version,)
 
+    def get_search_slug_fields(self):
+        fields = super().get_search_slug_fields()
+        fields.extend([
+            'subject_identifier', 'identity', 'screening_identifier'])
+        return fields
+
     class Meta(ConsentModelMixin.Meta):
         app_label = 'cancer_subject'
         get_latest_by = 'consent_datetime'
