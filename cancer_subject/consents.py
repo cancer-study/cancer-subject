@@ -16,7 +16,7 @@ v1 = Consent(
     'cancer_subject.subjectconsent',
     version='1',
     start=arrow.get(
-        datetime(2016, 12, 31, 0, 0, 0), tzinfo=tzinfo).to('UTC').datetime,
+        datetime(2010, 5, 2, 0, 0, 0), tzinfo=tzinfo).to('UTC').datetime,
     end=arrow.get(
         datetime(2019, 12, 31, 23, 59, 59), tzinfo=tzinfo).to('UTC').datetime,
     age_min=18,
