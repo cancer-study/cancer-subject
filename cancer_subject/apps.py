@@ -42,7 +42,7 @@ if settings.APP_NAME == 'cancer_subject':
         protocol_name = 'Cancer'
         protocol_title = ''
         study_open_datetime = datetime(
-            2013, 12, 31, 0, 0, 0, tzinfo=gettz('UTC'))
+            2010, 5, 2, 0, 0, 0, tzinfo=gettz('UTC'))
         study_close_datetime = datetime(
             2019, 12, 31, 23, 59, 59, tzinfo=gettz('UTC'))
 
