@@ -30,7 +30,7 @@ class AppointmentAdmin(ModelAdminFormInstructionsMixin, ModelAdminNextUrlRedirec
 
     form = AppointmentForm
     date_hierarchy = 'appt_datetime'
-    list_display = ('subject_identifier', '__str__',
+    list_display = ('subject_identifier', 'dashboard', '__str__',
                     'appt_datetime', 'appt_type', 'appt_status')
     list_filter = ('visit_code', 'appt_datetime', 'appt_type', 'appt_status')
 
