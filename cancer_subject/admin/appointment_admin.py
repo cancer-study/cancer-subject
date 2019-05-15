@@ -10,6 +10,7 @@ from edc_model_admin import (
     ModelAdminFormAutoNumberMixin, ModelAdminRedirectOnDeleteMixin,
     ModelAdminAuditFieldsMixin, ModelAdminReadOnlyMixin,
     audit_fieldset_tuple)
+from edc_subject_dashboard import ModelAdminSubjectDashboardMixin
 from edc_visit_schedule.fieldsets import visit_schedule_fieldset_tuple, visit_schedule_fields
 
 from ..admin_site import cancer_subject_admin
@@ -21,7 +22,8 @@ from ..models import Appointment
 class AppointmentAdmin(ModelAdminFormInstructionsMixin, ModelAdminNextUrlRedirectMixin,
                        ModelAdminFormAutoNumberMixin, ModelAdminRevisionMixin,
                        ModelAdminAuditFieldsMixin, ModelAdminRedirectOnDeleteMixin,
-                       ModelAdminReadOnlyMixin, ModelAdminSiteMixin, admin.ModelAdmin):
+                       ModelAdminReadOnlyMixin, ModelAdminSiteMixin,
+                       ModelAdminSubjectDashboardMixin, admin.ModelAdmin):
 
     post_url_on_delete_name = settings.DASHBOARD_URL_NAMES.get(
         'subject_dashboard_url')
