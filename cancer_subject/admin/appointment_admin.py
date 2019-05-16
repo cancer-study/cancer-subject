@@ -36,6 +36,8 @@ class AppointmentAdmin(ModelAdminFormInstructionsMixin, ModelAdminNextUrlRedirec
                     'appt_datetime', 'appt_type', 'appt_status')
     list_filter = ('visit_code', 'appt_datetime', 'appt_type', 'appt_status')
 
+    search_fields = ('subject_identifier', )
+
     additional_instructions = mark_safe(
         'To start or continue to edit FORMS for this subject, change the '
         'appointment status below to "In Progress" and click SAVE. <BR>'
