@@ -22,6 +22,9 @@ class AppointmentFormValidator(BaseAppointmentFormValidator):
                 and appt_reason != UNSCHEDULED_APPT):
             raise forms.ValidationError({
                 'appt_reason': f'Expected {UNSCHEDULED_APPT.title()}'})
+        elif self.instance.visit_code != '1000' and appt_reason == UNSCHEDULED_APPT:
+            raise forms.ValidationError({
+                'appt_reason': 'Follow up visits cannot be unscheduled.'})
         if (appt_type in ['telephone', 'clinic', 'home']
                 and self.instance.visit_code == '1000'):
             raise forms.ValidationError({
