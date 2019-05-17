@@ -5,7 +5,7 @@ from django.utils import timezone
 from django_crypto_fields.fields import EncryptedCharField
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
-from edc_base.model_validators.bw import BWTelephoneNumber
+from edc_base.model_validators import TelephoneNumber
 from edc_base.model_validators.phone import CellNumber
 from edc_base.sites import CurrentSiteManager, SiteModelMixin
 from edc_consent.model_mixins import RequiresConsentFieldsModelMixin
@@ -96,7 +96,7 @@ class SubjectLocator(LocatorModelMixin, RequiresConsentFieldsModelMixin,
     alt_contact_tel = EncryptedCharField(
         max_length=8,
         verbose_name="Telephone number",
-        validators=[BWTelephoneNumber, ],
+        validators=[TelephoneNumber, ],
         help_text="",
         blank=True,
         null=True,
