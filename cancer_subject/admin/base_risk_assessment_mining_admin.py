@@ -20,6 +20,5 @@ class BaseRiskAssessmentMiningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "last_mine")
     radio_fields = {
         "mine_time": admin.VERTICAL,
-        "mine_type": admin.VERTICAL,
         "mine_underground": admin.VERTICAL,
         "mine_underground_time": admin.VERTICAL}
