@@ -5,7 +5,8 @@ from edc_constants.choices import YES_NO_DONT_KNOW
 
 from ..choices import MINE_TYPE_CHOICE, MINE_TIME_CHOICE
 from .model_mixins.crf_model_mixin import CrfModelMixin
-
+from django.db.models.fields.related import ManyToManyField
+from .list_models import MiningType
 
 class BaseRiskAssessmentMining (CrfModelMixin):
 
@@ -16,11 +17,11 @@ class BaseRiskAssessmentMining (CrfModelMixin):
         choices=MINE_TIME_CHOICE,
     )
 
-    mine_type = models.CharField(
+    mine_type = ManyToManyField(
+        MiningType,
         verbose_name='What kind of mine have you worked in?',
         max_length=25,
-        choices=MINE_TYPE_CHOICE,
-    )
+        )
 
     mine_prompt_other = OtherCharField()
 

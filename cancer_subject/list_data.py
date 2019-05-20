@@ -12,6 +12,14 @@ list_data = {
         ('severe_bacterial_infections', 'Severe bacterial infections'),
         (OTHER, 'Other, specify')
     ],
+    'cancer_subject.miningtype': [
+        (' gold', ' gold'),
+        (' diamond', ' diamond'),
+        (' copper', ' copper'),
+        (' nickel', ' nickel'),
+        (' other, specify:', ' other, specify:'),
+    ],
+
     'cancer_subject.resultstorecord': [
         ('haematology', 'Haematology'),
         ('chemistry', 'Chemistry'),

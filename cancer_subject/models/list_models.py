@@ -23,3 +23,9 @@ class ResultsToRecord(ListModelMixin, BaseUuidModel):
 
     class Meta(ListModelMixin.Meta):
         app_label = 'cancer_subject'
+
+
+class MiningType(ListModelMixin, BaseUuidModel):
+
+    class Meta(ListModelMixin.Meta):
+        app_label = 'cancer_subject'
