@@ -957,6 +957,7 @@ AGE_FIRSTSEX_CHOICE = (
     (' don’t know', ' don’t know'),
     (' never', 'never'),
 )
+
 TRADMEDICINE_CHOICE = (
     (' Never', ' Never'),
     (' Less than once a year', ' Less than once a year'),
@@ -964,12 +965,13 @@ TRADMEDICINE_CHOICE = (
     (' Between 5 to 10 times a year', ' Between 5 to 10 times a year'),
     (' More than 10 times a year', ' More than 10 times a year'),
 )
+
 CANCER_CATEGORY_CHOICE = (
-    ('5 years)', '5 years)'),
-    ('1 year)', '1 year)'),
-    (' Ongoing treatment (active treatment for this cancer type in past year)',
-     ' Ongoing treatment (active treatment for this cancer type in past year)'),
+    ('new', 'New Cancer (no treatment for this cancer type for >5 year, or treatment began less than 6 weeks ago'),
+    ('relapsed', 'Relapsed or recurrent cancer (no active treatment for this cancer for >1 year)'),
+    ('Ongoing', 'Ongoing treatment (active treatment for this cancer type in past year)'),
 )
+
 SYMPTOM_PROMPT_CHOICE = (
     ('Pain', 'Pain'),
     ('Lump/Mass', 'Lump/Mass'),
