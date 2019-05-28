@@ -16,5 +16,7 @@ class OnScheduleAdmin(ModelAdminMixin, admin.ModelAdmin):
 
     list_filter = ('onschedule_datetime', )
 
+    search_fields = ('subject_identifier')
+
     def get_readonly_fields(self, request, obj=None):
         return ('subject_identifier', 'onschedule_datetime')
