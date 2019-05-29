@@ -20,6 +20,7 @@ from edc_registration.model_mixins import (
     as BaseUpdatesOrCreatesRegistrationModelMixin)
 from edc_search.model_mixins import SearchSlugManager
 
+from ..subject_identifier import SubjectIdentifier
 from .model_mixins import SearchSlugModelMixin
 
 
@@ -45,7 +46,7 @@ class UpdatesOrCreatesRegistrationModelMixin(
         registration_options = {}
         for field in self.registration_model._meta.get_fields():
             if (field.name not in DEFAULT_BASE_FIELDS + ['_state']
-                    + [self.registration_unique_field]):
+                    +[self.registration_unique_field]):
                 try:
                     registration_options.update({field.name: getattr(
                         self, field.name)})
@@ -121,6 +122,17 @@ class SubjectConsent(
         fields = super().get_search_slug_fields()
         fields.extend(['identity', 'screening_identifier', 'last_name'])
         return fields
+
+    def make_new_identifier(self):
+        """Returns a new and unique identifier.
+
+        Override this if needed.
+        """
+        subject_identifier = SubjectIdentifier(
+            identifier_type='subject',
+            requesting_model=self._meta.label_lower,
+            site=self.site)
+        return subject_identifier.identifier
 
     class Meta(ConsentModelMixin.Meta):
         app_label = 'cancer_subject'
