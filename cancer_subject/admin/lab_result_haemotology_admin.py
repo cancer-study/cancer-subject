@@ -13,6 +13,7 @@ class LabResultHaematologyAdmin(CrfModelAdminMixin):
     form = LabResultHaematologyForm
     fields = (
         "subject_visit",
+        'report_datetime',
         "haem_drawn_date",
         "hgb",
         "mcv",

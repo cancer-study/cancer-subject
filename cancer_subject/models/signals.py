@@ -29,7 +29,7 @@ def subject_screening_on_post_save(sender, instance, raw, created, **kwargs):
                 schedule.put_on_schedule(
                     subject_identifier=instance.subject_identifier,
                     onschedule_datetime=instance.report_datetime)
-    
+
                 # Update subject consent with screening identifier
                 try:
                     subject_consent = SubjectConsent.objects.get(

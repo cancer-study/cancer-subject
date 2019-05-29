@@ -12,6 +12,7 @@ class LabResultHeightWeightAdmin(CrfModelAdminMixin):
     form = LabResultHeightWeightForm
     fields = (
         "subject_visit",
+        'report_datetime',
         "weight",
         "height",
         "cough2weeks",)
