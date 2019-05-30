@@ -22,10 +22,10 @@ class BaseRiskAssessment (CrfModelMixin):
         choices=YES_NO_DONT_KNOW,
     )
 
-    year_tb = models.DateField(
+    year_tb = models.CharField(
         verbose_name=('In what year did you last have tuberculosis '
                       '(year of diagnosis)?'),
-        validators=[date_not_future],
+        max_length=15,
         null=True,
         blank=True,
     )
