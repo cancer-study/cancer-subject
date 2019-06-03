@@ -120,7 +120,8 @@ class SubjectConsent(
 
     def get_search_slug_fields(self):
         fields = super().get_search_slug_fields()
-        fields.extend(['identity', 'screening_identifier', 'last_name'])
+        fields.extend(['identity', 'screening_identifier',
+                       'first_name', 'last_name'])
         return fields
 
     def make_new_identifier(self):

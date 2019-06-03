@@ -94,6 +94,8 @@ class ChemoMedPlan(BaseChemoMedication):
 
     history = HistoricalRecords()
 
+    objects = ChemoMedPlanManager()
+
     def natural_key(self):
         return (self.drug_code, self.dose_category) + self.oncology_treatment_plan.natural_key()
     natural_key.dependencies = ['cancer_subject.oncology_treatment_plan']
@@ -125,6 +127,8 @@ class ChemoMedRecord(BaseChemoMedication):
         on_delete=models.PROTECT)
 
     history = HistoricalRecords()
+
+    objects = ChemoMedRecordManager()
 
     def natural_key(self):
         return (self.drug_code, self.dose_category) + self.otr_chemo.natural_key()

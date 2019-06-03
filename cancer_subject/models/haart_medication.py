@@ -8,7 +8,7 @@ from ..choices import MOD_REASON_CHOICE, ARV_REASON_CHOICE
 from .haart_record import HaartRecord
 
 
-class ChemoMedRecordManager(models.Manager):
+class HaartMedicationManager(models.Manager):
 
     def get_by_natural_key(self, drug_name, arv_reason, subject_identifier,
                            visit_schedule_name, schedule_name, visit_code):
@@ -70,6 +70,8 @@ class HaartMedRecord(BaseHaartMedication):
         on_delete=models.PROTECT)
 
     history = HistoricalRecords()
+
+    objects = HaartMedicationManager()
 
     def natural_key(self):
         return (self.drug_name, self.arv_reason) + self.haart_record.natural_key()

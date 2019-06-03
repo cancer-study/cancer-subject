@@ -261,6 +261,8 @@ class RadiationTreatmentRecord(BaseRadiationTreatment):
 
     history = HistoricalRecords()
 
+    objects = RadiationTreatmentRecordManager()
+
     def natural_key(self):
         return (self.treatment_name) + self.radiation_treatment.natural_key()
     natural_key.dependencies = ['cancer_subject.radiation_treatment']
