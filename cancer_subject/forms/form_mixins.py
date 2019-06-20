@@ -10,6 +10,7 @@ from ..models import SubjectVisit
 class SubjectModelFormMixin(SiteModelFormMixin, VisitTrackingModelFormMixin,
                             FormValidatorMixin, forms.ModelForm):
 
+    report_datetime_allowance = -1
     visit_model = SubjectVisit
 
 
