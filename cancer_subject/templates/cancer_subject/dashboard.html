@@ -1,0 +1,31 @@
+{% extends 'edc_dashboard/dashboard.html' %}
+
+{% load staticfiles %}
+
+{% block top_bar %}
+    {% include "cancer_subject/dashboard/top_bar.html" %}
+{% endblock top_bar %}
+
+{% block side_bar %}
+
+    {% include "cancer_subject/dashboard/sidebar.html" %}
+
+{% endblock side_bar%}
+
+{% block appointments %}
+  	 {% include "edc_dashboard/dashboard/appointments.html" %} 
+{% endblock appointments %}
+
+{% block crfs %}
+	{% if crfs %}
+  		{% include "cancer_subject/dashboard/crfs.html" %}
+  {% endif %}    
+{% endblock crfs %}
+
+{% block requisitions %}
+  {% if requisitions %}
+  	{% include "edc_dashboard/dashboard/requisitions.html" %}
+  {% endif %}    
+{% endblock requisitions %}
+
+{% block locator_information %}{% endblock locator_information %}
