@@ -1138,6 +1138,7 @@ TEST_RESULT_CHOICE = (
     ('Non-Reactive', 'Non-Reactive'),
 )
 TB_TREATMENT_CHOICE = (
+    ('No', 'No'),
     ('Yes, isoniazid preventative therapy (IPT)',
      'Yes, isoniazid preventative therapy (IPT)'),
     ('Yes, combination anti-tuberculosis treatment (ATT)',
