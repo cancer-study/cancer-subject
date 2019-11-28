@@ -9,8 +9,7 @@ from edc_reference.model_mixins import ReferenceModelMixin
 from edc_visit_schedule.model_mixins import SubjectScheduleCrfModelMixin
 from edc_visit_tracking.managers import (
     CrfModelManager as VisitTrackingCrfModelManager)
-from edc_visit_tracking.model_mixins import (
-    CrfModelMixin as VisitTrackingCrfModelMixin, PreviousVisitModelMixin)
+from edc_visit_tracking.model_mixins import (PreviousVisitModelMixin)
 from edc_visit_tracking.model_mixins import CrfModelMixin as BaseCrfModelMixin
 
 
@@ -46,27 +45,4 @@ class CrfModelMixin(BaseCrfModelMixin, SubjectScheduleCrfModelMixin,
     natural_key.dependencies = ['cancer_subject.subjectvisit', 'sites.Site']
 
     class Meta:
-        abstract = True
-
-
-class CrfModelMixinNonUniqueVisit(BaseCrfModelMixin,
-                                  SubjectScheduleCrfModelMixin,
-                                  RequiresConsentFieldsModelMixin,
-                                  PreviousVisitModelMixin,
-                                  SiteModelMixin, UpdatesCrfMetadataModelMixin,
-                                  BaseUuidModel):
-
-    """ Base model for all scheduled models
-     (adds key to :class:`SubjectVisit`).
-    """
-
-    subject_visit = models.OneToOneField(SubjectVisit, on_delete=PROTECT)
-
-    def natural_key(self):
-        return self.subject_visit.natural_key()
-    natural_key.dependencies = ['cancer_subject.subjectvisit', 'sites.Site']
-
-    class Meta  (VisitTrackingCrfModelMixin.Meta,
-                 RequiresConsentFieldsModelMixin.Meta):
-        consent_model = 'cancer_subject.subjectconsent'
         abstract = True
