@@ -839,10 +839,10 @@ CANCER_BEFORE_CHOICE = (
      'Other or multiple cancers, describe:'),
 )
 HEPATITIS_BEFORE_CHOICE = (
-    (' No', 'No'),
-    (' Hepatitis B', 'Hepatitis B'),
-    (' Hepatitis C', 'Hepatitis C'),
-    (' Don\'t know', 'Don\'t know'),
+    ('No', 'No'),
+    ('Hepatitis B', 'Hepatitis B'),
+    ('Hepatitis C', 'Hepatitis C'),
+    ('Don\'t know', 'Don\'t know'),
 )
 HOURS_OUTDOOR_CHOICE = (
     (' 1 hour or less', '1 hour or less'),
@@ -1138,6 +1138,7 @@ TEST_RESULT_CHOICE = (
     ('Non-Reactive', 'Non-Reactive'),
 )
 TB_TREATMENT_CHOICE = (
+    ('No', 'No'),
     ('Yes, isoniazid preventative therapy (IPT)',
      'Yes, isoniazid preventative therapy (IPT)'),
     ('Yes, combination anti-tuberculosis treatment (ATT)',

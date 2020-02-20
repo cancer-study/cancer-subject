@@ -1,12 +1,13 @@
 from django.db import models
+from django.db.models.fields.related import ManyToManyField
 from edc_base.model_fields.custom_fields import OtherCharField
 from edc_base.model_validators.date import date_not_future
 from edc_constants.choices import YES_NO_DONT_KNOW
 
 from ..choices import MINE_TYPE_CHOICE, MINE_TIME_CHOICE
-from .model_mixins.crf_model_mixin import CrfModelMixin
-from django.db.models.fields.related import ManyToManyField
 from .list_models import MiningType
+from .model_mixins.crf_model_mixin import CrfModelMixin
+
 
 class BaseRiskAssessmentMining (CrfModelMixin):
 
@@ -21,7 +22,7 @@ class BaseRiskAssessmentMining (CrfModelMixin):
         MiningType,
         verbose_name='What kind of mine have you worked in?',
         max_length=25,
-        )
+    )
 
     mine_prompt_other = OtherCharField()
 
@@ -49,4 +50,3 @@ class BaseRiskAssessmentMining (CrfModelMixin):
         app_label = 'cancer_subject'
         verbose_name = 'Base Risk Assessment: Mining'
         verbose_name_plural = 'Base Risk Assessment: Mining'
-        consent_model = 'cancer_subject.subjectconsent'

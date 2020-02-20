@@ -1,9 +1,8 @@
 from django.db import models
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
-from edc_visit_schedule.model_mixins import DisenrollmentModelMixin
-
 from edc_consent.model_mixins import RequiresConsentMixin
+from edc_visit_schedule.model_mixins import DisenrollmentModelMixin
 
 
 class DisenrollmentManager(models.Manager):
@@ -27,4 +26,3 @@ class Disenrollment(DisenrollmentModelMixin, RequiresConsentMixin,
 
     class Meta(DisenrollmentModelMixin.Meta):
         visit_schedule_name = 'visit_schedule1.schedule1'
-        consent_model = 'cancer_subject.subjectconsent'
