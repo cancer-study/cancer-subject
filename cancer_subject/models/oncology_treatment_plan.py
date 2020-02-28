@@ -71,11 +71,11 @@ class OncologyTreatmentPlan (CrfModelMixin):
         blank=True,
     )
 
-    comments = models.CharField(
+    comments = models.TextField(
         verbose_name='Comments',
         null=True,
         blank=True,
-        max_length=350,
+        max_length=250,
     )
 
     class Meta(CrfModelMixin.Meta):

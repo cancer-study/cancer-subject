@@ -37,9 +37,9 @@ class OncologyTreatmentRecord (CrfModelMixin):
         choices=YES_NO,
     )
 
-    comments = models.CharField(
+    comments = models.TextField(
         verbose_name='Comments:',
-        max_length=35,
+        max_length=150,
         null=True,
         blank=True,
     )

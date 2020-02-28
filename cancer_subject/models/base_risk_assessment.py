@@ -6,7 +6,7 @@ from ..choices import AGE_FIRSTSEX_CHOICE, HEPATITIS_BEFORE_CHOICE
 from ..choices import TRADMEDICINE_CHOICE, YES_NO_DECLINED
 from .model_mixins.crf_model_mixin import CrfModelMixin
 
- 
+
 class BaseRiskAssessment (CrfModelMixin):
 
     hepatitis = models.CharField(

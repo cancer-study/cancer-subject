@@ -62,7 +62,7 @@ class LabResultChemistry(CrfModelMixin):
     # v2 added comments field for when form has '-3' input
     comments = models.TextField(
         verbose_name='Comments:',
-        max_length=100,
+        max_length=150,
         null=True,
         blank=True,
         help_text='if other data not recorded, explain why',)
