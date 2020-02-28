@@ -171,7 +171,7 @@ class RadiationTreatment (CrfModelMixin):
         choices=YES_NO_UNKNOWN,
     )
 
-    comments = models.CharField(
+    comments = models.TextField(
         verbose_name=('Comments'),
         max_length=250,
         null=True,

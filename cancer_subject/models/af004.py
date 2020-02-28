@@ -32,7 +32,7 @@ class Af004 (CrfModelMixin):
 
     comments = models.CharField(
         verbose_name='Comments:',
-        max_length=35,
+        max_length=150,
     )
 
     class Meta(CrfModelMixin.Meta):
