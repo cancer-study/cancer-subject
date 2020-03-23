@@ -1,18 +1,26 @@
 from edc_constants.constants import OTHER, OFF_STUDY, YES, NO, NOT_APPLICABLE
 
+COLD_FLU_SYMPTOMS = (
+    ('cough', 'Cough'),
+    ('shortness_of_breath', 'Shortness of Breath'),
+    ('fever', 'Fever'),
+    ('sore_throat', 'Sore throat'),
+)
+
 PRIMARY_DEATH_CAUSE_CHOICE = (
-    ('No information will ever be available (go to question 6)', 'No information will ever '
-     'be available (go to question 6)'),
+    ('No information will ever be available (go to question 6)',
+     'No information will ever be available (go to question 6)'),
     ('Autopsy', 'Autopsy'),
     ('Clinical record', 'Clinical record'),
-    ('Information from physician/nurse/other health care provider', 'Information from '
-     'physician/nurse/other health care provider'),
-    ('Information from participant’s relatives or friends', 'Information from participant’s '
-     'relatives or friends'),
+    ('Information from physician/nurse/other health care provider',
+     'Information from physician/nurse/other health care provider'),
+    ('Information from participant’s relatives or friends',
+     'Information from participant’s relatives or friends'),
     ('Information requested, still pending',
      'Information requested, still pending'),
     ('Other, specify: ', 'Other, specify: '),
 )
+
 DEATH_CAUSE_CATEGORY_CHOICE = (
     ('No information available (go to question 6)',
      'No information available (go to question 6)'),
