@@ -1,3 +1,4 @@
+from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
 from .model_mixins import CrfModelMixin
@@ -7,7 +8,8 @@ from ..choices import (
     DIFFICULTY_WORK_CHOICE, BODILY_PAIN_CHOICE,
     ENERGY_CHOICE, HEALTH_PROBS_LIMIT_CHOICE,
     EMOTIONAL_PROBS_CHOICE, PROBS_FROM_WORK_CHOICE,
-    PERFORM_STATUS_CHOICE)
+    PERFORM_STATUS_CHOICE, YES_NO_DECLINED,
+    COLD_FLU_SYMPTOMS)
 
 
 class ActivityAndFunctioning (CrfModelMixin):
@@ -92,6 +94,48 @@ class ActivityAndFunctioning (CrfModelMixin):
         max_length=205,
         choices=PERFORM_STATUS_CHOICE,
         help_text="",
+    )
+
+    flu_symptoms = models.CharField(
+        verbose_name=('Over the past two weeks, have you developed new cold'
+                      ' or flu symptoms like cough, shortness of breath, '
+                      'fever, or sore throat?'),
+        max_length=7,
+        choices=YES_NO_DECLINED,
+        help_text='',
+    )
+
+    symptom_specify = models.CharField(
+        verbose_name=('If yes, which of these new symptoms have you '
+                      'developed'),
+        max_length=20,
+        choices=COLD_FLU_SYMPTOMS,
+        null=True,
+        blank=True,
+        help_text='',
+    )
+
+    housemates_count = models.IntegerField(
+        verbose_name='How many people live in your household?',
+        validators=[MaxValueValidator(50), MinValueValidator(0)],
+        help_text='',
+    )
+
+    housemate_flu_symptoms = models.CharField(
+        verbose_name=('Over the past two weeks, has anyone in your household '
+                      'developed new cold or flu symptoms like cough, '
+                      'shortness of breath, fever, or sore throat?'),
+        max_length=7,
+        choices=YES_NO_DECLINED,
+        help_text='',
+    )
+
+    housemates_with_flu_symptoms_count = models.IntegerField(
+        verbose_name='If yes, how many?',
+        validators=[MaxValueValidator(50), MinValueValidator(0)],
+        null=True,
+        blank=True,
+        help_text='',
     )
 
     class Meta(CrfModelMixin.Meta):
