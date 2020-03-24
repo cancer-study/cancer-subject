@@ -3,6 +3,12 @@ from edc_list_data import PreloadData
 
 
 list_data = {
+    'cancer_subject.coldflusymptoms': [
+        ('cough', 'Cough'),
+        ('shortness_of_breath', 'Shortness of Breath'),
+        ('fever', 'Fever'),
+        ('sore_throat', 'Sore throat'),
+    ],
     'cancer_subject.whoillness': [
         ('wasting', 'Wasting'),
         ('TB', 'Tuberculosis'),
