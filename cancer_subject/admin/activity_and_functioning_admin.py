@@ -45,5 +45,6 @@ class ActivityAndFunctioningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "probs_from_work": admin.VERTICAL,
         "perform_status": admin.VERTICAL,
         "flu_symptoms": admin.VERTICAL,
-        "symptom_specify": admin.VERTICAL,
         "housemate_flu_symptoms": admin.VERTICAL}
+
+    filter_horizontal = ("symptom_specify",)

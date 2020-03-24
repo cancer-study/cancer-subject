@@ -1,6 +1,7 @@
 from django.core.validators import MaxValueValidator, MinValueValidator
 from django.db import models
 
+from .list_models import ColdFluSymptoms
 from .model_mixins import CrfModelMixin
 
 from ..choices import (
@@ -8,8 +9,7 @@ from ..choices import (
     DIFFICULTY_WORK_CHOICE, BODILY_PAIN_CHOICE,
     ENERGY_CHOICE, HEALTH_PROBS_LIMIT_CHOICE,
     EMOTIONAL_PROBS_CHOICE, PROBS_FROM_WORK_CHOICE,
-    PERFORM_STATUS_CHOICE, YES_NO_DECLINED,
-    COLD_FLU_SYMPTOMS)
+    PERFORM_STATUS_CHOICE, YES_NO_DECLINED)
 
 
 class ActivityAndFunctioning (CrfModelMixin):
@@ -97,42 +97,42 @@ class ActivityAndFunctioning (CrfModelMixin):
     )
 
     flu_symptoms = models.CharField(
-        verbose_name=('Over the past two weeks, have you developed new cold'
-                      ' or flu symptoms like cough, shortness of breath, '
+        verbose_name=('10. Over the past two weeks, have you developed new '
+                      'cold or flu symptoms like cough, shortness of breath, '
                       'fever, or sore throat?'),
-        max_length=7,
+        max_length=8,
         choices=YES_NO_DECLINED,
         help_text='',
     )
 
-    symptom_specify = models.CharField(
-        verbose_name=('If yes, which of these new symptoms have you '
+    symptom_specify = models.ManyToManyField(
+        ColdFluSymptoms,
+        verbose_name=('11. If yes, which of these new symptoms have you '
                       'developed'),
         max_length=20,
-        choices=COLD_FLU_SYMPTOMS,
-        null=True,
         blank=True,
         help_text='',
     )
 
     housemates_count = models.IntegerField(
-        verbose_name='How many people live in your household?',
-        validators=[MaxValueValidator(50), MinValueValidator(0)],
+        verbose_name='12. How many people live in your household?',
+        validators=[MaxValueValidator(50), MinValueValidator(1)],
+        default=1,
         help_text='',
     )
 
     housemate_flu_symptoms = models.CharField(
-        verbose_name=('Over the past two weeks, has anyone in your household '
-                      'developed new cold or flu symptoms like cough, '
-                      'shortness of breath, fever, or sore throat?'),
-        max_length=7,
+        verbose_name=('13. Over the past two weeks, has anyone in your '
+                      'household developed new cold or flu symptoms like '
+                      'cough, shortness of breath, fever, or sore throat?'),
+        max_length=8,
         choices=YES_NO_DECLINED,
-        help_text='',
+        help_text='(select all that apply)',
     )
 
     housemates_with_flu_symptoms_count = models.IntegerField(
         verbose_name='If yes, how many?',
-        validators=[MaxValueValidator(50), MinValueValidator(0)],
+        validators=[MaxValueValidator(50), MinValueValidator(1)],
         null=True,
         blank=True,
         help_text='',
