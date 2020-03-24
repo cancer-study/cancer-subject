@@ -1,11 +1,5 @@
 from edc_constants.constants import OTHER, OFF_STUDY, YES, NO, NOT_APPLICABLE
 
-COLD_FLU_SYMPTOMS = (
-    ('cough', 'Cough'),
-    ('shortness_of_breath', 'Shortness of Breath'),
-    ('fever', 'Fever'),
-    ('sore_throat', 'Sore throat'),
-)
 
 PRIMARY_DEATH_CAUSE_CHOICE = (
     ('No information will ever be available (go to question 6)',
