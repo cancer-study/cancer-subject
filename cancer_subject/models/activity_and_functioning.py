@@ -111,14 +111,14 @@ class ActivityAndFunctioning (CrfModelMixin):
                       'developed'),
         max_length=20,
         blank=True,
-        help_text='',
+        help_text='(select all that apply)',
     )
 
     housemates_count = models.IntegerField(
         verbose_name='12. How many people live in your household?',
         validators=[MaxValueValidator(50), MinValueValidator(1)],
         default=1,
-        help_text='',
+        help_text='Include the participant in the number',
     )
 
     housemate_flu_symptoms = models.CharField(
@@ -127,7 +127,7 @@ class ActivityAndFunctioning (CrfModelMixin):
                       'cough, shortness of breath, fever, or sore throat?'),
         max_length=8,
         choices=YES_NO_DECLINED,
-        help_text='(select all that apply)',
+        help_text='Include the participant in patients with symptoms',
     )
 
     housemates_with_flu_symptoms_count = models.IntegerField(
@@ -135,7 +135,7 @@ class ActivityAndFunctioning (CrfModelMixin):
         validators=[MaxValueValidator(50), MinValueValidator(1)],
         null=True,
         blank=True,
-        help_text='',
+        help_text='Include the participant in the number',
     )
 
     class Meta(CrfModelMixin.Meta):
