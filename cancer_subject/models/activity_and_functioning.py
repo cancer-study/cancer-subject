@@ -1,4 +1,5 @@
-from django.core.validators import MaxValueValidator, MinValueValidator
+from django.core.validators import (MaxValueValidator, MinValueValidator,
+                                    RegexValidator)
 from django.db import models
 
 from .list_models import ColdFluSymptoms
@@ -99,7 +100,8 @@ class ActivityAndFunctioning (CrfModelMixin):
     flu_symptoms = models.CharField(
         verbose_name=('10. Over the past two weeks, have you developed new '
                       'cold or flu symptoms like cough, shortness of breath, '
-                      'fever, or sore throat?'),
+                      'fever, sudden loss of smell, eye pain, runny nose or '
+                      'sore throat?'),
         max_length=8,
         choices=YES_NO_DECLINED,
         help_text='',
@@ -131,12 +133,27 @@ class ActivityAndFunctioning (CrfModelMixin):
     )
 
     housemates_with_flu_symptoms_count = models.IntegerField(
-        verbose_name='If yes, how many?',
+        verbose_name='14. If yes, how many?',
         validators=[MaxValueValidator(50), MinValueValidator(1)],
         null=True,
         blank=True,
         help_text='Include the participant in the number',
     )
+
+    closest_health_facility = models.CharField(
+        verbose_name=('15. What is the closest health facility to where you '
+                      'are staying now?'),
+        max_length=75,
+        validators=[RegexValidator(
+            regex=r'^[0-9]{2}[-][0-9]{1}[-][0-9]{2}$',
+            message='The correct clinic code format is XX-X-XX'), ],
+        help_text="Please give clinic code.",)
+
+    contact_with_covid_suspect = models.CharField(
+        verbose_name=('16. Have you or anyone in your household been in '
+                      'contact with someone with known or suspected Covid-19?'),
+        max_length=8,
+        choices=YES_NO_DECLINED)
 
     class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
