@@ -7,6 +7,9 @@ list_data = {
         ('cough', 'Cough'),
         ('shortness_of_breath', 'Shortness of Breath'),
         ('fever', 'Fever'),
+        ('loss_of_smell', 'Sudden loss of smell'),
+        ('eye_pain', 'Eye pain'),
+        ('runny_nose', 'Runny nose'),
         ('sore_throat', 'Sore throat'),
     ],
     'cancer_subject.whoillness': [

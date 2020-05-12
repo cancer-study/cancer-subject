@@ -31,7 +31,9 @@ class ActivityAndFunctioningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
                 "symptom_specify",
                 "housemates_count",
                 "housemate_flu_symptoms",
-                "housemates_with_flu_symptoms_count")}),
+                "housemates_with_flu_symptoms_count",
+                "closest_health_facility",
+                "contact_with_covid_suspect")}),
         audit_fieldset_tuple
     )
     radio_fields = {
@@ -45,6 +47,7 @@ class ActivityAndFunctioningAdmin(CrfModelAdminMixin, admin.ModelAdmin):
         "probs_from_work": admin.VERTICAL,
         "perform_status": admin.VERTICAL,
         "flu_symptoms": admin.VERTICAL,
-        "housemate_flu_symptoms": admin.VERTICAL}
+        "housemate_flu_symptoms": admin.VERTICAL,
+        "contact_with_covid_suspect": admin.VERTICAL, }
 
     filter_horizontal = ("symptom_specify",)
