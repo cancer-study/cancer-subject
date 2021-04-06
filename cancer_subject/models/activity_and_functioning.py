@@ -1,6 +1,8 @@
 from django.core.validators import (MaxValueValidator, MinValueValidator,
                                     RegexValidator)
 from django.db import models
+from edc_constants.choices import YES_NO, YES_NO_UNSURE_NA
+from edc_constants.constants import NOT_APPLICABLE
 
 from .list_models import ColdFluSymptoms
 from .model_mixins import CrfModelMixin
@@ -154,6 +156,39 @@ class ActivityAndFunctioning (CrfModelMixin):
                       'contact with someone with known or suspected Covid-19?'),
         max_length=8,
         choices=YES_NO_DECLINED)
+
+    had_covid = models.CharField(
+        verbose_name='17. Have you ever had Covid-19 or a positive test?',
+        max_length=8,
+        choices=YES_NO_DECLINED)
+
+    symp_dt = models.DateField(
+        verbose_name=('18. When did you first have symptoms (or positive test '
+                      'if no symptoms)?'),
+        null=True,
+        blank=True)
+
+    pos_covid_test = models.CharField(
+        verbose_name='19. Did you have positive Covid-19 test?',
+        max_length=10,
+        choices=YES_NO_UNSURE_NA,
+        default=NOT_APPLICABLE)
+
+    member_w_covid = models.CharField(
+        verbose_name=('20. Has any member of your household other than yourself had'
+                      ' Covid-19 or a positive test?'),
+        max_length=8,
+        choices=YES_NO_DECLINED)
+
+    num_of_members = models.PositiveIntegerField(
+        verbose_name='21. How many members of your household had a positive test?',
+        null=True)
+
+    membr_symp_dt = models.DateField(
+        verbose_name=('22. When did the first household member (not yourself) '
+                      'first have symptoms of Covid-19?'),
+        null=True,
+        blank=True)
 
     class Meta(CrfModelMixin.Meta):
         app_label = "cancer_subject"
