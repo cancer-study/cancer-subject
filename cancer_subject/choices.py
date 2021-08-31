@@ -1,6 +1,5 @@
 from edc_constants.constants import OTHER, OFF_STUDY, YES, NO, NOT_APPLICABLE
 
-
 PRIMARY_DEATH_CAUSE_CHOICE = (
     ('No information will ever be available (go to question 6)',
      'No information will ever be available (go to question 6)'),
@@ -126,7 +125,6 @@ OFF_STUDY_CODE_CHOICE = (
      'Unable to contact Participant despite repeated attempts (see MOP for definition of Lost to Follow-Up.)'),
     ('Other, specify: ', 'Other, specify: '),
 )
-
 
 MARITAL_STATUS_CHOICE = (
     ('Single', 'Single'),
@@ -438,7 +436,6 @@ YES_NO_DECLINED = (
     ('Declined', 'Patient declined to answer')
 )
 
-
 RECENT_RESULT_CHOICE = (
     ('POS', ' Reactive (positive)'),
     ('NEG', ' Non-Reactive (negative)'),
@@ -597,6 +594,10 @@ HAART_MEDS_DRUG_NAMES = (
     ('ALU', 'Aluvia/Kaletra (ALU)'),
     ('DRV', 'Darunavir (DRV)'),
     ('RAL', 'Raltegravir (RAL)'),
+    ('DTG', 'DTG'),
+    ('TLD', 'TLD'),
+    ('TAFED', 'TAFED'),
+    ('ACRIPTEGA', 'ACRIPTEGA'),
     ('OTHER', 'Other, specify')
 )
 
@@ -1644,7 +1645,6 @@ INFO_DETERMINANT_CHOICE = (
 )
 """
 
-
 SEVERITY = (
     ('NOT_APPLICABLE', 'Not Applicable'),
     ('Mild (Grade1)', 'MILD symptoms causing no or minimal interference with usual '
@@ -1658,7 +1658,6 @@ SEVERITY = (
      'indicated to prevent permanent impairment, persistent disability, or death.'),
 )
 
-
 PATIENT_FOLLOW_UP = (
     ('PMH', 'Princess Marina Hospital'),
     ('NRH', 'Nyangabgwe Referral Hospital'),
@@ -1666,7 +1665,6 @@ PATIENT_FOLLOW_UP = (
     ('MAUN', 'Maun'),
     ('Other', 'Other, specify')
 )
-
 
 ID_TYPE = (
     ('country_id', 'Country ID number'),
