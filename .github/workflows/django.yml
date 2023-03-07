@@ -31,7 +31,7 @@ jobs:
     - name: autopep8
       uses: peter-evans/autopep8@v2.0.0
       with:
-        args: . --recursive --exclude='*/migrations/*' cancer_subject/
+        args: . --recursive --exclude='*/migrations/*' /cancer_subject/
     - name: Run Tests
       run: |
         python manage.py test
