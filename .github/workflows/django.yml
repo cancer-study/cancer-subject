@@ -25,6 +25,7 @@ jobs:
       run: |
         sudo apt-get install libcups2-dev
         pip install pycups
+        pip install mysqlclient
         python -m pip install --upgrade pip
         pip install -r requirements.txt
     - name: autopep8
