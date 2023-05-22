@@ -23,7 +23,7 @@ class Referral (BaseUuidModel):
 
     why_referred = models.CharField(
         verbose_name='Where and why has patient been referred?',
-        max_length=75,
+        max_length=750,
         choices=WHY_REFERRED,
     )
 
