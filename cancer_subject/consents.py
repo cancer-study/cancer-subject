@@ -1,3 +1,6 @@
+from datetime import datetime
+
+import arrow
 from dateutil.tz import gettz
 from django.apps import apps as django_apps
 from edc_consent.consent import Consent
@@ -23,7 +26,8 @@ v1 = Consent(
 v3 = Consent(
     'cancer_subject.subjectconsent',
     version='3',
-    start=edc_protocol.study_open_datetime,
+    start=arrow.get(
+        datetime(2023, 2, 16, 0, 0, 0), tzinfo=tzinfo).to('UTC').datetime,
     end=edc_protocol.study_close_datetime,
     age_min=18,
     age_is_adult=18,

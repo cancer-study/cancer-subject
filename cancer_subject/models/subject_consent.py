@@ -33,7 +33,7 @@ class ConsentManager(SubjectConsentManager, SearchSlugManager):
 
 
 class UpdatesOrCreatesRegistrationModelMixin(
-        BaseUpdatesOrCreatesRegistrationModelMixin):
+    BaseUpdatesOrCreatesRegistrationModelMixin):
 
     @property
     def registration_unique_field(self):
@@ -47,7 +47,7 @@ class UpdatesOrCreatesRegistrationModelMixin(
         registration_options = {}
         for field in self.registration_model._meta.get_fields():
             if (field.name not in DEFAULT_BASE_FIELDS + ['_state']
-                    +[self.registration_unique_field]):
+                    + [self.registration_unique_field]):
                 try:
                     registration_options.update({field.name: getattr(
                         self, field.name)})
@@ -75,12 +75,12 @@ class UpdatesOrCreatesRegistrationModelMixin(
 
 
 class SubjectConsent(
-        ConsentModelMixin, SiteModelMixin,
-        UpdatesOrCreatesRegistrationModelMixin,
-        NonUniqueSubjectIdentifierModelMixin,
-        IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
-        SampleCollectionFieldsMixin, CitizenFieldsMixin,
-        VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel):
+    ConsentModelMixin, SiteModelMixin,
+    UpdatesOrCreatesRegistrationModelMixin,
+    NonUniqueSubjectIdentifierModelMixin,
+    IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
+    SampleCollectionFieldsMixin, CitizenFieldsMixin,
+    VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel):
     """ A model completed by the user that captures the ICF.
     """
 
@@ -122,6 +122,7 @@ class SubjectConsent(
 
     def save(self, *args, **kwargs):
         self.subject_type = 'subject'
+        self.version = self.version or '3'
         super().save(*args, **kwargs)
 
     def natural_key(self):
