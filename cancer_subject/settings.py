@@ -33,7 +33,6 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost', 'cancer-test.bhp.org.bw']
 SITE_ID = 40
 REVIEWER_SITE_ID = 1
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,12 +47,14 @@ INSTALLED_APPS = [
     'django_revision.apps.AppConfig',
     'rest_framework',
     'rest_framework.authtoken',
+    'edc_action_item.apps.AppConfig',
     'edc_base.apps.AppConfig',
     'edc_prn.apps.AppConfig',
     'edc_reference.apps.AppConfig',
     'edc_metadata_rules.apps.AppConfig',
     'edc_consent.apps.AppConfig',
     'edc_device.apps.AppConfig',
+    'edc_locator.apps.AppConfig',
     'edc_registration.apps.AppConfig',
     'edc_visit_schedule.apps.AppConfig',
     'cancer_metadata_rules.apps.AppConfig',
@@ -69,7 +70,6 @@ INSTALLED_APPS = [
     'cancer_subject.apps.EdcProtocolAppConfig',
     'cancer_subject.apps.EdcVisitTrackingAppConfig',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -104,32 +104,31 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'cancer_subject.wsgi.application'
 
-
 # Database
 # https://docs.djangoproject.com/en/1.10/ref/settings/#databases
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.sqlite3',
-#         'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
-#     }
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'OPTIONS': {
-            'read_default_file': os.path.join(ETC_DIR, 'mysql.conf'),
-        },
-    },
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+    }
 }
-
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.mysql',
+#         'OPTIONS': {
+#             'read_default_file': os.path.join(ETC_DIR, 'mysql.conf'),
+#         },
+#     },
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/1.10/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
     {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+        'NAME': 'django.contrib.auth.password_validation'
+                '.UserAttributeSimilarityValidator',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
@@ -141,7 +140,6 @@ AUTH_PASSWORD_VALIDATORS = [
         'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
     },
 ]
-
 
 # Internationalization
 # https://docs.djangoproject.com/en/1.10/topics/i18n/
@@ -155,7 +153,6 @@ USE_I18N = True
 USE_L10N = True
 
 USE_TZ = True
-
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.10/howto/static-files/
@@ -189,7 +186,6 @@ DASHBOARD_URL_NAMES = {
 }
 
 if 'test' in sys.argv:
-
     class DisableMigrations:
 
         def __contains__(self, item):
@@ -198,6 +194,7 @@ if 'test' in sys.argv:
         def __getitem__(self, item):
             return None
 
+
     MIGRATION_MODULES = DisableMigrations()
-    PASSWORD_HASHERS = ('django.contrib.auth.hashers.MD5PasswordHasher', )
+    PASSWORD_HASHERS = ('django.contrib.auth.hashers.MD5PasswordHasher',)
     DEFAULT_FILE_STORAGE = 'inmemorystorage.InMemoryStorage'

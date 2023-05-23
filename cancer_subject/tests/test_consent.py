@@ -96,3 +96,18 @@ class TestSubjectConsent(TestCase):
                 subject_identifier=subject_consent.subject_identifier)
         except ObjectDoesNotExist:
             self.fail('ObjectDoesNotExist was unexpectedly raised.')
+
+    def test_consent_creation_version_allocation(self):
+        subject_consent = mommy.make_recipe(
+            'cancer_subject.subjectconsent',
+            consent_datetime=get_utcnow,
+            version='')
+        self.assertEquals(subject_consent.version, '3')
+
+    def test_consent_v1_resave(self):
+        subject_consent = mommy.make_recipe(
+            'cancer_subject.subjectconsent',
+            consent_datetime=get_utcnow,
+            version='1')
+        subject_consent.save()
+        self.assertEquals(subject_consent.version, '1')
