@@ -204,7 +204,7 @@ class CancerDiagnosis (CrfModelMixin):
 
     cancer_stage = models.CharField(
         verbose_name='Overall cancer stage',
-        max_length=15,
+        max_length=500,
         null=True,
         blank=True,
         choices=POSSIBLE_OVERALL_STAGES,
@@ -214,7 +214,7 @@ class CancerDiagnosis (CrfModelMixin):
 
     cancer_stage_modifier = models.CharField(
         verbose_name='Overall cancer stage modifier',
-        max_length=15,
+        max_length=55,
         null=True,
         blank=True,
         choices=POSSIBLE_OVERALL_STAGE_MODIFIER,

@@ -1,4 +1,4 @@
-from django.apps import apps as django_apps
+from django.core.exceptions import ImproperlyConfigured
 from django.core.exceptions import ImproperlyConfigured
 from django.db import models
 from edc_base.constants import DEFAULT_BASE_FIELDS
@@ -6,22 +6,23 @@ from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
 from edc_base.sites import CurrentSiteManager
 from edc_base.sites.site_model_mixin import SiteModelMixin
-from edc_consent.field_mixins import (SampleCollectionFieldsMixin,
-                                      CitizenFieldsMixin)
 from edc_consent.field_mixins import IdentityFieldsMixin
 from edc_consent.field_mixins import ReviewFieldsMixin, PersonalFieldsMixin
+from edc_consent.field_mixins import (SampleCollectionFieldsMixin,
+                                      CitizenFieldsMixin)
 from edc_consent.field_mixins import VulnerabilityFieldsMixin
 from edc_consent.managers import ConsentManager as SubjectConsentManager
 from edc_consent.model_mixins import ConsentModelMixin
-from edc_constants.choices import GENDER
+from edc_constants.choices import GENDER, YES_NO_NA
+from edc_constants.constants import NOT_APPLICABLE
 from edc_identifier.model_mixins import NonUniqueSubjectIdentifierModelMixin
 from edc_registration.model_mixins import (
     UpdatesOrCreatesRegistrationModelMixin
     as BaseUpdatesOrCreatesRegistrationModelMixin)
 from edc_search.model_mixins import SearchSlugManager
 
-from ..subject_identifier import SubjectIdentifier
 from .model_mixins import SearchSlugModelMixin
+from ..subject_identifier import SubjectIdentifier
 
 
 class ConsentManager(SubjectConsentManager, SearchSlugManager):
@@ -32,7 +33,7 @@ class ConsentManager(SubjectConsentManager, SearchSlugManager):
 
 
 class UpdatesOrCreatesRegistrationModelMixin(
-        BaseUpdatesOrCreatesRegistrationModelMixin):
+    BaseUpdatesOrCreatesRegistrationModelMixin):
 
     @property
     def registration_unique_field(self):
@@ -46,7 +47,7 @@ class UpdatesOrCreatesRegistrationModelMixin(
         registration_options = {}
         for field in self.registration_model._meta.get_fields():
             if (field.name not in DEFAULT_BASE_FIELDS + ['_state']
-                    +[self.registration_unique_field]):
+                    + [self.registration_unique_field]):
                 try:
                     registration_options.update({field.name: getattr(
                         self, field.name)})
@@ -74,12 +75,12 @@ class UpdatesOrCreatesRegistrationModelMixin(
 
 
 class SubjectConsent(
-        ConsentModelMixin, SiteModelMixin,
-        UpdatesOrCreatesRegistrationModelMixin,
-        NonUniqueSubjectIdentifierModelMixin,
-        IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
-        SampleCollectionFieldsMixin, CitizenFieldsMixin,
-        VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel):
+    ConsentModelMixin, SiteModelMixin,
+    UpdatesOrCreatesRegistrationModelMixin,
+    NonUniqueSubjectIdentifierModelMixin,
+    IdentityFieldsMixin, ReviewFieldsMixin, PersonalFieldsMixin,
+    SampleCollectionFieldsMixin, CitizenFieldsMixin,
+    VulnerabilityFieldsMixin, SearchSlugModelMixin, BaseUuidModel):
     """ A model completed by the user that captures the ICF.
     """
 
@@ -98,6 +99,14 @@ class SubjectConsent(
         null=True,
         blank=False)
 
+    may_store_genetic_samples = models.CharField(
+        verbose_name=('Does the participant agree for cancer tissues and blood samples '
+                      'to be used for genetic research and stored after the study has '
+                      'ended for use in future cancer and HIV-related studies.'),
+        max_length=25,
+        default=NOT_APPLICABLE,
+        choices=YES_NO_NA)
+
     is_signed = models.BooleanField(default=False, editable=False)
 
     consent = SubjectConsentManager()
@@ -113,6 +122,7 @@ class SubjectConsent(
 
     def save(self, *args, **kwargs):
         self.subject_type = 'subject'
+        self.version = self.version or '3'
         super().save(*args, **kwargs)
 
     def natural_key(self):
@@ -134,6 +144,10 @@ class SubjectConsent(
             requesting_model=self._meta.label_lower,
             site=self.site)
         return subject_identifier.identifier
+
+    @property
+    def consent_version(self):
+        return self.version
 
     class Meta(ConsentModelMixin.Meta):
         app_label = 'cancer_subject'
