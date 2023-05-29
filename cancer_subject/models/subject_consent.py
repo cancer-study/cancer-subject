@@ -107,6 +107,12 @@ class SubjectConsent(
         default=NOT_APPLICABLE,
         choices=YES_NO_NA)
 
+    version = models.CharField(
+        verbose_name='Consent version',
+        max_length=10,
+        default='3',
+        help_text='See \'Consent Type\' for consent versions by period.', )
+
     is_signed = models.BooleanField(default=False, editable=False)
 
     consent = SubjectConsentManager()
@@ -122,7 +128,7 @@ class SubjectConsent(
 
     def save(self, *args, **kwargs):
         self.subject_type = 'subject'
-        self.version = self.version or '3'
+        # self.version = self.version or '3'
         super().save(*args, **kwargs)
 
     def natural_key(self):
