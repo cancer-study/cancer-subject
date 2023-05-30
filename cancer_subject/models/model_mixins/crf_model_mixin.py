@@ -12,7 +12,7 @@ from edc_visit_tracking.managers import (
 from edc_visit_tracking.model_mixins import (PreviousVisitModelMixin)
 from edc_visit_tracking.model_mixins import CrfModelMixin as BaseCrfModelMixin
 
-
+from .consent_version_model_mixin import ConsentVersionModelMixin
 from ..subject_visit import SubjectVisit
 
 
@@ -30,8 +30,8 @@ class CrfModelManager(VisitTrackingCrfModelManager):
 
 
 class CrfModelMixin(BaseCrfModelMixin, SubjectScheduleCrfModelMixin,
-                    RequiresConsentFieldsModelMixin, PreviousVisitModelMixin,
-                    UpdatesCrfMetadataModelMixin, SiteModelMixin,
+                    ConsentVersionModelMixin, RequiresConsentFieldsModelMixin,
+                    PreviousVisitModelMixin,UpdatesCrfMetadataModelMixin, SiteModelMixin,
                     FormAsJSONModelMixin, ReferenceModelMixin, BaseUuidModel):
 
     """ Base model for all scheduled models
