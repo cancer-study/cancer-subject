@@ -27,6 +27,7 @@ from .models import OncologyTreatmentCompleted, OncologyTreatmentRecord
 from .models import RadiationTreatment, HaartRecord, BaseHaartMedication
 from .models import SubjectConsent, SymptomsAndTesting, SubjectLocator
 from .models import SubjectScreening, BaselineHIVHistory, OTRChemo, LabResultHiv
+from .tests.models import DeathReport
 
 
 class DateProvider(BaseProvider):
@@ -67,11 +68,11 @@ subjectconsent = Recipe(
     confirm_identity=seq('12315678'),
     identity_type='OMANG',
     is_dob_estimated='-',
-    is_incarcerated=NO,)
+    is_incarcerated=NO, )
 
 subjectvisit = Recipe(
     SubjectVisit,
-    reason=SCHEDULED,)
+    reason=SCHEDULED, )
 
 symptomsandtesting = Recipe(
     SymptomsAndTesting,
@@ -90,7 +91,7 @@ symptomsandtesting = Recipe(
     arv_art_therapy=YES,
     arv_art_start_date=get_utcnow() - relativedelta(months=1),
     arv_art_now=NO,
-    art_art_stop_date=get_utcnow() - relativedelta(weeks=1,))
+    art_art_stop_date=get_utcnow() - relativedelta(weeks=1, ))
 
 subjeclocator = Recipe(
     SubjectLocator,
@@ -102,7 +103,7 @@ subjeclocator = Recipe(
     other_alt_contact_cell='71297390',
     alt_contact_tel='3178634',
     local_clinic='00-0-00',
-    home_village='Oodi',)
+    home_village='Oodi', )
 
 radiationtreatment = Recipe(
     RadiationTreatment,
@@ -137,12 +138,12 @@ radiationtreatment = Recipe(
     radiation_technique_other='blah blah',
     modality='Photons',
     brachy_length='2',
-    brachy_type='T&SR',)
+    brachy_type='T&SR', )
 
 haartrecord = Recipe(
     HaartRecord,
     haart_status='Never started HAART',
-    comments='blah blah',)
+    comments='blah blah', )
 
 basehaartmedication = Recipe(
     BaseHaartMedication,
@@ -150,7 +151,7 @@ basehaartmedication = Recipe(
     mod_reason='13 = Vomiting',
     arv_reason='1 = Treatment',
     start_date=fake.three_months_ago(),
-    stop_date=date.today(),)
+    stop_date=date.today(), )
 
 currentsymptoms = Recipe(
     CurrentSymptoms,
@@ -159,14 +160,14 @@ currentsymptoms = Recipe(
     patient_own_remedy='details here',
     severity='mild',
     ra_advice='details here',
-    outcome_update='details here',)
+    outcome_update='details here', )
 
 ae010 = Recipe(
     Ae010,
     report_type='Resolution',
     onset_date=get_utcnow() - relativedelta(months=1),
     event_grade='details here',
-    relationship_description='Probably related to study activites',)
+    relationship_description='Probably related to study activites', )
 
 aef004 = Recipe(
     Af004,
@@ -174,7 +175,7 @@ aef004 = Recipe(
     date_last_contact=get_utcnow() - relativedelta(months=3),
     off_study_reason='details here',
     off_study_code='Death',
-    comments='Details here',)
+    comments='Details here', )
 
 aef005 = Recipe(
     Af005,
@@ -183,12 +184,12 @@ aef005 = Recipe(
     death_cause_description='details here',
     death_cause_category='Cancer',
     diagnosis_code='details here',
-    comments='details here',)
+    comments='details here', )
 
 baseriskassessmentalcohol = Recipe(
     BaseRiskAssessmentAlcohol,
     alcohol_weekly='3',
-    amount_drinking='8',)
+    amount_drinking='8', )
 
 baseriskassessmentcancer = Recipe(
     BaseRiskAssessmentCancer,
@@ -197,7 +198,7 @@ baseriskassessmentcancer = Recipe(
     family_cancer_other='other details here',
     had_previous_cancer=YES,
     previous_cancer='Esophageal cancer',
-    previous_cancer_other='other details here',)
+    previous_cancer_other='other details here', )
 
 baseriskassessmentchemical = Recipe(
     BaseRiskAssessmentChemical,
@@ -206,7 +207,7 @@ baseriskassessmentchemical = Recipe(
     chemicals=YES,
     chemicals_time='less than 5 years',
     arsenic_smelting=YES,
-    total_time_no_protection='between 5 and 20 years',)
+    total_time_no_protection='between 5 and 20 years', )
 
 baseriskassessmentdemo = Recipe(
     BaseRiskAssessmentDemo,
@@ -232,7 +233,7 @@ baseriskassessmentdemo = Recipe(
     toilet='Indoor toilet',
     toilet_other='other details here',
     household_people='details here',
-    food_security='Rarely',)
+    food_security='Rarely', )
 
 baseriskassessmenteating = Recipe(
     BaseRiskAssessmentEating,
@@ -241,13 +242,13 @@ baseriskassessmenteating = Recipe(
     meal_sorghum='5',
     meal_millet='2',
     meal_rice='1',
-    meal_peanuts='4',)
+    meal_peanuts='4', )
 
 baseriskassessmentfemale = Recipe(
     BaseRiskAssessmentFemale,
     age_period='14',
     children='2',
-    years_breastfed=YES,)
+    years_breastfed=YES, )
 
 baseriskassessmentfuel = Recipe(
     BaseRiskAssessmentFuel,
@@ -256,7 +257,7 @@ baseriskassessmentfuel = Recipe(
     cooking=YES,
     fuel_mm='electricity',
     fuel_mm_other='other details here',
-    cooking_mm=YES,)
+    cooking_mm=YES, )
 
 baseriskassessmentmining = Recipe(
     BaseRiskAssessmentMining,
@@ -265,7 +266,7 @@ baseriskassessmentmining = Recipe(
     mine_prompt_other='other details here',
     mine_underground=YES,
     mine_underground_time='less than 5 years',
-    last_mine=fake.three_months_ago(),)
+    last_mine=fake.three_months_ago(), )
 
 baseriskassessmentsmoking = Recipe(
     BaseRiskAssessmentSmoking,
@@ -274,7 +275,7 @@ baseriskassessmentsmoking = Recipe(
     years_smoked='11',
     cigarette_smoked='14 or fewer cigarettes a day',
     when_quit='less than 2 years ago',
-    years_smoked_before='3',)
+    years_smoked_before='3', )
 
 baseriskassessmentsun = Recipe(
     BaseRiskAssessmentSun,
@@ -282,7 +283,7 @@ baseriskassessmentsun = Recipe(
     sleeved_shirt='never',
     hat='rarely',
     shade_umbrella='sometimes',
-    sunglasses='often',)
+    sunglasses='often', )
 
 baseriskassessment = Recipe(
     BaseRiskAssessment,
@@ -294,7 +295,7 @@ baseriskassessment = Recipe(
     age_firstsex='younger than 15 years old',
     has_alcohol=NO,
     tradmedicine='Never',
-    is_albino=YES,)
+    is_albino=YES, )
 
 baselinehivhistory = Recipe(
     BaselineHIVHistory,
@@ -308,24 +309,24 @@ baselinehivhistory = Recipe(
     nadir_cd4_drawn_date=fake.yesterday(),
     has_vl=NO,
     vl_result='4365',
-    vl_drawn_date=fake.yesterday(),)
+    vl_drawn_date=fake.yesterday(), )
 
 bhhcd4 = Recipe(
     BHHCd4,
     nadir_cd4='230',
-    nadir_cd4_drawn_date=get_utcnow() - relativedelta(weeks=1),)
+    nadir_cd4_drawn_date=get_utcnow() - relativedelta(weeks=1), )
 
 bhhivtest = Recipe(
     BHHHivTest,
     hiv_drawn_date=fake.yesterday(),
     hiv_testdate_est=NO,
-    hiv_result='POS',)
+    hiv_result='POS', )
 
 bhhwhoillness = Recipe(
     BHHWhoIllness,
     who_illness='details here',
     who_illness_other='other details here',
-    who_illness_date=get_utcnow() - relativedelta(months=1),)
+    who_illness_date=get_utcnow() - relativedelta(months=1), )
 
 results_to_record = Recipe(
     ResultsToRecord,
@@ -360,24 +361,24 @@ cancerdiagnosis = Recipe(
     any_other_results='other details here',
     paper_documents='details here',
     results_to_record=related('results_to_record'),
-    results_to_record_other='other details here',)
+    results_to_record_other='other details here', )
 
 basechemomedication = Recipe(
     BaseChemoMedication,
     drug_code='AMOX = amoxicillin',
     dose_category='2 = Reduced Dose',
     start_date=get_utcnow() - relativedelta(months=1),
-    stop_date=get_utcnow() - relativedelta(weeks=1,),
+    stop_date=get_utcnow() - relativedelta(weeks=1, ),
     cycle_num='5',
     interval='1 week',
     specify_other_med='details here',
     oncology_treatment_plan='details',
-    otr_chemo='details',)
+    otr_chemo='details', )
 
 labresultcd4 = Recipe(
     LabResultCd4,
     cd4_drawn_date=get_utcnow() - relativedelta(months=1),
-    cd4_result='2546',)
+    cd4_result='2546', )
 
 labresultchemistry = Recipe(
     LabResultChemistry,
@@ -387,39 +388,39 @@ labresultchemistry = Recipe(
     bilirubin='45',
     creatinine='347646',
     lactate='34657',
-    comments='details here',)
+    comments='details here', )
 
 labresulthaematology = Recipe(
     LabResultHaematology,
-    haem_drawn_date=get_utcnow() - relativedelta(weeks=1,),
+    haem_drawn_date=get_utcnow() - relativedelta(weeks=1, ),
     hgb='17',
     mcv='76',
     wbc_count='241',
     anc_count='342',
     platelet='1412',
-    comments='details here',)
+    comments='details here', )
 
 labresultheightweight = Recipe(
     LabResultHeightWeight,
     weight='254',
     height='134',
-    cough2weeks=YES,)
+    cough2weeks=YES, )
 
 labresulthiv = Recipe(
     LabResultHiv,
     test_date=get_utcnow() - relativedelta(weeks=1),
-    test_result='NEG',)
+    test_result='NEG', )
 
 labresulttb = Recipe(
     LabResultTb,
     tb_description='description here',
     tb_treatment='No',
-    tb_treatment_start=get_utcnow() - relativedelta(months=1),)
+    tb_treatment_start=get_utcnow() - relativedelta(months=1), )
 
 labresultviralload = Recipe(
     LabResultViralload,
     vl_drawn_date='details',
-    vl_result='8 > 9',)
+    vl_result='8 > 9', )
 
 labresult = Recipe(
     LabResult,
@@ -432,7 +433,7 @@ labresult = Recipe(
     other_abnormal='other results here',
     abnormal_lab_results='details here',
     tb_tests=YES,
-    tb_prompt_other='other details here',)
+    tb_prompt_other='other details here', )
 
 oncologytreamentcompleted = Recipe(
     OncologyTreatmentCompleted,
@@ -442,14 +443,14 @@ oncologytreamentcompleted = Recipe(
     treatment_detail='details here',
     patient_follow_up='PMH',
     patient_follow_up_other='other details here',
-    next_followup='details',)
+    next_followup='details', )
 
 oncologytreamentrecord = Recipe(
     OncologyTreatmentRecord,
     chemo_received=YES,
     radiation_received=YES,
     surgical_therapy=YES,
-    comments='details here',)
+    comments='details here', )
 
 otrchemo = Recipe(
     OTRChemo,
@@ -459,21 +460,21 @@ otrchemo = Recipe(
     why_delayed_other='other details here',
     chemo_reduced=YES,
     why_reduced='HemeTox',
-    why_reduced_other='other details here',)
+    why_reduced_other='other details here', )
 
 otrradiation = Recipe(
     OTRRadiation,
-    radiation_details=YES,)
+    radiation_details=YES, )
 
 otrsurgical = Recipe(
     OTRSurgical,
     operation_performed='details',
-    date_operation='details',)
+    date_operation='details', )
 
 radiationtreatment = Recipe(
     RadiationTreatment,
     treatment_start_date=fake.three_months_ago,
-    treatment_end_date=get_utcnow() - relativedelta(weeks=1,),
+    treatment_end_date=get_utcnow() - relativedelta(weeks=1, ),
     tumour_stages='X',
     lymph_stages='O',
     metastasis_stages='1',
@@ -492,7 +493,7 @@ radiationtreatment = Recipe(
     if_doses_delayed='Toxicity Hematologic',
     if_doses_delayed_other='other details here',
     first_course_radiation=YES,
-    comments='detials here',)
+    comments='detials here', )
 
 oncologytreatmentplan = Recipe(
     OncologyTreatmentPlan,
@@ -509,6 +510,9 @@ subjectscreening = Recipe(
     enrollment_site='gaborone_private_hospital'
 )
 
+deathreport = Recipe(
+    DeathReport
+)
 
 # baseradiationtreatment = Recipe(
 #     BaseRadiationTreatment,
