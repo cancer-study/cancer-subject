@@ -86,7 +86,7 @@ class SubjectScreening(
     def schedule_name(self):
         """Return a visit schedule name.
         """
-        return 'schedule'
+        return 'schedule_6months'
 
     class Meta:
         app_label = 'cancer_subject'

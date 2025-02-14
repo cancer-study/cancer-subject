@@ -33,7 +33,7 @@ class ConsentManager(SubjectConsentManager, SearchSlugManager):
 
 
 class UpdatesOrCreatesRegistrationModelMixin(
-    BaseUpdatesOrCreatesRegistrationModelMixin):
+        BaseUpdatesOrCreatesRegistrationModelMixin):
 
     @property
     def registration_unique_field(self):
