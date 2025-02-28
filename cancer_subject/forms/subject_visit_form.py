@@ -18,6 +18,7 @@ class VisitFormValidator(BaseVisitFormValidator):
         super().clean()
         self.validate_no_death_obj()
         self.validate_no_death_visit()
+        self.validate_visit_reason()
 
     def validate_no_death_obj(self):
         """Validates that the participant associated with `subject_identifier` has
@@ -67,6 +68,14 @@ class VisitFormValidator(BaseVisitFormValidator):
                     'reason': 'Invalid. This is not an unscheduled visit'},
                     code=INVALID_ERROR)
 
+    def validate_visit_reason(self):
+        visit_reason = self.cleaned_data.get('reason')
+        appointment = self.cleaned_data.get('appointment')
+        if (appointment and appointment.visit_code == '1000'
+                and visit_reason != 'Unscheduled visit/contact'):
+            raise forms.ValidationError({
+                'reason': 'Expected Unscheduled visit/contact'})
+
     def validate_required_fields(self):
 
         self.required_if(
@@ -91,7 +100,7 @@ class VisitFormValidator(BaseVisitFormValidator):
 
 
 class SubjectVisitForm(
-    SiteModelFormMixin, FormValidatorMixin, forms.ModelForm):
+        SiteModelFormMixin, FormValidatorMixin, forms.ModelForm):
     form_validator_cls = VisitFormValidator
 
     class Meta:
