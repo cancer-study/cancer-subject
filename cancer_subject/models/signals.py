@@ -17,14 +17,14 @@ def subject_screening_on_post_save(sender, instance, raw, created, **kwargs):
         if not raw:
             if not created:
                 _, schedule = site_visit_schedules.get_by_onschedule_model_schedule_name(
-                    onschedule_model='cancer_subject.onschedule6months',
+                    onschedule_model='cancer_subject.onschedule',
                     name=instance.schedule_name)
                 schedule.refresh_schedule(
                     subject_identifier=instance.subject_identifier)
             else:
                 # put subject on schedule
                 _, schedule = site_visit_schedules.get_by_onschedule_model_schedule_name(
-                    onschedule_model='cancer_subject.onschedule6months',
+                    onschedule_model='cancer_subject.onschedule',
                     name=instance.schedule_name)
                 schedule.put_on_schedule(
                     subject_identifier=instance.subject_identifier,
