@@ -1,22 +1,21 @@
 from django.contrib.sites.managers import CurrentSiteManager
 from django.core.exceptions import ValidationError
-from django.db import models
 from edc_base.model_managers import HistoricalRecords
 from edc_base.model_mixins import BaseUuidModel
 from edc_identifier.managers import SubjectIdentifierManager
-from edc_visit_schedule.model_mixins import OnScheduleModelMixin
+from edc_visit_schedule.model_mixins import OnScheduleModelMixin as BaseOnScheduleModelMixin
 
 from .subject_consent import SubjectConsent
 
 
-class OnSchedule(OnScheduleModelMixin, BaseUuidModel):
+class OnScheduleModelMixin(BaseOnScheduleModelMixin, BaseUuidModel):
 
     """A model used by the system. Auto-completed by subject_consent.
     """
 
     def save(self, *args, **kwargs):
         self.consent_version = self.get_consent_version()
-        super(OnSchedule, self).save(*args, **kwargs)
+        super().save(*args, **kwargs)
 
     def get_consent_version(self):
         try:
@@ -30,6 +29,17 @@ class OnSchedule(OnScheduleModelMixin, BaseUuidModel):
 
     objects = SubjectIdentifierManager()
 
+    on_site = CurrentSiteManager()
+
+    class Meta:
+        abstract = True
+
+
+class OnSchedule(OnScheduleModelMixin):
+
     history = HistoricalRecords()
 
-    on_site = CurrentSiteManager()
+
+class OnSchedule6months(OnScheduleModelMixin):
+
+    history = HistoricalRecords()

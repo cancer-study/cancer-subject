@@ -1,12 +1,12 @@
 from django import forms
+from django.apps import apps as django_apps
 from edc_base.sites import SiteModelFormMixin
 from edc_constants.constants import OTHER
 from edc_form_validators import FormValidatorMixin
 from edc_form_validators.base_form_validator import INVALID_ERROR
-from edc_visit_tracking.constants import UNSCHEDULED, MISSED_VISIT
+from edc_visit_tracking.constants import MISSED_VISIT, UNSCHEDULED
 from edc_visit_tracking.form_validators import \
     VisitFormValidator as BaseVisitFormValidator
-from django.apps import apps as django_apps
 
 from ..models import SubjectVisit
 
@@ -18,13 +18,15 @@ class VisitFormValidator(BaseVisitFormValidator):
         super().clean()
         self.validate_no_death_obj()
         self.validate_no_death_visit()
+        self.validate_visit_reason()
 
     def validate_no_death_obj(self):
         """Validates that the participant associated with `subject_identifier` has
         not already been marked as deceased in the `death_cls` model. Raises a
         `forms.ValidationError` if the participant is deceased.
         """
-        subject_identifier = self.cleaned_data.get('subject_identifier')
+        appointment = self.cleaned_data.get('appointment')
+        subject_identifier = appointment.subject_identifier
         self.death_cls = django_apps.get_model(self.death_model)
         try:
             self.death_cls.objects.get(
@@ -47,10 +49,12 @@ class VisitFormValidator(BaseVisitFormValidator):
         Args:
             self: instance of the form
         """
-        subject_identifier = self.cleaned_data.get('subject_identifier')
+        appointment = self.cleaned_data.get('appointment')
+        subject_identifier = appointment.subject_identifier
         death_visits = SubjectVisit.objects.filter(
             reason='Death', subject_identifier=subject_identifier)
-        if not hasattr(self.instance, 'pk') and death_visits:
+
+        if not self.instance.pk and death_visits:
             raise forms.ValidationError('You cannot start a new visit if the '
                                         'participant is dead!')
 
@@ -63,6 +67,14 @@ class VisitFormValidator(BaseVisitFormValidator):
                 raise forms.ValidationError({
                     'reason': 'Invalid. This is not an unscheduled visit'},
                     code=INVALID_ERROR)
+
+    def validate_visit_reason(self):
+        visit_reason = self.cleaned_data.get('reason')
+        appointment = self.cleaned_data.get('appointment')
+        if (appointment and appointment.visit_code == '1000'
+                and visit_reason != 'Unscheduled visit/contact'):
+            raise forms.ValidationError({
+                'reason': 'Expected Unscheduled visit/contact'})
 
     def validate_required_fields(self):
 
@@ -88,7 +100,7 @@ class VisitFormValidator(BaseVisitFormValidator):
 
 
 class SubjectVisitForm(
-    SiteModelFormMixin, FormValidatorMixin, forms.ModelForm):
+        SiteModelFormMixin, FormValidatorMixin, forms.ModelForm):
     form_validator_cls = VisitFormValidator
 
     class Meta:
